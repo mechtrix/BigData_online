@@ -1,8 +1,9 @@
 ---
+title: Big Data lecture slides
 listing:
   contents: "chapters/*/index.qmd"
-  type: grid
+  type: table
+  sort: false
+  categories: true
 ---
 
-
-tmp

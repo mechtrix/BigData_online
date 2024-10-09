@@ -3,6 +3,8 @@ title: "Data Sources"
 format:
   revealjs:
     slide-level: 5
+    resource-path: 
+      - "img"
 revealjs-plugins:
   - animate
 filters: 
@@ -19,4 +21,4 @@ filters:
 
 #### H4
 
-
+{{< include img/_mqtt_anim.qmd >}}

@@ -18,11 +18,10 @@ filters:
 
 # Hfsd
 
-![Elephant](img/009_mqtt_root.svg)
 
 ## H2
 
-{{< include img/_mqtt_anim.qmd >}}
+
 
 
 
