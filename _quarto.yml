@@ -1,3 +1,4 @@
 project:
+  type: website
   title: "Big Data lecture slides"
   output-dir: docs

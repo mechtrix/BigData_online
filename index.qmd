@@ -1,6 +1,7 @@
 ---
 listing:
   contents: "chapters/*/index.qmd"
+  type: grid
 ---
 
 
