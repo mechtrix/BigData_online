@@ -4,8 +4,6 @@ project:
   output-dir: docs
 
 format:
-  html:
-    theme: sandstone
-    css: styles.css
-    toc: true
+  revealjs:
+    slide-level: 5
 
