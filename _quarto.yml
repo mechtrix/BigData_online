@@ -4,6 +4,7 @@ project:
   output-dir: docs
 
 format:
+  html: default
   revealjs:
-    slide-level: 5
+    output-file: page-reveal.html
 
