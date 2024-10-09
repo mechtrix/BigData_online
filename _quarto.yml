@@ -2,7 +2,4 @@ project:
   title: "Big Data lecture slides"
   output-dir: docs
 
-listing:
-  contents:
-    - "chapter001/chapter001.qmd"
-    - "chapter003/chapter002.qmd"
+listing: default
