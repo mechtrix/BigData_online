@@ -4,12 +4,56 @@ author: Prof. Dr. Tim Weber
 format:
   revealjs:
     slide-level: 5
+    resource-path: 
+      - "img"
+revealjs-plugins:
+  - animate
+filters: 
+  - animate
 ---
 
 # H1
 
+![Elephant](img/000_intro.png)
+
+# Hfsd
+
+![Elephant](img/009_mqtt_root.svg)
+
 ## H2
 
-### H3
+```yaml { .animate src="img/009_mqtt_root.svg"}
+setup:
+  - element: "#Broker"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "0"
+  - element: "#BrokerText"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "1"
+  - element: "#Client01"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "2"
+  - element: "#Subscriber01"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "3"
+  - element: "#Client02"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "4"
+  - element: "#Subscriber02"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "4"
+```
 
-#### H4
+

@@ -337,21 +337,49 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 </div>
 
 </section>
-<section>
 <section id="h1" class="title-slide slide level1 center">
 <h1>H1</h1>
 
-</section>
+<img data-src="img/000_intro.png" class="r-stretch quarto-figure-center"><p class="caption">Elephant</p></section>
+
+<section>
+<section id="hfsd" class="title-slide slide level1 center">
+<h1>Hfsd</h1>
+
+<img data-src="img/009_mqtt_root.svg" class="r-stretch quarto-figure-center"><p class="caption">Elephant</p></section>
 <section id="h2" class="title-slide slide level2 center">
 <h2>H2</h2>
-
-</section>
-<section id="h3" class="title-slide slide level3 center">
-<h3>H3</h3>
-
-</section>
-<section id="h4" class="title-slide slide level4 center">
-<h4>H4</h4>
+<div data-animate="" data-src="img/009_mqtt_root.svg"><!-- setup:
+  - element: "#Broker"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "0"
+  - element: "#BrokerText"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "1"
+  - element: "#Client01"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "2"
+  - element: "#Subscriber01"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "3"
+  - element: "#Client02"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "4"
+  - element: "#Subscriber02"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "4" --></div>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -359,8 +387,6 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 </div>
 </div>
 </section>
-
-
 </section>
     </div>
   </div>
@@ -372,6 +398,9 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-animate/plugin.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-animate/svg.min.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-animate/js-yaml.min.js"></script>
   <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -393,6 +422,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'animate': {"autoplay":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -563,7 +593,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealAnimate, QuartoSupport,
 
           RevealMath,
           RevealNotes,

@@ -2,6 +2,8 @@ project:
   type: website
   title: "Big Data lecture slides"
   output-dir: docs
+  resources: 
+    - "chapters/chapter001/img"
   
 website: 
   title: "Big Data lecture slides"
