@@ -1,6 +1,5 @@
 project:
   title: "Big Data lecture slides"
-  type: website
   output-dir: docs
 
 format:
