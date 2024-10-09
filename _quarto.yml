@@ -4,7 +4,6 @@ project:
   output-dir: docs
 
 format:
-  html: default
   revealjs:
     output-file: page-reveal.html
 
