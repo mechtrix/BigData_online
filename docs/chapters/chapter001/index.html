@@ -51,6 +51,7 @@
       margin-left: 2em;
     }  </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="style.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -363,7 +364,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 <h1>Introduction</h1>
 <div class="r-fit-text v-c">
 <p>“… Welcome to the era of Big Data,</p>
-<div class="fragment">
+<div class="fragment fade-in">
 <p>and look out! …”</p>
 </div>
 </div>
@@ -375,7 +376,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 <h2>The End of Theory?</h2>
 
 <img data-src="img/model_vs_data.svg" class="r-stretch"><div class="attribution">
-<p><span class="citation" data-cites="End-2024-04-17">(<a href="#/references" role="doc-biblioref" onclick="">Nast 2024</a>)</span></p>
+<p><span class="citation" data-cites="End-2024-04-17">(<a href="#/references" role="doc-biblioref" onclick="">Nast 2024</a>)</span> <a href="https://www.jcvi.org/">J. Craig Venter Institute</a></p>
 </div>
 </section>
 
@@ -384,6 +385,137 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 
 <img data-src="img/intro-world-store-capacity-resized.png" class="r-stretch"><div class="attribution">
 <p><span class="citation" data-cites="1492046361">(<a href="#/references" role="doc-biblioref" onclick="">Luraschi, Kuo, and Ruiz 2019</a>)</span></p>
+</div>
+</section>
+
+<section id="drinking-leads-to-amazon-purchases" class="title-slide slide level2 center">
+<h2>Drinking leads to Amazon purchases</h2>
+
+<img data-src="img/amazon_vs_breweries.png" class="r-stretch"><div class="attribution">
+<p>[Tyler Vigen](https://www.tylervigen.com/spurious/correlation/1338_the-number-of-breweries-in-the-united-states_correlates-with_amazoncoms-stock-price</p>
+</div>
+</section>
+<section id="source" class="title-slide slide level3 center">
+<h3>Source</h3>
+
+<img data-src="img/ai_paper.png" class="r-stretch"><div class="attribution">
+<p>[Tyler Vigen](https://www.tylervigen.com/spurious/correlation/1338_the-number-of-breweries-in-the-united-states_correlates-with_amazoncoms-stock-price</p>
+</div>
+</section>
+
+<section id="correlation-coefficient" class="title-slide slide level3 center">
+<h3>correlation coefficient:</h3>
+<ul>
+<li><span class="math inline">\(r =  0.8982364\)</span></li>
+</ul>
+<div class="fragment fade-in">
+<p>Correlation is a measure of how much the variables move together. If it is 0.99, when one goes up the other goes up. If it is 0.02, the connection is very weak or non-existent. If it is -0.99, then when one goes up the other goes down. If it is 1.00, you probably messed up your correlation function.</p>
+</div>
+<div class="attribution">
+<p>[Tyler Vigen](https://www.tylervigen.com/spurious/correlation/1338_the-number-of-breweries-in-the-united-states_correlates-with_amazoncoms-stock-price</p>
+</div>
+</section>
+
+<section id="coefficient-of-determination" class="title-slide slide level3 center">
+<h3>coefficient of determination:</h3>
+<ul>
+<li><span class="math inline">\(r^2 = 0.8068287\)</span></li>
+</ul>
+<div class="fragment fade-in">
+<p>This means <span class="math inline">\(80.7\%\)</span> of the change in the one variable (i.e., Amazon.com’s stock price (AMZN)) is predictable based on the change in the other (i.e., The number of Breweries in the United States) over the 21 years from 2002 through 2022.</p>
+</div>
+</section>
+
+<section id="p-value" class="title-slide slide level3 center">
+<h3>p-value:</h3>
+<ul>
+<li><span class="math inline">\(p = 3.3 \times10^{-8} &lt;0.01\)</span></li>
+</ul>
+<div class="fragment fade-in">
+<p>The p-value is <span class="math inline">\(3.3\times 10^{-8}\)</span>. The p-value is a measure of how probable it is that we would randomly find a result this extreme. On average, you will find a correlation as strong as <span class="math inline">\(0.9\)</span> in <span class="math inline">\(3.3\times10^{-6}\%\)</span> of random cases. Said differently, if you correlated <span class="math inline">\(30,543,230\)</span> random variables with the same 20 degrees of freedom, you would randomly expect to find a correlation as strong as this one.</p>
+</div>
+<div class="attribution">
+<p>[Tyler Vigen](https://www.tylervigen.com/spurious/correlation/1338_the-number-of-breweries-in-the-united-states_correlates-with_amazoncoms-stock-price</p>
+</div>
+</section>
+
+<section id="confidence-intervall" class="title-slide slide level3 center">
+<h3>confidence intervall:</h3>
+<ul>
+<li><span class="math inline">\([ 0.76, 0.96 ]\)</span> <span class="math inline">\(95\%\)</span> correlation confidence interval.</li>
+</ul>
+</section>
+
+<section id="explanation" class="title-slide slide level3 center">
+<h3>Explanation</h3>
+<p>As the number of breweries in the United States increased, so did the demand for unique and specialized beer products. This led to a surge in online sales of craft beers and beer-related merchandise on Amazon.com. As a result, Amazon’s overall revenue and market share in the alcohol industry saw a hoppy, frothy rise, prompting investors to raise a glass to the company’s success and driving up its stock price. Cheers to the unexpected connection between beer production and e-commerce dominance!</p>
+</section>
+<section class="slide level5">
+
+<div class="r-fit-text v-c">
+<p>WOW!</p>
+</div>
+<div class="attribution">
+<p>[Tyler Vigen](https://www.tylervigen.com/spurious/correlation/1338_the-number-of-breweries-in-the-united-states_correlates-with_amazoncoms-stock-price</p>
+</div>
+</section>
+
+<section id="data-dredging" class="title-slide slide level3 center">
+<h3>Data dredging</h3>
+<p>I have 25,153 variables in my database. I compare all these variables against each other to find ones that randomly match up. That’s 632,673,409 correlation calculations! This is called “data dredging.” Instead of starting with a hypothesis and testing it, I instead abused the data to see what correlations shake out. It’s a dangerous way to go about analysis, because any sufficiently large dataset will yield strong correlations completely at random.</p>
+</section>
+
+<section id="lack-of-causal-connection" class="title-slide slide level3 center">
+<h3>Lack of causal connection</h3>
+<p>There is probably no direct connection between these variables, despite what the AI says above. This is exacerbated by the fact that I used “Years” as the base variable. Lots of things happen in a year that are not related to each other! Most studies would use something like “one person” in stead of “one year” to be the “thing” studied.</p>
+</section>
+
+<section id="observations-not-independent" class="title-slide slide level3 center">
+<h3>Observations not independent</h3>
+<p>For many variables, sequential years are not independent of each other. If a population of people is continuously doing something every day, there is no reason to think they would suddenly change how they are doing that thing on January 1. A simple p-value calculation does not take this into account, so mathematically it appears less probable than it really is.</p>
+</section>
+
+
+<section id="central-limit-theorem-clt" class="title-slide slide level2 center">
+<h2>Central Limit Theorem (CLT)</h2>
+<div class="r-stack">
+<div class="fragment fade-out">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="law-of-large-numbers" class="title-slide slide level2 center">
+<h2>Law of Large Numbers</h2>
+<div class="fragment fade-in">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -622,6 +754,82 @@ Nast, Condé. 2024. <span>“The End of Theory: The Data Deluge Makes the Scient
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
