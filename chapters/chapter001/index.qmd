@@ -367,7 +367,7 @@ It's a mess!
 
 ## Big Data ingredients
 
-![](img/alex_lib.jpg){width=80% fig-align="center"}
+![](img/intro.png){width=80% fig-align="center"}
 
 ## Production Environment
 
@@ -375,7 +375,7 @@ It's a mess!
 
 ## Six Sigma
 
-{{< include img/_prod_en_anim.qmd >}}
+{{< include img/_six_sigma_anim.qmd >}}
 
 ## CRISP-DM
 
