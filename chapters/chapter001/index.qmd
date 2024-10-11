@@ -365,4 +365,12 @@ It's a mess!
 
 :::
 
+## Big Data ingredients
+
+![](img/alex_lib.jpg){width=80% fig-align="center"}
+
+## Production Environment
+
+{{< include img/_prod_en_anim.qmd >}}
+
 # References
