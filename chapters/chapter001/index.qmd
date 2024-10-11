@@ -9,6 +9,7 @@ format:
       - "img"
 revealjs-plugins:
   - animate
+  - attribution
 filters: 
   - animate
 editor_options: 
@@ -27,18 +28,29 @@ and look out! ..."
 
 :::
 
-[@978-0071799669]
-
 :::
 
-# Hfsd
-
-$f(x) = y$
-
-## H2
+::: {.attribution}
+[@978-0071799669]
+:::
 
 
+## The End of Theory? 
 
 
+![](img/model_vs_data.svg)
 
+::: {.attribution}
+[@End-2024-04-17]
+:::
+
+
+## Information growth
+
+
+[]"intro-world-store-capacity-resized.png"
+
+::: {.attribution}
+[@1492046361]
+:::
 
