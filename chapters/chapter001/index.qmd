@@ -48,9 +48,10 @@ and look out! ..."
 ## Information growth
 
 
-[]"intro-world-store-capacity-resized.png"
+![](intro-world-store-capacity-resized.png)
 
 ::: {.attribution}
 [@1492046361]
 :::
 
+# References
