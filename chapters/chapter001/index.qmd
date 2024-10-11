@@ -71,7 +71,7 @@ and look out! ..."
 ![](img/amazon_vs_breweries.png)
 
 ::: {.attribution}
-[Tyler Vigen](https://www.tylervigen.com/spurious/correlation/1338_the-number-of-breweries-in-the-united-states_correlates-with_amazoncoms-stock-price
+[Tyler Vigen](https://www.tylervigen.com/spurious/correlation/1338_the-number-of-breweries-in-the-united-states_correlates-with_amazoncoms-stock-price)
 :::
 
 ### Source
@@ -79,7 +79,7 @@ and look out! ..."
 ![](img/ai_paper.png)
 
 ::: {.attribution}
-[Tyler Vigen](https://www.tylervigen.com/spurious/correlation/1338_the-number-of-breweries-in-the-united-states_correlates-with_amazoncoms-stock-price
+[Tyler Vigen](https://www.tylervigen.com/spurious/correlation/1338_the-number-of-breweries-in-the-united-states_correlates-with_amazoncoms-stock-price)
 :::
 
 ### correlation coefficient: 
@@ -97,7 +97,7 @@ If it is 1.00, you probably messed up your correlation function.
 :::
 
 ::: {.attribution}
-[Tyler Vigen](https://www.tylervigen.com/spurious/correlation/1338_the-number-of-breweries-in-the-united-states_correlates-with_amazoncoms-stock-price
+[Tyler Vigen](https://www.tylervigen.com/spurious/correlation/1338_the-number-of-breweries-in-the-united-states_correlates-with_amazoncoms-stock-price)
 :::
 
 ### coefficient of determination: 
@@ -123,7 +123,7 @@ Said differently, if you correlated $30,543,230$ random variables with the same 
 :::
 
 ::: {.attribution}
-[Tyler Vigen](https://www.tylervigen.com/spurious/correlation/1338_the-number-of-breweries-in-the-united-states_correlates-with_amazoncoms-stock-price
+[Tyler Vigen](https://www.tylervigen.com/spurious/correlation/1338_the-number-of-breweries-in-the-united-states_correlates-with_amazoncoms-stock-price)
 :::
 
 ### confidence intervall: 
@@ -146,7 +146,7 @@ WOW!
 :::
 
 ::: {.attribution}
-[Tyler Vigen](https://www.tylervigen.com/spurious/correlation/1338_the-number-of-breweries-in-the-united-states_correlates-with_amazoncoms-stock-price
+[Tyler Vigen](https://www.tylervigen.com/spurious/correlation/1338_the-number-of-breweries-in-the-united-states_correlates-with_amazoncoms-stock-price)
 :::
 
 ### Data dredging
@@ -188,10 +188,12 @@ ggplot(data = data.frame(x = population_distribution),aes(x))+
   scale_x_continuous(expand = c(0,0,0,0))+
   scale_y_continuous(expand = c(0,0,0.05,0))+
   labs(
-    title = "The uniform distribution from which the samples are drawn",
+    title = "uniform population, n = 10000",
     x = "value (min = 1, max = 100)"
       )+
-  theme_few()
+  theme_few(
+    base_size = 20
+  )
 ```
 
 :::
@@ -227,7 +229,9 @@ ggplot(results, aes(x = Sample_Means)) +
     y = "Frequency",
     color = ""
   ) +
-  theme_few()+
+  theme_few(
+    base_size = 12
+  )+
   theme(legend.position = "bottom")
 ```
 
@@ -269,11 +273,41 @@ ggplot(rolls_data, aes(x = Roll_Number)) +
   ) +
   scale_y_continuous(breaks = c(1,2,3,3.5,4,5,6),
                      limits = c(1,6))+
-  theme_few()
+  theme_few(base_size = 20)
 
 
 ```
 
 :::
+
+## History of Big Data
+
+### 300 B.C. library of Alexandria {.smaller}
+
+* Capture ALL the data! [@Wiegand1994]
+* $40,000$ to $400,000$ scrolls (which would be the equivalent of around $100,000$ books).
+
+::: {.incremental}
+
+* no backup no mercy
+
+:::
+
+![](img/alex_lib.jpg)
+
+### Roman Empire
+
+* The romans were able to predict insurgencies based on detailed statistical analysis.
+* They were able to deploy armies where needed the most
+
+::: {.incremental}
+
+* BIG DATA RULING EMPIRES!
+
+:::
+
+![](img/Romempgif.gif)
+
+
 
 # References
