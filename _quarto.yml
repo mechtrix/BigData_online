@@ -5,5 +5,35 @@ project:
   resources: 
     - "chapters/chapter001/img"
     - "chapters/chapter002/img"
+    
+execute: 
+  echo: false
+  warning: false
+author:
+  name: Prof. Dr. Tim Weber
+  oricd: "000-0003-2931-8963"
+  email: tim.weber@th-deg.de
+  corresponding: true
+  affiliations:
+   - name: Deggendorf Institute of Technology
+     address: Badstrasse 21, Germany
+     department: Applied Natural Sciences and Industrial Engineering (NUW)
 website: 
   title: "Big Data lecture slides"
+  page-footer: "Copyright Prof. Dr. Tim Weber, 2024"
+  sidebar: 
+    style: "floating"
+    search: true
+    contents: 
+      - section: Introduction
+        text: "slides"
+        href: chapters/chapter001/index.qmd
+        contents: 
+          - text: "Introductory exercises in R"
+            href: https://mechtrix.github.io/BigData_exercises/get_started.html
+      - section: Data Sources
+        text: "slides"
+        href: chapters/chapter002/index.qmd
+        contents: 
+          - text: "Data Sources exercises in R"
+            href: https://mechtrix.github.io/BigData_exercises/data_sources.html

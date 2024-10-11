@@ -4,97 +4,146 @@
     "href": "index.html",
     "title": "Big Data lecture slides",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nIntroduction\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Sources\n\n\n \n\n\n\n\n\nNo matching items"
+    "text": "This page is directly linked to the Big Data exercises.\nAdministrative stuff is always announced via ilearn.\nThis is the lecture material for the courses “Big Data” and “Big Data Processing and Analytics”. Feel free to reference for your self study. You are not allowed to copy without the prior consent of the author. Your are not allowed to use material without prior consent. Ask - it’s a form of politeness. You will most probable get permission.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nIntroduction\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Sources\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "chapters/chapter001/index.html#the-end-of-theory",
     "href": "chapters/chapter001/index.html#the-end-of-theory",
     "title": "Introduction",
     "section": "The End of Theory?",
-    "text": "The End of Theory?\n\n\n(Nast 2024) J. Craig Venter Institute"
+    "text": "The End of Theory?\n\n\n(Nast 2024) J. Craig Venter Institute",
+    "crumbs": [
+      "Introduction"
+    ]
   },
   {
     "objectID": "chapters/chapter001/index.html#information-growth",
     "href": "chapters/chapter001/index.html#information-growth",
     "title": "Introduction",
     "section": "Information growth",
-    "text": "Information growth\n\n\n(Luraschi, Kuo, and Ruiz 2019)"
+    "text": "Information growth\n\n\n(Luraschi, Kuo, and Ruiz 2019)",
+    "crumbs": [
+      "Introduction"
+    ]
   },
   {
     "objectID": "chapters/chapter001/index.html#drinking-leads-to-amazon-purchases",
     "href": "chapters/chapter001/index.html#drinking-leads-to-amazon-purchases",
     "title": "Introduction",
     "section": "Drinking leads to Amazon purchases",
-    "text": "Drinking leads to Amazon purchases\n\n\nTyler Vigen"
+    "text": "Drinking leads to Amazon purchases\n\n\nTyler Vigen",
+    "crumbs": [
+      "Introduction"
+    ]
   },
   {
     "objectID": "chapters/chapter001/index.html#central-limit-theorem-clt",
     "href": "chapters/chapter001/index.html#central-limit-theorem-clt",
     "title": "Introduction",
     "section": "Central Limit Theorem (CLT)",
-    "text": "Central Limit Theorem (CLT)"
+    "text": "Central Limit Theorem (CLT)",
+    "crumbs": [
+      "Introduction"
+    ]
   },
   {
     "objectID": "chapters/chapter001/index.html#law-of-large-numbers",
     "href": "chapters/chapter001/index.html#law-of-large-numbers",
     "title": "Introduction",
     "section": "Law of Large Numbers",
-    "text": "Law of Large Numbers"
+    "text": "Law of Large Numbers",
+    "crumbs": [
+      "Introduction"
+    ]
   },
   {
     "objectID": "chapters/chapter001/index.html#history-of-big-data",
     "href": "chapters/chapter001/index.html#history-of-big-data",
     "title": "Introduction",
     "section": "History of Big Data",
-    "text": "History of Big Data"
+    "text": "History of Big Data",
+    "crumbs": [
+      "Introduction"
+    ]
   },
   {
     "objectID": "chapters/chapter001/index.html#evolution-of-big-data",
     "href": "chapters/chapter001/index.html#evolution-of-big-data",
     "title": "Introduction",
     "section": "Evolution of Big Data",
-    "text": "Evolution of Big Data"
+    "text": "Evolution of Big Data",
+    "crumbs": [
+      "Introduction"
+    ]
   },
   {
     "objectID": "chapters/chapter001/index.html#big-data-ingredients",
     "href": "chapters/chapter001/index.html#big-data-ingredients",
     "title": "Introduction",
     "section": "Big Data ingredients",
-    "text": "Big Data ingredients"
+    "text": "Big Data ingredients",
+    "crumbs": [
+      "Introduction"
+    ]
   },
   {
     "objectID": "chapters/chapter001/index.html#production-environment",
     "href": "chapters/chapter001/index.html#production-environment",
     "title": "Introduction",
     "section": "Production Environment",
-    "text": "Production Environment"
+    "text": "Production Environment",
+    "crumbs": [
+      "Introduction"
+    ]
   },
   {
     "objectID": "chapters/chapter001/index.html#six-sigma",
     "href": "chapters/chapter001/index.html#six-sigma",
     "title": "Introduction",
     "section": "Six Sigma",
-    "text": "Six Sigma"
+    "text": "Six Sigma",
+    "crumbs": [
+      "Introduction"
+    ]
   },
   {
     "objectID": "chapters/chapter001/index.html#crisp-dm",
     "href": "chapters/chapter001/index.html#crisp-dm",
     "title": "Introduction",
     "section": "CRISP-DM",
-    "text": "CRISP-DM"
+    "text": "CRISP-DM",
+    "crumbs": [
+      "Introduction"
+    ]
   },
   {
     "objectID": "chapters/chapter001/index.html#unifying-approach",
     "href": "chapters/chapter001/index.html#unifying-approach",
     "title": "Introduction",
     "section": "unifying approach",
-    "text": "unifying approach"
+    "text": "unifying approach\n\n\n(Schäfer et al. 2019)",
+    "crumbs": [
+      "Introduction"
+    ]
   },
   {
-    "objectID": "chapters/chapter002/index.html#h2",
-    "href": "chapters/chapter002/index.html#h2",
+    "objectID": "chapters/chapter002/index.html#which-do-you-want",
+    "href": "chapters/chapter002/index.html#which-do-you-want",
     "title": "Data Sources",
-    "section": "H2",
-    "text": "H2"
+    "section": "Which do you want?",
+    "text": "Which do you want?",
+    "crumbs": [
+      "Data Sources"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter002/index.html#databases",
+    "href": "chapters/chapter002/index.html#databases",
+    "title": "Data Sources",
+    "section": "Databases",
+    "text": "Databases",
+    "crumbs": [
+      "Data Sources"
+    ]
   }
 ]

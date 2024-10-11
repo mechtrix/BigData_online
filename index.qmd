@@ -4,6 +4,15 @@ listing:
   contents: "chapters/*/index.qmd"
   type: table
   sort: false
-  categories: true
 ---
+
+This page is directly linked to the [Big Data exercises](https://mechtrix.github.io/BigData_exercises/).
+
+Administrative stuff is always announced via *ilearn*.
+
+This is the lecture material for the courses "Big Data" and "Big Data Processing and Analytics".
+Feel free to reference for your self study. You are **not** allowed to copy without the prior consent of the author.
+Your are **not** allowed to use material without prior consent.
+Ask - it's a form of politeness. 
+You will most probable get permission.
 

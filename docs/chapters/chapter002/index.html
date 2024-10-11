@@ -10,6 +10,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.57">
 
+  <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Tim Weber">
   <title>Big Data lecture slides – Data Sources</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -328,21 +329,199 @@
   <h1 class="title">Data Sources</h1>
 
 <div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Prof.&nbsp;Dr.&nbsp;Tim Weber 
+</div>
+<div class="quarto-title-author-email">
+<a href="mailto:tim.weber@th-deg.de">tim.weber@th-deg.de</a>
+</div>
+        <p class="quarto-title-affiliation">
+            Deggendorf Institute of Technology
+          </p>
+    </div>
 </div>
 
 </section>
 <section>
-<section id="h1" class="title-slide slide level1 center">
-<h1>H1</h1>
+<section id="data-sources" class="title-slide slide level1 center">
+<h1>Data Sources</h1>
 
+<img data-src="img/word-cloud.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="which-do-you-want" class="title-slide slide level2 center">
+<h2>Which do you want?</h2>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+
+<section id="databases" class="title-slide slide level2 center">
+<h2>Databases</h2>
+
+<img data-src="img/excel_db.webp" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="overview" class="title-slide slide level3 smaller center">
+<h3>Overview</h3>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p>RDBMS:</p>
+<ul>
+<li>Organizes data into tables with predefined schemas.</li>
+<li>Uses SQL for querying and manipulation.</li>
+<li>Ensures data integrity through constraints and normalization.</li>
+<li>Traditionally scales vertically, though can scale horizontally with features like sharding and replication.</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<p>NoSQL:</p>
+<ul>
+<li>Diverse data models, including document, key-value, column-family, and graph.</li>
+<li>Offers flexible schemas or schema-less design.</li>
+<li>Optimized for horizontal scalability, handling large volumes of unstructured data.</li>
+<li>Uses various query languages, often tailored to specific data models.</li>
+</ul>
+</div></div>
 </section>
-<section id="h2" class="title-slide slide level2 center">
-<h2>H2</h2>
 
+<section id="rdbms" class="title-slide slide level3 center">
+<h3>RDBMS</h3>
+
+<img data-src="img/rdbms.svg" class="quarto-figure quarto-figure-center r-stretch"></section>
+
+<section id="nosql" class="title-slide slide level3 smaller center">
+<h3>NoSQL</h3>
+<pre><code>
+{
+   "_id": 1,
+   "customer": "A"
+   "production_line": ["1000"],
+   "machine_nr": ["1","2","3"],
+   "machine_type": ["SolderReflow","SolderReflow","SolderWave"],
+   "plant": "1",
+   "product": ["ToyRobot"]
+}
+
+{
+   "_id": 2,
+   "customer": "B"
+   "production_line": ["2000"],
+   "machine_nr": ["1"],
+   "machine_type": ["SolderReflow"],
+   "plant": "2",
+   "product": ["Car"]
+}
+</code></pre>
 </section>
-<section id="h3" class="title-slide slide level3 center">
-<h3>H3</h3>
 
+<section id="databases-summary" class="title-slide slide level3 center">
+<h3>Databases Summary</h3>
+<p>Pros:</p>
+<ul>
+<li>highly structured</li>
+<li>highly accessible</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>difficult to setup (at scale)</li>
+<li>difficult to interface</li>
+</ul>
+</section>
+
+<section id="file-systems" class="title-slide slide level3 center">
+<h3>File Systems</h3>
+<ul>
+<li>FAT32: Common for USB drives, compatible with many systems.</li>
+<li>NTFS: Windows file system, supports encryption and permissions.</li>
+<li>ext4: Linux default, offers better performance.</li>
+<li>HFS+: macOS system with journaling and encryption.</li>
+<li>APFS: Optimized for Apple’s flash storage, with snapshots.</li>
+<li>exFAT: Microsoft’s format for large files, works on Windows and macOS.</li>
+<li>ZFS: Known for data integrity, used in enterprise storage.</li>
+</ul>
+</section>
+<section id="file-system-as-a-user" class="title-slide slide level4 center">
+<h4>File System as a User</h4>
+
+<img data-src="img/winfs.svg" class="quarto-figure quarto-figure-center r-stretch"></section>
+
+
+<section id="file-system-summary" class="title-slide slide level3 center">
+<h3>File System Summary</h3>
+<p>Pros:</p>
+<ul>
+<li>highly accessible</li>
+<li>semi structured</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>often only available on local machine</li>
+<li>rules are there to be broken</li>
+</ul>
+</section>
+
+<section id="application-programming-interface-api" class="title-slide slide level3 center">
+<h3>Application Programming Interface (API)</h3>
+<ul>
+<li>APIs enable software applications to communicate and share data.</li>
+<li>They define rules for accessing functionalities.</li>
+<li>APIs provide endpoints and methods for developers to interact with.</li>
+</ul>
+</section>
+<section id="how-an-api-call-looks" class="title-slide slide level4 center">
+<h4>How an API call looks</h4>
+<pre><code>&gt;&gt; res = GET("https://api.open-notify.org/astros.json")
+&gt;&gt; res
+Response [https://api.open-notify.org/astros.json]
+  Date: 2020-01-30 18:07
+  Status: 200
+  Content-Type: application/json
+  Size: 314 B
+  
+</code></pre>
+</section>
+
+<section id="key-value-pairs" class="title-slide slide level4 center">
+<h4>key-value pairs</h4>
+<pre><code>{
+    “name”: “Jane Doe”,
+    “number_of_skills”: 2
+}
+</code></pre>
+</section>
+
+<section id="json" class="title-slide slide level4 center">
+<h4>JSON</h4>
+<p><a href="https://www.json.org/json-en.html" class="uri">https://www.json.org/json-en.html</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://https://www.json.org/json-en.html"><img data-src="chapter001/json160.gif" alt="JSON for the win"></a></p>
+<figcaption>JSON for the win</figcaption>
+</figure>
+</div>
+<pre><code>[1] "{\"people\": [{\"name\": \"Christina Koch\", \"craft\": \"ISS\"}, {\"name\": \"Alexander Skvortsov\", \"craft\": \"ISS\"}, {\"name\": \"Luca Parmitano\", \"craft\": \"ISS\"}, {\"name\": \"Andrew Morgan\", \"craft\": \"ISS\"}, {\"name\": \"Oleg Skripochka\", \"craft\": \"ISS\"}, {\"name\": \"Jessica Meir\", \"craft\": \"ISS\"}], \"number\": 6, \"message\": \"success\"}"
+</code></pre>
+</section>
+
+
+<section id="api-summary" class="title-slide slide level3 center">
+<h3>API Summary</h3>
+<p>Pros:</p>
+<ul>
+<li>interoperabiliy</li>
+<li>efficiency</li>
+<li>JSON</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>must be provided</li>
+<li>security</li>
+<li>JSON</li>
+</ul>
+</section>
+
+<section id="distributed-storage" class="title-slide slide level3 center">
+<h3>Distributed Storage</h3>
+<ul>
+<li>Hadoop</li>
+<li>Cloud (Amazon S3, Google, Azure)</li>
+<li>Data warehouse (Redshift, Google Big Query, Snowflake)</li>
+</ul>
 </section>
 <section id="h4" class="title-slide slide level4 center">
 <h4>H4</h4>
@@ -601,6 +780,82 @@
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

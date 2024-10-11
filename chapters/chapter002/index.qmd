@@ -9,15 +9,274 @@ revealjs-plugins:
   - animate
 filters: 
   - animate
+editor_options: 
+  chunk_output_type: console
 ---
 
-# H1
+
+```{r}
+#| label: setup
+#| include: false
+
+library(tidyverse)
+library(ggthemes)
+
+```
+
+# Data Sources
+
+![](img/word-cloud.png){fig-align="center"}
 
 
+## Which do you want?
 
-## H2
+```{r}
+#| fig-asp: 0.55
+#| 
+sources <- data.frame(
+  Source = c("Databases", "API", "Distributed\nStorage", "File\nSystem", 
+             "Data\nStreaming", "Log\nFiles", "Sensors\nand\nIoT Devices", "Web\nScraping"),
+  Structured_Data = c(8, 7, 7, 6, 6, 5, 4, 3),
+  Accessibility = c(8, 7, 6, 7, 6, 6, 5, 4),
+  Balance = c(8, 7, 6.5, 6.5, 6, 5.5, 4.5, 3.5)
+)
 
-### H3
+sources %>% 
+  ggplot(
+    aes(
+      x = Structured_Data,
+      y = Accessibility,
+      label = Source
+    )
+  )+
+  geom_label()+
+  scale_x_continuous(
+    limits = c(2.5,8.5),
+    labels = NULL
+  )+
+  scale_y_continuous(
+    limits = c(3.5,8.5),
+    labels = NULL
+  )+
+  labs(
+    title = "Data Sources",
+    x = "Structure",
+    y = "Accessibility"
+  )+
+  coord_equal()+
+  theme_minimal(base_size = 15)+
+  theme(
+    axis.line = 
+      element_line(
+        arrow = arrow(
+          type = "closed",
+          angle = 15
+        ),
+        linewidth = 1.5
+        ),
+    panel.grid = element_blank(),
+    # text = element_text(family = "Bahnschrift")
+  )
+```
+
+
+## Databases
+
+![](img/excel_db.webp){fig-align="center"}
+
+### Overview {.smaller}
+
+:::: {.columns}
+
+::: {.column width="45%"}
+RDBMS:
+
+* Organizes data into tables with predefined schemas.
+* Uses SQL for querying and manipulation.
+* Ensures data integrity through constraints and normalization.
+* Traditionally scales vertically, though can scale horizontally with features like sharding and replication.
+
+:::
+
+::: {.column width="45%"}
+NoSQL:
+
+* Diverse data models, including document, key-value, column-family, and graph.
+* Offers flexible schemas or schema-less design.
+* Optimized for horizontal scalability, handling large volumes of unstructured data.
+* Uses various query languages, often tailored to specific data models.
+
+:::
+
+::::
+
+### RDBMS
+
+![](img/rdbms.svg){fig-align="center"}
+
+### NoSQL {.smaller}
+
+```
+
+{
+   "_id": 1,
+   "customer": "A"
+   "production_line": ["1000"],
+   "machine_nr": ["1","2","3"],
+   "machine_type": ["SolderReflow","SolderReflow","SolderWave"],
+   "plant": "1",
+   "product": ["ToyRobot"]
+}
+
+{
+   "_id": 2,
+   "customer": "B"
+   "production_line": ["2000"],
+   "machine_nr": ["1"],
+   "machine_type": ["SolderReflow"],
+   "plant": "2",
+   "product": ["Car"]
+}
+
+```
+
+### Databases Summary
+
+Pros:
+
+* highly structured
+* highly accessible
+
+Cons:
+
+* difficult to setup (at scale)
+* difficult to interface
+
+### File Systems
+
+* FAT32: Common for USB drives, compatible with many systems.
+* NTFS: Windows file system, supports encryption and permissions.
+* ext4: Linux default, offers better performance.
+* HFS+: macOS system with journaling and encryption.
+* APFS: Optimized for Apple's flash storage, with snapshots.
+* exFAT: Microsoft's format for large files, works on Windows and macOS.
+* ZFS: Known for data integrity, used in enterprise storage.
+
+#### File System as a User
+
+![](img/winfs.svg){fig-align="center"}
+
+### File System Summary
+
+Pros:
+
+* highly accessible
+* semi structured
+
+Cons:
+
+* often only available on local machine
+* rules are there to be broken
+
+### Application Programming Interface (API)
+
+- APIs enable software applications to communicate and share data.
+- They define rules for accessing functionalities.
+- APIs provide endpoints and methods for developers to interact with.
+
+#### How an API call looks
+
+
+```
+>> res = GET("https://api.open-notify.org/astros.json")
+>> res
+Response [https://api.open-notify.org/astros.json]
+  Date: 2020-01-30 18:07
+  Status: 200
+  Content-Type: application/json
+  Size: 314 B
+  
+
+```
+#### key-value pairs
+
+```
+{
+    “name”: “Jane Doe”,
+    “number_of_skills”: 2
+}
+
+```
+
+#### JSON
+
+<https://www.json.org/json-en.html>
+
+[![JSON for the win](https://www.json.org/img/json160.gif)](https://https://www.json.org/json-en.html)
+
+```
+[1] "{\"people\": [{\"name\": \"Christina Koch\", \"craft\": \"ISS\"}, {\"name\": \"Alexander Skvortsov\", \"craft\": \"ISS\"}, {\"name\": \"Luca Parmitano\", \"craft\": \"ISS\"}, {\"name\": \"Andrew Morgan\", \"craft\": \"ISS\"}, {\"name\": \"Oleg Skripochka\", \"craft\": \"ISS\"}, {\"name\": \"Jessica Meir\", \"craft\": \"ISS\"}], \"number\": 6, \"message\": \"success\"}"
+
+```
+
+### API Summary
+
+Pros:
+
+* interoperability
+* efficiency
+* JSON
+
+Cons:
+
+* must be provided
+* security
+* JSON
+
+
+### Distributed Storage 
+
+  * Hadoop 
+  * Cloud (Amazon S3, Google, Azure)
+  * Data warehouse (Redshift, Google Big Query, Snowflake)
+  
+#### The Cloud
+
+[![Thank you xkcd](chapter000/the_cloud.png)](https://xkcd.com/908/)
+
+#### The idea
+
+![](img/distributed.svg){fig-align="center"}
+
+#### Criticism
+
+::: {.r-fit-text .v-c}
+
+It's not a cloud, it's just someone elses computer
+
+:::
+  
+### Distributed Storage Summary
+
+Pros:
+
+* high availability
+* scalability
+* geographic distribution
+
+Cons:
+
+* complexity
+* consistency
+* network overhead
+
+### Data Streaming
+
+"... Datasets with an infinite amount of entries are known as streams. ..."
+
+::: {.attribution}
+[@1492046361]
+:::
 
 #### H4
 
