@@ -433,8 +433,8 @@ pd9049dac.dip.t-dialin.net - - [01/May/2001:01:51:25 -0700] "GET /accesswatch/ac
 #| echo: true
 #| output: true
 
-# logs <- readLines(here("data","logfile.txt")) 
-# head(logs)
+logs <- readLines("https://raw.githubusercontent.com/mechtrix/BigData_online/refs/heads/main/data/logfile.txt")
+head(logs)
 
 ```
 

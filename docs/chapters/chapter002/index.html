@@ -800,8 +800,16 @@ initialized
 <section id="analyising-a-log-file" class="title-slide slide level4 center">
 <h4>analyising a log file</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># logs &lt;- readLines(here("data","logfile.txt")) </span></span>
-<span id="cb7-2"><a></a><span class="co"># head(logs)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>logs <span class="ot">&lt;-</span> <span class="fu">readLines</span>(<span class="st">"https://raw.githubusercontent.com/mechtrix/BigData_online/refs/heads/main/data/logfile.txt"</span>)</span>
+<span id="cb7-2"><a></a><span class="fu">head</span>(logs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "pd9049dac.dip.t-dialin.net - - [01/May/2001:01:51:25 -0700] \"GET /accesswatch/accesswatch-1.33/ HTTP/1.0\" 200 1004"              
+[2] "pd9049dac.dip.t-dialin.net - - [01/May/2001:01:51:26 -0700] \"GET /accesswatch/accesswatch-1.33/img/allifou.jpg HTTP/1.0\" 304 -"  
+[3] "pd9049dac.dip.t-dialin.net - - [01/May/2001:01:51:26 -0700] \"GET /sa.inside.jpg HTTP/1.0\" 304 -"                                 
+[4] "pd9049dac.dip.t-dialin.net - - [01/May/2001:02:20:19 -0700] \"GET /accesswatch/accesswatch-1.33/ HTTP/1.0\" 200 7791"              
+[5] "pd9049dac.dip.t-dialin.net - - [01/May/2001:02:20:20 -0700] \"GET /accesswatch/accesswatch-1.33/img/allifou.jpg HTTP/1.0\" 304 -"  
+[6] "pd9049dac.dip.t-dialin.net - - [01/May/2001:02:20:20 -0700] \"GET /accesswatch/accesswatch-1.33/img/blueblock.gif HTTP/1.0\" 304 -"</code></pre>
+</div>
 </div>
 </section>
 
