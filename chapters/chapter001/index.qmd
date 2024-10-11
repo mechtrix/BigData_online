@@ -373,4 +373,16 @@ It's a mess!
 
 {{< include img/_prod_en_anim.qmd >}}
 
+## Six Sigma
+
+{{< include img/_prod_en_anim.qmd >}}
+
+## CRISP-DM
+
+![](img/CRISP-DM.png.webp){width=80% fig-align="center"}
+
+## unifying approach
+
+![](img/crispdm_dmaic.png){width=80% fig-align="center"}
+
 # References
