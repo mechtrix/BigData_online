@@ -29,7 +29,27 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -337,22 +357,33 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 </div>
 
 </section>
-<section id="h1" class="title-slide slide level1 center">
-<h1>H1</h1>
-
-<img data-src="img/000_intro.png" class="r-stretch quarto-figure-center"><p class="caption">Elephant</p></section>
+<section id="introduction" class="title-slide slide level1 center">
+<h1>Introduction</h1>
+<div class="r-fit-text v-c">
+<p>“… Welcome to the era of Big Data,</p>
+<div class="fragment">
+<p>and look out! …”</p>
+</div>
+<p><span class="citation" data-cites="978-0071799669">(<a href="#/h2" role="doc-biblioref" onclick="">Fung 2013</a>)</span></p>
+</div>
+</section>
 
 <section>
 <section id="hfsd" class="title-slide slide level1 center">
 <h1>Hfsd</h1>
-
+<p><span class="math inline">\(f(x) = y\)</span></p>
 </section>
-<section id="h2" class="title-slide slide level2 center">
+<section id="h2" class="title-slide slide level2 smaller scrollable">
 <h2>H2</h2>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-978-0071799669" class="csl-entry" role="listitem">
+Fung, Kaiser. 2013. <em>Numbersense: How to Use Big Data to Your Advantage</em>. McGraw Hill Professional.
 </div>
 </div>
 </section>
