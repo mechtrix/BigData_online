@@ -15,6 +15,9 @@ filters:
 editor_options: 
   chunk_output_type: console
 css: style.css
+knitr: 
+  opts_chunk:
+    fig.align: center
 ---
 
 ```{r}
@@ -49,7 +52,7 @@ and look out! ..."
 ## The End of Theory? 
 
 
-![](img/model_vs_data.svg)
+![](img/model_vs_data.svg){fig-align="center"}
 
 ::: {.attribution}
 [@End-2024-04-17]
@@ -293,7 +296,7 @@ ggplot(rolls_data, aes(x = Roll_Number)) +
 
 :::
 
-![](img/alex_lib.jpg)
+![](img/alex_lib.jpg){width=80% fig-align="center"}
 
 ### Roman Empire
 
@@ -306,8 +309,60 @@ ggplot(rolls_data, aes(x = Roll_Number)) +
 
 :::
 
-![](img/Romempgif.gif)
+![](img/Romempgif.gif){width=80% fig-align="center"}
 
+### the modern (?) age {.smaller}
 
+| Unit            | Value            | Example                                                                |
+|-----------------|------------------|------------------------------------------------------------------------|
+| Kilobytes (KB)  | 1,000 bytes      | a paragraph of a text document                                         |
+| Megabytes (MB)  | 1,000 Kilobytes  | a small novel                                                          |
+| Gigabytes (GB)  | 1,000 Megabytes  | Beethoven's 5th                                                        |
+| Terabytes (TB)  | 1,000 Gigabytes  | all the XRays in a large hospital                                      |
+| Petabytes (PB)  | 1,000 Terabytes  | half the contents of all US academic research libraries                |
+| Exabytes (EB)   | 1,000 Petabytes  | about one fifth of the words people have ever spoken                   |
+| Zettabytes (ZB) | 1,000 Exabytes   | as much information as there are grains of sand on all the worlds beaches |
+
+## Evolution of Big Data
+
+### Big Data Phase 1 – Structured Content
+
+::: {.incremental}
+
+* longstanding domain of database management
+* relies heavily on the storage, extraction, and optimization techniques that are common in data that is stored in Relational Database Management Systems (RDBMS)
+* extraction, transformation and loading (ETL) of data, started to professionalize in the 1970s
+
+:::
+
+### Big Data Phase 2 – Web Based Unstructured Content
+
+::: {.incremental}
+
+* early 2000s internet and corresponding web applications started to generate tremendous amounts of data
+* IP-specific search and interaction logs started to generate web based unstructured data
+* insights into the needs and behaviours of internet users, opening a whole new world of possibilities
+* networks analysis, web-mining and spatial-temporal analysis
+
+:::
+
+### Big Data Phase 3 – Mobile and Sensor-based Content
+
+::: {.incremental}
+
+* Current Phase: driven by the rapid adoption of mobile technology and devices
+* number of mobile devices and tablets surpassed the number of laptops and PCs for the first time in 2011
+* in 2020, there are an estimated 10 billion devices that are connected to the internet
+* IoT: millions of new TVs, thermostats, wearables and even refrigerators
+
+:::
+
+---
+
+::: {.r-fit-text .v-c}
+
+It's a mess!
+
+:::
 
 # References
