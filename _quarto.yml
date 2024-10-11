@@ -5,6 +5,7 @@ project:
   resources: 
     - "chapters/chapter001/img"
     - "chapters/chapter002/img"
+    - "chapters/chapter002/data"
     
 execute: 
   echo: false

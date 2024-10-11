@@ -1,5 +1,6 @@
 ---
 title: "Data Sources"
+bibliography: https://api.citedrive.com/bib/da291eae-8e2a-46b1-968e-0b79af55f87a/references.bib?x=eyJpZCI6ICJkYTI5MWVhZS04ZTJhLTQ2YjEtOTY4ZS0wYjc5YWY1NWY4N2EiLCAidXNlciI6ICI1NjQ5IiwgInNpZ25hdHVyZSI6ICI2ZDMyODMxM2QzZDQ3NmE3MGM4MDc5MzJiNzE1NjkzNjJmYmZjODYyNGMzNmJjNDBkMDk3Njk5N2RmZjQ5MTg5In0=/bibliography.bib
 format:
   revealjs:
     slide-level: 5
@@ -7,6 +8,7 @@ format:
       - "img"
 revealjs-plugins:
   - animate
+  - attribution
 filters: 
   - animate
 editor_options: 
@@ -20,6 +22,7 @@ editor_options:
 
 library(tidyverse)
 library(ggthemes)
+library(here)
 
 ```
 
@@ -242,7 +245,11 @@ Cons:
   
 #### The Cloud
 
-[![Thank you xkcd](chapter000/the_cloud.png)](https://xkcd.com/908/)
+![](img/the_cloud.png)
+
+::: {.attribution}
+[xkcd](https://xkcd.com/908/)
+:::
 
 #### The idea
 
@@ -278,6 +285,161 @@ Cons:
 [@1492046361]
 :::
 
+### Workflow
+
+![](img/streaming-working-1.png)
+
+::: {.attribution}
+[@1492046361]
+:::
+
+### Kafka
+
+![](img/streaming-kafka-apis-1.png)
+
+::: {.attribution}
+[@1492046361]
+:::
+
+### Data streaming summary
+
+Pros:
+
+* real-time insights
+* scalability
+* efficiency
+
+Cons:
+
+* complexity
+* cost
+* data consistency
+
+### Log-files
+
+* Record system events.
+* Include timestamps, messages.
+* Used for troubleshooting, monitoring.
+* Essential in IT, software development.
+
+#### log4j
+
+![](https://imgs.xkcd.com/comics/dependency.png){fig-align="center"}
+
+::: {.fragment .fade-in}
+
+[log4j](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Informationen-und-Empfehlungen/Empfehlungen-nach-Angriffszielen/Webanwendungen/log4j/log4j_node.html)
+
+:::
+
+::: {.attribution}
+[xkcd](https://xkcd.com/2347/)
+:::
+
+#### example log file {.scrollable}
+
+```
+
+ 01 
+03/22 08:51:01 INFO   :.main: *************** RSVP Agent started ***************
+ 02 
+03/22 08:51:01 INFO   :...locate_configFile: Specified configuration file: /u/user10/rsvpd1.conf
+03/22 08:51:01 INFO   :.main: Using log level 511
+03/22 08:51:01 INFO   :..settcpimage: Get TCP images rc - EDC8112I Operation not supported on socket.
+ 03 
+03/22 08:51:01 INFO   :..settcpimage: Associate with TCP/IP image name = TCPCS
+03/22 08:51:02 INFO   :..reg_process: registering process with the system
+03/22 08:51:02 INFO   :..reg_process: attempt OS/390 registration
+03/22 08:51:02 INFO   :..reg_process: return from registration rc=0
+ 04 
+03/22 08:51:06 TRACE  :...read_physical_netif: Home list entries returned = 7
+03/22 08:51:06 INFO   :...read_physical_netif: index #0, interface VLINK1 has address 129.1.1.1, ifidx 0
+03/22 08:51:06 INFO   :...read_physical_netif: index #1, interface TR1 has address 9.37.65.139, ifidx 1
+03/22 08:51:06 INFO   :...read_physical_netif: index #2, interface LINK11 has address 9.67.100.1, ifidx 2
+03/22 08:51:06 INFO   :...read_physical_netif: index #3, interface LINK12 has address 9.67.101.1, ifidx 3
+03/22 08:51:06 INFO   :...read_physical_netif: index #4, interface CTCD0 has address 9.67.116.98, ifidx 4
+03/22 08:51:06 INFO   :...read_physical_netif: index #5, interface CTCD2 has address 9.67.117.98, ifidx 5
+03/22 08:51:06 INFO   :...read_physical_netif: index #6, interface LOOPBACK has address 127.0.0.1, ifidx 0
+03/22 08:51:06 INFO   :....mailslot_create: creating mailslot for timer
+03/22 08:51:06 INFO   :...mailbox_register: mailbox allocated for timer
+ 05 
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP via UDP
+ 06 
+03/22 08:51:06 WARNING:.....mailslot_create: setsockopt(MCAST_ADD) failed - EDC8116I Address not available.
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp-udp
+03/22 08:51:06 TRACE  :..entity_initialize: interface 129.1.1.1, entity for rsvp allocated and initialized
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP via UDP
+03/22 08:51:06 WARNING:.....mailslot_create: setsockopt(MCAST_ADD) failed - EDC8116I Address not available.
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp-udp
+03/22 08:51:06 TRACE  :..entity_initialize: interface 9.37.65.139, entity for rsvp allocated and 
+initialized
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP via UDP
+03/22 08:51:06 WARNING:.....mailslot_create: setsockopt(MCAST_ADD) failed - EDC8116I Address not available.
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp-udp
+03/22 08:51:06 TRACE  :..entity_initialize: interface 9.67.100.1, entity for rsvp allocated and initialized
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP via UDP
+03/22 08:51:06 WARNING:.....mailslot_create: setsockopt(MCAST_ADD) failed - EDC8116I Address not available.
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp-udp
+03/22 08:51:06 TRACE  :..entity_initialize: interface 9.67.101.1, entity for rsvp allocated and initialized
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP via UDP
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp-udp
+03/22 08:51:06 TRACE  :..entity_initialize: interface 9.67.116.98, entity for rsvp allocated and 
+initialized
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP via UDP
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp-udp
+03/22 08:51:06 TRACE  :..entity_initialize: interface 9.67.117.98, entity for rsvp allocated and 
+initialized
+
+```
+
+#### common log format 
+
+[“The Common Log Format is a standardized text file format used by web servers when generating server log files.”](https://en.wikipedia.org/wiki/Common_Log_Format)
+
+#### commong log format example {.smaller}
+
+```
+pd9049dac.dip.t-dialin.net - - [01/May/2001:01:51:25 -0700] "GET /accesswatch/accesswatch-1.33/ HTTP/1.0" 200 1004
+
+```
+
+* A `"-"` in a field indicates missing data.
+* `pd9049dac.dip.t-dialin.net` is the IP address of the client (remote host) which made the request to the server.
+* `[01/May/2001:01:51:25 -0700]` is the date, time, and time zone that the request was received, by default in strftime format `%d/%b/%Y:%H:%M:%S %z`.
+* `"GET /accesswatch/accesswatch-1.33/ HTTP/1.0"` is the request line from the client.
+* The method `GET, /accesswatch/accesswatch-1.33/` is the resource requested, and `HTTP/1.0` is the HTTP protocol.
+* `200` is the HTTP status code returned to the client.
+* `2xx` is a successful response
+* `3xx` a redirection
+* `4xx` a client error, and
+* `5xx` a server error
+* `1004` is the size of the object returned to the client, measured in bytes
+
+#### analyising a log file
+
+```{r}
+#| echo: true
+#| output: true
+
+# logs <- readLines(here("data","logfile.txt")) 
+# head(logs)
+
+```
+
 #### H4
 
 {{< include img/_mqtt_anim.qmd >}}
+
+# References
