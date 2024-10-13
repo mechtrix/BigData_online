@@ -1,0 +1,37 @@
+```yaml { .animate src="img/top_down_bottom_up.svg"}
+setup:
+  - element: "#TopDown"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "0"
+  - element: "#BottomUp"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "1"
+  - element: "#DelMerchant"
+    modifier: attr
+    parameters: 
+      - class: fragment
+        data-fragment-index: "2"
+        opacity: 0
+  - element: "#DelStand"
+    modifier: attr
+    parameters: 
+      - class: fragment
+        data-fragment-index: "3"
+        opacity: 0
+  - element: "#DelBishop"
+    modifier: attr
+    parameters: 
+      - class: fragment
+        data-fragment-index: "4"
+        opacity: 0
+  - element: "#DelAll"
+    modifier: attr
+    parameters: 
+      - class: fragment
+        data-fragment-index: "5"
+        opacity: 0
+```        

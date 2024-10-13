@@ -38,3 +38,9 @@ website:
         contents: 
           - text: "Data Sources exercises in R"
             href: https://mechtrix.github.io/BigData_exercises/data_sources.html
+      - section: Data Quality
+        text: "slides"
+        href: chapters/chapter003/index.qmd
+        contents: 
+          - text: "Data Quality exercises in R"
+            href: https://mechtrix.github.io/BigData_exercises/data_sources.html

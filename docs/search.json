@@ -4,7 +4,27 @@
     "href": "index.html",
     "title": "Big Data lecture slides",
     "section": "",
-    "text": "This page is directly linked to the Big Data exercises.\nAdministrative stuff is always announced via ilearn.\nThis is the lecture material for the courses “Big Data” and “Big Data Processing and Analytics”. Feel free to reference for your self study. You are not allowed to copy without the prior consent of the author. Your are not allowed to use material without prior consent. Ask - it’s a form of politeness. You will most probable get permission.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nIntroduction\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Sources\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\nNo matching items"
+    "text": "This page is directly linked to the Big Data exercises.\nAdministrative stuff is always announced via ilearn.\nThis is the lecture material for the courses “Big Data” and “Big Data Processing and Analytics”. Feel free to reference for your self study. You are not allowed to copy without the prior consent of the author. Your are not allowed to use material without prior consent. Ask - it’s a form of politeness. You will most probable get permission.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nIntroduction\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Sources\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Quality\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "chapters/chapter002/index.html#which-do-you-want",
+    "href": "chapters/chapter002/index.html#which-do-you-want",
+    "title": "Data Sources",
+    "section": "Which do you want?",
+    "text": "Which do you want?",
+    "crumbs": [
+      "Data Sources"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter002/index.html#databases",
+    "href": "chapters/chapter002/index.html#databases",
+    "title": "Data Sources",
+    "section": "Databases",
+    "text": "Databases",
+    "crumbs": [
+      "Data Sources"
+    ]
   },
   {
     "objectID": "chapters/chapter001/index.html#the-end-of-theory",
@@ -127,23 +147,33 @@
     ]
   },
   {
-    "objectID": "chapters/chapter002/index.html#which-do-you-want",
-    "href": "chapters/chapter002/index.html#which-do-you-want",
-    "title": "Data Sources",
-    "section": "Which do you want?",
-    "text": "Which do you want?",
+    "objectID": "chapters/chapter003/index.html#quality",
+    "href": "chapters/chapter003/index.html#quality",
+    "title": "Data Quality",
+    "section": "Quality",
+    "text": "Quality\n\nQuality (dictionary)\n\nHow good or bad something is. Cambridge Dictionary\n\n\n“… Quality is a perceptual, conditional, and somewhat subjective attribute and may be understood differently by different people. …” Wiki",
     "crumbs": [
-      "Data Sources"
+      "Data Quality"
     ]
   },
   {
-    "objectID": "chapters/chapter002/index.html#databases",
-    "href": "chapters/chapter002/index.html#databases",
-    "title": "Data Sources",
-    "section": "Databases",
-    "text": "Databases",
+    "objectID": "chapters/chapter003/index.html#the-cathedral-and-the-bazaar",
+    "href": "chapters/chapter003/index.html#the-cathedral-and-the-bazaar",
+    "title": "Data Quality",
+    "section": "The Cathedral and the Bazaar",
+    "text": "The Cathedral and the Bazaar\n\n\n(Raymond 2001)",
     "crumbs": [
-      "Data Sources"
+      "Data Quality"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter003/index.html#iso-8000",
+    "href": "chapters/chapter003/index.html#iso-8000",
+    "title": "Data Quality",
+    "section": "ISO 8000",
+    "text": "ISO 8000\n\nISO\n\nInternational Standards Organization\n\n\n\n\nset of standards for data quality for the exchange between organizations and systems\nMaster data in the form of characteristic data that are\n\nexchanged between organizations and systems, and that\nconform to the data specifications that\ncan be validated by computer software.\n\n\n\n\n(ISO 2022)",
+    "crumbs": [
+      "Data Quality"
     ]
   }
 ]

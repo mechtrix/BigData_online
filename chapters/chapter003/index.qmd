@@ -1,0 +1,62 @@
+---
+title: "Data Quality"
+bibliography: https://api.citedrive.com/bib/da291eae-8e2a-46b1-968e-0b79af55f87a/references.bib?x=eyJpZCI6ICJkYTI5MWVhZS04ZTJhLTQ2YjEtOTY4ZS0wYjc5YWY1NWY4N2EiLCAidXNlciI6ICI1NjQ5IiwgInNpZ25hdHVyZSI6ICI2ZDMyODMxM2QzZDQ3NmE3MGM4MDc5MzJiNzE1NjkzNjJmYmZjODYyNGMzNmJjNDBkMDk3Njk5N2RmZjQ5MTg5In0=/bibliography.bib
+format:
+  revealjs:
+    slide-level: 5
+    resource-path: 
+      - "img"
+    logo: img/back.svg
+    footer-logo-link: "https://mechtrix.github.io/BigData_online/"
+    footer: "Copyright Prof. Dr. Tim Weber, 2024"
+revealjs-plugins:
+  - animate
+  - attribution
+filters: 
+  - animate
+  - reveal-header
+editor_options: 
+  chunk_output_type: console
+css: style.css
+---
+
+# Data Quality
+
+![](img/ML_def.jpg){fig-align="center"}
+
+## Quality
+
+Quality (dictionary)
+: How good or bad something is. [Cambridge Dictionary](https://dictionary.cambridge.org/dictionary/english/quality)
+
+"... Quality is a perceptual, conditional, and somewhat subjective attribute and may be understood differently by different people. ..." [Wiki](https://en.wikipedia.org/wiki/Quality_(business))
+
+## The Cathedral and the Bazaar 
+
+{{< include img/_cathedral_and_bazaar_anim.qmd >}}
+
+::: {.attribution}
+[@9780596001087]
+:::
+
+## ISO 8000 
+
+ISO
+: International Standards Organization
+
+::: {.incremental}
+
+* set of standards for data quality for the exchange between organizations and systems
+
+* Master data in the form of characteristic data that are 
+  - exchanged between organizations and systems, and that 
+  - conform to the data specifications that 
+  - can be validated by computer software.
+
+:::
+
+::: {.attribution}
+[@iso8000]
+:::
+
+# References
