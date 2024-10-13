@@ -7,7 +7,10 @@
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.js" defer="true"></script>
+<link href="../../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Tim Weber">
@@ -116,6 +119,7 @@
       margin-left: 2em;
     }  </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="style.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -813,6 +817,136 @@ initialized
 </div>
 </section>
 
+<section id="how-many-requests-involved-an-image-file" class="title-slide slide level4 center">
+<h4>how many requests involved an image file?</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># subset a sample of lines</span></span>
+<span id="cb9-2"><a></a><span class="fu">set.seed</span>(<span class="dv">98765</span>)</span>
+<span id="cb9-3"><a></a>s <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(logs), <span class="at">size =</span> <span class="dv">50</span>)</span>
+<span id="cb9-4"><a></a>sublogs <span class="ot">&lt;-</span> logs[s]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level5">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># matching "jpg" (which lements)</span></span>
+<span id="cb10-2"><a></a><span class="fu">grep</span>(<span class="st">"jpg"</span>, sublogs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  2  6  8 10 11 14 26 34 35 36 40 41 45</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level5">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">grep</span>(<span class="st">"jpg"</span>, sublogs, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "hj.a11.betware.com - - [29/May/2001:02:15:26 -0700] \"GET /testing/images/archi_servlet.jpg HTTP/1.1\" 200 18646"                     
+ [2] "port194.ds1-gl.adsl.cybercity.dk - - [29/May/2001:15:33:04 -0700] \"GET /testing/images/archi_jsp.jpg HTTP/1.1\" 200 21211"           
+ [3] "pd9049e9b.dip.t-dialin.net - - [06/May/2001:12:45:35 -0700] \"GET /accesswatch/accesswatch-1.33/img/allifou.jpg HTTP/1.0\" 304 -"     
+ [4] "pd9049e94.dip.t-dialin.net - - [04/May/2001:04:12:53 -0700] \"GET /accesswatch/accesswatch-1.33/img/allifou.jpg HTTP/1.0\" 200 108154"
+ [5] "edslink9.eds.com - - [23/May/2001:02:22:12 -0700] \"GET /testing/images/pshtk.jpg HTTP/1.0\" 200 34301"                               
+ [6] "bloodymary.vebis.de - - [22/May/2001:01:15:28 -0700] \"GET /testing/images/scope.jpg HTTP/1.0\" 200 32117"                            
+ [7] "line210-137.iplan.com.ar - - [28/May/2001:14:49:26 -0700] \"GET /testing/images/archi_servlet.jpg HTTP/1.1\" 304 -"                   
+ [8] "aannecy-101-2-1-40.abo.wanadoo.fr - - [31/May/2001:08:43:33 -0700] \"GET /testing/images/pshtk.jpg HTTP/1.1\" 200 34301"              
+ [9] "rr-2s01.inf.fh-rhein-sieg.de - - [23/May/2001:06:40:00 -0700] \"GET /xp-r/img17.jpg HTTP/1.0\" 304 -"                                 
+[10] "pd9541d23.dip.t-dialin.net - - [29/May/2001:07:08:26 -0700] \"GET /sa.inside.jpg HTTP/1.1\" 304 -"                                    
+[11] "rose.ap.dregis.com - - [29/May/2001:05:09:28 -0700] \"GET /testing/images/archi.jpg HTTP/1.0\" 200 18531"                             
+[12] "208.36.196.8 - - [23/May/2001:22:39:40 -0700] \"GET /testing/images/archi.jpg HTTP/1.1\" 200 18531"                                   
+[13] "hlch0enk.htc.com - - [22/May/2001:11:01:53 -0700] \"GET /testing/images/archi.jpg HTTP/1.0\" 200 18531"                               </code></pre>
+</div>
+</div>
+</section>
+<section class="slide level5">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">grep</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">.jpg "</span>, sublogs, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "hj.a11.betware.com - - [29/May/2001:02:15:26 -0700] \"GET /testing/images/archi_servlet.jpg HTTP/1.1\" 200 18646"                     
+ [2] "port194.ds1-gl.adsl.cybercity.dk - - [29/May/2001:15:33:04 -0700] \"GET /testing/images/archi_jsp.jpg HTTP/1.1\" 200 21211"           
+ [3] "pd9049e9b.dip.t-dialin.net - - [06/May/2001:12:45:35 -0700] \"GET /accesswatch/accesswatch-1.33/img/allifou.jpg HTTP/1.0\" 304 -"     
+ [4] "pd9049e94.dip.t-dialin.net - - [04/May/2001:04:12:53 -0700] \"GET /accesswatch/accesswatch-1.33/img/allifou.jpg HTTP/1.0\" 200 108154"
+ [5] "edslink9.eds.com - - [23/May/2001:02:22:12 -0700] \"GET /testing/images/pshtk.jpg HTTP/1.0\" 200 34301"                               
+ [6] "bloodymary.vebis.de - - [22/May/2001:01:15:28 -0700] \"GET /testing/images/scope.jpg HTTP/1.0\" 200 32117"                            
+ [7] "line210-137.iplan.com.ar - - [28/May/2001:14:49:26 -0700] \"GET /testing/images/archi_servlet.jpg HTTP/1.1\" 304 -"                   
+ [8] "aannecy-101-2-1-40.abo.wanadoo.fr - - [31/May/2001:08:43:33 -0700] \"GET /testing/images/pshtk.jpg HTTP/1.1\" 200 34301"              
+ [9] "rr-2s01.inf.fh-rhein-sieg.de - - [23/May/2001:06:40:00 -0700] \"GET /xp-r/img17.jpg HTTP/1.0\" 304 -"                                 
+[10] "pd9541d23.dip.t-dialin.net - - [29/May/2001:07:08:26 -0700] \"GET /sa.inside.jpg HTTP/1.1\" 304 -"                                    
+[11] "rose.ap.dregis.com - - [29/May/2001:05:09:28 -0700] \"GET /testing/images/archi.jpg HTTP/1.0\" 200 18531"                             
+[12] "208.36.196.8 - - [23/May/2001:22:39:40 -0700] \"GET /testing/images/archi.jpg HTTP/1.1\" 200 18531"                                   
+[13] "hlch0enk.htc.com - - [22/May/2001:11:01:53 -0700] \"GET /testing/images/archi.jpg HTTP/1.0\" 200 18531"                               </code></pre>
+</div>
+</div>
+</section>
+<section class="slide level5">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">str_detect</span>(<span class="at">string =</span> sublogs, <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">.jpg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE  TRUE FALSE
+[13] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[25] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE
+[37] FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE
+[49] FALSE FALSE</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level5">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">str_detect</span>(<span class="at">string =</span> sublogs, <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[13] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[49] FALSE  TRUE</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level5">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="co"># looking for image file extensions</span></span>
+<span id="cb20-2"><a></a>jpgs <span class="ot">&lt;-</span> <span class="fu">str_detect</span>(logs, <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">.jpg "</span>)</span>
+<span id="cb20-3"><a></a><span class="fu">sum</span>(jpgs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5509</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>pngs <span class="ot">&lt;-</span> <span class="fu">str_detect</span>(logs, <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">.png "</span>)</span>
+<span id="cb22-2"><a></a><span class="fu">sum</span>(pngs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1374</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>gifs <span class="ot">&lt;-</span> <span class="fu">str_detect</span>(logs, <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">.gif"</span>)</span>
+<span id="cb24-2"><a></a><span class="fu">sum</span>(gifs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8818</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>icos <span class="ot">&lt;-</span> <span class="fu">str_detect</span>(logs, <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">.ico "</span>)</span>
+<span id="cb26-2"><a></a><span class="fu">sum</span>(icos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level5">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>img_extensions <span class="ot">&lt;-</span> <span class="fu">str_extract</span>(logs, <span class="st">"</span><span class="sc">\\</span><span class="st">.(jpg|png|gif|ico)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level5">
+
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
+<section class="slide level5">
+
+<div class="r-fit-text v-c">
+<p>It’s a mess!</p>
+</div>
+</section>
+
 <section id="h4" class="title-slide slide level4 center">
 <h4>H4</h4>
 <div data-animate="" data-src="img/009_mqtt_root.svg"><!-- setup:
@@ -854,8 +988,23 @@ initialized
 <h1>References</h1>
 
 <div class="quarto-auto-generated-content">
+<p><img src="img/back.svg" class="slide-logo"></p>
 <div class="footer footer-default">
-
+<p>Copyright Prof.&nbsp;Dr.&nbsp;Tim Weber, 2024</p>
+</div>
+</div>
+<div class="reveal-header">
+<div class="header-logo" data-footer-logo-link="https://mechtrix.github.io/BigData_online/">
+<img data-src="">
+</div>
+<div class="sc-title">
+<p> </p>
+</div>
+<div class="header-text">
+<p> </p>
+</div>
+<div class="sb-title">
+<p> </p>
 </div>
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
