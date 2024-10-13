@@ -947,8 +947,63 @@ initialized
 </div>
 </section>
 
-<section id="h4" class="title-slide slide level4 center">
-<h4>H4</h4>
+
+<section id="log-files-summary" class="title-slide slide level3 center">
+<h3>log files summary</h3>
+<p>Pros:</p>
+<ul>
+<li>Rich Data</li>
+<li>Real-time</li>
+<li>Cost-effective</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>Volume</li>
+<li>Complexity</li>
+<li>Privacy Risks</li>
+</ul>
+</section>
+
+<section id="sensors-and-iot-devices" class="title-slide slide level3 center">
+<h3>Sensors and IoT Devices</h3>
+
+<img data-src="img/sensors_iot.png" class="r-stretch"></section>
+<section id="mqtt-protocol" class="title-slide slide level4 center">
+<h4>MQTT Protocol</h4>
+<dl>
+<dt>MQTT</dt>
+<dd>
+<p><strong>M</strong>essage <strong>Q</strong>ueue <strong>T</strong>elemetry <strong>T</strong>ransport</p>
+</dd>
+</dl>
+<div>
+<ul>
+<li class="fragment">The protocol of things</li>
+<li class="fragment">developed 1999 (IBM)</li>
+<li class="fragment">standardized since 2013 (<a href="https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html">OASIS</a>) <span class="citation" data-cites="MQTT-2024-03-22">(<a href="#/references" role="doc-biblioref" onclick="">Banks and Gupta 29 October 2014</a>)</span></li>
+<li class="fragment">Machine-to-Machine Communication (M2M)</li>
+<li class="fragment">build on <a href="https://de.wikipedia.org/wiki/Transmission_Control_Protocol/Internet_Protocol">TCP/IP</a> (Port 1883 8883)</li>
+</ul>
+</div>
+</section>
+
+<section id="mqtt-in-general" class="title-slide slide level4 center">
+<h4>MQTT in general</h4>
+<div>
+<ul>
+<li class="fragment">simple to implement</li>
+<li class="fragment">lightweight with minimal protocol-overhead</li>
+<li class="fragment">push-messaging</li>
+<li class="fragment">adaptable <strong>Q</strong>uality <strong>o</strong>f <strong>S</strong>ervice (QoS)</li>
+<li class="fragment">data agnostic</li>
+<li class="fragment">message persistant</li>
+<li class="fragment">persistant sessions</li>
+</ul>
+</div>
+</section>
+
+<section id="how-does-mqtt-work" class="title-slide slide level4 center">
+<h4>How does MQTT work?</h4>
 <div data-animate="" data-src="img/009_mqtt_root.svg"><!-- setup:
   - element: "#Broker"
     modifier: attr
@@ -982,6 +1037,686 @@ initialized
         data-fragment-index: "4" --></div>
 </section>
 
+<section id="mqtt-broker" class="title-slide slide level4 center">
+<h4>MQTT Broker</h4>
+<p>Many <a href="https://github.com/mqtt/mqtt.org/wiki/servers">Implementations</a></p>
+<ul>
+<li>Moquette</li>
+<li>Mosquitto</li>
+<li>MQTTRoute</li>
+<li>Emqttd</li>
+<li>HiveMQ</li>
+<li>HBMQTT</li>
+</ul>
+</section>
+
+<section id="mqtt-clients" class="title-slide slide level4 center">
+<h4>MQTT Clients</h4>
+<p>There are <a href="https://github.com/mqtt/mqtt.org/wiki/tools">many</a> <a href="https://www.hivemq.com/mqtt-toolbox/">Implementations</a></p>
+<ul>
+<li>mosquitto_sub, mosquitto_pub</li>
+<li>MQTTLens</li>
+<li>MQTT.fx</li>
+<li>mqttfs</li>
+</ul>
+</section>
+
+<section id="mqtt-messages" class="title-slide slide level4 center">
+<h4>MQTT Messages</h4>
+<p>Consist of a <span style="color:green;">Topic</span> and a <span style="color:red;">Payload</span>.</p>
+<div data-animate="" data-src="img/mqtt_messages.svg"><!-- setup:
+  - element: "#m1"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "0"
+  - element: "#m2"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "1"
+  - element: "#m3"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "2" --></div>
+</section>
+
+<section id="mqtt-topic" class="title-slide slide level4 center">
+<h4>MQTT Topic</h4>
+<div class="fragment">
+<div>
+<ul>
+<li class="fragment">the <em>channel</em>, <em>mailing list</em>, <em>usenet</em>-group, <em>WhatsApp</em> group chat over which a certain type of data will be exchanged
+<ul>
+<li class="fragment">Client (Publisher) sends <em>data</em> to a <em>topic</em></li>
+<li class="fragment">Client (Subscriber) <em>subscribes</em> one or more <em>topics</em></li>
+</ul></li>
+<li class="fragment">Organization like a folder structure on a file system</li>
+</ul>
+</div>
+</div>
+<div class="fragment">
+<pre><code>/sensors/sensor1/temperature
+/sensors/sensor1/humidity
+/sensors/sensor2/temperature
+...
+computername/sysinfo/mem/free
+computername/sysinfo/mem/swap
+...
+</code></pre>
+</div>
+</section>
+
+<section id="quality-of-service---qos" class="title-slide slide level4 center">
+<h4>Quality of Service - QoS</h4>
+<div>
+<ul>
+<li class="fragment"><p>QoS defines garantuees regarding the delivery of messages</p>
+<ol start="0" type="1">
+<li class="fragment"><p>maximum once</p></li>
+<li class="fragment"><p>at least once</p></li>
+<li class="fragment"><p>exactly once</p></li>
+</ol></li>
+<li class="fragment"><p>works in both directions</p></li>
+<li class="fragment"><p>the client dictates the QoS - level</p></li>
+</ul>
+</div>
+</section>
+
+<section id="sensor-network" class="title-slide slide level4 center">
+<h4>Sensor Network</h4>
+<div class="r-stack">
+<div class="fragment fade-out">
+<p><img data-src="img/sens_network.png"></p>
+<div class="attribution">
+<p><span class="citation" data-cites="Berger2018">(<a href="#/references" role="doc-biblioref" onclick="">Berger 2018</a>)</span></p>
+</div>
+</div>
+<div class="fragment fade-in">
+<p><img data-src="img/sens_network_out.png"></p>
+<div class="attribution">
+<p><span class="citation" data-cites="Berger2018">(<a href="#/references" role="doc-biblioref" onclick="">Berger 2018</a>)</span></p>
+</div>
+</div>
+</div>
+</section>
+
+
+<section id="mqtt-summary" class="title-slide slide level3 center">
+<h3>MQTT summary</h3>
+<p>Pros:</p>
+<ul>
+<li>Lightweight and efficient.</li>
+<li>Supports asynchronous communication.</li>
+<li>Facilitates scalable messaging patterns.</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>Initial lack of robust security features.</li>
+<li>Quality of Service (QoS) limitations.</li>
+<li>Dependency on a central message broker for reliability.</li>
+</ul>
+</section>
+
+<section id="web-scraping" class="title-slide slide level3 center">
+<h3>Web scraping</h3>
+
+<img data-src="img/Types-of-web-data.png" class="r-stretch"></section>
+<section id="hierarchical-data---structure" class="title-slide slide level4 center">
+<h4>Hierarchical Data - structure</h4>
+<div data-animate="" data-src="img/HierarchicalData.svg"><!-- setup:
+  - element: "#Show"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "0"
+  - element: "#Show02"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "1"
+  - element: "#Child01"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "2"        
+  - element: "#Child0101"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "3"  
+  - element: "#Child02"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "4"
+  - element: "#Child0201"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "5"
+  - element: "#Child03"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "6"
+  - element: "#Child0301"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "7" --></div>
+</section>
+
+<section id="hierarchical-data---types" class="title-slide slide level4 center">
+<h4>Hierarchical Data - types</h4>
+<div>
+<ul>
+<li class="fragment">JSON
+<ul>
+<li class="fragment">standardized format</li>
+<li class="fragment">intimidating in raw format - but many methods available</li>
+</ul></li>
+<li class="fragment">XML
+<ul>
+<li class="fragment">predecessor to JSON</li>
+<li class="fragment">first try to standardize</li>
+<li class="fragment">“… is a different beast …” (but tameable)</li>
+</ul></li>
+</ul>
+</div>
+</section>
+
+<section id="xml-extensible-markup-language" class="title-slide slide level4 nostretch center">
+<h4>XML (Extensible Markup Language)</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/xml.svg" class="quarto-figure quarto-figure-center" style="width:20.0%"></p>
+</figure>
+</div>
+<div>
+<ul>
+<li class="fragment"><p>Fields are represented by named <em>tags</em></p></li>
+<li class="fragment"><p>Each tag has an open <code>&lt;tag&gt;</code> and a close <code>&lt;\tag&gt;</code></p></li>
+<li class="fragment"><p>Children are represented by nested tags</p></li>
+<li class="fragment"><p>Repeated fields are represented by repeated tags</p></li>
+</ul>
+</div>
+</section>
+
+<section id="simple-xml" class="title-slide slide level4 center">
+<h4>simple XML</h4>
+<pre><code>&lt;note&gt;
+&lt;to&gt;Tove&lt;/to&gt;
+&lt;from&gt;Jani&lt;/from&gt;
+&lt;heading&gt;Reminder&lt;/heading&gt;
+&lt;body&gt;Don't forget me this weekend!&lt;/body&gt;
+&lt;/note&gt;</code></pre>
+</section>
+
+<section id="cd-catalogue" class="title-slide slide level4 scrollable center">
+<h4>CD Catalogue</h4>
+<pre><code>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;CATALOG&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;Empire Burlesque&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Bob Dylan&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;USA&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;Columbia&lt;/COMPANY&gt;
+    &lt;PRICE&gt;10.90&lt;/PRICE&gt;
+    &lt;YEAR&gt;1985&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;Hide your heart&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Bonnie Tyler&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;UK&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;CBS Records&lt;/COMPANY&gt;
+    &lt;PRICE&gt;9.90&lt;/PRICE&gt;
+    &lt;YEAR&gt;1988&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;Greatest Hits&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Dolly Parton&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;USA&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;RCA&lt;/COMPANY&gt;
+    &lt;PRICE&gt;9.90&lt;/PRICE&gt;
+    &lt;YEAR&gt;1982&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;Still got the blues&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Gary Moore&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;UK&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;Virgin records&lt;/COMPANY&gt;
+    &lt;PRICE&gt;10.20&lt;/PRICE&gt;
+    &lt;YEAR&gt;1990&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;Eros&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Eros Ramazzotti&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;EU&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;BMG&lt;/COMPANY&gt;
+    &lt;PRICE&gt;9.90&lt;/PRICE&gt;
+    &lt;YEAR&gt;1997&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;One night only&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Bee Gees&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;UK&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;Polydor&lt;/COMPANY&gt;
+    &lt;PRICE&gt;10.90&lt;/PRICE&gt;
+    &lt;YEAR&gt;1998&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;Sylvias Mother&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Dr.Hook&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;UK&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;CBS&lt;/COMPANY&gt;
+    &lt;PRICE&gt;8.10&lt;/PRICE&gt;
+    &lt;YEAR&gt;1973&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;Maggie May&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Rod Stewart&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;UK&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;Pickwick&lt;/COMPANY&gt;
+    &lt;PRICE&gt;8.50&lt;/PRICE&gt;
+    &lt;YEAR&gt;1990&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;Romanza&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Andrea Bocelli&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;EU&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;Polydor&lt;/COMPANY&gt;
+    &lt;PRICE&gt;10.80&lt;/PRICE&gt;
+    &lt;YEAR&gt;1996&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;When a man loves a woman&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Percy Sledge&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;USA&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;Atlantic&lt;/COMPANY&gt;
+    &lt;PRICE&gt;8.70&lt;/PRICE&gt;
+    &lt;YEAR&gt;1987&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;Black angel&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Savage Rose&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;EU&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;Mega&lt;/COMPANY&gt;
+    &lt;PRICE&gt;10.90&lt;/PRICE&gt;
+    &lt;YEAR&gt;1995&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;1999 Grammy Nominees&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Many&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;USA&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;Grammy&lt;/COMPANY&gt;
+    &lt;PRICE&gt;10.20&lt;/PRICE&gt;
+    &lt;YEAR&gt;1999&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;For the good times&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Kenny Rogers&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;UK&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;Mucik Master&lt;/COMPANY&gt;
+    &lt;PRICE&gt;8.70&lt;/PRICE&gt;
+    &lt;YEAR&gt;1995&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;Big Willie style&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Will Smith&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;USA&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;Columbia&lt;/COMPANY&gt;
+    &lt;PRICE&gt;9.90&lt;/PRICE&gt;
+    &lt;YEAR&gt;1997&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;Tupelo Honey&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Van Morrison&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;UK&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;Polydor&lt;/COMPANY&gt;
+    &lt;PRICE&gt;8.20&lt;/PRICE&gt;
+    &lt;YEAR&gt;1971&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;Soulsville&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Jorn Hoel&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;Norway&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;WEA&lt;/COMPANY&gt;
+    &lt;PRICE&gt;7.90&lt;/PRICE&gt;
+    &lt;YEAR&gt;1996&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;The very best of&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Cat Stevens&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;UK&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;Island&lt;/COMPANY&gt;
+    &lt;PRICE&gt;8.90&lt;/PRICE&gt;
+    &lt;YEAR&gt;1990&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;Stop&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Sam Brown&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;UK&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;A and M&lt;/COMPANY&gt;
+    &lt;PRICE&gt;8.90&lt;/PRICE&gt;
+    &lt;YEAR&gt;1988&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;Bridge of Spies&lt;/TITLE&gt;
+    &lt;ARTIST&gt;T'Pau&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;UK&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;Siren&lt;/COMPANY&gt;
+    &lt;PRICE&gt;7.90&lt;/PRICE&gt;
+    &lt;YEAR&gt;1987&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;Private Dancer&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Tina Turner&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;UK&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;Capitol&lt;/COMPANY&gt;
+    &lt;PRICE&gt;8.90&lt;/PRICE&gt;
+    &lt;YEAR&gt;1983&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;Midt om natten&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Kim Larsen&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;EU&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;Medley&lt;/COMPANY&gt;
+    &lt;PRICE&gt;7.80&lt;/PRICE&gt;
+    &lt;YEAR&gt;1983&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;Pavarotti Gala Concert&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Luciano Pavarotti&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;UK&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;DECCA&lt;/COMPANY&gt;
+    &lt;PRICE&gt;9.90&lt;/PRICE&gt;
+    &lt;YEAR&gt;1991&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;The dock of the bay&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Otis Redding&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;USA&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;Stax Records&lt;/COMPANY&gt;
+    &lt;PRICE&gt;7.90&lt;/PRICE&gt;
+    &lt;YEAR&gt;1968&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;Picture book&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Simply Red&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;EU&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;Elektra&lt;/COMPANY&gt;
+    &lt;PRICE&gt;7.20&lt;/PRICE&gt;
+    &lt;YEAR&gt;1985&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;Red&lt;/TITLE&gt;
+    &lt;ARTIST&gt;The Communards&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;UK&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;London&lt;/COMPANY&gt;
+    &lt;PRICE&gt;7.80&lt;/PRICE&gt;
+    &lt;YEAR&gt;1987&lt;/YEAR&gt;
+  &lt;/CD&gt;
+  &lt;CD&gt;
+    &lt;TITLE&gt;Unchain my heart&lt;/TITLE&gt;
+    &lt;ARTIST&gt;Joe Cocker&lt;/ARTIST&gt;
+    &lt;COUNTRY&gt;USA&lt;/COUNTRY&gt;
+    &lt;COMPANY&gt;EMI&lt;/COMPANY&gt;
+    &lt;PRICE&gt;8.20&lt;/PRICE&gt;
+    &lt;YEAR&gt;1987&lt;/YEAR&gt;
+  &lt;/CD&gt;
+&lt;/CATALOG&gt;
+</code></pre>
+</section>
+
+<section id="xml-growth" class="title-slide slide level4 center">
+<h4>XML Growth</h4>
+
+<img data-src="img/ListOfXML.gif" class="r-stretch quarto-figure-center"><p class="caption">limited spec means limited control</p></section>
+
+<section id="hypertext-markup-language-html" class="title-slide slide level4 center">
+<h4>HyperText Markup Language (HTML)</h4>
+<div>
+<ul>
+<li class="fragment"><p>HTML is the standard language for describing the layout of webpages</p></li>
+<li class="fragment"><p>Is is <em>like</em> XML, with special tags for hyperlinks, tables, images, etc</p></li>
+<li class="fragment"><p>You don’t need to be an HTML expert to scrape webpages, but some basics are necessary</p></li>
+</ul>
+</div>
+</section>
+
+<section id="hyperlinks" class="title-slide slide level4 center">
+<h4>Hyperlinks</h4>
+<p>The <code>&lt;a&gt;</code> tag indicates a (hyper)link</p>
+<div>
+<ul>
+<li class="fragment">the <code>href=</code> attribute contains the URL</li>
+<li class="fragment">the dispayed text is within the <code>&lt;a&gt;</code> tag</li>
+</ul>
+</div>
+</section>
+
+<section id="httpsexample.com" class="title-slide slide level4 center">
+<h4>https://example.com/</h4>
+<pre><code>
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Example Domain&lt;/title&gt;
+
+    &lt;meta charset="utf-8" /&gt;
+    &lt;meta http-equiv="Content-type" content="text/html; charset=utf-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;
+    &lt;style type="text/css"&gt;
+    body {
+        background-color: #f0f0f2;
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    }
+    div {
+        width: 600px;
+        margin: 5em auto;
+        padding: 2em;
+        background-color: #fdfdff;
+        border-radius: 0.5em;
+        box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);
+    }
+    a:link, a:visited {
+        color: #38488f;
+        text-decoration: none;
+    }
+    @media (max-width: 700px) {
+        div {
+            margin: 0 auto;
+            width: auto;
+        }
+    }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;div&gt;
+    &lt;h1&gt;Example Domain&lt;/h1&gt;
+    &lt;p&gt;This domain is for use in illustrative examples in documents. You may use this
+    domain in literature without prior coordination or asking for permission.&lt;/p&gt;
+    &lt;p&gt;&lt;a href="https://www.iana.org/domains/example"&gt;More information...&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</section>
+
+<section id="tables" class="title-slide slide level4 center">
+<h4>Tables</h4>
+<p>The <code>&lt;table&gt;</code> tag indicates a table</p>
+<div>
+<ul>
+<li class="fragment">the <code>&lt;tr&gt;</code> indicates a row</li>
+<li class="fragment">the <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code> tags indicate a cell within a row</li>
+</ul>
+</div>
+</section>
+<section id="tables-example" class="slide level5">
+<h5>Tables example</h5>
+<div class="columns">
+<div class="column" style="width:60%;">
+<pre><code>&lt;table&gt;
+&lt;thead&gt;
+  &lt;tr&gt;
+    &lt;th&gt;First Name&lt;/th&gt;
+    &lt;th&gt;Last Name&lt;/th&gt;
+    &lt;th&gt;Number&lt;/th&gt;
+  &lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Meier&lt;/td&gt;
+    &lt;td&gt;Alexander&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Müller&lt;/td&gt;
+    &lt;td&gt;Melanie&lt;/td&gt;
+    &lt;td&gt;2&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+</div><div class="column" style="width:40%;">
+<p><img data-src="img/simple_table.png"></p>
+</div></div>
+</section>
+
+<section id="web-scraping-example" class="title-slide slide level4 center">
+<h4>Web scraping example</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>html <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">"http://rvest.tidyverse.org/"</span>)</span>
+<span id="cb34-2"><a></a>html</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{html_document}
+&lt;html lang="en"&gt;
+[1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8 ...
+[2] &lt;body&gt;\n    &lt;a href="#container" class="visually-hidden-focusable"&gt;Skip t ...</code></pre>
+</div>
+</div>
+<div class="attribution">
+<p><span class="citation" data-cites="978-1-4920-9740-2">(<a href="#/references" role="doc-biblioref" onclick="">Wickham, Çetinkaya-Rundel, and Grolemund 2023</a>)</span></p>
+</div>
+</section>
+
+<section id="scraping-a-table-i---get-the-data-in" class="title-slide slide level4 center">
+<h4>Scraping a table I - get the data in</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>html <span class="ot">&lt;-</span> <span class="fu">minimal_html</span>(<span class="st">"</span></span>
+<span id="cb36-2"><a></a><span class="st">  &lt;table class='mytable'&gt;</span></span>
+<span id="cb36-3"><a></a><span class="st">&lt;thead&gt;</span></span>
+<span id="cb36-4"><a></a><span class="st">  &lt;tr&gt;</span></span>
+<span id="cb36-5"><a></a><span class="st">    &lt;th&gt;First Name&lt;/th&gt;</span></span>
+<span id="cb36-6"><a></a><span class="st">    &lt;th&gt;Last Name&lt;/th&gt;</span></span>
+<span id="cb36-7"><a></a><span class="st">    &lt;th&gt;Number&lt;/th&gt;</span></span>
+<span id="cb36-8"><a></a><span class="st">  &lt;/tr&gt;</span></span>
+<span id="cb36-9"><a></a><span class="st">&lt;/thead&gt;</span></span>
+<span id="cb36-10"><a></a><span class="st">&lt;tbody&gt;</span></span>
+<span id="cb36-11"><a></a><span class="st">  &lt;tr&gt;</span></span>
+<span id="cb36-12"><a></a><span class="st">    &lt;td&gt;Meier&lt;/td&gt;</span></span>
+<span id="cb36-13"><a></a><span class="st">    &lt;td&gt;Alexander&lt;/td&gt;</span></span>
+<span id="cb36-14"><a></a><span class="st">    &lt;td&gt;1&lt;/td&gt;</span></span>
+<span id="cb36-15"><a></a><span class="st">  &lt;/tr&gt;</span></span>
+<span id="cb36-16"><a></a><span class="st">  &lt;tr&gt;</span></span>
+<span id="cb36-17"><a></a><span class="st">    &lt;td&gt;Müller&lt;/td&gt;</span></span>
+<span id="cb36-18"><a></a><span class="st">    &lt;td&gt;Melanie&lt;/td&gt;</span></span>
+<span id="cb36-19"><a></a><span class="st">    &lt;td&gt;2&lt;/td&gt;</span></span>
+<span id="cb36-20"><a></a><span class="st">  &lt;/tr&gt;</span></span>
+<span id="cb36-21"><a></a><span class="st">&lt;/tbody&gt;</span></span>
+<span id="cb36-22"><a></a><span class="st">&lt;/table&gt;</span></span>
+<span id="cb36-23"><a></a><span class="st">  "</span>)</span>
+<span id="cb36-24"><a></a></span>
+<span id="cb36-25"><a></a>html</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{html_document}
+&lt;html&gt;
+[1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8 ...
+[2] &lt;body&gt;&lt;table class="mytable"&gt;\n&lt;thead&gt;&lt;tr&gt;\n&lt;th&gt;First Name&lt;/th&gt;\n    &lt;th&gt; ...</code></pre>
+</div>
+</div>
+</section>
+
+<section id="scraping-a-table-ii---transform-to-useable-output" class="title-slide slide level4 center">
+<h4>Scraping a table II - transform to useable output</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>html <span class="sc">|&gt;</span></span>
+<span id="cb38-2"><a></a>  <span class="fu">html_element</span>(<span class="st">".mytable"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb38-3"><a></a>  <span class="fu">html_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  `First Name` `Last Name` Number
+  &lt;chr&gt;        &lt;chr&gt;        &lt;int&gt;
+1 Meier        Alexander        1
+2 Müller       Melanie          2</code></pre>
+</div>
+</div>
+</section>
+
+<section id="ethics" class="title-slide slide level4 center">
+<h4>Ethics</h4>
+<div>
+<ul>
+<li class="fragment">Website owners have to pay a small amount each time you visit a webpage.</li>
+<li class="fragment">This is usually offset by advertising.</li>
+<li class="fragment">But when you do web scraping:
+<ul>
+<li class="fragment">it is easy to rack up many webpage visits,</li>
+<li class="fragment">and you don’t see any ads to offset this cost.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+
+<section id="robots.txt" class="title-slide slide level4 center">
+<h4><code>robots.txt</code></h4>
+<div>
+<ul>
+<li class="fragment">Most websites have a <code>robots.txt</code> file in the home directory that indicate which bots are allowed to scrape and which pages they can scrape.</li>
+<li class="fragment">Here are a few examples:
+<ul>
+<li class="fragment"><a href="http://www.espn.com/robots.txt" class="uri">http://www.espn.com/robots.txt</a></li>
+<li class="fragment"><a href="http://www.nytimes.com/robots.txt" class="uri">http://www.nytimes.com/robots.txt</a></li>
+</ul></li>
+<li class="fragment">However, <code>robots.txt</code> is informational only. It doesn’t prevent bots from scraping a webpage</li>
+</ul>
+</div>
+</section>
+
+
+<section id="web-scraping-summary" class="title-slide slide level3 center">
+<h3>Web scraping summary</h3>
+<p>Pros:</p>
+<div>
+<ul>
+<li class="fragment">Enriches big data with diverse online sources.</li>
+<li class="fragment">Provides real-time data updates.</li>
+<li class="fragment">Offers cost-effective automated extraction.</li>
+</ul>
+</div>
+<p>Cons:</p>
+<div>
+<ul>
+<li class="fragment">Raises legal and ethical concerns.</li>
+<li class="fragment">May compromise data quality.</li>
+<li class="fragment">Poses technical challenges like handling dynamic websites.</li>
+</ul>
+</div>
+</section>
+<section class="slide level5">
+
+<div class="r-fit-text v-c">
+<p>It’s a mess!</p>
+</div>
+</section>
 
 </section>
 <section id="references" class="title-slide slide level1 smaller scrollable">
@@ -1008,8 +1743,17 @@ initialized
 </div>
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-MQTT-2024-03-22" class="csl-entry" role="listitem">
+Banks, Andrew, and Rahul Gupta, eds. 29 October 2014. <span>“MQTT Version 3.1.1.”</span> <a href="https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html" class="uri">https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html</a>; OASIS Standard.
+</div>
+<div id="ref-Berger2018" class="csl-entry" role="listitem">
+Berger, Uwe. 2018. <span>“MQTT - Das Protokoll Der Dinge.”</span> Chemnitzer Linux Tage.
+</div>
 <div id="ref-1492046361" class="csl-entry" role="listitem">
 Luraschi, Javier, Kevin Kuo, and Edgar Ruiz. 2019. <em>Mastering Spark with r</em>.
+</div>
+<div id="ref-978-1-4920-9740-2" class="csl-entry" role="listitem">
+Wickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. <em>R for Data Science</em>. O’Reilly Media, Incorporated.
 </div>
 </div>
 </section>

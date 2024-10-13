@@ -28,6 +28,7 @@ css: style.css
 library(tidyverse)
 library(ggthemes)
 library(here)
+library(rvest)
 
 ```
 
@@ -575,8 +576,680 @@ It's a mess!
 
 :::
 
-#### H4
+### log files summary
+
+Pros:
+
+* Rich Data
+* Real-time
+* Cost-effective
+
+Cons:
+
+* Volume
+* Complexity
+* Privacy Risks
+
+### Sensors and IoT Devices
+
+![](img/sensors_iot.png)
+
+#### MQTT Protocol
+
+MQTT
+
+: **M**essage **Q**ueue **T**elemetry **T**ransport
+
+::: {.incremental}
+
+* The protocol of things
+* developed 1999 (IBM)
+* standardized since 2013 ([OASIS](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html)) [@MQTT-2024-03-22]
+* Machine-to-Machine Communication (M2M)
+* build on [TCP/IP](https://de.wikipedia.org/wiki/Transmission_Control_Protocol/Internet_Protocol) (Port 1883 8883)
+
+:::
+
+#### MQTT in general
+
+::: {.incremental}
+
+* simple to implement
+* lightweight with minimal protocol-overhead
+* push-messaging
+* adaptable **Q**uality **o**f **S**ervice (QoS)
+* data agnostic
+* message persistant
+* persistant sessions
+
+:::
+
+#### How does MQTT work?
 
 {{< include img/_mqtt_anim.qmd >}}
+
+#### MQTT Broker
+
+Many [Implementations](https://github.com/mqtt/mqtt.org/wiki/servers) 
+
+* Moquette
+* Mosquitto
+* MQTTRoute
+* Emqttd
+* HiveMQ
+* HBMQTT
+
+#### MQTT Clients
+
+There are [many](https://github.com/mqtt/mqtt.org/wiki/tools) [Implementations](https://www.hivemq.com/mqtt-toolbox/)
+
+* mosquitto_sub, mosquitto_pub
+* MQTTLens
+* MQTT.fx
+* mqttfs
+
+#### MQTT Messages
+
+Consist of a [Topic]{style="color:green;"} and a [Payload]{style="color:red;"}.
+
+{{< include img/_mqtt_message_anim.qmd >}}
+
+#### MQTT Topic
+
+::: {.fragment}
+
+::: {.incremental}
+
+* the *channel*, *mailing list*, *usenet*-group, *WhatsApp* group chat over which a certain type of data will be exchanged
+  * Client (Publisher) sends *data* to a *topic*
+  * Client (Subscriber) *subscribes* one or more *topics*
+* Organization like a folder structure on a file system
+
+:::
+
+:::
+
+::: {.fragment}
+
+```
+/sensors/sensor1/temperature
+/sensors/sensor1/humidity
+/sensors/sensor2/temperature
+...
+computername/sysinfo/mem/free
+computername/sysinfo/mem/swap
+...
+
+```
+:::
+
+#### Quality of Service - QoS
+
+::: {.incremental}
+
+* QoS defines garantuees regarding the delivery of messages
+
+  0. maximum once
+
+  1. at least once
+
+  2. exactly once
+
+* works in both directions
+
+* the client dictates the QoS - level
+
+:::
+
+#### Sensor Network
+
+
+::: {.r-stack}
+
+::: {.fragment .fade-out}
+
+![](img/sens_network.png)
+
+::: {.attribution}
+[@Berger2018]
+:::
+
+:::
+
+::: {.fragment .fade-in}
+
+![](img/sens_network_out.png)
+
+::: {.attribution}
+[@Berger2018]
+:::
+
+:::
+
+:::
+
+### MQTT summary
+
+Pros:
+
+* Lightweight and efficient.
+* Supports asynchronous communication.
+* Facilitates scalable messaging patterns.
+
+Cons:
+
+* Initial lack of robust security features.
+* Quality of Service (QoS) limitations.
+* Dependency on a central message broker for reliability.
+
+### Web scraping
+
+![](img/Types-of-web-data.png)
+
+#### Hierarchical Data - structure
+
+{{< include img/_hierdata_anim.qmd >}}
+
+#### Hierarchical Data - types
+
+::: {.incremental}
+
+* JSON
+  - standardized format
+  - intimidating in raw format - but many methods available
+
+* XML
+  - predecessor to JSON
+  - first try to standardize
+  - "... is a different beast ..." (but tameable)
+
+:::
+
+#### XML (Extensible Markup Language) {.nostretch}
+
+![](img/xml.svg){width=20% fig-align="center"}
+
+::: {.incremental}
+
+* Fields are represented by named *tags*
+
+* Each tag has an open `<tag>` and a close `<\tag>`
+
+* Children are represented by nested tags
+
+* Repeated fields are represented by repeated tags
+
+:::
+
+#### simple XML
+
+```
+<note>
+<to>Tove</to>
+<from>Jani</from>
+<heading>Reminder</heading>
+<body>Don't forget me this weekend!</body>
+</note>
+```
+
+#### CD Catalogue {.scrollable}
+
+```
+
+<?xml version="1.0" encoding="UTF-8"?>
+<CATALOG>
+  <CD>
+    <TITLE>Empire Burlesque</TITLE>
+    <ARTIST>Bob Dylan</ARTIST>
+    <COUNTRY>USA</COUNTRY>
+    <COMPANY>Columbia</COMPANY>
+    <PRICE>10.90</PRICE>
+    <YEAR>1985</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Hide your heart</TITLE>
+    <ARTIST>Bonnie Tyler</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>CBS Records</COMPANY>
+    <PRICE>9.90</PRICE>
+    <YEAR>1988</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Greatest Hits</TITLE>
+    <ARTIST>Dolly Parton</ARTIST>
+    <COUNTRY>USA</COUNTRY>
+    <COMPANY>RCA</COMPANY>
+    <PRICE>9.90</PRICE>
+    <YEAR>1982</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Still got the blues</TITLE>
+    <ARTIST>Gary Moore</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>Virgin records</COMPANY>
+    <PRICE>10.20</PRICE>
+    <YEAR>1990</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Eros</TITLE>
+    <ARTIST>Eros Ramazzotti</ARTIST>
+    <COUNTRY>EU</COUNTRY>
+    <COMPANY>BMG</COMPANY>
+    <PRICE>9.90</PRICE>
+    <YEAR>1997</YEAR>
+  </CD>
+  <CD>
+    <TITLE>One night only</TITLE>
+    <ARTIST>Bee Gees</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>Polydor</COMPANY>
+    <PRICE>10.90</PRICE>
+    <YEAR>1998</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Sylvias Mother</TITLE>
+    <ARTIST>Dr.Hook</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>CBS</COMPANY>
+    <PRICE>8.10</PRICE>
+    <YEAR>1973</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Maggie May</TITLE>
+    <ARTIST>Rod Stewart</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>Pickwick</COMPANY>
+    <PRICE>8.50</PRICE>
+    <YEAR>1990</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Romanza</TITLE>
+    <ARTIST>Andrea Bocelli</ARTIST>
+    <COUNTRY>EU</COUNTRY>
+    <COMPANY>Polydor</COMPANY>
+    <PRICE>10.80</PRICE>
+    <YEAR>1996</YEAR>
+  </CD>
+  <CD>
+    <TITLE>When a man loves a woman</TITLE>
+    <ARTIST>Percy Sledge</ARTIST>
+    <COUNTRY>USA</COUNTRY>
+    <COMPANY>Atlantic</COMPANY>
+    <PRICE>8.70</PRICE>
+    <YEAR>1987</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Black angel</TITLE>
+    <ARTIST>Savage Rose</ARTIST>
+    <COUNTRY>EU</COUNTRY>
+    <COMPANY>Mega</COMPANY>
+    <PRICE>10.90</PRICE>
+    <YEAR>1995</YEAR>
+  </CD>
+  <CD>
+    <TITLE>1999 Grammy Nominees</TITLE>
+    <ARTIST>Many</ARTIST>
+    <COUNTRY>USA</COUNTRY>
+    <COMPANY>Grammy</COMPANY>
+    <PRICE>10.20</PRICE>
+    <YEAR>1999</YEAR>
+  </CD>
+  <CD>
+    <TITLE>For the good times</TITLE>
+    <ARTIST>Kenny Rogers</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>Mucik Master</COMPANY>
+    <PRICE>8.70</PRICE>
+    <YEAR>1995</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Big Willie style</TITLE>
+    <ARTIST>Will Smith</ARTIST>
+    <COUNTRY>USA</COUNTRY>
+    <COMPANY>Columbia</COMPANY>
+    <PRICE>9.90</PRICE>
+    <YEAR>1997</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Tupelo Honey</TITLE>
+    <ARTIST>Van Morrison</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>Polydor</COMPANY>
+    <PRICE>8.20</PRICE>
+    <YEAR>1971</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Soulsville</TITLE>
+    <ARTIST>Jorn Hoel</ARTIST>
+    <COUNTRY>Norway</COUNTRY>
+    <COMPANY>WEA</COMPANY>
+    <PRICE>7.90</PRICE>
+    <YEAR>1996</YEAR>
+  </CD>
+  <CD>
+    <TITLE>The very best of</TITLE>
+    <ARTIST>Cat Stevens</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>Island</COMPANY>
+    <PRICE>8.90</PRICE>
+    <YEAR>1990</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Stop</TITLE>
+    <ARTIST>Sam Brown</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>A and M</COMPANY>
+    <PRICE>8.90</PRICE>
+    <YEAR>1988</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Bridge of Spies</TITLE>
+    <ARTIST>T'Pau</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>Siren</COMPANY>
+    <PRICE>7.90</PRICE>
+    <YEAR>1987</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Private Dancer</TITLE>
+    <ARTIST>Tina Turner</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>Capitol</COMPANY>
+    <PRICE>8.90</PRICE>
+    <YEAR>1983</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Midt om natten</TITLE>
+    <ARTIST>Kim Larsen</ARTIST>
+    <COUNTRY>EU</COUNTRY>
+    <COMPANY>Medley</COMPANY>
+    <PRICE>7.80</PRICE>
+    <YEAR>1983</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Pavarotti Gala Concert</TITLE>
+    <ARTIST>Luciano Pavarotti</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>DECCA</COMPANY>
+    <PRICE>9.90</PRICE>
+    <YEAR>1991</YEAR>
+  </CD>
+  <CD>
+    <TITLE>The dock of the bay</TITLE>
+    <ARTIST>Otis Redding</ARTIST>
+    <COUNTRY>USA</COUNTRY>
+    <COMPANY>Stax Records</COMPANY>
+    <PRICE>7.90</PRICE>
+    <YEAR>1968</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Picture book</TITLE>
+    <ARTIST>Simply Red</ARTIST>
+    <COUNTRY>EU</COUNTRY>
+    <COMPANY>Elektra</COMPANY>
+    <PRICE>7.20</PRICE>
+    <YEAR>1985</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Red</TITLE>
+    <ARTIST>The Communards</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>London</COMPANY>
+    <PRICE>7.80</PRICE>
+    <YEAR>1987</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Unchain my heart</TITLE>
+    <ARTIST>Joe Cocker</ARTIST>
+    <COUNTRY>USA</COUNTRY>
+    <COMPANY>EMI</COMPANY>
+    <PRICE>8.20</PRICE>
+    <YEAR>1987</YEAR>
+  </CD>
+</CATALOG>
+
+```
+#### XML Growth
+
+![limited spec means limited control](img/ListOfXML.gif)
+
+#### HyperText Markup Language (HTML)
+
+::: {.incremental}
+
+* HTML is the standard language for describing the layout of webpages
+
+* Is is *like* XML, with special tags for hyperlinks, tables, images, etc
+
+* You don't need to be an HTML expert to scrape webpages, but some basics are necessary
+
+:::
+
+#### Hyperlinks
+
+The `<a>` tag indicates a (hyper)link
+
+::: {.incremental}
+
+* the `href=` attribute contains the URL
+* the dispayed text is within the `<a>` tag
+
+:::
+
+#### https://example.com/
+
+```
+
+<!doctype html>
+<html>
+<head>
+    <title>Example Domain</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+    body {
+        background-color: #f0f0f2;
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    }
+    div {
+        width: 600px;
+        margin: 5em auto;
+        padding: 2em;
+        background-color: #fdfdff;
+        border-radius: 0.5em;
+        box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);
+    }
+    a:link, a:visited {
+        color: #38488f;
+        text-decoration: none;
+    }
+    @media (max-width: 700px) {
+        div {
+            margin: 0 auto;
+            width: auto;
+        }
+    }
+    </style>
+</head>
+
+<body>
+<div>
+    <h1>Example Domain</h1>
+    <p>This domain is for use in illustrative examples in documents. You may use this
+    domain in literature without prior coordination or asking for permission.</p>
+    <p><a href="https://www.iana.org/domains/example">More information...</a></p>
+</div>
+</body>
+</html>
+
+```
+
+#### Tables
+
+The `<table>` tag indicates a table
+
+::: {.incremental}
+
+* the `<tr>` indicates a row
+* the `<th>` and `<td>` tags indicate a cell within a row
+
+:::
+
+##### Tables example
+
+::: columns
+::: {.column width="60%"}
+
+```
+<table>
+<thead>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Number</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Meier</td>
+    <td>Alexander</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>Müller</td>
+    <td>Melanie</td>
+    <td>2</td>
+  </tr>
+</tbody>
+</table>
+
+```
+
+:::
+
+::: {.column width="40%"}
+
+![](img/simple_table.png)
+
+:::
+
+:::
+
+#### Web scraping example
+
+```{r}
+#| echo: true
+
+html <- read_html("http://rvest.tidyverse.org/")
+html
+```
+
+::: {.attribution}
+[@978-1-4920-9740-2]
+::: 
+
+#### Scraping a table I - get the data in
+
+```{r}
+#| echo: true
+
+html <- minimal_html("
+  <table class='mytable'>
+<thead>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Number</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Meier</td>
+    <td>Alexander</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>Müller</td>
+    <td>Melanie</td>
+    <td>2</td>
+  </tr>
+</tbody>
+</table>
+  ")
+
+html
+
+```
+
+#### Scraping a table II - transform to useable output
+
+```{r}
+#| echo: true
+
+html |>
+  html_element(".mytable") |>
+  html_table()
+
+```
+
+#### Ethics
+
+::: {.incremental}
+
+* Website owners have to pay a small amount each time you
+visit a webpage.
+* This is usually offset by advertising.
+* But when you do web scraping:
+  * it is easy to rack up many webpage visits,
+  * and you don’t see any ads to offset this cost.
+
+:::
+
+#### `robots.txt`
+
+::: {.incremental}
+
+* Most websites have a `robots.txt` file in the home directory that indicate which bots are allowed to scrape and which pages they can scrape.
+* Here are a few examples:
+  * <http://www.espn.com/robots.txt>
+  * <http://www.nytimes.com/robots.txt>
+* However, `robots.txt` is informational only. It doesn’t prevent bots from scraping a webpage
+
+:::
+
+### Web scraping summary
+
+Pros:
+
+::: {.incremental}
+
+* Enriches big data with diverse online sources.
+* Provides real-time data updates.
+* Offers cost-effective automated extraction.
+
+:::
+
+Cons:
+
+::: {.incremental}
+
+* Raises legal and ethical concerns.
+* May compromise data quality.
+* Poses technical challenges like handling dynamic websites.
+
+:::
+
+---
+
+::: {.r-fit-text .v-c}
+
+It's a mess!
+
+:::
 
 # References

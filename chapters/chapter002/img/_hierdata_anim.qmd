@@ -1,0 +1,43 @@
+```yaml { .animate src="img/HierarchicalData.svg"}
+setup:
+  - element: "#Show"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "0"
+  - element: "#Show02"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "1"
+  - element: "#Child01"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "2"        
+  - element: "#Child0101"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "3"  
+  - element: "#Child02"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "4"
+  - element: "#Child0201"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "5"
+  - element: "#Child03"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "6"
+  - element: "#Child0301"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "7"
+```        
