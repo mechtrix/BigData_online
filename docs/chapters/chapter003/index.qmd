@@ -26,6 +26,10 @@ css: style.css
 
 library(tidyverse)
 library(ggthemes)
+library(SensorLab)
+library(rstatix)
+library(ggh4x)
+library(gt)
 
 ```
 
@@ -318,9 +322,7 @@ The continuous distribution is a mathematical construction, suitable for mathema
 ::: {.fragment .fade-in}
 
 ```{r}
-#| label: fig-prodprob
 #| out-width: 95%
-#| fig-cap: Probabilities for success in sequence.
 
 fun.1 <- function(x) 0.9^x
 fun.2 <- function(x) 0.95^x
@@ -343,7 +345,9 @@ ggplot(data = data.frame(x = 0), mapping = aes(x = x))+
   scale_x_continuous(limits = c(1,limit_x[2]),breaks = seq(limit_x[1],limit_x[2],by=1),expand = c(0,0))+
   scale_y_continuous(breaks = seq(0.2,1,by=0.025))+
   scale_color_brewer(palette = 'Spectral')+
-  theme_minimal()+
+  theme_minimal(
+    base_size = 15
+  )+
   theme(panel.grid.minor = element_blank())
 
 ```
@@ -365,19 +369,518 @@ ggplot(data = data.frame(x = 0), mapping = aes(x = x))+
 
 #### High Accuracy - Low Precision
 
-{{< include img/_HALP_anim.qmd >}}
+![](img/004_HALP.svg)
 
 
 #### Low Accuracy - Low Precision
 
-{{< include img/_LALP_anim.qmd >}}
+![](img/005_LALP.svg)
 
 #### Low Accuracy - High Precision
 
-{{< include img/_LAHP_anim.qmd >}}
+![](img/006_LAHP.svg)
 
 #### High Accuracy - High Precision
 
-{{< include img/_HAHP_anim.qmd >}}
+![](img/007_HAHP.svg)
+
+#### Computing Process Capabilities
+
+::: {.r-stack}
+
+::: {.fragment .fade-out}
+
+\begin{align}
+C_{p} &= \frac{USL-LSL}{6\sigma}\\
+C_{pk} &= \frac{\min(USL-\mu,\mu-LSL)}{3\sigma}\\
+\end{align}
+
+:::
+
+::: {.fragment .fade-in}
+
+```{r}
+#| out-width: 95%
+
+# source("gt_Cpk_ppm.R")
+
+ppm <- data.frame(
+  Cpk = seq(0.5,2,0.01)
+) %>% 
+  mutate(
+    ppm = cmp_ppm_cpk(Cpk)
+  )
+
+
+ppm %>% 
+  ggplot(aes(x = Cpk,y= ppm))+
+  geom_line(
+    linewidth = 2
+  )+
+  scale_x_continuous(
+    breaks = seq(0,3,0.2),
+    expand = c(0,0,0,0),
+  )+
+  scale_y_continuous(
+    labels = scales::label_number()
+  )+
+  geom_vline(
+    xintercept = 1.33,
+    linetype = "dashed"
+  )+
+  geom_vline(
+    xintercept = 1.68,
+    linetype = "dashed"
+  )+
+  geom_text(
+    aes(
+      x = 1.33,
+      y = 70000,
+      label = paste0('ppm: ',cmp_ppm_cpk(1.33)," at Cpk: 1.33")
+    ),
+    angle = 90,
+    nudge_x = -0.05,
+    size = 8
+  )+
+  geom_text(
+    aes(
+      x = 1.67,
+      y = 70000,
+      label = paste0('ppm: ',cmp_ppm_cpk(1.67)," at Cpk: 1.67")
+    ),
+    angle = 90,
+    nudge_x = -0.05,
+    size = 8
+  )+
+  geom_text(
+    aes(
+      x = 2,
+      y = 70000,
+      label = paste0('ppm: ',cmp_ppm_cpk(2)," at Cpk: 2.00")
+    ),
+    angle = 90,
+    nudge_x = -0.05,
+    size = 8
+  )+
+  labs(
+    title = "ppm vs.Cpk"
+  )+
+  theme_few()
+  
+```
+
+:::
+
+:::
+
+#### Measurement System Analysis Type 1 (MSA1)
+
+
+A type 1 gage study assesses only the variation that comes from the gage. Specifically, this study assesses the effects of bias and repeatability on measurements from one operator and one reference part.
+
+::: {.incremental}
+
+* Focus on gage as the only source of variation
+* First Step
+* 50 Measurements
+* repeated on a reference part
+
+:::
+
+##### Potential Capability index $C_g$ {.smaller}
+
+\begin{align}
+C_g = \frac{K/100*Tol}{L*\sigma} \label{Cg}
+\end{align}
+
+$Tol$
+:   Tolerance
+
+$C_g$
+:   Capability Gage
+
+K
+: percentage of the tolerance ($20\%$)
+
+$\sigma$
+:   standard deviations of the tolerance
+
+L
+:   number of standard deviations that represent the process (6)
+
+##### Capability index with systematic error $C_{gk}$ {.smaller}
+
+\begin{align}
+C_{gk} = \frac{(0.5*K/100)*Tol - |\bar{x}-x_{true}|}{3*\sigma} \label{Cgk}
+\end{align}
+
+$Tol$
+:   Tolerance
+
+$\bar{x}$
+:   mean of the measurements
+
+K
+: percentage of the tolerance ($20\%$)
+
+$x_{true}$
+:   the "true" value of the reference (calibration)
+
+$\sigma$
+:   standard deviation of the measurements
+
+##### theoretical example
+
+::: {.r-stack}
+
+::: {.fragment .fade-out}
+
+![ring gauge $20mm$](img/msa1_ring.jpg){width=50%}
+
+* $x_{true} = 20.3020$
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+![](img/msa1_data.gif){width=95%}
+
+:::
+
+:::
+
+---
+
+{{< include img/_will_it_blend_anim.qmd >}}
+
+
+##### Disitribution of the data
+
+::: {.r-stack}
+
+
+::: {.fragment .fade-in}
+
+```{r}
+#| include: false
+
+measured_data <- c(20.3030,
+                   20.2960,
+                   20.3110,
+                   20.2980,
+                   20.3110,
+                   20.3080,
+                   20.3130,
+                   20.3030,
+                   20.3060,
+                   20.3020,
+                   20.3010,
+                   20.3010,
+                   20.2970,
+                   20.2950,
+                   20.3090,
+                   20.3020,
+                   20.3030,
+                   20.3100,
+                   20.2960,
+                   20.3030,
+                   20.3040,
+                   20.3000,
+                   20.2950,
+                   20.3010,
+                   20.3080,
+                   20.2940,
+                   20.3080,
+                   20.3040,
+                   20.3060,
+                   20.3070,
+                   20.3030,
+                   20.3070,
+                   20.3020,
+                   20.3070,
+                   20.3040,
+                   20.3020,
+                   20.2980,
+                   20.3090,
+                   20.2990,
+                   20.3030,
+                   20.3060,
+                   20.3050,
+                   20.3040,
+                   20.3120,
+                   20.2980,
+                   20.3040,
+                   20.3060,
+                   20.3050,
+                   20.3000,
+                   20.3050)
+
+measured_data <- data.frame(measured_data = measured_data) %>% 
+  rowid_to_column(var = "No")
+
+x_true <- 20.3020
+
+Tol <- 0.3
+
+measured_data %>% 
+  shapiro_test(measured_data)
+
+binwidth <- 0.001
+
+p_hist <- measured_data %>% 
+  ggplot(
+    aes(
+      x = measured_data
+    )
+  )+
+  geom_histogram(
+    binwidth = binwidth,
+    color = "white"
+  )+
+  scale_x_continuous(
+    expand = c(0,0,0,0),
+    breaks = scales::pretty_breaks(n = 10)
+  )+
+  scale_y_continuous(
+    breaks = scales::pretty_breaks(n = 5)
+  )+
+  labs(
+    title = "Distribution of measured values",
+    y = "count",
+    x = "measured data"
+  )+
+  theme_minimal()
+
+p_dens1 <- p_hist+geom_density(
+    aes(
+      y = after_stat(count*binwidth)
+    ),
+    linewidth = 1.5,
+    color = "red"
+  )
+
+p_dens2 <- p_dens1+stat_theodensity(
+    aes(
+      y = after_stat(count*binwidth)
+    ),
+    geom = "area",
+    fill = "gray",
+    alpha = 0.6
+  )
+
+
+x_mean <- measured_data %>% 
+  pull(measured_data) %>% 
+  mean() %>% 
+  round(.,digits = 4)
+
+x_sd <- measured_data %>% 
+  pull(measured_data) %>% 
+  sd()%>% 
+  round(.,digits = 4)
+
+Cg <- round(((20/100)*Tol)/(6*x_sd),digits = 2)
+  
+
+Cgk <-  round(((0.5*20/100)*Tol-abs(x_mean-x_true))/(3*x_sd),digits = 2)
+
+```
+
+
+```{r}
+#| out-width: 95%
+
+p_hist
+
+```
+
+:::
+
+::: {.fragment .fade-in}
+
+
+```{r}
+#| out-width: 95%
+
+p_dens1
+
+```
+
+:::
+
+::: {.fragment .fade-in}
+
+
+```{r}
+#| out-width: 95%
+
+p_dens2
+
+```
+
+:::
+
+:::
+
+##### Formal test for distribution [@shapiro1965analysis]
+
+::: {.incremental}
+
+* $H_0$: Data is normal distributed.
+* $H_a$: Data is not normal distributed.
+
+:::
+
+::: {.fragment .fade-in}
+
+```{r}
+#| echo: true
+#| output: true
+
+
+measured_data %>% 
+  shapiro_test(measured_data)
+
+```
+
+
+:::
+
+##### $C_g$ and $C_{gk}$
+
+* $C_g, C_{gk} > 1.33$ empirical, must be cross-checked with customer
+* calculation according to $C_g$ and $C_{gk}$
+
+
+```{r}
+#| label: tbl-CgCgk
+#| out-width: 75%
+#| tbl-cap: $C_g, C_{gk}$ for the measured values
+
+data.frame(Cg = Cg, Cgk = Cgk) %>% 
+  gt() %>% 
+  tab_options(
+  table.font.size = 30
+)
+
+```
+
+##### graphical depiction
+
+
+```{r}
+#| label: fig-msa1-plt
+#| out-width: 75%
+#| fig-cap: MSA 1 graphical depiction.
+
+
+
+plt_msa <- measured_data %>% 
+  ggplot(
+    aes(
+      x = No,
+      y = measured_data
+    )
+  )+
+  geom_point()+
+  geom_line()+
+  geom_hline(
+    aes(
+      yintercept = mean(measured_data),
+      linetype = "mean"
+    )
+  )+
+  geom_hline(
+    aes(
+      yintercept = mean(measured_data)+0.1*Tol/2,
+      linetype = "20% Tol"
+    ),
+    color = "green4",
+    linewidth = 1.5
+  )+
+  geom_hline(
+    aes(
+      yintercept = mean(measured_data)-0.1*Tol/2,
+      linetype = "20% Tol"
+    ),
+    color = "green4",
+    linewidth = 1.5
+  )+
+  geom_hline(
+    aes(
+      yintercept = mean(measured_data)+sd(measured_data),
+      linetype = "+/-sd"
+    )
+  )+
+  geom_hline(
+    aes(
+      yintercept = mean(measured_data)-sd(measured_data),
+      linetype = "+/-sd"
+    )
+  )+
+  geom_hline(
+    aes(
+      yintercept = x_true,
+      linetype = "x_true"
+    ),
+    linewidth = 1
+  )+
+  labs(
+    title = "MSA 1 Data vs. index",
+    x = "No",
+    y = "measured data",
+    linetype = ""
+  )+
+  scale_x_continuous(
+    breaks = seq(0,100,5)
+  )+
+  scale_y_continuous(
+    breaks = scales::pretty_breaks(n = 10)
+  )+
+  theme_minimal(base_size = 15)+
+  theme(
+    legend.position = "bottom"
+  )
+
+plt_msa
+
+```
+
+##### ... the era of AI?
+
+::: {.r-stack}
+
+::: {.fragment .fade-out}
+
+![](img/i_blistering.svg){width=1500px}
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+![](img/mm_algo_wf.svg){width=2500px}
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+![](img/mm_algo_out01.svg){width=2500px}
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+![](img/mm_algo_out02.svg){width=2500px}
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+![](img/res_algo_rr.svg){width=2500px}
+
+:::
+
+:::
+
 
 # References

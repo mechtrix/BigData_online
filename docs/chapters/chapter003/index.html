@@ -32,6 +32,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
@@ -730,14 +795,9 @@ Definition:  Range of individual income given in increments of $25,000 starting 
 <div class="fragment fade-in">
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-prodprob" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-prodprob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="index_files/figure-revealjs/fig-prodprob-1.png" style="width:95.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prodprob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Probabilities for success in sequence.
-</figcaption>
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-2-1.png" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -802,42 +862,713 @@ Figure&nbsp;1: Probabilities for success in sequence.
 
 <section id="high-accuracy---low-precision" class="title-slide slide level4 center">
 <h4>High Accuracy - Low Precision</h4>
-<div data-animate="" data-src="img/004_HALP.svg"><!-- setup:
-  - element: "#g2"
-    modifier: attr
-    parameters:
-      - class: fragment
-        data-fragment-index: "0" --></div>
-</section>
+
+<img data-src="img/004_HALP.svg" class="r-stretch"></section>
 
 <section id="low-accuracy---low-precision" class="title-slide slide level4 center">
 <h4>Low Accuracy - Low Precision</h4>
-<div data-animate="" data-src="img/005_LALP.svg"><!-- setup:
-  - element: "#g2"
-    modifier: attr
-    parameters:
-      - class: fragment
-        data-fragment-index: "0" --></div>
-</section>
+
+<img data-src="img/005_LALP.svg" class="r-stretch"></section>
 
 <section id="low-accuracy---high-precision" class="title-slide slide level4 center">
 <h4>Low Accuracy - High Precision</h4>
-<div data-animate="" data-src="img/006_LAHP.svg"><!-- setup:
-  - element: "#g2"
+
+<img data-src="img/006_LAHP.svg" class="r-stretch"></section>
+
+<section id="high-accuracy---high-precision" class="title-slide slide level4 center">
+<h4>High Accuracy - High Precision</h4>
+
+<img data-src="img/007_HAHP.svg" class="r-stretch"></section>
+
+<section id="computing-process-capabilities" class="title-slide slide level4 center">
+<h4>Computing Process Capabilities</h4>
+<div class="r-stack">
+<div class="fragment fade-out">
+<p><span class="math display">\[\begin{align}
+C_{p} &amp;= \frac{USL-LSL}{6\sigma}\\
+C_{pk} &amp;= \frac{\min(USL-\mu,\mu-LSL)}{3\sigma}\\
+\end{align}\]</span></p>
+</div>
+<div class="fragment fade-in">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-3-1.png" style="width:95.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="measurement-system-analysis-type-1-msa1" class="title-slide slide level4 center">
+<h4>Measurement System Analysis Type 1 (MSA1)</h4>
+<p>A type 1 gage study assesses only the variation that comes from the gage. Specifically, this study assesses the effects of bias and repeatability on measurements from one operator and one reference part.</p>
+<div>
+<ul>
+<li class="fragment">Focus on gage as the only source of variation</li>
+<li class="fragment">First Step</li>
+<li class="fragment">50 Measurements</li>
+<li class="fragment">repeated on a reference part</li>
+</ul>
+</div>
+</section>
+<section id="potential-capability-index-c_g" class="slide level5 smaller">
+<h5>Potential Capability index <span class="math inline">\(C_g\)</span></h5>
+<p><span class="math display">\[\begin{align}
+C_g = \frac{K/100*Tol}{L*\sigma} \label{Cg}
+\end{align}\]</span></p>
+<dl>
+<dt><span class="math inline">\(Tol\)</span></dt>
+<dd>
+Tolerance
+</dd>
+<dt><span class="math inline">\(C_g\)</span></dt>
+<dd>
+Capability Gage
+</dd>
+<dt>K</dt>
+<dd>
+percentage of the tolerance (<span class="math inline">\(20\%\)</span>)
+</dd>
+<dt><span class="math inline">\(\sigma\)</span></dt>
+<dd>
+standard deviations of the tolerance
+</dd>
+<dt>L</dt>
+<dd>
+number of standard deviations that represent the process (6)
+</dd>
+</dl>
+</section>
+<section id="capability-index-with-systematic-error-c_gk" class="slide level5 smaller">
+<h5>Capability index with systematic error <span class="math inline">\(C_{gk}\)</span></h5>
+<p><span class="math display">\[\begin{align}
+C_{gk} = \frac{(0.5*K/100)*Tol - |\bar{x}-x_{true}|}{3*\sigma} \label{Cgk}
+\end{align}\]</span></p>
+<dl>
+<dt><span class="math inline">\(Tol\)</span></dt>
+<dd>
+Tolerance
+</dd>
+<dt><span class="math inline">\(\bar{x}\)</span></dt>
+<dd>
+mean of the measurements
+</dd>
+<dt>K</dt>
+<dd>
+percentage of the tolerance (<span class="math inline">\(20\%\)</span>)
+</dd>
+<dt><span class="math inline">\(x_{true}\)</span></dt>
+<dd>
+the “true” value of the reference (calibration)
+</dd>
+<dt><span class="math inline">\(\sigma\)</span></dt>
+<dd>
+standard deviation of the measurements
+</dd>
+</dl>
+</section>
+<section id="theoretical-example" class="slide level5">
+<h5>theoretical example</h5>
+<div class="r-stack">
+<div class="fragment fade-out">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/msa1_ring.jpg" style="width:50.0%"></p>
+<figcaption>ring gauge <span class="math inline">\(20mm\)</span></figcaption>
+</figure>
+</div>
+<ul>
+<li><span class="math inline">\(x_{true} = 20.3020\)</span></li>
+</ul>
+</div>
+<div class="fragment fade-in-then-out">
+<p><img data-src="img/msa1_data.gif" style="width:95.0%"></p>
+</div>
+</div>
+</section>
+<section class="slide level5">
+
+<div data-animate="" data-src="img/Will_it_blend.svg"><!-- setup:
+  - element: "#g1"
     modifier: attr
     parameters:
       - class: fragment
         data-fragment-index: "0" --></div>
 </section>
+<section id="disitribution-of-the-data" class="slide level5">
+<h5>Disitribution of the data</h5>
+<div class="r-stack">
+<div class="fragment fade-in">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-5-1.png" style="width:95.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-6-1.png" style="width:95.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-7-1.png" style="width:95.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="formal-test-for-distribution-shapiro1965analysis" class="slide level5">
+<h5>Formal test for distribution <span class="citation" data-cites="shapiro1965analysis">(<a href="#/references" role="doc-biblioref" onclick="">Shapiro and Wilk 1965</a>)</span></h5>
+<div>
+<ul>
+<li class="fragment"><span class="math inline">\(H_0\)</span>: Data is normal distributed.</li>
+<li class="fragment"><span class="math inline">\(H_a\)</span>: Data is not normal distributed.</li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>measured_data <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a></a>  <span class="fu">shapiro_test</span>(measured_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  variable      statistic     p
+  &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt;
+1 measured_data     0.983 0.661</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="c_g-and-c_gk" class="slide level5">
+<h5><span class="math inline">\(C_g\)</span> and <span class="math inline">\(C_{gk}\)</span></h5>
+<ul>
+<li><span class="math inline">\(C_g, C_{gk} &gt; 1.33\)</span> empirical, must be cross-checked with customer</li>
+<li>calculation according to <span class="math inline">\(C_g\)</span> and <span class="math inline">\(C_{gk}\)</span></li>
+</ul>
+<div class="cell">
+<div id="tbl-CgCgk" class="cell quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-tbl">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-CgCgk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured values
+</figcaption>
+<div aria-describedby="tbl-CgCgk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div id="nzxaactfmc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nzxaactfmc table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-<section id="high-accuracy---high-precision" class="title-slide slide level4 center">
-<h4>High Accuracy - High Precision</h4>
-<div data-animate="" data-src="img/007_HAHP.svg"><!-- setup:
-  - element: "#g2"
-    modifier: attr
-    parameters:
-      - class: fragment
-        data-fragment-index: "0" --></div>
+#nzxaactfmc thead, #nzxaactfmc tbody, #nzxaactfmc tfoot, #nzxaactfmc tr, #nzxaactfmc td, #nzxaactfmc th {
+  border-style: none;
+}
+
+#nzxaactfmc p {
+  margin: 0;
+  padding: 0;
+}
+
+#nzxaactfmc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 30px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#nzxaactfmc .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#nzxaactfmc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#nzxaactfmc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#nzxaactfmc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nzxaactfmc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nzxaactfmc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nzxaactfmc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#nzxaactfmc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#nzxaactfmc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#nzxaactfmc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#nzxaactfmc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#nzxaactfmc .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#nzxaactfmc .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#nzxaactfmc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#nzxaactfmc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#nzxaactfmc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#nzxaactfmc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#nzxaactfmc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nzxaactfmc .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#nzxaactfmc .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#nzxaactfmc .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#nzxaactfmc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nzxaactfmc .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#nzxaactfmc .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#nzxaactfmc .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nzxaactfmc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nzxaactfmc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#nzxaactfmc .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nzxaactfmc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#nzxaactfmc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nzxaactfmc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nzxaactfmc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nzxaactfmc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nzxaactfmc .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nzxaactfmc .gt_left {
+  text-align: left;
+}
+
+#nzxaactfmc .gt_center {
+  text-align: center;
+}
+
+#nzxaactfmc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#nzxaactfmc .gt_font_normal {
+  font-weight: normal;
+}
+
+#nzxaactfmc .gt_font_bold {
+  font-weight: bold;
+}
+
+#nzxaactfmc .gt_font_italic {
+  font-style: italic;
+}
+
+#nzxaactfmc .gt_super {
+  font-size: 65%;
+}
+
+#nzxaactfmc .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#nzxaactfmc .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#nzxaactfmc .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#nzxaactfmc .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#nzxaactfmc .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#nzxaactfmc .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#nzxaactfmc .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#nzxaactfmc .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#nzxaactfmc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table do-not-create-environment cell caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="Cg" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Cg</th>
+<th id="Cgk" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Cgk</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="Cg">2.13</td>
+<td class="gt_row gt_right" headers="Cgk">2.02</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="graphical-depiction" class="slide level5">
+<h5>graphical depiction</h5>
+
+<img data-src="index_files/figure-revealjs/fig-msa1-plt-1.png" style="width:75.0%" class="r-stretch quarto-figure-center"><p class="caption">
+Figure&nbsp;1: MSA 1 graphical depiction.
+</p></section>
+<section id="the-era-of-ai" class="slide level5">
+<h5>… the era of AI?</h5>
+<div class="r-stack">
+<div class="fragment fade-out">
+<p><img data-src="img/i_blistering.svg" width="1500"></p>
+</div>
+<div class="fragment fade-in-then-out">
+<p><img data-src="img/mm_algo_wf.svg" width="2500"></p>
+</div>
+<div class="fragment fade-in-then-out">
+<p><img data-src="img/mm_algo_out01.svg" width="2500"></p>
+</div>
+<div class="fragment fade-in-then-out">
+<p><img data-src="img/mm_algo_out02.svg" width="2500"></p>
+</div>
+<div class="fragment fade-in-then-out">
+<p><img data-src="img/res_algo_rr.svg" width="2500"></p>
+</div>
+</div>
 </section>
 
 
@@ -883,6 +1614,9 @@ J. Bibby, E. J. G. Pitman. 1980. <span>“Some Basic Theory for Statistical Infe
 </div>
 <div id="ref-9780596001087" class="csl-entry" role="listitem">
 Raymond, Eric S. 2001. <em>The Cathedral &amp; the Bazaar</em>. "O’Reilly Media, Inc.".
+</div>
+<div id="ref-shapiro1965analysis" class="csl-entry" role="listitem">
+Shapiro, S. S., and M. B. Wilk. 1965. <span>“An Analysis of Variance Test for Normality (Complete Samples).”</span> <em>Biometrika</em> 52 (December): 591–611. <a href="https://doi.org/10.1093/biomet/52.3-4.591">https://doi.org/10.1093/biomet/52.3-4.591</a>.
 </div>
 </div>
 </section>
