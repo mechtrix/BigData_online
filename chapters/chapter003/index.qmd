@@ -1191,103 +1191,99 @@ b <- 2
 ##### ANOVA complete model
 
 ```{r}
-#| label: fig-anova-mdls-comp
-#| fig-cap: Computation of error for the complete model (mean per group as model)
 #| out-width: 75%
 
-# drive_shaft <- read.csv("data/drive_shaft.csv")
+drive_shaft <- read.csv("https://raw.githubusercontent.com/mechtrix/BigData_online/refs/heads/main/data/drive_shaft.csv")
 # 
-# grp_dat <- drive_shaft %>% filter(group %in% c("group01","group04","group03")) %>%
-#   ungroup() %>%
-#   group_by(group) %>%
-#   mutate(
-#     fit = mean(diameter),
-#     error = fit-diameter,
-#     sq_error = error^2
-#   )
-# 
-# mean_dat <- drive_shaft %>% filter(group %in% c("group01","group04","group03")) %>%
-#   mutate(
-#     fit = mean(diameter),
-#     error = fit-diameter,
-#     sq_error = error^2
-#   )
-# 
-# mean_grp_dat <-  grp_dat %>%
-#   group_by(group) %>%
-#   summarise(
-#     mean_diameter = mean(diameter)
-#   )
-# 
-# grp_dat %>%
-#   ggplot()+
-#   geom_segment(
-#     aes(
-#       x = sample_no,
-#       xend = sample_no,
-#       y = fit,
-#       yend = diameter
-#     )
-#   )+
-#   geom_point(
-#     aes(x = sample_no,y = diameter)
-#   )+
-#   geom_hline(
-#     data = mean_grp_dat,
-#     aes(
-#       yintercept = mean_diameter
-#       )
-#     )+
-#   facet_wrap(
-#     ~group)+
-#   labs(
-#     title = "computations of error for the complete model",
-#     subtitle = "model = mean per group",
-#     x = "sample no",
-#     y = "diameter"
-#   )+
-#   theme_few()
+grp_dat <- drive_shaft %>% filter(group %in% c("group01","group04","group03")) %>%
+  ungroup() %>%
+  group_by(group) %>%
+  mutate(
+    fit = mean(diameter),
+    error = fit-diameter,
+    sq_error = error^2
+  )
+
+mean_dat <- drive_shaft %>% filter(group %in% c("group01","group04","group03")) %>%
+  mutate(
+    fit = mean(diameter),
+    error = fit-diameter,
+    sq_error = error^2
+  )
+
+mean_grp_dat <-  grp_dat %>%
+  group_by(group) %>%
+  summarise(
+    mean_diameter = mean(diameter)
+  )
+
+grp_dat %>%
+  ggplot()+
+  geom_segment(
+    aes(
+      x = sample_no,
+      xend = sample_no,
+      y = fit,
+      yend = diameter
+    )
+  )+
+  geom_point(
+    aes(x = sample_no,y = diameter)
+  )+
+  geom_hline(
+    data = mean_grp_dat,
+    aes(
+      yintercept = mean_diameter
+      )
+    )+
+  facet_wrap(
+    ~group)+
+  labs(
+    title = "computations of error for the complete model",
+    subtitle = "model = mean per group",
+    x = "sample no",
+    y = "diameter"
+  )+
+  theme_few()
 
 ```
 
-<!-- ##### ANOVA reduced model -->
+##### ANOVA reduced model
 
-<!-- ```{r} -->
-<!-- #| label: fig-anova-mdls-red -->
-<!-- #| fig-cap: Computation of error for the reduced model (overall mean as model) -->
-<!-- #| out-width: 75% -->
+```{r}
+#| out-width: 75%
 
-<!-- mean_dat %>% -->
-<!--   ggplot()+ -->
-<!--   geom_segment( -->
-<!--     aes( -->
-<!--       x = sample_no, -->
-<!--       xend = sample_no, -->
-<!--       y = fit, -->
-<!--       yend = diameter -->
-<!--     ) -->
-<!--   )+ -->
-<!--   geom_point( -->
-<!--     aes(x = sample_no,y = diameter) -->
-<!--   )+ -->
-<!--   geom_hline( -->
-<!--     # aes( -->
-<!--       yintercept = mean_dat$fit[1], -->
-<!--       # linetype = "overall mean" -->
-<!--     # ) -->
-<!--   )+ -->
-<!--   facet_wrap( -->
-<!--     ~group -->
-<!--   )+ -->
-<!--   labs( -->
-<!--     title = "computations of error for the reduced model", -->
-<!--     subtitle = "model = overall mean", -->
-<!--     x = "sample no", -->
-<!--     y = "diameter" -->
-<!--   )+ -->
-<!--   theme_few() -->
+mean_dat %>%
+  ggplot()+
+  geom_segment(
+    aes(
+      x = sample_no,
+      xend = sample_no,
+      y = fit,
+      yend = diameter
+    )
+  )+
+  geom_point(
+    aes(x = sample_no,y = diameter)
+  )+
+  geom_hline(
+    # aes(
+      yintercept = mean_dat$fit[1],
+      # linetype = "overall mean"
+    # )
+  )+
+  facet_wrap(
+    ~group
+  )+
+  labs(
+    title = "computations of error for the reduced model",
+    subtitle = "model = overall mean",
+    x = "sample no",
+    y = "diameter"
+  )+
+  theme_few()
 
 
-<!-- ``` -->
+```
 
 # References
