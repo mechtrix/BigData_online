@@ -31,6 +31,7 @@ library(rstatix)
 library(ggh4x)
 library(gt)
 library(qqplotr)
+library(SixSigma)
 
 ```
 
@@ -917,5 +918,376 @@ plt_msa
 
 :::
 
+#### Gage R&R 
+
+::: {.r-stack}
+
+
+::: {.fragment .fade-out}
+
+A Gage R&R study assesses the variation in measurements from a specific process by measuring the same parts multiple times with the same instrument by different operators. It helps determine the reliability of the measurement system and identifies areas for improvement.
+
+:::
+
+::: {.fragment .fade-in}
+
+{{< include img/_gageRR_anim.qmd >}}
+
+:::
+
+:::
+
+::: {.attribution}
+[@CanoUnknownTitle2012]
+:::
+
+#### Definitions {.smaller}
+
+::: {.fragment .fade-in}
+
+Accuracy
+:   The closeness of agreement between a test result and the accepted reference value.
+
+:::
+
+::: {.fragment .fade-in}
+
+Trueness
+:   The closeness of agreement between the average value obtained from a large series of test results and an accepted reference value.
+
+:::
+
+::: {.fragment .fade-in}
+
+Precision 
+:   The closeness of agreement between independent test results obtained under stipulated conditions.
+
+:::
+
+::: {.fragment .fade-in}
+
+Repeatability 
+:   Precision under repeatability conditions (where independent test results are obtained using the same method on identical test items in the same laboratory by the same operator using the same equipment within short intervals of time).
+
+:::
+
+::: {.fragment .fade-in}
+
+Reproducibility 
+:   Precision under reproducibility conditions (where test results are obtained using the same method on identical test items in different laboratories with different operators using different equipment).
+
+:::
+
+::: {.attribution}
+[@CanoUnknownTitle2012]
+:::
+
+#### Introductory example
+
+* A battery manufacturer makes several types of batteries for domestic use.
+* Voltage is **C**ritical **T**o **Q**uality (CTQ)
+
+::: {.incremental}
+
+* the parts are the batteries $a = 3$
+* the appraisers are the voltmeters $b = 2$
+* measurement is taken three times $n = 3$
+* $a \times b \times n = 3 \times 2 \times 3 = 18$ measurements
+
+:::
+
+#### The data
+
+```{r}
+#| out-width: 75%
+
+data("ss.data.batteries")
+
+pos <- position_jitter(width = 0.3, seed = 2)
+
+ss.data.batteries %>% 
+  ggplot(
+    aes(
+      x = run,  
+      y = voltage
+      )
+    ) +
+  geom_point(
+    
+  )+
+  facet_nested(
+    ~battery+voltmeter,
+    labeller = label_both
+  )+
+  theme_bw(base_size = 20)+
+  theme(
+    legend.position = "bottom"
+  )
+
+```
+
+#### The analysis
+
+```{r}
+#| echo: true
+#| output: true
+
+anova(lm(voltage ~ battery + voltmeter + battery * voltmeter, 
+         data = ss.data.batteries))
+
+```
+
+---
+
+::: {.r-fit-text .v-c}
+
+WOW!
+
+:::
+
+#### Variance decomposition - the theory 
+
+![](img/gage_rr.svg){width=95%}
+
+##### Repeatability
+
+\begin{align}
+\sigma^2_{Repeatability} = MSE
+\end{align}
+
+* directly obtainable in ANOVA table
+
+##### Reproducibility {.smaller}
+
+::: {.r-stack}
+
+::: {.fragment .fade-out}
+
+\begin{align}
+\sigma^2_{Reproducibilty} = \sigma^2_{Appraiser} + \sigma^2_{Interaction}
+\end{align}
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+\begin{align}
+\sigma^2_{Appraiser} = \frac{MSB-MSAB}{a \times n}
+\end{align}
+
+$\sigma^2_{Appraiser}$
+:   Variance introduced by appraisers
+
+$MSB$
+:   Mean of squares - B
+
+$MSAB$
+:   Mean squares of interaction - AB
+
+$a$
+:   number of levels for factor - number of batteries: 3
+
+$n$
+:   number of replicated measures: 3
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+\begin{align}
+\sigma^2_{Interaction} = \frac{MSBA-MSE}{n}
+\end{align}
+
+$\sigma^2_{Interaction}$
+:   Variance introduced by interaction
+
+$MSAB$
+:   Mean squares of interaction - AB
+
+$MSE$
+:   Mean squares of error
+
+$n$
+:   number of replicated measures: 3
+
+:::
+
+:::
+
+##### Gage R&R
+
+\begin{align}
+\sigma^2_{Gage\;R\&R} = \sigma^2_{Repeatability} + \sigma^2_{Reproducibility}
+\end{align}
+
+::: {.fragment .fade-in}
+All variance is calculated that comes from the Gage!
+:::
+
+::: {.fragment .fade-in}
+Are we finished?
+:::
+
+::: {.fragment .fade-in}
+We measure *something*, so what about the part?
+:::
+
+##### Part to Part {.smaller}
+
+\begin{align}
+\sigma^2_{Part\; to \; Part} = \frac{MSA-MSAB}{b \times n}
+\end{align}
+
+$\sigma^2_{Part\; to \; Part}$
+:   Variance introduced by the parts
+
+$MSA$
+:   Mean of squares - A
+
+$MSAB$
+:   Mean squares of interaction - AB
+
+$b$
+:   number of appraisers - number of voltmeters: 2
+
+$n$
+:   number of replicated measures: 3
+
+##### Total Variability
+
+{{< include img/_gageRR_total_anim.qmd >}}
+
+#### Variance decomposition - the values
+
+```{r}
+raw_gagerr <- anova(lm(voltage ~ battery + voltmeter + battery * voltmeter,  data=ss.data.batteries))
+
+n <- 3
+
+a <- 3
+
+b <- 2
+
+```
+
+\begin{align}
+\sigma^2_{Repeatability} &= `r raw_gagerr[3][4,1] %>% round(.,digits = 4)` \nonumber \\
+\sigma^2_{Appraiser} &= `r ((raw_gagerr[3][2,1] - raw_gagerr[3][3,1])/(a*n))%>% round(.,digits = 4)` \nonumber \\
+\sigma^2_{Interaction} &= `r ((raw_gagerr[3][3,1]-raw_gagerr[3][3,1])/(n))%>% round(.,digits = 4)` <0 \rightarrow 0 \nonumber \\
+\sigma^2_{Reproducibility} &= `r ((raw_gagerr[3][2,1] - raw_gagerr[3][3,1])/(a*n))%>% round(.,digits = 4)` \nonumber \\
+\sigma^2_{Gage\;R\&R} &= `r (raw_gagerr[3][4,1] + (raw_gagerr[3][2,1] - raw_gagerr[3][3,1])/(a*n))%>% round(.,digits = 4)` \nonumber \\
+\sigma^2_{Part\; to \; Part} &= `r ((raw_gagerr[3][1,1] - raw_gagerr[3][3,1])/(b*n))%>% round(.,digits = 4)` \nonumber \\
+\sigma^2_{Total} &= `r ((raw_gagerr[3][1,1] - raw_gagerr[3][3,1])/(b*n) + raw_gagerr[3][4,1] + (raw_gagerr[3][2,1] - raw_gagerr[3][3,1])/(a*n))%>% round(.,digits = 4)` \nonumber
+\end{align}
+
+#### ANOVA
+
+{{< include img/_ANOVA_nd_anim.qmd >}}
+
+##### Sum of squared error (SSE) and Mean Squared Error (MSE)
+
+{{< include img/_SSE_anim.qmd >}}
+
+<!-- ##### ANOVA complete model -->
+
+<!-- ```{r} -->
+<!-- #| label: fig-anova-mdls-comp -->
+<!-- #| fig-cap: Computation of error for the complete model (mean per group as model) -->
+<!-- #| out-width: 75% -->
+
+<!-- load(here("data","drive_shaft_data.Rdata")) -->
+
+<!-- grp_dat <- drive_shaft %>% filter(group %in% c("group01","group04","group03")) %>%  -->
+<!--   ungroup() %>%  -->
+<!--   group_by(group) %>%  -->
+<!--   mutate( -->
+<!--     fit = mean(diameter), -->
+<!--     error = fit-diameter, -->
+<!--     sq_error = error^2 -->
+<!--   )  -->
+
+<!-- mean_dat <- drive_shaft %>% filter(group %in% c("group01","group04","group03")) %>%  -->
+<!--   mutate( -->
+<!--     fit = mean(diameter), -->
+<!--     error = fit-diameter, -->
+<!--     sq_error = error^2 -->
+<!--   ) -->
+
+<!-- mean_grp_dat <-  grp_dat %>%  -->
+<!--   group_by(group) %>%  -->
+<!--   summarise( -->
+<!--     mean_diameter = mean(diameter) -->
+<!--   ) -->
+
+<!-- grp_dat %>%  -->
+<!--   ggplot()+ -->
+<!--   geom_segment( -->
+<!--     aes( -->
+<!--       x = sample_no, -->
+<!--       xend = sample_no, -->
+<!--       y = fit, -->
+<!--       yend = diameter -->
+<!--     ) -->
+<!--   )+ -->
+<!--   geom_point( -->
+<!--     aes(x = sample_no,y = diameter) -->
+<!--   )+ -->
+<!--   geom_hline( -->
+<!--     data = mean_grp_dat, -->
+<!--     aes( -->
+<!--       yintercept = mean_diameter -->
+<!--       ) -->
+<!--     )+ -->
+<!--   facet_wrap( -->
+<!--     ~group)+ -->
+<!--   labs( -->
+<!--     title = "computations of error for the complete model", -->
+<!--     subtitle = "model = mean per group", -->
+<!--     x = "sample no", -->
+<!--     y = "diameter" -->
+<!--   )+ -->
+<!--   theme_few() -->
+
+<!-- ``` -->
+
+<!-- ##### ANOVA reduced model -->
+
+<!-- ```{r} -->
+<!-- #| label: fig-anova-mdls-red -->
+<!-- #| fig-cap: Computation of error for the reduced model (overall mean as model) -->
+<!-- #| out-width: 75% -->
+
+<!-- mean_dat %>%  -->
+<!--   ggplot()+ -->
+<!--   geom_segment( -->
+<!--     aes( -->
+<!--       x = sample_no, -->
+<!--       xend = sample_no, -->
+<!--       y = fit, -->
+<!--       yend = diameter -->
+<!--     ) -->
+<!--   )+ -->
+<!--   geom_point( -->
+<!--     aes(x = sample_no,y = diameter) -->
+<!--   )+ -->
+<!--   geom_hline( -->
+<!--     # aes( -->
+<!--       yintercept = mean_dat$fit[1], -->
+<!--       # linetype = "overall mean" -->
+<!--     # ) -->
+<!--   )+ -->
+<!--   facet_wrap( -->
+<!--     ~group -->
+<!--   )+ -->
+<!--   labs( -->
+<!--     title = "computations of error for the reduced model", -->
+<!--     subtitle = "model = overall mean", -->
+<!--     x = "sample no", -->
+<!--     y = "diameter" -->
+<!--   )+ -->
+<!--   theme_few() -->
+
+
+<!-- ``` -->
 
 # References
