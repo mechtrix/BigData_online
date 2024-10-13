@@ -43,4 +43,4 @@ website:
         href: chapters/chapter003/index.qmd
         contents: 
           - text: "Data Quality exercises in R"
-            href: https://mechtrix.github.io/BigData_exercises/data_sources.html
+            href: https://mechtrix.github.io/BigData_exercises/data_distributions.html
