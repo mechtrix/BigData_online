@@ -205,5 +205,15 @@
     "crumbs": [
       "Data Quality"
     ]
+  },
+  {
+    "objectID": "chapters/chapter003/index.html#data-quality-summary",
+    "href": "chapters/chapter003/index.html#data-quality-summary",
+    "title": "Data Quality",
+    "section": "Data Quality summary",
+    "text": "Data Quality summary\n\n\nData Quality is hard\nTop Down or Bottom up?\nsimple things go wrong in the real world\ntest stuff\nbe specific\nthere is no recipe\ngarbage in, garbage out\nclassic ways are not fancy, but useful. Use this to your advantage\nnever trust data\ninvest early, profit soon",
+    "crumbs": [
+      "Data Quality"
+    ]
   }
 ]

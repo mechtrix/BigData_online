@@ -32,6 +32,9 @@ library(ggh4x)
 library(gt)
 library(qqplotr)
 library(SixSigma)
+library(Hmisc)
+library(gtsummary)
+library(mice)
 
 ```
 
@@ -1285,5 +1288,1325 @@ mean_dat %>%
 
 
 ```
+
+##### F(isher) Disitribution
+
+```{r}
+#| include: false
+
+# create PRNG
+set.seed(123)
+
+
+# sample norms
+norms <- rnorm(2^16)
+norms_sq <- norms^2
+
+data_nomal <- data.frame(x = seq(-3, 3, by = 0.01), 
+                   y = dnorm(seq(-3, 3, by = 0.01))) %>% 
+  mutate(
+    x2 = x^2,
+    y2 = y^2
+  )
+
+plt1 <- ggplot(data.frame(norms),aes(x = norms))+
+  geom_ribbon(data = data_nomal,aes(x = x, ymax = y*19000,ymin = 0),fill = "azure3")+
+  geom_line(data = data_nomal,aes(x = x, y = y*19000))+
+  geom_histogram(alpha = 0.7,color = "white")+
+  scale_x_continuous(
+    expand = c(0,0,0,0),
+    breaks = seq(-5,5)
+  )+
+  scale_y_continuous(
+    expand = c(0,0,0.05,0),
+  )+
+  labs(title = "normally distributed, random data points (n=65536)",
+       x = "standard deviations",
+       y = "counts")+
+  theme_few()
+  
+plt2 <- ggplot(data.frame(norms_sq),aes(x = norms_sq))  +
+  geom_histogram(aes(y = ..density..))+
+  geom_density() +
+  scale_x_continuous(
+    expand = c(0,0,0,0),
+    limits = c(0,10)
+    # breaks = seq(-5,5)
+  )+
+  scale_y_continuous(
+    expand = c(0,0,0.05,0),
+  )+
+  labs(title = "squared normally distributed data",
+       x = "standard deviations"
+       )+
+  theme_few()
+
+
+plt3 <- data.frame(
+  dof = seq(2,20,2)
+  ) %>% 
+  
+  mutate(
+  x = list(seq(0,50,0.1)),
+  d = map2(x,dof,dchisq)
+) %>% 
+  mutate(dof = as.factor(dof)) %>% 
+  unnest(cols = c(x,d)) %>% 
+  ggplot(aes(x = x, y = d, linetype = dof))+
+  geom_path()+
+  scale_x_continuous(
+    expand = c(0,0,0,0)
+  )+
+  scale_y_continuous(
+    expand = c(0,0,0.05,0)
+  )+
+  labs(title = "PDF of Chi square distribution with varying dof",
+       )+
+  theme_few()
+
+
+```
+
+
+```{r,include=FALSE}
+
+x_vec <-  seq(0.1,2,0.01)
+
+comp_f <- function(dof1,dof2,x = seq(0.1,8,0.1)){
+  
+  d <- df(x = x, df1 = dof1, df2 = dof2)
+  
+}
+
+tmp <- expand_grid(
+  # dof1 = seq(2,30,3),
+  dof1 = c(1,5,10,15,20,25,30,50,100), 
+  dof2 = c(1,5,10,15,20,25,30,50,100),
+  # dof2 = seq(2,30,3)
+  ) %>% 
+  mutate(
+    x = list(x_vec),
+    d = map2(.x = dof1, .y = dof2, function(x,y) comp_f(dof1 = x,dof2 = y, x = x_vec))
+  ) %>% 
+  mutate(
+    dof1 = as.factor(dof1),
+    dof2 = as.factor(dof2)) %>% 
+  unnest(cols = c(d,x))
+
+
+
+plt_dof1_min <- tmp %>% 
+  filter(dof1==1) %>%
+  ggplot(aes(x = x, y = d))+#, linetype = dof1,color=dof2))+
+  geom_line()+
+  geom_vline(
+    data = tmp %>% 
+      filter(dof1==1) %>%
+      group_by(dof2) %>% 
+      summarise(
+        x = x[which.max(d)]),
+    aes(xintercept = x)
+    )+
+  geom_text(
+    data = tmp %>% 
+      filter(dof1==1) %>%
+      group_by(dof2) %>% 
+      summarise(
+        y = max(d),
+        x = x[which.max(d)]),
+    aes(x = x,y = y, label = round(y,digits = 2)),
+    nudge_x = 0.25,
+    nudge_y = 0.1,
+    )+
+  labs(
+    title = "varying dof2, dof1 = 1",
+  )+
+  theme_few()+
+  scale_y_continuous(
+    expand = c(0,0,0.05,0)
+  )+
+  facet_wrap(~dof2,labeller = label_both)
+
+
+plt_dof1_max <- tmp %>% 
+  filter(dof1==100) %>%
+  ggplot(aes(x = x, y = d))+#, linetype = dof1,color=dof2))+
+  geom_line()+
+  geom_vline(
+    data = tmp %>% 
+      filter(dof1==100) %>%
+      group_by(dof1) %>% 
+      summarise(
+        x = x[which.max(d)]),
+    aes(xintercept = x)
+    )+
+  labs(
+    title = "varying dof1, dof2 = 100",
+  )+
+  geom_text(
+    data = tmp %>% 
+      filter(dof1==100) %>%
+      group_by(dof2) %>% 
+      summarise(
+        y = max(d),
+        x = x[which.max(d)]),
+    aes(x = x,y = y, label = round(y,digits = 2)),
+    nudge_x = 0.25,
+    nudge_y = 0.1,
+    )+
+  labs(
+    title = "varying dof2, dof1 = 100",
+  )+
+  theme_few()+
+  scale_y_continuous(
+    expand = c(0,0,0.05,0)
+  )+
+  facet_wrap(~dof2,labeller = label_both)
+
+
+plt_dof2_min <- tmp %>% 
+  filter(dof2==1) %>%
+  ggplot(aes(x = x, y = d))+#, linetype = dof1,color=dof2))+
+  geom_line()+
+  geom_vline(
+    data = tmp %>% 
+      filter(dof2==1) %>%
+      group_by(dof1) %>% 
+      summarise(
+        x = x[which.max(d)]),
+    aes(xintercept = x)
+    )+
+  labs(
+    title = "varying dof1, dof2 = 1",
+  )+
+  geom_text(
+    data = tmp %>% 
+      filter(dof2==1) %>%
+      group_by(dof1) %>% 
+      summarise(
+        y = max(d),
+        x = x[which.max(d)]),
+    aes(x = x,y = y, label = round(y,digits = 2)),
+    nudge_x = 0.25,
+    nudge_y = 0.1,
+    )+
+  labs(
+    title = "varying dof1, dof2 = 1",
+  )+
+  theme_few()+
+  scale_y_continuous(
+    expand = c(0,0,0.05,0)
+  )+
+  facet_wrap(~dof1,labeller = label_both)
+
+
+plt_dof2_max <- tmp %>% 
+  filter(dof2==100) %>%
+  ggplot(aes(x = x, y = d))+#, linetype = dof1,color=dof2))+
+  geom_line()+
+  geom_vline(
+    data = tmp %>% 
+      filter(dof2==100) %>%
+      group_by(dof1) %>% 
+      summarise(
+        x = x[which.max(d)]),
+    aes(xintercept = x)
+    )+
+  labs(
+    title = "varying dof1, dof2 = 100",
+  )+
+  geom_text(
+    data = tmp %>% 
+      filter(dof2==100) %>%
+      group_by(dof1) %>% 
+      summarise(
+        y = max(d),
+        x = x[which.max(d)]),
+    aes(x = x,y = y, label = round(y,digits = 2)),
+    nudge_x = 0.25,
+    nudge_y = 0.1,
+    )+
+  labs(
+    title = "varying dof1, dof2 = 1",
+  )+
+  theme_few()+
+  scale_y_continuous(
+    expand = c(0,0,0.05,0)
+  )+
+  facet_wrap(~dof1,labeller = label_both)
+
+
+max_dat <- expand_grid(
+  # dof1 = seq(2,30,3),
+  dof1 = seq(1,100), 
+  dof2 = seq(1,100),
+  # dof2 = seq(2,30,3)
+  ) %>% 
+  mutate(
+    x = list(x_vec),
+    d = map2(.x = dof1, .y = dof2, function(x,y) comp_f(dof1 = x,dof2 = y, x = x_vec))
+  ) %>% 
+  mutate(
+    dof1 = as.factor(dof1),
+    dof2 = as.factor(dof2)) %>% 
+  unnest(cols = c(d,x)) %>% 
+  group_by(dof1,dof2) %>% 
+  summarise(
+    max_d = max(d),
+    max_x = x[which.max(d)],
+    mean_d = mean(d)
+  ) %>% 
+  mutate(
+    dof1 = as.numeric(as.character(dof1)),
+    dof2 = as.numeric(as.character(dof2)),
+  ) 
+
+plt_max <- max_dat %>% 
+  ggplot(aes(x = dof1, y = dof2))+
+  geom_tile(aes(fill = max_d))+
+  geom_contour(aes(z = max_d,color = max_d),color = "white",bins = 20)+
+  labs(
+    title = "maximum density vs. dof1 and dof2"
+  )+
+  scale_fill_gradient2(low = "white", high = 'black')+
+  scale_x_continuous(expand = c(0,0,0,0))+
+  scale_y_continuous(expand = c(0,0,0,0))+
+  theme_few(
+    base_size = 8
+  )
+
+plt_max_line <- tmp %>% 
+  ggplot(aes(x = x, y = d))+
+  geom_path()+
+  geom_vline(
+    data = tmp %>% 
+      # filter(dof2==1) %>%
+      group_by(dof1,dof2) %>% 
+      summarise(
+        x = x[which.max(d)]),
+    aes(xintercept = x)
+    )+
+  labs(
+    title = "F - density plots of dof1 vs. dof2"
+  )+
+  facet_grid(dof1~dof2)+
+  theme_few(
+    base_size = 8
+  )
+
+
+  
+```
+
+::: {.r-stack}
+
+::: {.fragment .fade-out}
+
+* is a "new" distribution function that arises from **two** randomly distributed variables
+* "connects" two distributions functions 
+
+\begin{align}
+F_{m,n} = \frac{\chi^2_m/m}{\chi^2_n/n} \nonumber
+\end{align}
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+![](img/chi_question.svg)
+
+:::
+
+::: {.fragment .fade-in-then-out}
+```{r}
+plt1
+```
+
+:::
+
+::: {.fragment .fade-in-then-out}
+```{r}
+plt2
+```
+
+:::
+
+::: {.fragment .fade-in-then-out}
+```{r}
+plt3
+```
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+\begin{align}
+F_{m,n} = \frac{\chi^2_m/m}{\chi^2_n/n} \nonumber
+\end{align}
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+```{r}
+#| out-width: 100%
+#| 
+plt_max_line
+```
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+```{r}
+#| out-width: 100%
+plt_max
+```
+
+:::
+
+:::
+
+#### Gage R&R "standardized output"
+
+```{r}
+#| echo: false
+#| output: false
+
+my.rr <- ss.rr(var = voltage, part = battery,appr = voltmeter,data = ss.data.batteries,main = "Six Sigma Gage R&R Measure",sub = "Batteries Project MSA",print_plot = FALSE,lsl = 1, usl = 2)
+
+```
+
+##### AVNOVA table
+
+```{r}
+my.rr$anovaTable
+```
+
+##### ANOVA reduced model
+
+```{r}
+my.rr$anovaRed
+```
+
+##### Variance decomposition
+
+```{r}
+my.rr$varComp
+```
+
+##### Study Variance
+
+```{r}
+my.rr$studyVar
+```
+
+##### ndc - number of distinct categories
+
+```{r}
+my.rr$ncat
+```
+
+##### standardized graphical output
+
+![](img/msa2_ss.png)
+
+#### Gage R&R in the classroom
+
+* 3 parts
+* 3 volunteers
+* 1 recorder
+* 1 gage
+* 10 experiments
+* 3 repetitions
+
+* randomize the trials
+* now do it
+
+
+
+#### Attribute Agreement Analysis
+
+Attribute Agreement Analysis (AAA) is a statistical method used to evaluate the agreement among multiple observers when assigning categorical ratings to items. 
+It involves defining attributes, selecting observers, collecting ratings, and analyzing the data to determine the level of agreement. 
+This helps ensure the reliability of assessments and informs decision-making processes.
+
+##### Setup
+
+![](img/aaa.svg)
+
+#### Results
+
+```{r}
+#| include: false
+
+aaa_raw <- data.frame(
+  appraiser = c(1,1,1,2,2,2,1,1,1,2,2,2),
+  runs = c(1,1,1,1,1,1,2,2,2,2,2,2),
+  units = c(3,1,2,3,1,2,3,1,2,3,1,2)
+)
+
+reference <- c(
+    "bad",
+    "good",
+    "bad",
+    "bad",
+    "good",
+    "bad",
+    "good",
+    "bad",
+    "bad",
+    "good",
+    "bad",
+    "bad"
+  )
+
+results <- c(
+  "bad",
+  "good",
+  "good",
+  "good",
+  "good",
+  "good",
+  "good",
+  "bad",
+  "bad",
+  "bad",
+  "bad",
+  "good"
+)
+
+
+aaa_df <- 
+  bind_cols(
+    aaa_raw,
+    reference = reference,
+    results = results
+  )
+
+counts <- aaa_df %>% 
+  mutate(ref_res = if_else(reference == results, 1, 0))
+
+overall_agreement <- 
+  counts %>% 
+  summarise(
+    sum_ref_res = sum(ref_res),
+    count_n = n()
+  ) %>% 
+  mutate(
+    overall_agreement = (sum_ref_res/count_n)*100 
+  )%>% pull(overall_agreement) %>% round(.,digits = 1)
+
+single_appraiser_agreement <- 
+  counts %>% 
+  group_by(
+    appraiser
+  ) %>% 
+  summarise(
+    sum_ref_res = sum(ref_res),
+    count_n = n()
+  ) %>% 
+  mutate(
+    overall_agreement = (sum_ref_res/count_n)*100 %>% round(.,digits = 1)
+  ) 
+
+reference_agreement <- 
+  counts %>% 
+  group_by(
+    reference
+  ) %>% 
+  summarise(
+    sum_ref_res = sum(ref_res),
+    count_n = n()
+  ) %>% 
+  mutate(
+    overall_agreement = (sum_ref_res/count_n)*100 %>% round(.,digits = 1)
+  ) 
+
+run_agreement <- 
+  counts %>% 
+  group_by(
+    runs
+  ) %>% 
+  summarise(
+    sum_ref_res = sum(ref_res),
+    count_n = n()
+  ) %>% 
+  mutate(
+    overall_agreement = (sum_ref_res/count_n)*100 %>% round(.,digits = 1)
+  ) 
+
+
+appraiser_ref_agreement <- 
+  counts %>% 
+  group_by(
+    appraiser,
+    reference
+  ) %>% 
+  summarise(
+    sum_ref_res = sum(ref_res),
+    count_n = n()
+  ) %>% 
+  mutate(
+    overall_agreement = (sum_ref_res/count_n)*100 %>% round(.,digits = 1)
+  ) 
+
+```
+
+```{r}
+#| label: tbl-aaa
+
+aaa_df %>% 
+  gt()
+
+```
+
+##### Overall agreement
+
+\begin{align}
+Agreement_{overall} = 100 \times \frac{X}{N}
+\end{align}
+
+$X$
+:   number of times appraisers agree with reference
+
+$N$
+:   number of rows with valid data
+
+::: {.fragment .fade-in}
+
+\begin{align}
+Agreement_{overall} = `r overall_agreement`\% \nonumber
+\end{align}
+
+:::
+
+##### Appraiser Agreement
+
+\begin{align}
+Agreement_{appraiser} = 100 \times \frac{X}{N}
+\end{align}
+
+$X$
+:   number of times the single appraisers agrees with reference
+
+$N_i$
+:   number of runs for the $i$-th appraiser
+
+::: {.fragment .fade-in}
+
+\begin{align}
+Appraiser_{1} &= `r single_appraiser_agreement$overall_agreement[[1]] %>% round(.,digits = 1)`\% \nonumber \\
+Appraiser_{2} &= `r single_appraiser_agreement$overall_agreement[[2]] %>% round(.,digits = 1)`\% \nonumber
+\end{align}
+
+:::
+
+##### Reference Agreement
+
+\begin{align}
+Agreement_{reference} = 100 \times \frac{X}{N}
+\end{align}
+
+$X$
+:   number of times result agrees with the reference
+
+$N_i$
+:   number of runs for the $i$-th result
+
+::: {.fragment .fade-in}
+
+\begin{align}
+Reference_{bad} &= `r reference_agreement$overall_agreement[[1]] %>% round(.,digits = 1)`\% \nonumber \\
+Reference_{good} &= `r reference_agreement$overall_agreement[[2]] %>% round(.,digits = 1)`\% \nonumber
+\end{align}
+
+:::
+
+##### Run agreement
+
+\begin{align}
+Agreement_{run} = 100 \times \frac{X}{N}
+\end{align}
+
+$X$
+:   number of reference agreement in runs
+
+$N_i$
+:   number of runs for the $i$-th run
+
+::: {.fragment .fade-in}
+
+\begin{align}
+Reference_{1} &= `r run_agreement$overall_agreement[[1]] %>% round(.,digits = 1)`\% \nonumber \\
+Reference_{2} &= `r run_agreement$overall_agreement[[2]] %>% round(.,digits = 1)`\% \nonumber
+\end{align}
+
+:::
+
+##### Appraiser and reference agreement
+
+\begin{align}
+Agreement_{appraiser \; ref} = 100 \times \frac{X}{N}
+\end{align}
+
+$X$
+:   number of reference agreement in for appraisers in reference class
+
+$N_i$
+:   number of agreements for the $i$-th appraiser and the $i$-th standard
+
+
+```{r}
+#| label: tbl-app-ref-agree
+#| out-width: 75%
+
+appraiser_ref_agreement %>% 
+  select(
+    appraiser,
+    reference,
+    overall_agreement
+  ) %>% 
+  mutate(
+    overall_agreement = overall_agreement/100
+  ) %>% 
+  ungroup() %>% 
+  gt() %>% 
+  fmt_percent(columns = overall_agreement) 
+
+```
+
+##### graphical representation
+
+::: {.r-stack}
+
+::: {.fragment .fade-out}
+
+```{r}
+#| out-width: 95%
+
+plt_sngl_app <- single_appraiser_agreement %>% 
+  ggplot(
+    aes(
+      x = appraiser,
+      y = overall_agreement
+    )
+  )+
+  geom_col()+
+  scale_y_continuous(
+    expand = c(0,0,0.05,0)
+  )+
+  scale_x_continuous(
+    breaks = c(1,2)
+  )+
+  labs(
+    title = "single appraiser agreement to reference"
+  )+
+  theme_minimal(base_size = 20)
+
+plt_sngl_app
+
+```
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+```{r}
+#| out-width: 95%
+
+plt_ref_agr <- reference_agreement %>% 
+  ggplot(
+    aes(
+      x = reference,
+      y = overall_agreement
+    )
+  )+
+  geom_col()+
+  scale_y_continuous(
+    expand = c(0,0,0.05,0)
+  )+
+  labs(
+    title = "single reference agreement to reference"
+  )+
+  theme_minimal(base_size = 20)
+
+plt_ref_agr
+
+```
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+```{r}
+#| out-width: 95%
+
+plt_sngl_run <- run_agreement %>% 
+  ggplot(
+    aes(
+      x = runs,
+      y = overall_agreement
+    )
+  )+
+  geom_col()+
+  scale_y_continuous(
+    expand = c(0,0,0.05,0)
+  )+
+  scale_x_continuous(
+    breaks = c(1,2)
+  )+
+  labs(
+    title = "single run agreement to reference"
+  )+
+  theme_minimal(base_size = 20)
+
+plt_sngl_run
+
+```
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+
+```{r}
+#| out-width: 75%
+
+plt_appr_ref_agr <- appraiser_ref_agreement %>% 
+  ggplot(
+    aes(
+      x = appraiser,
+      y = overall_agreement,
+      fill = reference
+    )
+  )+
+  geom_col(position = "dodge")+
+  scale_y_continuous(
+    expand = c(0,0,0.05,0)
+  )+
+  scale_x_continuous(
+    breaks = c(1,2)
+  )+
+  scale_fill_brewer(
+    palette = "Set1"
+  )+
+  theme_minimal(base_size = 20)
+
+
+plt_appr_ref_agr
+
+```
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+```{r}
+#| layout-ncol: 2
+
+plt_sngl_app
+plt_sngl_run
+plt_ref_agr
+plt_appr_ref_agr
+
+```
+
+:::
+
+:::
+
+### Missing values
+
+::: {.r-stack}
+
+::: {.fragment .fade-out}
+
+![](img/missing_values_01.gif)
+
+:::
+
+::: {.fragment .fade-in}
+
+![](img/missing_values_02.gif)
+
+:::
+
+:::
+
+#### What is a missing value?
+
+::: {.r-fit-text .v-c}
+
+Missing data is defined as the values or data that is not stored (or not present) for some variable/s in the given dataset.
+
+:::
+
+#### Representation
+
+::: {.incremental}
+
+1. `Null` or `NA`
+
+2. Blank or Empty Cells
+
+3. Placeholder Values: `-9999`, `-1`, values that are unlikely to occur in the actual data.
+
+4. Special Characters: `?`, `*`
+
+
+:::
+
+#### Types of missing values 
+
+{{< include img/_missing_data_types_anim.qmd >}}
+
+::: {.attribution}
+[@ChristinaMack2018]
+:::
+
+##### (M)issing (C)ompletly (A)t (R)andom 
+
+::: {.incremental}
+
+- same probability of data missing for all observations
+- completely independent of other data (no pattern)
+- human error
+- system/equipment failure
+- statistical analysis remains unbiased
+
+:::
+
+::: {.attribution}
+[@ChristinaMack2018]
+:::
+
+##### (M)issing (A)t (R)andom 
+
+::: {.incremental}
+
+- can be explained by other variables (on which information is available)
+- only missing in sub-samples of the data
+- e.g. `Gender` is complete but `Age` is not
+- often Females do not want to reveal their age
+- probability depends on variable `Gender` (but missing value can not be predicted)
+
+:::
+
+::: {.attribution}
+[@ChristinaMack2018]
+:::
+
+##### (M)issing (N)ot (A)t (R)andom 
+
+::: {.incremental}
+
+- not MCAR or MAR
+- probability depends on unobserved data
+- other observed data **can not** explain it
+- e.g. High-income individuals may be more likely to withhold income information
+- this may be due to concerns about taxation, privacy or social stigma
+- the probability of data missing directly depends on the data itself
+
+:::
+
+::: {.attribution}
+[@ChristinaMack2018]
+:::
+
+#### treating missing values 
+
+::: {.incremental}
+
+- Deleting missing values
+- Imputing missing values
+- Imputing missing values for categorical features
+- Use as feature
+
+:::
+
+::: {.attribution}
+[@Little_2002]
+:::
+
+##### Deleting {.smaller}
+
+Pros:
+
+::: {.incremental}
+
+* Easy
+* Improves the quality of the dataset by removing incomplete or unreliable observations.
+* Prevents bias that may arise from imputing missing values, ensuring more accurate results.
+* Reduces computational complexity, as imputation methods can be resource-intensive.
+
+:::
+
+Cons:
+
+::: {.incremental}
+
+* Reduces the size of the dataset, potentially leading to loss of information and statistical power.
+* Deletes potentially valuable data points, especially if missingness is not completely random.
+* Can introduce bias if missingness is related to the outcome or other variables of interest.
+* Eliminates the opportunity to explore patterns or reasons behind missingness, which could provide valuable insights.
+
+:::
+
+##### Imputing missing values 
+
+
+![](img/ch02-publications-1.png)
+
+
+::: {.attribution}
+[@flexible_buurengroup_2021]
+:::
+
+##### Mean/median imputing (Continous Data)
+
+::: {.r-stack}
+
+::: {.fragment .fade-out}
+
+```{r}
+#| output: true
+#| echo: true
+
+# Create a vector with missing values
+vec <- c(1, 2, NA, 4, NA, 5)
+
+# Check for missing values
+is.na(vec)
+        
+```
+
+```{r}
+#| out-width: 75%
+
+data.frame(
+  raw_vec = vec
+  ) %>% 
+  rowid_to_column(var = "varid") %>% 
+  ggplot(
+    aes(
+      x = varid
+    )
+  )+
+  geom_point(
+    aes(
+      y = raw_vec
+    ),
+    size = 3,
+    shape = 8,
+    stroke = 2
+  )+
+  geom_vline(
+    xintercept = c(3,5),
+    linewidth = 2
+  )+
+  scale_x_continuous(
+    breaks = seq(0,10)
+  )+
+  labs(
+    title = "raw data with imputed values"
+  )+
+  theme_bw(
+    base_size = 20
+  )
+
+```
+
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+```{r}
+#| echo: true
+#| output: true
+
+imputed_vec <- impute(vec, fun = mean)
+imputed_vec
+
+```
+
+
+```{r}
+#| out-width: 75%
+
+
+
+data.frame(
+  imputed_vec = imputed_vec,
+  raw_vec = vec,
+  spec = c("raw","raw","imputed","raw","imputed","raw")
+  ) %>% 
+  rowid_to_column(var = "varid") %>% 
+  ggplot(
+    aes(
+      x = varid
+    )
+  )+
+  geom_point(
+    aes(
+      y = imputed_vec,
+      color = spec
+    ),
+    size = 3,
+    stroke = 2,
+    shape = 2
+  )+
+  labs(
+    title = "raw data with missing values",
+    color = ""
+  )+
+  theme_bw(
+    base_size = 20
+  )+
+  scale_color_brewer(
+    palette = "Set1"
+  )+
+  theme(
+    legend.position = "bottom"
+  )
+
+```
+
+:::
+:::
+
+
+##### Mode imputing (Catgorical Data)
+
+```{r}
+#| include: false
+
+getmode <- function(v){
+  v=v[nchar(as.character(v))>0]
+  uniqv <- unique(v)
+  uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+
+
+```
+
+
+::: {.r-stack}
+
+::: {.fragment .fade-out}
+
+```{r}
+cat_vec <- c("A", "B", NA, "B", "A", "A")
+
+# Create a vector with missing values
+cat_df <- data.frame(
+  category = cat_vec
+  ) 
+
+cat_df %>% gt()
+
+```
+
+
+```{r}
+
+cat_df %>% 
+  tbl_summary()
+```
+
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+```{r}
+cat_vec <- c("A", "B", NA, "B", "A", "A") %>% impute(.,fun = getmode)
+
+# Create a vector with missing values
+cat_df <- data.frame(
+  category = cat_vec
+  ) 
+
+cat_df %>% gt()
+
+```
+
+
+```{r}
+
+cat_df %>% 
+  mutate(category = as.character(category)) %>% 
+  tbl_summary()
+```
+
+
+:::
+
+:::
+
+##### Regression imputing (Continous Data)
+
+::: {.r-stack}
+
+::: {.fragment .fade-out}
+
+```{r}
+#| output: true
+#| echo: true
+#| include: false
+
+# Create a vector with missing values
+vec <- c(1, 2, NA, 4, NA, 5)
+
+
+miss_df <- data.frame(
+  raw_vec = vec
+  ) %>% 
+  rowid_to_column(var = "varid") 
+
+fit <- with(miss_df, lm(raw_vec ~ varid))
+
+```
+
+```{r}
+#| out-width: 95%
+#| fig-align: "center"
+
+miss_df %>% 
+  ggplot(
+    aes(
+      x = varid
+    )
+  )+
+  geom_point(
+    aes(
+      y = raw_vec
+    ),
+    size = 3,
+    shape = 8,
+    stroke = 2
+  )+
+  geom_vline(
+    xintercept = c(3,5),
+    linewidth = 2
+  )+
+  scale_x_continuous(
+    breaks = seq(0,10)
+  )+
+  labs(
+    title = "raw data with missing values"
+  )+
+  theme_bw(
+    base_size = 20
+  )
+
+```
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+```{r}
+#| output: true
+#| echo: true
+#| include: false
+
+# Create a vector with missing values
+
+imp <- mice(miss_df, method = "norm.predict", m = 1, maxit = 1)
+
+new_df <- complete(imp) %>% 
+  add_column(
+    spec = c("raw","raw","imputed","raw","imputed","raw")
+    )
+
+```
+
+```{r}
+#| out-width: 95%
+
+new_df %>% 
+  ggplot(
+    aes(
+      x = varid
+    )
+  )+
+  geom_point(
+    aes(
+      y = raw_vec,
+      color = spec
+    ),
+    size = 3,
+    stroke = 2,
+    shape = 2
+  )+
+  labs(
+    title = "raw data with imputed values",
+    color = ""
+  )+
+  theme_bw(
+    base_size = 20
+  )+
+  scale_x_continuous(
+    breaks = seq(0,10)
+  )+
+  scale_color_brewer(
+    palette = "Set1"
+  )+
+  theme(
+    legend.position = "bottom"
+  )
+
+
+```
+
+:::
+
+:::
+
+##### Imputation is not prediction
+
+::: {style="font-size: 85%;"}
+
+Assessing the discrepancy between true data and the imputed data may seem a simple and attractive way to select the best imputation method. 
+
+Selecting such methods may be harmful as these might increase the rate of false positives. 
+
+In essence, there was not really any information missing in the first place, it was only coded in a different form.
+
+:::
+
+:::{.r-stack}
+
+::: {style="font-size: 120%;"}
+
+Imputation is not prediction.
+
+:::
+
+:::
+
+::: {.attribution}
+[@flexible_buurengroup_2021]
+:::
+
+
+## Data Quality summary {.smaller}
+
+::: {.incremental}
+
+- Data Quality is hard
+- Top Down or Bottom up?
+- simple things go wrong in the real world
+- test stuff
+- be specific
+- there is no recipe
+- garbage in, garbage out
+- classic ways are not fancy, but useful. Use this to your advantage
+- never trust data
+- invest early, profit soon
+
+:::
 
 # References
