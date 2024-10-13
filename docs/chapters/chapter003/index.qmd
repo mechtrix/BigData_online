@@ -30,6 +30,7 @@ library(SensorLab)
 library(rstatix)
 library(ggh4x)
 library(gt)
+library(qqplotr)
 
 ```
 
@@ -720,9 +721,39 @@ p_dens2
 
 :::
 
+::: {.fragment .fade-in}
+
+
+```{r}
+#| out-width: 95%
+
+
+# qq_data <- data.frame(
+#   dataset = measured_data
+# )
+# 
+# glimpse(measured_data)
+
+measured_data |>
+  ggplot(
+    aes(
+      sample = measured_data
+    )
+  )+
+  qqplotr::stat_qq_band()+
+  qqplotr::stat_qq_line()+
+  qqplotr::stat_qq_point()+
+  theme_minimal(
+    base_size = 15
+  )
+
+```
+
 :::
 
-##### Formal test for distribution [@shapiro1965analysis]
+:::
+
+##### Formal test for distribution 
 
 ::: {.incremental}
 
@@ -744,6 +775,10 @@ measured_data %>%
 ```
 
 
+:::
+
+::: {.attribution}
+[@shapiro1965analysis]
 :::
 
 ##### $C_g$ and $C_{gk}$
