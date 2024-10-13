@@ -1,0 +1,48 @@
+```yaml { .animate src="img/SixSigma.svg"}
+setup:
+  - element: "#LSL"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "0"
+  - element: "#USL"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "1"
+  - element: "#nd"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "2"        
+  - element: "#Mean"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "3"
+  - element: "#LSLSix"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "4"
+  - element: "#USLSix"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "5"
+  - element: "#SixLSL"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "6"
+  - element: "#SixUSL"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "7"
+  - element: "#TwelveSig"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "8"        
+```

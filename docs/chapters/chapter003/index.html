@@ -449,6 +449,398 @@ International Standards Organization
 <p><span class="citation" data-cites="iso8000">(<a href="#/references" role="doc-biblioref" onclick="">ISO 2022</a>)</span></p>
 </div>
 </section>
+<section id="part-1-general-requirements" class="title-slide slide level3 smaller center">
+<h3>Part 1: General Requirements</h3>
+<div>
+<ul>
+<li class="fragment">Part 1.a The master data message shall unambiguously state all information necessary for the receiver to determine its meaning</li>
+<li class="fragment">Part 1.b A formal syntax must be specified using a formal notation</li>
+<li class="fragment">Part 1.c Any data specification required by the message shall be in a computer interpretable language</li>
+<li class="fragment">Part 1.d The message must explicitly indicate both the data specifications it fulfills and the formal syntax (or syntaxes) to which it complies</li>
+<li class="fragment">Part 1.e It must be possible to check the correctness of the master data message against both its formal syntax and its data specifications</li>
+<li class="fragment">Part 1.f The references within the master data message to data dictionary entries must be in the form of unambiguous identifiers conforming to an internationally recognized scheme</li>
+</ul>
+</div>
+</section>
+
+<section id="part-2-syntax-of-the-message" class="title-slide slide level3 center">
+<h3>Part 2: Syntax of the message</h3>
+<div>
+<ul>
+<li class="fragment">The message shall contain in its header a reference to the formal syntax to which it complies.</li>
+<li class="fragment">The reference shall be an unambiguous identifier for the specific version of the formal syntax used to encode the message.</li>
+<li class="fragment">The formal syntax shall be available to all interested parties.</li>
+<li class="fragment"><code>&lt;?xml version=1.0”?&gt;</code></li>
+</ul>
+</div>
+</section>
+
+<section id="part-3-semantic-encoding" class="title-slide slide level3 smaller center">
+<h3>Part 3: Semantic encoding</h3>
+<ul>
+<li>Part 1.f The references within the master data message to data dictionary entries must be in the form of unambiguous identifiers conforming to an internationally recognized scheme</li>
+</ul>
+<dl>
+<dt>URI</dt>
+<dd>
+Uniform Resource Identifier - a unique sequence of characters that identifies an abstract or physical resource, such as resources on a webpage, mail address, phone number, books, real-world objects such as people and places, concepts.
+</dd>
+<dt>RFC</dt>
+<dd>
+Request for Comments - the first technical specifications of the inner workings of the internet <a href="https://www.rfc-editor.org/rfc/rfc1149.txt">RFC 1149—A standard for the transmission of IP datagrams on avian carriers</a>
+</dd>
+</dl>
+</section>
+
+<section id="semantic-encoding-example" class="title-slide slide level3 center">
+<h3>Semantic encoding example</h3>
+<p>(property1, value1), (property2, value2), ., (propertyN, valueN)</p>
+<p><del>Message: (Name, “John Doe”), (Income, “A”), …</del></p>
+<p>Message: (ICTIP.Property.ABC.101, “John Doe”), (ICTIP.Property.ABC.105, “A”), …</p>
+</section>
+<section id="data-dictionary" class="title-slide slide level4 center">
+<h4>Data dictionary!!!</h4>
+<div>
+<ol type="1">
+<li class="fragment"><p>unique identifier (URI) - <a href="https://datatracker.ietf.org/doc/html/rfc3986">RFC 3986</a></p></li>
+<li class="fragment"><p>term (name)</p></li>
+<li class="fragment"><p>clear definition</p></li>
+</ol>
+</div>
+<pre><code>Identifier: ICTIP.Property.ABC.105
+Term: Individual_Income_Bracket
+Definition:  Range of individual income given in increments of $25,000 starting at $0 and coded with single letters “A”, “B”, “C”, “D”, and “E” 
+“A” for [0 - 25,000]
+“B” for [25,001 - 50,000]
+“C” for [50,001 - 75,000]
+“D” for [75,001 - 100,000]
+“E” for [100,001 and above]</code></pre>
+</section>
+
+
+
+<section id="data-quality-1" class="title-slide slide level2 smaller center">
+<h2>Data Quality</h2>
+<p>“… Data are of high quality if they are “Fit for Use” in their intended operational, decision-making and other roles. … ”</p>
+
+<img data-src="img/data_quality_dimensions.svg" class="quarto-figure quarto-figure-center r-stretch"><div class="attribution">
+<p><span class="citation" data-cites="978-0-387-69502-0">(<a href="#/references" role="doc-biblioref" onclick="">Herzog, Scheuren, and Winkler May </a>)</span></p>
+</div>
+</section>
+
+<section id="data-quality-issues" class="title-slide slide level2 center">
+<h2>Data Quality issues</h2>
+<div>
+<ul>
+<li class="fragment"><a href="https://www.bbc.com/news/uk-16409480?utm_source=SolvinFinance&amp;utm_medium=Blog_Post&amp;utm_campaign=The_Wall_of_Shame_for_the_Worst_Excel_Errors">Data Entry for the London Summer Olympics</a>
+<ul>
+<li class="fragment">an employee simple typed <span class="math inline">\(20,000\)</span> seats available, while there were only <span class="math inline">\(10,000\)</span></li>
+<li class="fragment">buyers were able to exchange the already bought tickets</li>
+</ul></li>
+<li class="fragment"><a href="https://en.wikipedia.org/wiki/2012_JPMorgan_Chase_trading_loss">The London Whale</a>
+<ul>
+<li class="fragment">using a risk model that involved copy and pasting different multiple spreadsheats</li>
+<li class="fragment">not only were <span class="math inline">\(\$2bn\)</span> losses wrongly calculated, they were actually counted as gains summing up to a loss of <span class="math inline">\(\$6.2bn\)</span></li>
+</ul></li>
+</ul>
+</div>
+</section>
+
+<section id="data-quality-tools" class="title-slide slide level2 center">
+<h2>Data Quality Tools</h2>
+
+</section>
+<section id="data-elements" class="title-slide slide level3 center">
+<h3>Data Elements</h3>
+
+<img data-src="img/data_elements.png" class="r-stretch"></section>
+<section id="data-types" class="title-slide slide level4 center">
+<h4>Data Types</h4>
+
+<img data-src="img/013_DataTypes.svg" class="r-stretch quarto-figure-center"><p class="caption">Possible Data Type</p></section>
+
+<section id="nominal-data" class="title-slide slide level4 center">
+<h4>Nominal Data</h4>
+
+<img data-src="img/014_NominalData.svg" class="r-stretch quarto-figure-center"><p class="caption">Examples of Nominal Data</p></section>
+
+<section id="ordinal-data" class="title-slide slide level4 center">
+<h4>Ordinal Data</h4>
+
+<img data-src="img/015_OrdinalData.svg" class="r-stretch quarto-figure-center"><p class="caption">Example Ordinal Data</p></section>
+
+<section id="discrete-data" class="title-slide slide level4 center">
+<h4>Discrete Data</h4>
+
+<img data-src="img/016_DiscreteData.svg" class="r-stretch quarto-figure-center"><p class="caption">Example Discrete Data</p></section>
+
+<section id="continous-data" class="title-slide slide level4 center">
+<h4>Continous Data</h4>
+
+<img data-src="img/017_ContinousData.svg" class="r-stretch quarto-figure-center"><p class="caption">Example Continous Data</p><p>“… All actual sample spaces are discrete, and all observable random variables have discrete distributions. The continuous distribution is a mathematical construction, suitable for mathematical treatment, but not practically observable. …”</p>
+<div class="attribution">
+<p><span class="citation" data-cites="Bibby_1980">(<a href="#/references" role="doc-biblioref" onclick="">J. Bibby 1980</a>)</span></p>
+</div>
+</section>
+
+
+<section id="requirements-documents" class="title-slide slide level3 center">
+<h3>Requirements Documents</h3>
+<div>
+<ul>
+<li class="fragment">Why should the database be established?</li>
+<li class="fragment">How are the data to be collected?</li>
+<li class="fragment">How do analysts plan to use the data?</li>
+<li class="fragment">What database-design issues may affect these data uses?</li>
+</ul>
+</div>
+</section>
+
+<section id="tests" class="title-slide slide level3 center">
+<h3>Tests</h3>
+
+</section>
+<section id="deterministic-tests" class="title-slide slide level4 center">
+<h4>Deterministic Tests</h4>
+<div>
+<ul>
+<li class="fragment">Range Test</li>
+<li class="fragment">If-then Test</li>
+<li class="fragment">Ratio Control Test (similar to range test)</li>
+<li class="fragment">Zero Control Test (the components of a sum a listed seperartly)</li>
+<li class="fragment">Other internal consistency tests</li>
+</ul>
+</div>
+</section>
+
+<section id="statistical-tests" class="title-slide slide level4 center">
+<h4>Statistical Tests</h4>
+<div>
+<ul>
+<li class="fragment">Outlier detection
+<ul>
+<li class="fragment">well covered and not detailed here</li>
+</ul></li>
+<li class="fragment">(E)xploratory (D)ata (A)nalysis</li>
+</ul>
+</div>
+</section>
+
+<section id="minimizing-processing-errors" class="title-slide slide level4 center">
+<h4>Minimizing Processing Errors</h4>
+<div>
+<ul>
+<li class="fragment"><p>“… review of the codes assigned on a schedule is oftentimes not a matter of correcting wrong codes, but merely a matter of honest differences of opinion between coder and reviewer. …”</p></li>
+<li class="fragment"><p>“… even though the two sets of instructions supposedly say the same thing in different words. …”</p></li>
+<li class="fragment"><p>“… it is impossible to define a perfect job of coding except in terms of the <span style="color:red;">distributions</span> produced because there is no way of determining whether the individual codes have been assigned correctly. …”</p></li>
+</ul>
+</div>
+<div class="attribution">
+<p><span class="citation" data-cites="DemingUnknownTitle2006">(<a href="#/references" role="doc-biblioref" onclick="">Deming 2006</a>)</span></p>
+</div>
+</section>
+
+<section id="recommendations" class="title-slide slide level4 center">
+<h4>Recommendations</h4>
+<div>
+<ul>
+<li class="fragment"><p>Readily correct obvious errors that are easy to fix</p></li>
+<li class="fragment"><p>Preserve the orginal dataset (Excel)</p></li>
+<li class="fragment"><p>Save intermediate versions (Version Control)</p></li>
+<li class="fragment"><p>Do not over edit.</p></li>
+<li class="fragment"><p>Do consistency checks.</p></li>
+<li class="fragment"><p>Build in redundancy (ZIP Code AND postal adress)</p></li>
+</ul>
+</div>
+<div class="attribution">
+<p><span class="citation" data-cites="978-0-387-69502-0">(<a href="#/references" role="doc-biblioref" onclick="">Herzog, Scheuren, and Winkler May </a>)</span></p>
+</div>
+</section>
+
+
+<section id="measuring-data-quality" class="title-slide slide level3 center">
+<h3>Measuring Data Quality</h3>
+<div>
+<ul>
+<li class="fragment"><p>“… trust and data quality are inextricably linked …”</p></li>
+<li class="fragment"><p>“… The business user should invest in, on a prioritized basis, establishing data quality metrics for datasets and stores of interest, as well as in building data quality reporting processes for them. …</p></li>
+</ul>
+</div>
+<div class="attribution">
+<p><span class="citation" data-cites="FleckensteinUnknownTitle2018">(<a href="#/references" role="doc-biblioref" onclick="">Fleckenstein and Fellows 2018</a>)</span></p>
+</div>
+</section>
+
+<section id="data-quality-tools-1" class="title-slide slide level3 center">
+<h3>Data Quality Tools</h3>
+<div data-animate="" data-src="img/data_quality_tools.svg"><!-- setup:
+  - element: "#g01"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "0"
+  - element: "#g02"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "1"
+  - element: "#g03"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "2"
+  - element: "#g04"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "3"
+  - element: "#g05"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "4"
+  - element: "#g06"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "5"       --></div>
+</section>
+<section class="slide level5">
+
+<div class="r-fit-text v-c">
+<p>It’s a mess!</p>
+</div>
+<div class="attribution">
+<p><span class="citation" data-cites="FleckensteinUnknownTitle2018">(<a href="#/references" role="doc-biblioref" onclick="">Fleckenstein and Fellows 2018</a>)</span></p>
+</div>
+</section>
+
+<section id="data-quality-in-production" class="title-slide slide level3 center">
+<h3>Data Quality in Production</h3>
+<div class="r-stack">
+<div class="fragment fade-out">
+<p>“… All actual sample spaces are discrete, and all observable random variables have discrete distributions. The continuous distribution is a mathematical construction, suitable for mathematical treatment, but not practically observable. …”</p>
+<div class="attribution">
+<p><span class="citation" data-cites="Bibby_1980">(<a href="#/references" role="doc-biblioref" onclick="">J. Bibby 1980</a>)</span></p>
+</div>
+</div>
+<div class="fragment fade-in-then-out">
+<p><img data-src="img/production_probabilities.svg"></p>
+</div>
+<div class="fragment fade-in">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-prodprob" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-prodprob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="index_files/figure-revealjs/fig-prodprob-1.png" style="width:95.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prodprob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Probabilities for success in sequence.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="how-good-is-good-enough" class="title-slide slide level4 center">
+<h4>How good is good enough</h4>
+<div data-animate="" data-src="img/SixSigma.svg"><!-- setup:
+  - element: "#LSL"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "0"
+  - element: "#USL"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "1"
+  - element: "#nd"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "2"        
+  - element: "#Mean"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "3"
+  - element: "#LSLSix"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "4"
+  - element: "#USLSix"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "5"
+  - element: "#SixLSL"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "6"
+  - element: "#SixUSL"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "7"
+  - element: "#TwelveSig"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "8"         --></div>
+</section>
+
+<section id="process-capability---idea" class="title-slide slide level4 center">
+<h4>Process Capability - idea</h4>
+
+<img data-src="img/003_bullseye.svg" class="r-stretch"></section>
+
+<section id="high-accuracy---low-precision" class="title-slide slide level4 center">
+<h4>High Accuracy - Low Precision</h4>
+<div data-animate="" data-src="img/004_HALP.svg"><!-- setup:
+  - element: "#g2"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "0" --></div>
+</section>
+
+<section id="low-accuracy---low-precision" class="title-slide slide level4 center">
+<h4>Low Accuracy - Low Precision</h4>
+<div data-animate="" data-src="img/005_LALP.svg"><!-- setup:
+  - element: "#g2"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "0" --></div>
+</section>
+
+<section id="low-accuracy---high-precision" class="title-slide slide level4 center">
+<h4>Low Accuracy - High Precision</h4>
+<div data-animate="" data-src="img/006_LAHP.svg"><!-- setup:
+  - element: "#g2"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "0" --></div>
+</section>
+
+<section id="high-accuracy---high-precision" class="title-slide slide level4 center">
+<h4>High Accuracy - High Precision</h4>
+<div data-animate="" data-src="img/007_HAHP.svg"><!-- setup:
+  - element: "#g2"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "0" --></div>
+</section>
+
+
 </section>
 <section id="references" class="title-slide slide level1 smaller scrollable">
 <h1>References</h1>
@@ -474,8 +866,20 @@ International Standards Organization
 </div>
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-DemingUnknownTitle2006" class="csl-entry" role="listitem">
+Deming, W. Edwards. 2006. <span>“On Errors in Surveys (an Excerpt).”</span> <em>The American Statistician</em> 60 (February): 34–38. <a href="https://doi.org/10.1198/000313006x91755">https://doi.org/10.1198/000313006x91755</a>.
+</div>
+<div id="ref-FleckensteinUnknownTitle2018" class="csl-entry" role="listitem">
+Fleckenstein, Mike, and Lorraine Fellows. 2018. <span>“Modern Data Strategy”</span> Not available: Not available. <a href="https://doi.org/10.1007/978-3-319-68993-7">https://doi.org/10.1007/978-3-319-68993-7</a>.
+</div>
+<div id="ref-978-0-387-69502-0" class="csl-entry" role="listitem">
+Herzog, Thomas N., Fritz Scheuren, and William E. Winkler. May. <em>Data Quality and Record Linkage Techniques</em>. Springer.
+</div>
 <div id="ref-iso8000" class="csl-entry" role="listitem">
 ISO. 2022. <em>8000-1:2022 Data Quality</em>. International Standards Organization. <a href="https://www.iso.org/standard/81745.html">https://www.iso.org/standard/81745.html</a>.
+</div>
+<div id="ref-Bibby_1980" class="csl-entry" role="listitem">
+J. Bibby, E. J. G. Pitman. 1980. <span>“Some Basic Theory for Statistical Inference.”</span> <em>The Mathematical Gazette</em> 64 (428): 138–38. <a href="https://doi.org/10.2307/3615104">https://doi.org/10.2307/3615104</a>.
 </div>
 <div id="ref-9780596001087" class="csl-entry" role="listitem">
 Raymond, Eric S. 2001. <em>The Cathedral &amp; the Bazaar</em>. "O’Reilly Media, Inc.".
@@ -697,6 +1101,82 @@ Raymond, Eric S. 2001. <em>The Cathedral &amp; the Bazaar</em>. "O’Reilly Medi
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

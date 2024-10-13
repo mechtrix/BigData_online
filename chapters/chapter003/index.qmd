@@ -20,6 +20,15 @@ editor_options:
 css: style.css
 ---
 
+```{r}
+#| label: setup
+#| include: false
+
+library(tidyverse)
+library(ggthemes)
+
+```
+
 # Data Quality
 
 ![](img/ML_def.jpg){fig-align="center"}
@@ -58,5 +67,317 @@ ISO
 ::: {.attribution}
 [@iso8000]
 :::
+
+### Part 1: General Requirements {.smaller}
+
+::: {.incremental}
+
+* Part 1.a The master data message shall unambiguously state all information necessary for the receiver to determine its meaning
+* Part 1.b A formal syntax must be specified using a formal notation
+* Part 1.c Any data specification required by the message shall be in a computer interpretable language
+* Part 1.d The message must explicitly indicate both the data specifications it  fulfills and the formal syntax (or syntaxes) to which it complies
+* Part 1.e It must be possible to check the correctness of the master data message against both its formal syntax and its data specifications
+* Part 1.f The references within the master data message to data dictionary entries must be in the form of unambiguous identifiers conforming to an internationally recognized scheme
+
+:::
+
+
+### Part 2: Syntax of the message
+
+::: {.incremental}
+
+* The message shall contain in its header a reference to the formal syntax to which it complies.
+* The reference shall be an unambiguous identifier for the specific version of the formal syntax used to encode the message.
+* The formal syntax shall be available to all interested parties.
+* ```<?xml version=1.0”?>```
+
+:::
+
+### Part 3: Semantic encoding {.smaller}
+
+* Part 1.f The references within the master data message to data dictionary entries must be in the form of unambiguous identifiers conforming to an internationally recognized scheme
+
+URI
+:   Uniform Resource Identifier - a unique sequence of characters that identifies an abstract or physical resource, such as resources on a webpage, mail address, phone number, books, real-world objects such as people and places, concepts.
+
+RFC
+:   Request for Comments - the first technical specifications of the inner workings of the internet [RFC 1149—A standard for the transmission of IP datagrams on avian carriers](https://www.rfc-editor.org/rfc/rfc1149.txt)
+
+### Semantic encoding example
+
+(property1, value1), (property2, value2), ., (propertyN, valueN)
+
+~~Message: (Name, “John Doe”), (Income, “A”), ...~~
+
+Message: (ICTIP.Property.ABC.101, “John Doe”), (ICTIP.Property.ABC.105, “A”), ...
+
+#### Data dictionary!!!
+
+::: {.incremental}
+
+1. unique identifier (URI) - [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986)
+
+2. term (name)
+
+3. clear definition
+:::
+
+```
+Identifier: ICTIP.Property.ABC.105
+Term: Individual_Income_Bracket
+Definition:  Range of individual income given in increments of $25,000 starting at $0 and coded with single letters “A”, “B”, “C”, “D”, and “E” 
+“A” for [0 - 25,000]
+“B” for [25,001 - 50,000]
+“C” for [50,001 - 75,000]
+“D” for [75,001 - 100,000]
+“E” for [100,001 and above]
+```
+## Data Quality  {.smaller}
+
+"... Data are of high quality if they are “Fit for Use” in their intended operational,
+decision-making and other roles. ... "
+
+![](img/data_quality_dimensions.svg){fig-align="center"}
+
+::: {.attribution}
+[@978-0-387-69502-0]
+:::
+
+## Data Quality issues
+
+::: {.incremental}
+
+* [Data Entry for the London Summer Olympics](https://www.bbc.com/news/uk-16409480?utm_source=SolvinFinance&utm_medium=Blog_Post&utm_campaign=The_Wall_of_Shame_for_the_Worst_Excel_Errors)
+  + an employee simple typed $20,000$ seats available, while there were only $10,000$
+  + buyers were able to exchange the already bought tickets
+
+* [The London Whale](https://en.wikipedia.org/wiki/2012_JPMorgan_Chase_trading_loss)
+  + using a risk model that involved copy and pasting different multiple spreadsheats
+  + not only were $\$2bn$ losses wrongly calculated, they were actually counted as gains summing up to a loss of $\$6.2bn$
+
+:::
+
+## Data Quality Tools
+
+### Data Elements
+
+![](img/data_elements.png)
+
+#### Data Types
+
+![Possible Data Type](img/013_DataTypes.svg)
+
+#### Nominal Data 
+
+![Examples of Nominal Data](img/014_NominalData.svg)
+
+#### Ordinal Data
+
+![Example Ordinal Data](img/015_OrdinalData.svg)
+
+#### Discrete Data
+
+![Example Discrete Data](img/016_DiscreteData.svg)
+
+#### Continous Data
+
+![Example Continous Data](img/017_ContinousData.svg)
+
+“... All actual sample spaces are discrete, and all observable random variables have discrete distributions. 
+The continuous distribution is a mathematical construction, suitable for mathematical treatment, but not practically observable. ...” 
+
+::: {.attribution}
+[@Bibby_1980]
+:::
+
+### Requirements Documents
+
+::: {.incremental}
+
+* Why should the database be established?
+* How are the data to be collected?
+* How do analysts plan to use the data?
+* What database-design issues may affect these data uses?
+
+:::
+
+### Tests
+
+#### Deterministic Tests
+
+::: {.incremental}
+
+* Range Test
+* If-then Test
+* Ratio Control Test (similar to range test)
+* Zero Control Test (the components of a sum a listed seperartly)
+* Other internal consistency tests
+
+:::
+
+#### Statistical Tests
+
+::: {.incremental}
+
+* Outlier detection
+  + well covered and not detailed here
+* (E)xploratory (D)ata (A)nalysis 
+
+:::
+
+#### Minimizing Processing Errors 
+
+::: {.incremental}
+
+* "...  review of the codes assigned on a schedule is oftentimes not a matter of correcting wrong codes, but merely a matter of honest differences of opinion between coder and reviewer. ..."
+
+* "... even though the two sets of instructions supposedly say the same thing in different words. ..."
+
+* "... it is impossible to define a perfect job of coding except in terms of the <span style="color:red;">distributions</span> produced because there is no way of determining whether the individual codes have been assigned correctly. ..."
+
+:::
+
+::: {.attribution}
+[@DemingUnknownTitle2006]
+:::
+
+#### Recommendations 
+
+::: {.incremental}
+
+* Readily correct obvious errors that are easy to fix
+
+* Preserve the orginal dataset (Excel)
+
+* Save intermediate versions (Version Control)
+
+* Do not over edit.
+
+* Do consistency checks.
+
+* Build in redundancy (ZIP Code AND postal adress)
+
+:::
+
+::: {.attribution}
+[@978-0-387-69502-0]
+:::
+
+
+### Measuring Data Quality 
+
+::: {.incremental}
+
+* "... trust and data quality are inextricably linked ..."
+
+* "... The business user should invest in, on a prioritized basis, establishing data quality metrics for datasets and stores of interest, as well as in building data quality reporting processes for them. ...
+
+:::
+
+::: {.attribution}
+[@FleckensteinUnknownTitle2018]
+:::
+
+### Data Quality Tools 
+
+{{< include img/_data_quality_tools_anim.qmd >}}
+
+---
+
+::: {.r-fit-text .v-c}
+
+It's a mess!
+
+:::
+
+::: {.attribution}
+[@FleckensteinUnknownTitle2018]
+:::
+
+### Data Quality in Production
+
+::: {.r-stack}
+
+::: {.fragment .fade-out}
+
+“... All actual sample spaces are discrete, and all observable random variables have discrete distributions. 
+The continuous distribution is a mathematical construction, suitable for mathematical treatment, but not practically observable. ...” 
+
+::: {.attribution}
+[@Bibby_1980]
+:::
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+![](img/production_probabilities.svg)
+
+:::
+
+::: {.fragment .fade-in}
+
+```{r}
+#| label: fig-prodprob
+#| out-width: 95%
+#| fig-cap: Probabilities for success in sequence.
+
+fun.1 <- function(x) 0.9^x
+fun.2 <- function(x) 0.95^x
+fun.3 <- function(x) 0.997^x
+fun.4 <- function(x) 0.99975^x
+fun.5 <- function(x) 0.98^x
+
+
+limit_x <- c(0,5)
+
+ggplot(data = data.frame(x = 0), mapping = aes(x = x))+
+  stat_function(fun = fun.2,mapping = aes(linetype = "95%"),lwd=1) + 
+  stat_function(fun = fun.3,mapping = aes(linetype = "99.7%"),lwd=1) + 
+  stat_function(fun = fun.4,mapping = aes(linetype = "99.975%"),lwd=1) + 
+  stat_function(fun = fun.5,mapping = aes(linetype = "98%"),lwd=1) + 
+  labs(title = 'Probability for success in sequence',
+       x='Step Nr',
+       y='Probability for success',
+       linetype='Probability in\nsingle step')+
+  scale_x_continuous(limits = c(1,limit_x[2]),breaks = seq(limit_x[1],limit_x[2],by=1),expand = c(0,0))+
+  scale_y_continuous(breaks = seq(0.2,1,by=0.025))+
+  scale_color_brewer(palette = 'Spectral')+
+  theme_minimal()+
+  theme(panel.grid.minor = element_blank())
+
+```
+
+
+:::
+
+:::
+
+#### How good is good enough
+
+{{< include img/_six_sigma_anim.qmd >}}
+
+
+#### Process Capability - idea
+
+![](img/003_bullseye.svg)
+
+
+#### High Accuracy - Low Precision
+
+{{< include img/_HALP_anim.qmd >}}
+
+
+#### Low Accuracy - Low Precision
+
+{{< include img/_LALP_anim.qmd >}}
+
+#### Low Accuracy - High Precision
+
+{{< include img/_LAHP_anim.qmd >}}
+
+#### High Accuracy - High Precision
+
+{{< include img/_HAHP_anim.qmd >}}
 
 # References

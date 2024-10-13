@@ -175,5 +175,35 @@
     "crumbs": [
       "Data Quality"
     ]
+  },
+  {
+    "objectID": "chapters/chapter003/index.html#data-quality-1",
+    "href": "chapters/chapter003/index.html#data-quality-1",
+    "title": "Data Quality",
+    "section": "Data Quality",
+    "text": "Data Quality\n“… Data are of high quality if they are “Fit for Use” in their intended operational, decision-making and other roles. … ”\n\n\n(Herzog, Scheuren, and Winkler May )",
+    "crumbs": [
+      "Data Quality"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter003/index.html#data-quality-issues",
+    "href": "chapters/chapter003/index.html#data-quality-issues",
+    "title": "Data Quality",
+    "section": "Data Quality issues",
+    "text": "Data Quality issues\n\n\nData Entry for the London Summer Olympics\n\nan employee simple typed \\(20,000\\) seats available, while there were only \\(10,000\\)\nbuyers were able to exchange the already bought tickets\n\nThe London Whale\n\nusing a risk model that involved copy and pasting different multiple spreadsheats\nnot only were \\(\\$2bn\\) losses wrongly calculated, they were actually counted as gains summing up to a loss of \\(\\$6.2bn\\)",
+    "crumbs": [
+      "Data Quality"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter003/index.html#data-quality-tools",
+    "href": "chapters/chapter003/index.html#data-quality-tools",
+    "title": "Data Quality",
+    "section": "Data Quality Tools",
+    "text": "Data Quality Tools",
+    "crumbs": [
+      "Data Quality"
+    ]
   }
 ]
