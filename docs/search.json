@@ -221,27 +221,39 @@
     "href": "chapters/chapter004/index.html#why-data-bias-matters",
     "title": "Data Bias",
     "section": "Why Data Bias matters",
-    "text": "Why Data Bias matters"
+    "text": "Why Data Bias matters",
+    "crumbs": [
+      "Data Bias"
+    ]
   },
   {
     "objectID": "chapters/chapter004/index.html#types-of-data-bias",
     "href": "chapters/chapter004/index.html#types-of-data-bias",
     "title": "Data Bias",
     "section": "Types of Data Bias",
-    "text": "Types of Data Bias"
+    "text": "Types of Data Bias",
+    "crumbs": [
+      "Data Bias"
+    ]
   },
   {
     "objectID": "chapters/chapter004/index.html#bias-and-variance",
     "href": "chapters/chapter004/index.html#bias-and-variance",
     "title": "Data Bias",
     "section": "Bias and Variance",
-    "text": "Bias and Variance\n\nBias:\n\nerror introduced by approximating a real-world problem with a simplified model\nleads to underfitting\n\n\n\n\nVariance:\n\nsensitivity to fluctuations in the data, such as random noise, as if it were true patterns\nleads to overfitting"
+    "text": "Bias and Variance\n\nBias:\n\nerror introduced by approximating a real-world problem with a simplified model\nleads to underfitting\n\n\n\n\nVariance:\n\nsensitivity to fluctuations in the data, such as random noise, as if it were true patterns\nleads to overfitting",
+    "crumbs": [
+      "Data Bias"
+    ]
   },
   {
     "objectID": "chapters/chapter004/index.html#the-bias-variance-trade-off",
     "href": "chapters/chapter004/index.html#the-bias-variance-trade-off",
     "title": "Data Bias",
     "section": "The Bias Variance Trade Off",
-    "text": "The Bias Variance Trade Off\n\n\n\n\n\nfamiliar?"
+    "text": "The Bias Variance Trade Off\n\n\n\n\n\nfamiliar?",
+    "crumbs": [
+      "Data Bias"
+    ]
   }
 ]

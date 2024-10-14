@@ -42,5 +42,10 @@ website:
         text: "slides"
         href: chapters/chapter003/index.qmd
         contents: 
-          - text: "Data Quality exercises in R"
+          - text: "Data Distribution exercises in R"
             href: https://mechtrix.github.io/BigData_exercises/data_distributions.html
+          - text: "Gage R&R"
+            href: https://mechtrix.github.io/BigData_exercises/gage_rr.html
+      - section: Data Bias
+        text: "slides"
+        href: chapters/chapter004/index.qmd
