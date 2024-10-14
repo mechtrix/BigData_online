@@ -4,26 +4,76 @@
     "href": "index.html",
     "title": "Big Data lecture slides",
     "section": "",
-    "text": "This page is directly linked to the Big Data exercises.\nAdministrative stuff is always announced via ilearn.\nThis is the lecture material for the courses “Big Data” and “Big Data Processing and Analytics”. Feel free to reference for your self study. You are not allowed to copy without the prior consent of the author. Your are not allowed to use material without prior consent. Ask - it’s a form of politeness. You will most probable get permission.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nIntroduction\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Sources\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Quality\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\nNo matching items"
+    "text": "This page is directly linked to the Big Data exercises.\nAdministrative stuff is always announced via ilearn.\nThis is the lecture material for the courses “Big Data” and “Big Data Processing and Analytics”. Feel free to reference for your self study. You are not allowed to copy without the prior consent of the author. Your are not allowed to use material without prior consent. Ask - it’s a form of politeness. You will most probable get permission.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nIntroduction\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Sources\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Quality\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Bias\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "chapters/chapter002/index.html#which-do-you-want",
-    "href": "chapters/chapter002/index.html#which-do-you-want",
-    "title": "Data Sources",
-    "section": "Which do you want?",
-    "text": "Which do you want?",
+    "objectID": "chapters/chapter003/index.html#quality",
+    "href": "chapters/chapter003/index.html#quality",
+    "title": "Data Quality",
+    "section": "Quality",
+    "text": "Quality\n\nQuality (dictionary)\n\nHow good or bad something is. Cambridge Dictionary\n\n\n“… Quality is a perceptual, conditional, and somewhat subjective attribute and may be understood differently by different people. …” Wiki",
     "crumbs": [
-      "Data Sources"
+      "Data Quality"
     ]
   },
   {
-    "objectID": "chapters/chapter002/index.html#databases",
-    "href": "chapters/chapter002/index.html#databases",
-    "title": "Data Sources",
-    "section": "Databases",
-    "text": "Databases",
+    "objectID": "chapters/chapter003/index.html#the-cathedral-and-the-bazaar",
+    "href": "chapters/chapter003/index.html#the-cathedral-and-the-bazaar",
+    "title": "Data Quality",
+    "section": "The Cathedral and the Bazaar",
+    "text": "The Cathedral and the Bazaar\n\n\n(Raymond 2001)",
     "crumbs": [
-      "Data Sources"
+      "Data Quality"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter003/index.html#iso-8000",
+    "href": "chapters/chapter003/index.html#iso-8000",
+    "title": "Data Quality",
+    "section": "ISO 8000",
+    "text": "ISO 8000\n\nISO\n\nInternational Standards Organization\n\n\n\n\nset of standards for data quality for the exchange between organizations and systems\nMaster data in the form of characteristic data that are\n\nexchanged between organizations and systems, and that\nconform to the data specifications that\ncan be validated by computer software.\n\n\n\n\n(ISO 2022)",
+    "crumbs": [
+      "Data Quality"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter003/index.html#data-quality-1",
+    "href": "chapters/chapter003/index.html#data-quality-1",
+    "title": "Data Quality",
+    "section": "Data Quality",
+    "text": "Data Quality\n“… Data are of high quality if they are “Fit for Use” in their intended operational, decision-making and other roles. … ”\n\n\n(Herzog, Scheuren, and Winkler May )",
+    "crumbs": [
+      "Data Quality"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter003/index.html#data-quality-issues",
+    "href": "chapters/chapter003/index.html#data-quality-issues",
+    "title": "Data Quality",
+    "section": "Data Quality issues",
+    "text": "Data Quality issues\n\n\nData Entry for the London Summer Olympics\n\nan employee simple typed \\(20,000\\) seats available, while there were only \\(10,000\\)\nbuyers were able to exchange the already bought tickets\n\nThe London Whale\n\nusing a risk model that involved copy and pasting different multiple spreadsheats\nnot only were \\(\\$2bn\\) losses wrongly calculated, they were actually counted as gains summing up to a loss of \\(\\$6.2bn\\)",
+    "crumbs": [
+      "Data Quality"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter003/index.html#data-quality-tools",
+    "href": "chapters/chapter003/index.html#data-quality-tools",
+    "title": "Data Quality",
+    "section": "Data Quality Tools",
+    "text": "Data Quality Tools",
+    "crumbs": [
+      "Data Quality"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter003/index.html#data-quality-summary",
+    "href": "chapters/chapter003/index.html#data-quality-summary",
+    "title": "Data Quality",
+    "section": "Data Quality summary",
+    "text": "Data Quality summary\n\n\nData Quality is hard\nTop Down or Bottom up?\nsimple things go wrong in the real world\ntest stuff\nbe specific\nthere is no recipe\ngarbage in, garbage out\nclassic ways are not fancy, but useful. Use this to your advantage\nnever trust data\ninvest early, profit soon",
+    "crumbs": [
+      "Data Quality"
     ]
   },
   {
@@ -147,73 +197,51 @@
     ]
   },
   {
-    "objectID": "chapters/chapter003/index.html#quality",
-    "href": "chapters/chapter003/index.html#quality",
-    "title": "Data Quality",
-    "section": "Quality",
-    "text": "Quality\n\nQuality (dictionary)\n\nHow good or bad something is. Cambridge Dictionary\n\n\n“… Quality is a perceptual, conditional, and somewhat subjective attribute and may be understood differently by different people. …” Wiki",
+    "objectID": "chapters/chapter002/index.html#which-do-you-want",
+    "href": "chapters/chapter002/index.html#which-do-you-want",
+    "title": "Data Sources",
+    "section": "Which do you want?",
+    "text": "Which do you want?",
     "crumbs": [
-      "Data Quality"
+      "Data Sources"
     ]
   },
   {
-    "objectID": "chapters/chapter003/index.html#the-cathedral-and-the-bazaar",
-    "href": "chapters/chapter003/index.html#the-cathedral-and-the-bazaar",
-    "title": "Data Quality",
-    "section": "The Cathedral and the Bazaar",
-    "text": "The Cathedral and the Bazaar\n\n\n(Raymond 2001)",
+    "objectID": "chapters/chapter002/index.html#databases",
+    "href": "chapters/chapter002/index.html#databases",
+    "title": "Data Sources",
+    "section": "Databases",
+    "text": "Databases",
     "crumbs": [
-      "Data Quality"
+      "Data Sources"
     ]
   },
   {
-    "objectID": "chapters/chapter003/index.html#iso-8000",
-    "href": "chapters/chapter003/index.html#iso-8000",
-    "title": "Data Quality",
-    "section": "ISO 8000",
-    "text": "ISO 8000\n\nISO\n\nInternational Standards Organization\n\n\n\n\nset of standards for data quality for the exchange between organizations and systems\nMaster data in the form of characteristic data that are\n\nexchanged between organizations and systems, and that\nconform to the data specifications that\ncan be validated by computer software.\n\n\n\n\n(ISO 2022)",
-    "crumbs": [
-      "Data Quality"
-    ]
+    "objectID": "chapters/chapter004/index.html#why-data-bias-matters",
+    "href": "chapters/chapter004/index.html#why-data-bias-matters",
+    "title": "Data Bias",
+    "section": "Why Data Bias matters",
+    "text": "Why Data Bias matters"
   },
   {
-    "objectID": "chapters/chapter003/index.html#data-quality-1",
-    "href": "chapters/chapter003/index.html#data-quality-1",
-    "title": "Data Quality",
-    "section": "Data Quality",
-    "text": "Data Quality\n“… Data are of high quality if they are “Fit for Use” in their intended operational, decision-making and other roles. … ”\n\n\n(Herzog, Scheuren, and Winkler May )",
-    "crumbs": [
-      "Data Quality"
-    ]
+    "objectID": "chapters/chapter004/index.html#types-of-data-bias",
+    "href": "chapters/chapter004/index.html#types-of-data-bias",
+    "title": "Data Bias",
+    "section": "Types of Data Bias",
+    "text": "Types of Data Bias"
   },
   {
-    "objectID": "chapters/chapter003/index.html#data-quality-issues",
-    "href": "chapters/chapter003/index.html#data-quality-issues",
-    "title": "Data Quality",
-    "section": "Data Quality issues",
-    "text": "Data Quality issues\n\n\nData Entry for the London Summer Olympics\n\nan employee simple typed \\(20,000\\) seats available, while there were only \\(10,000\\)\nbuyers were able to exchange the already bought tickets\n\nThe London Whale\n\nusing a risk model that involved copy and pasting different multiple spreadsheats\nnot only were \\(\\$2bn\\) losses wrongly calculated, they were actually counted as gains summing up to a loss of \\(\\$6.2bn\\)",
-    "crumbs": [
-      "Data Quality"
-    ]
+    "objectID": "chapters/chapter004/index.html#bias-and-variance",
+    "href": "chapters/chapter004/index.html#bias-and-variance",
+    "title": "Data Bias",
+    "section": "Bias and Variance",
+    "text": "Bias and Variance\n\nBias:\n\nerror introduced by approximating a real-world problem with a simplified model\nleads to underfitting\n\n\n\n\nVariance:\n\nsensitivity to fluctuations in the data, such as random noise, as if it were true patterns\nleads to overfitting"
   },
   {
-    "objectID": "chapters/chapter003/index.html#data-quality-tools",
-    "href": "chapters/chapter003/index.html#data-quality-tools",
-    "title": "Data Quality",
-    "section": "Data Quality Tools",
-    "text": "Data Quality Tools",
-    "crumbs": [
-      "Data Quality"
-    ]
-  },
-  {
-    "objectID": "chapters/chapter003/index.html#data-quality-summary",
-    "href": "chapters/chapter003/index.html#data-quality-summary",
-    "title": "Data Quality",
-    "section": "Data Quality summary",
-    "text": "Data Quality summary\n\n\nData Quality is hard\nTop Down or Bottom up?\nsimple things go wrong in the real world\ntest stuff\nbe specific\nthere is no recipe\ngarbage in, garbage out\nclassic ways are not fancy, but useful. Use this to your advantage\nnever trust data\ninvest early, profit soon",
-    "crumbs": [
-      "Data Quality"
-    ]
+    "objectID": "chapters/chapter004/index.html#the-bias-variance-trade-off",
+    "href": "chapters/chapter004/index.html#the-bias-variance-trade-off",
+    "title": "Data Bias",
+    "section": "The Bias Variance Trade Off",
+    "text": "The Bias Variance Trade Off\n\n\n\n\n\nfamiliar?"
   }
 ]

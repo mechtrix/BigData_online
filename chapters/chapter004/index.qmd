@@ -1,0 +1,1359 @@
+---
+title: "Data Bias"
+bibliography: https://api.citedrive.com/bib/da291eae-8e2a-46b1-968e-0b79af55f87a/references.bib?x=eyJpZCI6ICJkYTI5MWVhZS04ZTJhLTQ2YjEtOTY4ZS0wYjc5YWY1NWY4N2EiLCAidXNlciI6ICI1NjQ5IiwgInNpZ25hdHVyZSI6ICI2ZDMyODMxM2QzZDQ3NmE3MGM4MDc5MzJiNzE1NjkzNjJmYmZjODYyNGMzNmJjNDBkMDk3Njk5N2RmZjQ5MTg5In0=/bibliography.bib
+format:
+  revealjs:
+    slide-level: 5
+    resource-path: 
+      - "img"
+    logo: img/back.svg
+    footer-logo-link: "https://mechtrix.github.io/BigData_online/"
+    footer: "Copyright Prof. Dr. Tim Weber, 2024"
+revealjs-plugins:
+  - animate
+  - attribution
+filters: 
+  - animate
+  - reveal-header
+editor_options: 
+  chunk_output_type: console
+css: style.css
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(tidyverse)
+
+```
+
+# Data Bias
+
+bias
+: the action of supporting or opposing a particular person or thing in an unfair way, because of allowing personal opinions to influence your judgment. [Cambridge Dictionary](https://dictionary.cambridge.org/dictionary/english/bias)
+
+::: {.fragment .fade-in}
+
+![](img/bias_def.gif)
+
+:::
+
+## Why Data Bias matters
+
+<div style="max-width:1024px"><div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://embed.ted.com/talks/joy_buolamwini_how_i_m_fighting_bias_in_algorithms?subtitle=en" width="1024px" height="576px" title="How I'm fighting bias in algorithms" style="position:absolute;left:0;top:0;width:100%;height:100%"  frameborder="0" scrolling="no" allowfullscreen onload="window.parent.postMessage('iframeLoaded', 'https://embed.ted.com')"></iframe></div></div>
+
+## Types of Data Bias
+
+### Confirmation Bias
+
+Confirmation bias refers to the tendency of individuals to search for, interpret, favor, and recall information in a way that confirms or support ones prior beliefs or values. 
+
+#### Salem Witch Trials
+
+![](img/witchhunting.png){fig-align="center"}
+
+::: {.fragment .fade-in}
+::: {style="font-size: 80%;"}
+
+* colonial Massachusetts in the late 17th century
+* People accused of witchcraft were often presumed guilty based on flimsy evidence 
+* Those who believed in witchcraft interpreted any misfortune or unusual behavior as evidence of witchcraft, confirming their existing beliefs 
+
+:::
+:::
+
+#### Eyewitness Testimony 
+
+![](img/eyewitness.png){fig-align="center"}
+
+::: {.fragment .fade-in}
+
+* criminal trials
+* Witnesses may unintentionally distort their memories to align with their preconceived notions 
+* can lead to wrongful convictions if jurors are swayed by confident but inaccurate testimony.  
+
+:::
+
+#### Social Media Feed
+
+![](img/socialmedia.jpg){fig-align="center"}
+
+::: {.fragment .fade-in}
+
+* use of algorithms to personalize users' feeds based on their previous interactions and interests
+* users may be exposed to content that confirms their existing beliefs and biases while filtering out opposing viewpoints
+  
+:::
+
+#### Paul is dead 
+
+{{< video https://www.youtube.com/watch?v=HtUH9z_Oey8 width="1200" height="500" start="220" >}}
+
+#### The evidence [Abbey Road Webcam](https://www.camscape.com/webcam/abbey-road-crossing-webcam/)
+
+![](img/beatles.jpeg){.r-stretch}
+
+#### Avoiding Confirmation Bias
+
+* Record your beliefs and assumptions before starting your analysis. This will help you proactively recognize your biases as you review your results.
+* Go through all the presented data and evidence, but don’t immediately jump to conclusions. Resist the temptation to generate hypotheses or gather additional information to confirm your beliefs.
+* Revisit your recorded beliefs and assumptions at the conclusion of your analysis, and evaluate if they’ve influenced your findings.
+
+### Selection Bias
+
+Selection bias is the bias introduced by the selection of individuals, groups, or data for analysis in such a way that proper randomization is not achieved, thereby failing to ensure that the sample obtained is representative of the population intended to be analyzed.
+
+#### publication bias
+
+![](img/davinci.jpg){fig-align="center"}
+
+::: {.fragment .fade-in}
+::: {style="font-size: 60%;"}
+
+* skews the representation of research findings by favoring the publication of studies with significant or positive results
+* arises from various factors, including journal preferences, researcher behavior, and editorial decisions.
+* can lead to an inaccurate perception of the true effect size or prevalence of a phenomenon in the scientific literature.
+
+:::
+:::
+
+#### Dewey defeats Truman
+
+![](img/Dewey_Defeats_Truman.jpg){fig-align="center"}
+
+::: {.fragment .fade-in}
+::: {style="font-size: 80%;"}
+
+* George Gallup himself stated, “We did not get a cross section of the population. We did not allow for the fact that people change their minds."
+* telephone survey: simple and cost effective, but at the time owning a telephone was a luxury
+
+:::
+:::
+
+#### Avoiding Selection Bias (Sampling Strategies)
+
+##### Random Sampling {.smaller}
+
+:::{.r-stack}
+
+:::{.fragment .fade-in-then-out}
+
+![](img/Simple_random_sampling.png)
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+- **Definition:** Selecting a sample from a population in a purely random manner, where every individual has an equal chance of being chosen.
+- **Advantages:**
+  - Eliminates bias in selection.
+  - Results are often representative of the population.
+- **Disadvantages:**
+  - Possibility of unequal representation of subgroups.
+  - Time-consuming and may not be practical for large populations.
+
+:::
+
+:::
+
+##### Stratified Sampling {.smaller}
+
+:::{.r-stack}
+
+:::{.fragment .fade-in-then-out}
+
+![](img/Stratified_sampling.png)
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+- **Definition:** Dividing the population into subgroups or strata based on certain characteristics and then randomly sampling from each stratum.
+- **Advantages:**
+  - Ensures representation from all relevant subgroups.
+  - Increased precision in estimating population parameters.
+- **Disadvantages:**
+  - Requires accurate classification of the population into strata.
+  - Complexity in implementation and analysis.
+
+:::
+
+:::
+
+##### Systematic Sampling {.smaller}
+
+:::{.r-stack}
+
+:::{.fragment .fade-in-then-out}
+
+![](img/Systematic_sampling.png)
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+- **Definition:** Choosing every kth individual from a list after selecting a random starting point.
+- **Advantages:**
+  - Simplicity in execution compared to random sampling.
+  - Suitable for large populations.
+- **Disadvantages:**
+  - Susceptible to periodic patterns in the population.
+  - If the periodicity aligns with the sampling interval, it can introduce bias.
+
+:::
+
+:::
+
+##### Cluster Sampling {.smaller}
+
+:::{.r-stack}
+
+:::{.fragment .fade-in-then-out}
+
+![](img/Cluster_sampling.png)
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+- **Definition:** Dividing the population into clusters, randomly selecting some clusters, and then including all individuals from the chosen clusters in the sample.
+
+- **Advantages:**
+  - Cost-effective, especially for geographically dispersed populations.
+  - Reduces logistical challenges compared to other methods.
+- **Disadvantages:**
+  - Increased variability within clusters compared to other methods.
+  - Requires accurate information on cluster characteristics.
+
+:::
+
+:::
+
+##### Sampling strategies in the classroom {.smaller}
+
+::: {style="font-size: 80%;"}
+:::{.fragment .fade-in}
+
+* Population: 
+  * everyone gives the age and the mean age of everyone in the classroom is calculated
+
+:::
+
+:::{.fragment .fade-in}
+
+* Simple Random Sampling: 
+  * Everyone has an equal chance of being selected for the sample 
+  * assign each student a number and then using a random number generator 
+
+:::
+
+:::{.fragment .fade-in}
+
+* Systematic Sampling: 
+  * Every kth student gives its name and the mean is calculated based on this.
+
+:::
+
+:::{.fragment .fade-in}
+
+* Stratified Sampling: 
+  * divide classroom population by strata based on characteristics (gender)
+  * then samples are randomly selected from each stratum in proportion to their size
+
+:::
+
+:::{.fragment .fade-in}
+
+* Cluster Sampling: 
+  * The classroom is divided into clusters (rows) 
+  * a random selection of clusters is chosen
+  * all students within the selected clusters are included in the sample.
+
+:::
+:::
+
+##### Bootstrapping {.smaller}
+
+:::{.r-stack}
+
+:::{.fragment .fade-in-then-out}
+
+![](img/Illustration_bootstrap.png)
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+- **Definition:** Estimating sample statistic distribution by drawing new samples with replacement from observed data, providing insights into variability without strict population distribution assumptions.
+
+- **Advantages:**
+  - Non-parametric: Works without assuming a specific data distribution.
+  - Confidence Intervals: Facilitates easy estimation of confidence intervals.
+  - Robustness: Reliable for small sample sizes or unknown data distributions.
+
+- **Disadvantages:**
+  - Computationally Intensive: Resource-intensive for large datasets.
+  - Results quality relies on the representativeness of the initial sample (garbage in - garbage out).
+  - Cannot compensate for inadequate information in the original sample.
+  - Not Always Optimal: Traditional methods may be better in cases meeting distribution assumptions.
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+![](img/50_cent.jpg){fig-align="center"}
+
+* imagine all $0.50€$ coins that are used today
+* we are interested in the average minting year
+* we can not just look at all the coins, we have to estimate the average minting year
+* we assume the 50 coins to be a representative sample (is it though?)
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| include: false
+
+# coins_sample <- pennies_sample
+set.seed(1253)
+coins_sample <- data.frame(
+  year = sample(seq(2002,2023),50, replace = TRUE)) %>% 
+  rowid_to_column(var = "ID")
+
+```
+
+
+```{r}
+
+plt_dist_coins <- coins_sample %>% 
+  ggplot(
+    aes(
+      x = year
+    )
+  )+
+  geom_histogram(
+    binwidth = 1,
+    color = "white"
+  )+
+  scale_y_continuous(
+    expand = c(0,0,0.05,0)
+  )+
+  scale_x_continuous(
+    breaks = seq(1900,2500,1)
+  )+
+  labs(
+    title = "Distribution of the minting year in the 50 coins"
+  )+
+  theme_bw(
+    base_size = 20
+  )
+
+plt_dist_coins
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+
+plt_dist_coins+
+  geom_vline(
+    xintercept = mean(coins_sample$year), 
+    color = "red",
+    linewidth = 2
+    )
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+![](img/coin_resampling_paper.svg){fig-align="center" width=50%}
+
+* Population $N = ?$
+* Population $\mu = ? \rightarrow$ we want to know that!
+* sample mean $\bar{x} = `r mean(coins_sample$year)`$
+
+
+* $\bar{x} = `r mean(coins_sample$year)`$ is the *point estimate*
+* Strategy to be saver about the *mean minting year*? $\rightarrow$ MORE SAMPLES
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+![](img/batman.jpg){.r-stretch}
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+* What is a good sample size to resample (how often)?
+* Draw a number from the hat.
+* Put the number back into the hat. (This is called: *resampling with replacement*)
+* Why do we put the number back into the hat?
+* Now do it.
+
+:::
+
+:::
+
+##### Bootstrapping - the computer age
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| echo: true
+
+virtual_resample <- coins_sample %>% 
+  infer::rep_sample_n(size = 50, replace = TRUE,reps = 1000)
+
+# virtual_resample01 <- coins_sample %>%
+#   rep_sample_n(size = 50, replace = TRUE,reps = 100000)
+
+```
+
+
+```{r}
+cmp <- virtual_resample %>% 
+  group_by(replicate) %>% 
+  summarise(
+    mean_year = mean(year)
+  )
+
+
+# cmp02 <- virtual_resample01 %>% 
+#   group_by(replicate) %>% 
+#   summarise(
+#     mean_year = mean(year)
+#   )
+
+plt_btstrp <- cmp %>% 
+  ggplot(
+    aes(
+      x = mean_year
+    )
+  )+
+  geom_histogram(
+    color = "white"
+  )+
+  scale_y_continuous(
+    expand = c(0,0,0.05,0)
+  )+
+  scale_x_continuous(
+    breaks = seq(2000,2500,1)
+  )+
+  labs(
+    title = "mean year from 1000 replications",
+    subtitle = paste0("mean year = ",round(mean(cmp$mean_year),digits = 2))
+  )+
+  geom_vline(
+    xintercept = mean(cmp$mean_year),
+    color = "red",
+    linewidth = 2
+  )+
+  theme_bw(
+    base_size = 20
+  )
+
+plt_btstrp
+
+```
+
+:::
+
+---
+
+::: {.r-fit-text .v-c}
+
+WOW!
+
+:::
+
+##### non parametric confidence intervals [@statistical_ismaykim_2019]
+
+![](img/point_estimate_vs_conf_int.png)
+
+##### percentile method
+
+:::{.r-stack}
+
+:::{.fragment .fade-out}
+
+* take the middle $95\%$ of all bootstrapped values 
+* compute the $2.5th$ and the $97.5th$ percentile ($`r round(quantile(cmp$mean_year,0.025),digits = 2)`$ and $`r round(quantile(cmp$mean_year,0.975),digits = 2)`$)
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+
+plt_btstrp+
+  geom_vline(
+    xintercept = round(quantile(cmp$mean_year,0.025),digits = 2),
+    linewidth = 2
+  )+
+  geom_vline(
+    xintercept = round(quantile(cmp$mean_year,0.975),digits = 2),
+    linewidth = 2
+  )
+
+```
+
+:::
+
+:::
+
+##### standard error method
+
+* if a numerical variable follows a standard distribution, roughly $95\%$ of all values are within $\pm1.96sd$ of the mean (rule of thumb)
+
+```{r}
+#| echo: true
+#| output: true
+
+SE <- cmp  %>% summarise(SE = sd(mean_year)) %>% pull(SE) %>% round(.,digits = 2)
+SE
+
+```
+
+\begin{align}
+\bar{x} \pm 1.96 &= (\bar{x}+1.96 * SE, \bar{x}-1.96*SE) \nonumber \\
+&= (`r mean(cmp$mean_year) %>% round(.,digits = 2)` + 1.96 * `r SE`, `r mean(cmp$mean_year) %>% round(.,digits = 2)` - 1.96 * `r SE`) \nonumber \\
+&= (`r round(mean(cmp$mean_year) %>% round(.,digits = 2) + 1.96 * SE,digits = 2)`, `r round(mean(cmp$mean_year) %>% round(.,digits = 2) - 1.96 *  SE,digits = 2)`) \nonumber 
+\end{align}
+
+##### comparison of both methods
+
+```{r}
+
+ci_methods <- 
+  data.frame(
+    cmp_method = c("percentile","percentile","standard error","standard error"),
+    xintercept = c(
+      round(quantile(cmp$mean_year,0.025),digits = 2),
+      round(quantile(cmp$mean_year,0.975),digits = 2),
+      round(mean(cmp$mean_year) %>% round(.,digits = 2) + 1.96 * SE,digits = 2),
+      round(mean(cmp$mean_year) %>% round(.,digits = 2) - 1.96 *  SE,digits = 2)
+    )
+  )
+
+plt_btstrp+
+  geom_vline(
+    data = ci_methods,
+    aes(
+      xintercept = xintercept,
+      linetype = cmp_method
+    ),
+    linewidth = 1,
+    key_glyph = "path"
+  )+
+  labs(
+    title = "CI method comparison",
+    subtitle = "",
+    linetype = "method"
+  )+
+  theme(
+    legend.position = "bottom"
+  )
+
+```
+
+### Historical Bias
+
+Historical bias is when historical accounts are influenced by the perspectives, prejudices, or agendas of those recording or analyzing them, leading to a distorted understanding of the past.
+
+#### The Historians’ History of the World
+
+![](img/historical_bias.jpg){fig-align="center"}
+
+::: {.fragment .fade-in}
+::: {style="font-size: 80%;"}
+
+* A Comprehensive Narrative of the Rise and Development of Nations as Recorded by over two thousand of the Great Writers of all Ages
+* It is quite extensive but its perspective is entirely Western Eurocentric.
+
+:::
+::: 
+
+#### German history at school
+
+![](img/hist_bias_lecture.png){fig-align="center"}
+
+
+::: {.fragment .fade-in}
+::: {style="font-size: 60%;"}
+
+* history textbooks are sponsored by the national government and are written to put the national heritage in the most favorable light
+* 21st-century Germany attempts to be an example of how to remove nationalistic narratives from history education
+* a transnational perspective that emphasizes the all-European heritage, minimizes the idea of national pride, and fosters the notion of civil society centered on democracy, human rights, and peace
+
+:::
+:::
+
+### Survivorship Bias
+
+Survivorship bias is when we only look at successful outcomes and ignore failures, leading to an incomplete understanding of reality.
+
+#### Military
+
+![](img/Survivorship-bias.svg){fig-align="center"}
+
+::: {.fragment .fade-in}
+::: {style="font-size: 60%;"}
+
+* calculations when considering how to minimize bomber losses to enemy fire (WWII)
+* recommended adding armor to the areas that showed the least damage
+* areas where a bomber could take damage and still fly well enough to return safely to base
+
+:::
+:::
+
+#### Cats
+
+![](img/cat.webp){fig-align="center"}
+
+::: {.fragment .fade-in}
+::: {style="font-size: 60%;"}
+
+* cats who fall from less than six stories, and are still alive, have greater injuries than cats who fall from higher than six stories
+* cats reach terminal velocity after righting themselves at about five stories, and after this point they relax, leading to less severe injuries
+* cats that die in falls are less likely to be brought to a veterinarian than injured cats, and thus many of the cats killed in falls from higher buildings are not reported in studies
+
+:::
+:::
+
+#### tech entrenpeneur
+
+![](img/steve_jobs.webp){fig-align="center"}
+
+::: {.fragment .fade-in}
+::: {style="font-size: 60%;"}
+
+* much attention is paid to several wealthy and famous tech entrepreneurs
+* in reality, the great majority of college dropouts do not go on to become wealthy, and ignoring those people can lead to misperceptions that undervalue the usefulness of a college degree in building wealth
+
+:::
+:::
+
+#### Avoiding Survivorship bias
+
+::: {.incremental}
+
+* "... In order to prevent survivorship bias, researchers must be very selective with their data sources. Researchers must ensure that the data sources that they have selected do not omit observations that are no longer in existence in order to reduce the risk of survivorship bias. ..."
+
+* Use "missingness" as feature, include failures in the data analysis
+
+
+
+:::
+
+### Availability Bias
+
+Availability bias is when people overestimate the likelihood of events based on how easily they can recall them from memory.
+
+#### Fear of flying
+
+![](img/plane_crash.png){fig-align="center"}
+
+::: {.fragment .fade-in}
+::: {style="font-size: 60%;"}
+
+* Excessive coverage on the news or social media about plane crashes uses vivid images and stories to elicit an emotional response. 
+* chances of experiencing a plane crash on a commercial airline are incredibly low. 
+
+:::
+:::
+
+#### Climate change dial
+
+![](img/climate_change.jpg){fig-align="center"}
+
+::: {.fragment .fade-in}
+::: {style="font-size: 60%;"}
+
+* If you experience an unseasonably cold day, you may wonder how that supports climate change and a warming climate. 
+* Politicians do this all the time.
+* The fact is, data support a warming climate overall, no matter how cold it is on a spring day in April.
+
+:::
+:::
+
+#### Memories of past success
+
+![](img/memory-brain.webp){fig-align="center"}
+
+::: {.fragment .fade-in}
+::: {style="font-size: 60%;"}
+
+* People try to repeat what has worked for them in the past.
+* This occurs in professional sports all the time
+* Availability bias doesn’t allow them to acknowledge that “this time is different.”
+
+:::
+:::
+
+#### Avoiding Availability Bias
+
+* Use Checklists
+* Focus on abstract over the concrete
+* Actively Look For Disconfirming Evidence
+* Underweigh Memorable Evidence Or Experiences (anectdotal vs. empirical)
+
+### Outlier Bias
+
+![](img/outlier.jpeg){fig-align="center"}
+
+Outlier bias is when unusual data points (outliers) are given too much importance, potentially leading to inaccurate conclusions or decisions.
+
+#### Outlier influence
+
+:::{.r-stack}
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+set.seed(54)
+
+n_pts <- 6
+
+dat <- data.frame(
+  pts = rnorm(n = n_pts, mean = 5,sd = 2),
+  spec = rep("point",n_pts)
+  ) %>% 
+  add_row(
+    pts = 35,
+    spec = "outlier"
+  )
+  
+
+sum_all <- dat %>% 
+  summarise(
+    mean_pts = mean(pts),
+    median_pts = median(pts)
+  )
+
+sum_grp <- dat %>% 
+  group_by(
+    spec
+  ) %>% 
+  summarise(
+    mean_pts = mean(pts),
+    median_pts = median(pts)
+  ) %>% 
+  filter(spec == "point")
+
+plt_outlier <- dat %>% 
+  ggplot(
+    aes(
+      x = spec,
+      y = pts
+    )
+  )+
+ # geom_violin(
+ #    data = dat %>% filter(spec=="point")
+ #  )+
+  geom_point(
+    aes(
+      shape = spec
+    ),
+    size = 5,
+    # width = 0.1
+  )+
+scale_shape_manual(
+    values = c("point" = 8,"outlier" = 13)
+  )+
+  theme_bw(
+    base_size = 20
+  )+
+  labs(
+    title = "Outlier influence",
+    y = "",
+    shape = "",
+    linetype = ""
+  )+
+  theme(
+    legend.position = "bottom"
+  )
+
+plt_outlier 
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+
+plt_outlier+
+  geom_hline(
+    data = sum_all,
+    aes(
+      yintercept = mean_pts,
+      linetype = "mean"
+    ),
+    linewidth = 1
+  )+
+  geom_hline(
+    data = sum_all,
+    aes(
+      yintercept = median_pts,
+      linetype = "median"
+    ),
+    linewidth = 1
+  )+
+  annotate(
+    geom = "label",
+    x = 1.5,
+    y = sum_all$mean_pts,
+    label = paste0("mean: ",round(sum_all$mean_pts,digits = 2))
+  )+
+    annotate(
+    geom = "label",
+    x = 1.5,
+    y = sum_all$median_pts,
+    label = paste0("median: ",round(sum_all$median_pts,digits = 2))
+  )+
+  labs(
+    title = "WITH outlier"
+  )
+  
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+
+plt_outlier+
+  geom_hline(
+    data = sum_grp,
+    aes(
+      yintercept = mean_pts,
+      linetype = "mean"
+    ),
+    linewidth = 1
+  )+
+  geom_hline(
+    data = sum_grp,
+    aes(
+      yintercept = median_pts,
+      linetype = "median"
+    ),
+    linewidth = 1
+  )+
+  annotate(
+    geom = "label",
+    x = 1.5,
+    y = sum_grp$mean_pts-2,
+    label = paste0("mean: ",round(sum_grp$mean_pts,digits = 2)),
+  )+
+    annotate(
+    geom = "label",
+    x = 1.5,
+    y = sum_grp$median_pts+2,
+    label = paste0("median: ",round(sum_grp$median_pts,digits = 2))
+  )+
+  labs(
+    title = "WITHOUT outlier"
+  )
+  
+
+```
+
+:::
+
+:::
+
+#### Dealing with outliers - rules of thumb
+
+::: {style="font-size: 80%;"}
+::: {.incremental}
+
+1. Standard Deviation Method: datapoints that are $2 \ldots 3 \cdot sd$ away from the mean are outliers
+
+2. Interquartile Range (IQR) Method (Boxplot method): datapoints beyond $Q_3 + 1.5*IQR$ or $Q_1 - 1.5*IQR$ are outliers
+
+3. Z-Score method: Calculate the Z-score ($Z = \frac{x_i - \bar{x}}{sd}$) and setz the threshold at $\pm2$ or $\pm3$
+
+4. Visual Inspection
+
+5. Domain Knowledge
+
+:::
+:::
+
+### Not-invented Here Bias
+
+The "Not Invented Here" bias is when people or groups reject ideas or solutions just because they didn't come from within their own circle.
+
+#### Alexander Bell and Western Union
+
+![](img/Alexander_Graham_Bell.jpg){fig-align="center"}
+
+::: {.fragment .fade-in}
+::: {style="font-size: 60%;"}
+
+* Bell was looking for partner to commercialize the telephone (kind of a big deal)
+* He contacted Western Union, the market leader (who made a lot of money stringing telephone wires)
+* “...There is nothing in this patent whatever, nor is there anything in the scheme itself, except as a toy. If the device has any value, the Western Union owns a prior patent … which makes the Bell device worthless. ...” 
+
+:::
+:::
+
+#### Kodak
+
+![](img/Polaroid_Logo.svg){fig-align="center"}
+
+::: {.fragment .fade-in}
+::: {style="font-size: 60%;"}
+
+* Kodak rejected the idea (Edwin Land and Chester Carlson) of the polaroid process
+* shows how easy it is to put up defenses agains ideas orginating from outside
+
+:::
+:::
+
+
+## Bias and Variance
+
+- Bias: 
+
+  * error introduced by approximating a real-world problem with a simplified model
+  * leads to underfitting
+
+. . .
+
+- Variance: 
+
+  * sensitivity to fluctuations in the data, such as random noise, as if it were true patterns
+  * leads to overfitting
+  
+---
+
+![Thanks xkcd](https://imgs.xkcd.com/comics/data_trap_2x.png)
+
+## The Bias Variance Trade Off
+
+::: {.r-stack}
+
+::: {.fragment .fade-out}
+
+![](img/bias_variance_tradeoff.svg)
+
+:::
+
+::: {.r-fit-text .v-c .fragment .fade-in-then-out}
+
+familiar?
+
+:::
+
+::: {.fragment .fade-in}
+
+{{< include img/_bias_var_contrib.qmd >}}
+
+:::
+
+:::
+
+### Simulation
+
+::: {.r-stack}
+
+::: {.fragment .fade-out}
+
+Suppose we have a true function
+
+\begin{align}
+f(x) &= x^2 \nonumber \\
+Y &= f(X) + \epsilon \nonumber
+\end{align}
+
+where we call $f(x)$ the **signal** and $\epsilon$ the **noise**.
+
+- The $x_i$ iare sampled from a uniform distribution over $[0, 1]$.
+- The $x_i$ and $\epsilon$ are independent.
+- The $y_i$ in are sampled from the normal distribution.
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+We fit the following models (without interaction):
+
+\begin{align}
+\hat{f}_0(x) &= \hat{\beta}_0 \nonumber \\
+\hat{f}_1(x) &= \hat{\beta}_0 + \hat{\beta}_1 x \nonumber \\
+\hat{f}_2(x) &= \hat{\beta}_0 + \hat{\beta}_1 x + \hat{\beta}_2 x^2 \nonumber \\
+\hat{f}_9(x) &= \hat{\beta}_0 + \hat{\beta}_1 x + \hat{\beta}_2 x^2 + \ldots + \hat{\beta}_9 x^9 \nonumber
+\end{align}
+
+```{r}
+#| include: false
+
+f = function(x) {
+  x ^ 2
+}
+
+get_sim_data = function(f, sample_size = 100) {
+  x = runif(n = sample_size, min = 0, max = 1)
+  eps = rnorm(n = sample_size, mean = 0, sd = 0.75)
+  y = f(x) + eps
+  data.frame(x, y)
+}
+
+set.seed(1)
+sim_data = get_sim_data(f)
+
+fit_0 = lm(y ~ 1,                   data = sim_data)
+fit_1 = lm(y ~ poly(x, degree = 1), data = sim_data)
+fit_2 = lm(y ~ poly(x, degree = 2), data = sim_data)
+fit_9 = lm(y ~ poly(x, degree = 9), data = sim_data)
+
+plt_tradeoff <- sim_data %>% 
+  ggplot(
+    aes(
+      x
+    )
+  )+
+  geom_point(
+    aes(
+      y = y,
+      color = "raw"
+    ),
+    color = "gray"
+  )+
+  scale_color_brewer(
+    palette = "Set1"
+  )+
+  theme_bw(
+    base_size = 20
+  )+
+  theme(
+    legend.position = "bottom"
+  )+
+  labs(
+    title = "the fitted models (n[sim] = 1)",
+    color = "polynomial degree"
+  )
+
+
+```
+
+::: 
+
+::: {.fragment .fade-in-then-out}
+
+```{r}
+#| out-height: 95%
+#| out-width: 95%
+
+plt_tradeoff +
+   geom_line(
+    aes(
+      y = fit_0$fitted.values,
+      color = "fit_0"
+    ),
+    linewidth = 1.5
+  )
+  
+
+```
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+```{r}
+#| out-height: 95%
+#| out-width: 95%
+
+plt_tradeoff +
+   geom_line(
+    aes(
+      y = fit_0$fitted.values,
+      color = "fit_0"
+    )
+  )+
+   geom_line(
+    aes(
+      y = fit_1$fitted.values,
+      color = "fit_1"
+    ),
+    linewidth = 1.5
+  )
+  
+
+```
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+```{r}
+#| out-height: 95%
+#| out-width: 95%
+
+plt_tradeoff +
+   geom_line(
+    aes(
+      y = fit_0$fitted.values,
+      color = "fit_0"
+    )
+  )+
+   geom_line(
+    aes(
+      y = fit_1$fitted.values,
+      color = "fit_1"
+    )
+  )+
+   geom_line(
+    aes(
+      y = fit_2$fitted.values,
+      color = "fit_2"
+    ),
+    linewidth = 1.5
+  )
+  
+
+```
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+```{r}
+#| out-height: 95%
+#| out-width: 95%
+
+plt_tradeoff +
+   geom_line(
+    aes(
+      y = fit_0$fitted.values,
+      color = "fit_0"
+    )
+  )+
+   geom_line(
+    aes(
+      y = fit_1$fitted.values,
+      color = "fit_1"
+    )
+  )+
+   geom_line(
+    aes(
+      y = fit_2$fitted.values,
+      color = "fit_2"
+    )
+  )+
+    geom_line(
+    aes(
+      y = fit_9$fitted.values,
+      color = "fit_9"
+    ),
+    linewidth = 1.5
+  )
+  
+  
+
+```
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+```{r}
+#| include: false
+
+set.seed(1)
+n_sims = 250
+n_models = 4
+x = data.frame(x = 0.90) # fixed point at which we make predictions
+predictions = matrix(0, nrow = n_sims, ncol = n_models)
+
+for (sim in 1:n_sims) {
+
+  # simulate new, random, training data
+  # this is the only random portion of the bias, var, and mse calculations
+  # this allows us to calculate the expectation over D
+  sim_data = get_sim_data(f)
+
+  # fit models
+  fit_0 = lm(y ~ 1,                   data = sim_data)
+  fit_1 = lm(y ~ poly(x, degree = 1), data = sim_data)
+  fit_2 = lm(y ~ poly(x, degree = 2), data = sim_data)
+  fit_9 = lm(y ~ poly(x, degree = 9), data = sim_data)
+
+  # get predictions
+  predictions[sim, 1] = predict(fit_0, x)
+  predictions[sim, 2] = predict(fit_1, x)
+  predictions[sim, 3] = predict(fit_2, x)
+  predictions[sim, 4] = predict(fit_9, x)
+}
+
+sim_pred_from_lm_at_point = function(x) {
+
+  # x value to predict at
+  # coerce to data frame for predict() function
+  x = data.frame(x = x)
+
+  # simulate new training data
+  # expectation over D
+  sim_data = get_sim_data(f)
+
+  # fit models
+  fit_0 = lm(y ~ 1,                   data = sim_data)
+  fit_1 = lm(y ~ poly(x, degree = 1), data = sim_data)
+  fit_2 = lm(y ~ poly(x, degree = 2), data = sim_data)
+  fit_9 = lm(y ~ poly(x, degree = 9), data = sim_data)
+
+  # get prediction at point for each model
+  c(predict(fit_0, x),
+    predict(fit_1, x),
+    predict(fit_2, x),
+    predict(fit_9, x))
+
+}
+
+set.seed(1)
+
+predictions = replicate(n = 250, sim_pred_from_lm_at_point(x = 0.90))
+
+pred_df <- data.frame(
+  fit_0 = predictions[1,],
+  fit_1 = predictions[2,],
+  fit_2 = predictions[3,],
+  fit_4 = predictions[4,]
+) %>% 
+  rowid_to_column(var = "sim_number") %>% 
+  pivot_longer(
+    cols = starts_with("fit"),
+    values_to = "fit_val",
+    names_to = "model"
+  )
+
+predictions = t(predictions)
+colnames(predictions) = c("0", "1", "2", "9")
+predictions = as.data.frame(predictions)
+
+```
+
+```{r}
+#| out-width: 95%
+#| out-height: 95%
+
+pred_df %>% 
+  ggplot(
+    aes(
+      x = model,
+      y = fit_val
+    )
+  )+
+  geom_boxplot(
+    outlier.shape = NA
+  )+
+  geom_jitter(
+    alpha = 0.4
+  )+
+  geom_hline(yintercept = 0.9)+
+  labs(
+    title = "error at x = 0.9 (true value)",
+    x = "polynomial degree"
+  )+
+  theme_bw(
+    base_size = 20
+  )+
+  scale_color_brewer(
+    palette = "Set1"
+  )
+
+```
+
+:::
+
+::: {.fragment .fade-in-then-out}
+
+```{r}
+#| include: false
+
+get_mse = function(truth, estimate) {
+  mean((estimate - truth) ^ 2)
+}
+
+get_bias = function(estimate, truth) {
+  mean(estimate) - truth
+}
+
+get_var = function(estimate) {
+  mean((estimate - mean(estimate)) ^ 2)
+}
+
+bias = apply(predictions, 2, get_bias, truth = f(x = 0.90))
+variance = apply(predictions, 2, get_var)
+mse = apply(predictions, 2, get_mse, truth = f(x = 0.90))
+
+results = data.frame(
+  poly_degree = c(0, 1, 2, 9),
+  round(mse, 5),
+  round(bias ^ 2, 5),
+  round(variance, 5)
+)
+
+colnames(results) = c("Degree", "Mean Squared Error", "Bias Squared", "Variance")
+rownames(results) = NULL
+
+```
+
+```{r}
+#| out-width: 95%
+#| out-height: 95%
+
+res_long <- results %>% 
+  pivot_longer(
+    cols = !starts_with("Degree"),
+    values_to = "error",
+    names_to = "error_type"
+  )
+
+res_long %>% 
+  ggplot(
+    aes(
+      x = as.factor(Degree),
+      y = error,
+      # fill = error_type
+    )
+  )+
+  geom_col(
+    position = "dodge",
+    fill = "steelblue"
+  )+
+  scale_y_continuous(
+    expand = c(0,0,0.05,0)
+  )+
+  facet_wrap(
+    ~error_type
+  )+
+  theme_bw(base_size = 20)+
+  labs(
+    title = "Bias Variance Trade Off with ground truth",
+    caption = "n[sim]=250",
+    x = "polynomial degree"
+  )
+
+```
+
+
+:::
+
+:::
+
+# References
