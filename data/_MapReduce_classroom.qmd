@@ -1,0 +1,436 @@
+---
+title: "MapReduce"
+format: 
+  pdf: 
+    include-in-header: 
+      text: '\pagenumbering{arabic}'
+execute: 
+  echo: false
+  warning: false
+---
+
+```{r}
+library(tidyverse)
+library(here)
+library(gt)
+```
+
+# Classroom example
+
+This is the file to create a map reduce classroom example.
+The setup is as follows
+
+1. print this file
+2. give the raw file to 1-4 students, they shall count the words. Measure the time. This is sequential processing.
+3. give the chunked file to the respective number of students. There are $n = 2,4,5,10$ groups available. The number of students is the chunk server.
+4. one student acts as the "reduce" server, collecting all the counts.
+5. write the counts on the whiteboard including the times
+6. which number of groups is the most efficient and which produces considerable overhead?
+
+```{r}
+clean <- function(x) {
+  gsub('[,.;:\'"()]','',tolower(x))
+}
+
+word_count_simple <- function(lines) {
+  chunks <- strsplit(clean(lines),'\\s')
+  words <- do.call(c, chunks)
+  table(words)
+}
+
+lorem <- read_lines(here("data","exchange.txt"))
+
+clean_lorem <- clean(lorem)
+
+chunks_lorem <- strsplit(clean_lorem,'\\s')
+
+vec_lorem <- unlist(chunks_lorem)
+
+two_groups <- split(vec_lorem, 1:2)
+
+four_groups <- split(vec_lorem, 1:4)
+
+five_groups <- split(vec_lorem, 1:5)
+
+ten_groups <- split(vec_lorem, 1:10)
+
+twenty_groups <- split(vec_lorem, 1:20)
+
+```
+
+## some summary statistics on the raw data
+
+```{r}
+lorem_freq_tbl <- word_count_simple(lorem)
+
+lorem_df <- lorem_freq_tbl %>%
+as.data.frame() %>%
+mutate(
+percentage = Freq/sum(Freq),
+percentage_round = round(percentage,digits = 4)
+) |>
+arrange(desc(Freq))
+
+
+
+```
+
+In total there are `{r} sum(lorem_df$Freq)` words available.
+
+```{r}
+lorem_df |> gt() |> 
+  fmt_percent(columns = c(percentage,percentage_round))
+```
+
+```{r}
+#| fig-width: 10
+#| fig-height: 15
+
+lorem_df |> 
+  ggplot(
+    aes(
+      y = reorder(words,-Freq),
+      x = Freq
+    )
+  )+
+  geom_col(
+    color = "white"
+  )+
+  labs(
+    title = "absolute frequency of all words in text",
+    y = "",
+    x = "count"
+  )
+
+```
+
+```{r}
+#| fig-width: 10
+#| fig-height: 15
+
+lorem_df |> 
+  filter(percentage_round>0.01) |>  
+  ggplot(
+    aes(
+      y = reorder(words,-percentage_round),
+      x = percentage_round
+    )
+  )+
+  geom_col(
+    color = "white"
+  )+
+  labs(
+    title = "relative frequency of words >1% in text",
+    y = "",
+    x = "percentage"
+  )+
+  scale_x_continuous(
+    labels = scales::percent
+  )
+
+```
+
+```{r}
+#| fig-width: 10
+#| fig-height: 15
+
+lorem_df |> 
+  filter(percentage_round>0.02) |>  
+  ggplot(
+    aes(
+      y = reorder(words,-percentage_round),
+      x = percentage_round
+    )
+  )+
+  geom_col(
+    color = "white"
+  )+
+  labs(
+    title = "relative frequency of words >1% in text",
+    y = "",
+    x = "percentage"
+  )+
+  scale_x_continuous(
+    labels = scales::percent
+  )
+
+```
+{{< pagebreak >}}
+
+# The Raw data 01
+
+`{r} lorem`
+
+{{< pagebreak >}}
+
+# The Raw data 02
+
+`{r} lorem`
+
+{{< pagebreak >}}
+
+# The Raw data 03
+
+`{r} lorem`
+
+{{< pagebreak >}}
+
+# The Raw data 04
+
+`{r} lorem`
+
+{{< pagebreak >}}
+
+# Two Groups
+
+## Part 1 of 2 (`{r} length(two_groups[[1]])` words)
+
+`{r} paste(two_groups[[1]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 2 of 2 (`{r} length(two_groups[[1]])` words)
+
+`{r} paste(two_groups[[2]],collapse = " ")`
+
+{{< pagebreak >}}
+
+# Four Groups
+
+## Part 1 of 4 (`{r} length(four_groups[[1]])` words)
+
+`{r} paste(four_groups[[1]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 2 of 4 (`{r} length(four_groups[[1]])` words)
+
+`{r} paste(four_groups[[2]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 3 of 4 (`{r} length(four_groups[[1]])` words)
+
+`{r} paste(four_groups[[3]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 4 of 4 (`{r} length(four_groups[[1]])` words)
+
+`{r} paste(four_groups[[4]],collapse = " ")`
+
+{{< pagebreak >}}
+
+# Five Groups
+
+## Part 1 of 5 (`{r} length(five_groups[[1]])` words)
+
+`{r} paste(five_groups[[1]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 2 of 5 (`{r} length(five_groups[[1]])` words)
+
+`{r} paste(five_groups[[2]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 3 of 5 (`{r} length(five_groups[[1]])` words)
+
+`{r} paste(five_groups[[3]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 4 of 5 (`{r} length(five_groups[[1]])` words)
+
+`{r} paste(five_groups[[4]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 5 of 5 (`{r} length(five_groups[[1]])` words)
+
+`{r} paste(five_groups[[5]],collapse = " ")`
+
+{{< pagebreak >}}
+
+# Ten Groups
+
+## Part 1 of 10 (`{r} length(ten_groups[[1]])` words)
+
+`{r} paste(ten_groups[[1]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 2 of 10 (`{r} length(ten_groups[[1]])` words)
+
+`{r} paste(ten_groups[[2]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 3 of 10 (`{r} length(ten_groups[[1]])` words)
+
+`{r} paste(ten_groups[[3]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 4 of 10 (`{r} length(ten_groups[[1]])` words)
+
+`{r} paste(ten_groups[[4]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 5 of 10 (`{r} length(ten_groups[[1]])` words)
+
+`{r} paste(ten_groups[[5]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 6 of 10 (`{r} length(ten_groups[[1]])` words)
+
+`{r} paste(ten_groups[[6]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 7 of 10 (`{r} length(ten_groups[[1]])` words)
+
+`{r} paste(ten_groups[[7]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 8 of 10 (`{r} length(ten_groups[[1]])` words)
+
+`{r} paste(ten_groups[[8]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 9 of 10 (`{r} length(ten_groups[[1]])` words)
+
+`{r} paste(ten_groups[[9]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 10 of 10 (`{r} length(ten_groups[[1]])` words)
+
+`{r} paste(ten_groups[[10]],collapse = " ")`
+
+{{< pagebreak >}}
+
+# Twenty Groups
+
+## Part 1 of 20 (`{r} length(twenty_groups[[1]])` words)
+
+`{r} paste(twenty_groups[[1]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 2 of 20 (`{r} length(twenty_groups[[1]])` words)
+
+`{r} paste(twenty_groups[[2]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 3 of 20 (`{r} length(twenty_groups[[1]])` words)
+
+`{r} paste(twenty_groups[[3]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 4 of 20 (`{r} length(twenty_groups[[1]])` words)
+
+`{r} paste(twenty_groups[[4]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 5 of 20 (`{r} length(twenty_groups[[1]])` words)
+
+`{r} paste(twenty_groups[[5]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 6 of 20 (`{r} length(twenty_groups[[1]])` words)
+
+`{r} paste(twenty_groups[[6]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 7 of 20 (`{r} length(twenty_groups[[1]])` words)
+
+`{r} paste(twenty_groups[[7]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 8 of 20 (`{r} length(twenty_groups[[1]])` words)
+
+`{r} paste(twenty_groups[[8]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 9 of 20 (`{r} length(twenty_groups[[1]])` words)
+
+`{r} paste(twenty_groups[[9]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 10 of 20 (`{r} length(twenty_groups[[1]])` words)
+
+`{r} paste(twenty_groups[[10]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 11 of 20 (`{r} length(twenty_groups[[1]])` words)
+
+`{r} paste(twenty_groups[[11]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 12 of 20 (`{r} length(twenty_groups[[1]])` words)
+
+`{r} paste(twenty_groups[[12]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 13 of 20 (`{r} length(twenty_groups[[1]])` words)
+
+`{r} paste(twenty_groups[[13]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 14 of 20 (`{r} length(twenty_groups[[1]])` words)
+
+`{r} paste(twenty_groups[[14]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 15 of 20 (`{r} length(twenty_groups[[1]])` words)
+
+`{r} paste(twenty_groups[[15]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 16 of 20 (`{r} length(twenty_groups[[1]])` words)
+
+`{r} paste(twenty_groups[[16]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 17 of 20 (`{r} length(twenty_groups[[1]])` words)
+
+`{r} paste(twenty_groups[[17]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 18 of 20 (`{r} length(twenty_groups[[1]])` words)
+
+`{r} paste(twenty_groups[[18]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 19 of 20 (`{r} length(twenty_groups[[1]])` words)
+
+`{r} paste(twenty_groups[[19]],collapse = " ")`
+
+{{< pagebreak >}}
+
+## Part 20 of 20 (`{r} length(twenty_groups[[1]])` words)
+
+`{r} paste(twenty_groups[[20]],collapse = " ")`
