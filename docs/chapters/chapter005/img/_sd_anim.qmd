@@ -1,0 +1,33 @@
+```yaml { .animate src="img/sd.svg"}
+setup:
+  - element: "#data"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "1"
+  - element: "#mean"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "2"
+  - element: "#error"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "3"
+  - element: "#ex1"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "4"
+  - element: "#calc"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "5"
+  - element: "#areas"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "6"        
+```

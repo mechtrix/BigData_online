@@ -1,0 +1,33 @@
+```yaml { .animate src="img/mode.svg"}
+setup:
+  - element: "#data"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "1"
+  - element: "#tbl"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "2"
+  - element: "#hghlght"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "3"
+  - element: "#arrow"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "4"
+  - element: "#mode"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "5"
+  - element: "#txt"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "6"
+```
