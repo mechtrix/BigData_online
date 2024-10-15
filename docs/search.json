@@ -13,7 +13,8 @@
     "section": "Why Data Bias matters",
     "text": "Why Data Bias matters",
     "crumbs": [
-      "Data Bias"
+      "Data Bias",
+      "slides"
     ]
   },
   {
@@ -23,7 +24,8 @@
     "section": "Types of Data Bias",
     "text": "Types of Data Bias",
     "crumbs": [
-      "Data Bias"
+      "Data Bias",
+      "slides"
     ]
   },
   {
@@ -33,7 +35,8 @@
     "section": "Bias and Variance",
     "text": "Bias and Variance\n\nBias:\n\nerror introduced by approximating a real-world problem with a simplified model\nleads to underfitting\n\n\n\n\nVariance:\n\nsensitivity to fluctuations in the data, such as random noise, as if it were true patterns\nleads to overfitting",
     "crumbs": [
-      "Data Bias"
+      "Data Bias",
+      "slides"
     ]
   },
   {
@@ -43,7 +46,8 @@
     "section": "The Bias Variance Trade Off",
     "text": "The Bias Variance Trade Off\n\n\n\n\n\nfamiliar?",
     "crumbs": [
-      "Data Bias"
+      "Data Bias",
+      "slides"
     ]
   },
   {
@@ -263,7 +267,8 @@
     "section": "Central Tendency",
     "text": "Central Tendency",
     "crumbs": [
-      "Data crunching"
+      "Data crunching",
+      "slides"
     ]
   },
   {
@@ -273,7 +278,8 @@
     "section": "Measures of Spread",
     "text": "Measures of Spread",
     "crumbs": [
-      "Data crunching"
+      "Data crunching",
+      "slides"
     ]
   },
   {
@@ -283,7 +289,8 @@
     "section": "Measures for Categoricals",
     "text": "Measures for Categoricals",
     "crumbs": [
-      "Data crunching"
+      "Data crunching",
+      "slides"
     ]
   },
   {
@@ -293,7 +300,8 @@
     "section": "Beware of summarized Data",
     "text": "Beware of summarized Data\n\n\n\n\n\n\n\n\n\n\ndataset\nmean_x\nmean_y\nstd_dev_x\nstd_dev_y\ncorr_x_y\n\n\n\n\naway\n54.266\n47.835\n16.770\n26.940\n−0.064\n\n\nbullseye\n54.269\n47.831\n16.769\n26.936\n−0.069\n\n\ncircle\n54.267\n47.838\n16.760\n26.930\n−0.068\n\n\ndino\n54.263\n47.832\n16.765\n26.935\n−0.064\n\n\ndots\n54.260\n47.840\n16.768\n26.930\n−0.060\n\n\nh_lines\n54.261\n47.830\n16.766\n26.940\n−0.062\n\n\nhigh_lines\n54.269\n47.835\n16.767\n26.940\n−0.069\n\n\nslant_down\n54.268\n47.836\n16.767\n26.936\n−0.069\n\n\nslant_up\n54.266\n47.831\n16.769\n26.939\n−0.069\n\n\nstar\n54.267\n47.840\n16.769\n26.930\n−0.063\n\n\nv_lines\n54.270\n47.837\n16.770\n26.938\n−0.069\n\n\nwide_lines\n54.267\n47.832\n16.770\n26.938\n−0.067\n\n\nx_shape\n54.260\n47.840\n16.770\n26.930\n−0.066",
     "crumbs": [
-      "Data crunching"
+      "Data crunching",
+      "slides"
     ]
   }
 ]

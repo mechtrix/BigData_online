@@ -48,7 +48,10 @@ website:
             href: https://mechtrix.github.io/BigData_exercises/gage_rr.html
       - section: Data Bias
         text: "slides"
-        href: chapters/chapter004/index.qmd
+        contents: 
+          - text: "slides"
+            href: chapters/chapter004/index.qmd
       - section: Data crunching
-        text: "slides"
-        href: chapters/chapter005/index.qmd
+        contents: 
+          - text: "slides"
+            href: chapters/chapter005/index.qmd
