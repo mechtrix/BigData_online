@@ -257,45 +257,43 @@
     ]
   },
   {
-    "objectID": "chapters/chapter005/index.html#mean",
-    "href": "chapters/chapter005/index.html#mean",
+    "objectID": "chapters/chapter005/index.html#central-tendency",
+    "href": "chapters/chapter005/index.html#central-tendency",
     "title": "Data Crunching",
-    "section": "Mean",
-    "text": "Mean"
+    "section": "Central Tendency",
+    "text": "Central Tendency",
+    "crumbs": [
+      "Data crunching"
+    ]
   },
   {
-    "objectID": "chapters/chapter005/index.html#median",
-    "href": "chapters/chapter005/index.html#median",
+    "objectID": "chapters/chapter005/index.html#measures-of-spread",
+    "href": "chapters/chapter005/index.html#measures-of-spread",
     "title": "Data Crunching",
-    "section": "Median",
-    "text": "Median"
+    "section": "Measures of Spread",
+    "text": "Measures of Spread",
+    "crumbs": [
+      "Data crunching"
+    ]
   },
   {
-    "objectID": "chapters/chapter005/index.html#comparison-of-mean-and-median",
-    "href": "chapters/chapter005/index.html#comparison-of-mean-and-median",
+    "objectID": "chapters/chapter005/index.html#measures-for-categoricals",
+    "href": "chapters/chapter005/index.html#measures-for-categoricals",
     "title": "Data Crunching",
-    "section": "comparison of mean and median",
-    "text": "comparison of mean and median"
+    "section": "Measures for Categoricals",
+    "text": "Measures for Categoricals",
+    "crumbs": [
+      "Data crunching"
+    ]
   },
   {
-    "objectID": "chapters/chapter005/index.html#standard-deviation-and-variance",
-    "href": "chapters/chapter005/index.html#standard-deviation-and-variance",
+    "objectID": "chapters/chapter005/index.html#beware-of-summarized-data",
+    "href": "chapters/chapter005/index.html#beware-of-summarized-data",
     "title": "Data Crunching",
-    "section": "Standard deviation and variance",
-    "text": "Standard deviation and variance"
-  },
-  {
-    "objectID": "chapters/chapter005/index.html#interquartile-range",
-    "href": "chapters/chapter005/index.html#interquartile-range",
-    "title": "Data Crunching",
-    "section": "Interquartile Range",
-    "text": "Interquartile Range"
-  },
-  {
-    "objectID": "chapters/chapter005/index.html#mode-and-frequencies",
-    "href": "chapters/chapter005/index.html#mode-and-frequencies",
-    "title": "Data Crunching",
-    "section": "Mode and Frequencies",
-    "text": "Mode and Frequencies"
+    "section": "Beware of summarized Data",
+    "text": "Beware of summarized Data\n\n\n\n\n\n\n\n\n\n\ndataset\nmean_x\nmean_y\nstd_dev_x\nstd_dev_y\ncorr_x_y\n\n\n\n\naway\n54.266\n47.835\n16.770\n26.940\n−0.064\n\n\nbullseye\n54.269\n47.831\n16.769\n26.936\n−0.069\n\n\ncircle\n54.267\n47.838\n16.760\n26.930\n−0.068\n\n\ndino\n54.263\n47.832\n16.765\n26.935\n−0.064\n\n\ndots\n54.260\n47.840\n16.768\n26.930\n−0.060\n\n\nh_lines\n54.261\n47.830\n16.766\n26.940\n−0.062\n\n\nhigh_lines\n54.269\n47.835\n16.767\n26.940\n−0.069\n\n\nslant_down\n54.268\n47.836\n16.767\n26.936\n−0.069\n\n\nslant_up\n54.266\n47.831\n16.769\n26.939\n−0.069\n\n\nstar\n54.267\n47.840\n16.769\n26.930\n−0.063\n\n\nv_lines\n54.270\n47.837\n16.770\n26.938\n−0.069\n\n\nwide_lines\n54.267\n47.832\n16.770\n26.938\n−0.067\n\n\nx_shape\n54.260\n47.840\n16.770\n26.930\n−0.066",
+    "crumbs": [
+      "Data crunching"
+    ]
   }
 ]

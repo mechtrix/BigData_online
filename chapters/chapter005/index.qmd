@@ -24,7 +24,9 @@ css: style.css
 #| label: setup
 #| include: false
 
-
+library(datasauRus)
+library(tidyverse)
+library(gt)
 
 ```
 
@@ -32,34 +34,316 @@ css: style.css
 
 ![](img/data_crunching.webp){fig-align="center"}
 
-# Measures of Central Tendency
+# Classic Measures
 
-## Mean
+## Central Tendency
+
+### Mean
 
 {{< include img/_mean_anim.qmd >}}
 
-## Median
+### Median
 
 {{< include img/_median_anim.qmd >}}
 
-## comparison of mean and median
+### comparison of mean and median
 
 {{< include img/_median_mean_compare_anim.qmd >}}
 
-# Measures of Spread
+## Measures of Spread
 
-## Standard deviation and variance
+### Standard deviation and variance
 
 {{< include img/_sd_anim.qmd >}}
 
-## Interquartile Range
+### Interquartile Range
 
 {{< include img/_iqr_anim.qmd >}}
 
-# Measures for Categoricals
+## Measures for Categoricals
 
-## Mode and Frequencies
+### Mode and Frequencies
 
 {{< include img/_mode_anim.qmd >}}
+
+### Ratios
+
+```{r}
+
+vec <- c(1,2,3,4,5,6,6,7,8)
+
+table(vec) |> as.data.frame() |> 
+  mutate(
+    ratio_total = Freq/sum(Freq)
+  ) |> 
+  gtsummary::tbl_summary()
+
+```
+
+## Beware of summarized Data 
+
+::: {.r-stack}
+
+:::{.fragment .fade-out}
+
+```{r}
+datasaurus_dozen %>% 
+    group_by(dataset) %>% 
+    summarize(
+      mean_x    = mean(x),
+      mean_y    = mean(y),
+      std_dev_x = sd(x),
+      std_dev_y = sd(y),
+      corr_x_y  = cor(x, y)
+    ) %>% 
+  gt() %>% 
+   fmt_number(decimals = 3) %>% 
+  tab_options(
+    # table.font.size = 25
+  ) 
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="away"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="bullseye"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="circle"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="dino"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="dots"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="h_lines"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="high_lines"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="slant_down"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="slant_up"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="star"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="v_lines"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="wide_lines"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="x_shape"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen , aes(x = x, y = y))+
+    geom_point()+
+    theme_void(base_size = 10)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::
 
 # References
