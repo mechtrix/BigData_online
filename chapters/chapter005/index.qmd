@@ -9,6 +9,8 @@ format:
     logo: img/back.svg
     footer-logo-link: "https://mechtrix.github.io/BigData_online/"
     footer: "Copyright Prof. Dr. Tim Weber, 2024"
+    include-in-header: 
+      - pseudocode.html
 revealjs-plugins:
   - animate
   - attribution

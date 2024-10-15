@@ -392,6 +392,39 @@
       margin-right: 0; 
     }
   </style>
+  <script>
+
+  MathJax = {
+
+  	loader: {
+
+  		: ['[tex]/boldsymbol']
+
+      },
+
+  tex: {
+
+      tags: "all",
+
+      inlineMath: [['$','$'], ['\\(','\\)']],
+
+      processEscapes: true,
+
+      processEnvironments: true,
+
+      packages: {
+
+          '[+]': ['boldsymbol']
+
+          }
+
+         }
+
+        };
+
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -638,23 +671,23 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 <h3>Ratios</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div id="wjywavezgt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wjywavezgt table {
+<div id="lkygcqmtyx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lkygcqmtyx table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wjywavezgt thead, #wjywavezgt tbody, #wjywavezgt tfoot, #wjywavezgt tr, #wjywavezgt td, #wjywavezgt th {
+#lkygcqmtyx thead, #lkygcqmtyx tbody, #lkygcqmtyx tfoot, #lkygcqmtyx tr, #lkygcqmtyx td, #lkygcqmtyx th {
   border-style: none;
 }
 
-#wjywavezgt p {
+#lkygcqmtyx p {
   margin: 0;
   padding: 0;
 }
 
-#wjywavezgt .gt_table {
+#lkygcqmtyx .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -680,12 +713,12 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-left-color: #D3D3D3;
 }
 
-#wjywavezgt .gt_caption {
+#lkygcqmtyx .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wjywavezgt .gt_title {
+#lkygcqmtyx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -697,7 +730,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-width: 0;
 }
 
-#wjywavezgt .gt_subtitle {
+#lkygcqmtyx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -709,7 +742,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-top-width: 0;
 }
 
-#wjywavezgt .gt_heading {
+#lkygcqmtyx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -721,13 +754,13 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#wjywavezgt .gt_bottom_border {
+#lkygcqmtyx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wjywavezgt .gt_col_headings {
+#lkygcqmtyx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -742,7 +775,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#wjywavezgt .gt_col_heading {
+#lkygcqmtyx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -762,7 +795,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   overflow-x: hidden;
 }
 
-#wjywavezgt .gt_column_spanner_outer {
+#lkygcqmtyx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -774,15 +807,15 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 4px;
 }
 
-#wjywavezgt .gt_column_spanner_outer:first-child {
+#lkygcqmtyx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wjywavezgt .gt_column_spanner_outer:last-child {
+#lkygcqmtyx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wjywavezgt .gt_column_spanner {
+#lkygcqmtyx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -794,11 +827,11 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   width: 100%;
 }
 
-#wjywavezgt .gt_spanner_row {
+#lkygcqmtyx .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wjywavezgt .gt_group_heading {
+#lkygcqmtyx .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -824,7 +857,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   text-align: left;
 }
 
-#wjywavezgt .gt_empty_group_heading {
+#lkygcqmtyx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -839,15 +872,15 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   vertical-align: middle;
 }
 
-#wjywavezgt .gt_from_md > :first-child {
+#lkygcqmtyx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wjywavezgt .gt_from_md > :last-child {
+#lkygcqmtyx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wjywavezgt .gt_row {
+#lkygcqmtyx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -866,7 +899,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   overflow-x: hidden;
 }
 
-#wjywavezgt .gt_stub {
+#lkygcqmtyx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -879,7 +912,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#wjywavezgt .gt_stub_row_group {
+#lkygcqmtyx .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -893,15 +926,15 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   vertical-align: top;
 }
 
-#wjywavezgt .gt_row_group_first td {
+#lkygcqmtyx .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wjywavezgt .gt_row_group_first th {
+#lkygcqmtyx .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wjywavezgt .gt_summary_row {
+#lkygcqmtyx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -911,16 +944,16 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#wjywavezgt .gt_first_summary_row {
+#lkygcqmtyx .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wjywavezgt .gt_first_summary_row.thick {
+#lkygcqmtyx .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wjywavezgt .gt_last_summary_row {
+#lkygcqmtyx .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -930,7 +963,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-color: #D3D3D3;
 }
 
-#wjywavezgt .gt_grand_summary_row {
+#lkygcqmtyx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -940,7 +973,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#wjywavezgt .gt_first_grand_summary_row {
+#lkygcqmtyx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -950,7 +983,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-top-color: #D3D3D3;
 }
 
-#wjywavezgt .gt_last_grand_summary_row_top {
+#lkygcqmtyx .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -960,11 +993,11 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-color: #D3D3D3;
 }
 
-#wjywavezgt .gt_striped {
+#lkygcqmtyx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wjywavezgt .gt_table_body {
+#lkygcqmtyx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -973,7 +1006,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-color: #D3D3D3;
 }
 
-#wjywavezgt .gt_footnotes {
+#lkygcqmtyx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -987,7 +1020,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#wjywavezgt .gt_footnote {
+#lkygcqmtyx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -996,7 +1029,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#wjywavezgt .gt_sourcenotes {
+#lkygcqmtyx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1010,7 +1043,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#wjywavezgt .gt_sourcenote {
+#lkygcqmtyx .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1018,72 +1051,72 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#wjywavezgt .gt_left {
+#lkygcqmtyx .gt_left {
   text-align: left;
 }
 
-#wjywavezgt .gt_center {
+#lkygcqmtyx .gt_center {
   text-align: center;
 }
 
-#wjywavezgt .gt_right {
+#lkygcqmtyx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wjywavezgt .gt_font_normal {
+#lkygcqmtyx .gt_font_normal {
   font-weight: normal;
 }
 
-#wjywavezgt .gt_font_bold {
+#lkygcqmtyx .gt_font_bold {
   font-weight: bold;
 }
 
-#wjywavezgt .gt_font_italic {
+#lkygcqmtyx .gt_font_italic {
   font-style: italic;
 }
 
-#wjywavezgt .gt_super {
+#lkygcqmtyx .gt_super {
   font-size: 65%;
 }
 
-#wjywavezgt .gt_footnote_marks {
+#lkygcqmtyx .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wjywavezgt .gt_asterisk {
+#lkygcqmtyx .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wjywavezgt .gt_indent_1 {
+#lkygcqmtyx .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wjywavezgt .gt_indent_2 {
+#lkygcqmtyx .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wjywavezgt .gt_indent_3 {
+#lkygcqmtyx .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wjywavezgt .gt_indent_4 {
+#lkygcqmtyx .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wjywavezgt .gt_indent_5 {
+#lkygcqmtyx .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wjywavezgt .katex-display {
+#lkygcqmtyx .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wjywavezgt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#lkygcqmtyx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1187,23 +1220,23 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 <div class="fragment fade-out">
 <div class="cell">
 <div class="cell-output-display">
-<div id="bpurbaecka" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bpurbaecka table {
+<div id="sbyewwzkqo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#sbyewwzkqo table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#bpurbaecka thead, #bpurbaecka tbody, #bpurbaecka tfoot, #bpurbaecka tr, #bpurbaecka td, #bpurbaecka th {
+#sbyewwzkqo thead, #sbyewwzkqo tbody, #sbyewwzkqo tfoot, #sbyewwzkqo tr, #sbyewwzkqo td, #sbyewwzkqo th {
   border-style: none;
 }
 
-#bpurbaecka p {
+#sbyewwzkqo p {
   margin: 0;
   padding: 0;
 }
 
-#bpurbaecka .gt_table {
+#sbyewwzkqo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1229,12 +1262,12 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-left-color: #D3D3D3;
 }
 
-#bpurbaecka .gt_caption {
+#sbyewwzkqo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#bpurbaecka .gt_title {
+#sbyewwzkqo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1246,7 +1279,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-width: 0;
 }
 
-#bpurbaecka .gt_subtitle {
+#sbyewwzkqo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1258,7 +1291,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-top-width: 0;
 }
 
-#bpurbaecka .gt_heading {
+#sbyewwzkqo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1270,13 +1303,13 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#bpurbaecka .gt_bottom_border {
+#sbyewwzkqo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bpurbaecka .gt_col_headings {
+#sbyewwzkqo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1291,7 +1324,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#bpurbaecka .gt_col_heading {
+#sbyewwzkqo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1311,7 +1344,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   overflow-x: hidden;
 }
 
-#bpurbaecka .gt_column_spanner_outer {
+#sbyewwzkqo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1323,15 +1356,15 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 4px;
 }
 
-#bpurbaecka .gt_column_spanner_outer:first-child {
+#sbyewwzkqo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bpurbaecka .gt_column_spanner_outer:last-child {
+#sbyewwzkqo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bpurbaecka .gt_column_spanner {
+#sbyewwzkqo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1343,11 +1376,11 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   width: 100%;
 }
 
-#bpurbaecka .gt_spanner_row {
+#sbyewwzkqo .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#bpurbaecka .gt_group_heading {
+#sbyewwzkqo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1373,7 +1406,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   text-align: left;
 }
 
-#bpurbaecka .gt_empty_group_heading {
+#sbyewwzkqo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1388,15 +1421,15 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   vertical-align: middle;
 }
 
-#bpurbaecka .gt_from_md > :first-child {
+#sbyewwzkqo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bpurbaecka .gt_from_md > :last-child {
+#sbyewwzkqo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bpurbaecka .gt_row {
+#sbyewwzkqo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1415,7 +1448,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   overflow-x: hidden;
 }
 
-#bpurbaecka .gt_stub {
+#sbyewwzkqo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1428,7 +1461,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#bpurbaecka .gt_stub_row_group {
+#sbyewwzkqo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1442,15 +1475,15 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   vertical-align: top;
 }
 
-#bpurbaecka .gt_row_group_first td {
+#sbyewwzkqo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bpurbaecka .gt_row_group_first th {
+#sbyewwzkqo .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#bpurbaecka .gt_summary_row {
+#sbyewwzkqo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1460,16 +1493,16 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#bpurbaecka .gt_first_summary_row {
+#sbyewwzkqo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bpurbaecka .gt_first_summary_row.thick {
+#sbyewwzkqo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bpurbaecka .gt_last_summary_row {
+#sbyewwzkqo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1479,7 +1512,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-color: #D3D3D3;
 }
 
-#bpurbaecka .gt_grand_summary_row {
+#sbyewwzkqo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1489,7 +1522,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#bpurbaecka .gt_first_grand_summary_row {
+#sbyewwzkqo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1499,7 +1532,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-top-color: #D3D3D3;
 }
 
-#bpurbaecka .gt_last_grand_summary_row_top {
+#sbyewwzkqo .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1509,11 +1542,11 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-color: #D3D3D3;
 }
 
-#bpurbaecka .gt_striped {
+#sbyewwzkqo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bpurbaecka .gt_table_body {
+#sbyewwzkqo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1522,7 +1555,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-color: #D3D3D3;
 }
 
-#bpurbaecka .gt_footnotes {
+#sbyewwzkqo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1536,7 +1569,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#bpurbaecka .gt_footnote {
+#sbyewwzkqo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1545,7 +1578,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#bpurbaecka .gt_sourcenotes {
+#sbyewwzkqo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1559,7 +1592,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#bpurbaecka .gt_sourcenote {
+#sbyewwzkqo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1567,72 +1600,72 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#bpurbaecka .gt_left {
+#sbyewwzkqo .gt_left {
   text-align: left;
 }
 
-#bpurbaecka .gt_center {
+#sbyewwzkqo .gt_center {
   text-align: center;
 }
 
-#bpurbaecka .gt_right {
+#sbyewwzkqo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bpurbaecka .gt_font_normal {
+#sbyewwzkqo .gt_font_normal {
   font-weight: normal;
 }
 
-#bpurbaecka .gt_font_bold {
+#sbyewwzkqo .gt_font_bold {
   font-weight: bold;
 }
 
-#bpurbaecka .gt_font_italic {
+#sbyewwzkqo .gt_font_italic {
   font-style: italic;
 }
 
-#bpurbaecka .gt_super {
+#sbyewwzkqo .gt_super {
   font-size: 65%;
 }
 
-#bpurbaecka .gt_footnote_marks {
+#sbyewwzkqo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#bpurbaecka .gt_asterisk {
+#sbyewwzkqo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bpurbaecka .gt_indent_1 {
+#sbyewwzkqo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bpurbaecka .gt_indent_2 {
+#sbyewwzkqo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bpurbaecka .gt_indent_3 {
+#sbyewwzkqo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bpurbaecka .gt_indent_4 {
+#sbyewwzkqo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bpurbaecka .gt_indent_5 {
+#sbyewwzkqo .gt_indent_5 {
   text-indent: 25px;
 }
 
-#bpurbaecka .katex-display {
+#sbyewwzkqo .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#bpurbaecka div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#sbyewwzkqo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
