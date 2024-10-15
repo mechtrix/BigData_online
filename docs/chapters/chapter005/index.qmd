@@ -715,7 +715,6 @@ $\theta_0$ and $\theta_1$ are then iteratively updated:
 
 ```pseudocode
 #| html-line-number: true
-#| pdf-line-number: true
 
 \begin{algorithm}
 \caption{gradient descent}
