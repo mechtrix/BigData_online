@@ -314,5 +314,27 @@
       "Data crunching",
       "slides"
     ]
+  },
+  {
+    "objectID": "chapters/chapter005/index.html#mapreduce-summary",
+    "href": "chapters/chapter005/index.html#mapreduce-summary",
+    "title": "Data Crunching",
+    "section": "MapReduce summary",
+    "text": "MapReduce summary\n\n\n\nMapReduce is significant for its role in enabling the processing of massive datasets efficiently across distributed computing clusters.\nIt revolutionized big data processing by providing a scalable and fault-tolerant framework for handling large-scale computations.\nIts simplicity and scalability made it accessible to a wide range of industries and applications, from web search engines to scientific research.\nMapReduce paved the way for the development of other big data processing frameworks and technologies, influencing the evolution of distributed computing paradigms.\nIts impact extends beyond its original implementation, as concepts and principles from MapReduce have influenced the design of subsequent systems and architectures for big data processing.",
+    "crumbs": [
+      "Data crunching",
+      "slides"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter005/index.html#gradient-descent",
+    "href": "chapters/chapter005/index.html#gradient-descent",
+    "title": "Data Crunching",
+    "section": "Gradient Descent",
+    "text": "Gradient Descent",
+    "crumbs": [
+      "Data crunching",
+      "slides"
+    ]
   }
 ]

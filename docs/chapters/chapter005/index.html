@@ -10,7 +10,9 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.js" defer="true"></script>
 <link href="../../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
+<link href="../../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/pseudocode-2.4.1/pseudocode.min.js"></script>
+<link href="../../site_libs/quarto-contrib/pseudocode-2.4.1/pseudocode.min.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Tim Weber">
@@ -32,6 +34,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="style.css">
@@ -571,23 +638,23 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 <h3>Ratios</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div id="qvsbrzuooa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qvsbrzuooa table {
+<div id="bwiwvzncth" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bwiwvzncth table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qvsbrzuooa thead, #qvsbrzuooa tbody, #qvsbrzuooa tfoot, #qvsbrzuooa tr, #qvsbrzuooa td, #qvsbrzuooa th {
+#bwiwvzncth thead, #bwiwvzncth tbody, #bwiwvzncth tfoot, #bwiwvzncth tr, #bwiwvzncth td, #bwiwvzncth th {
   border-style: none;
 }
 
-#qvsbrzuooa p {
+#bwiwvzncth p {
   margin: 0;
   padding: 0;
 }
 
-#qvsbrzuooa .gt_table {
+#bwiwvzncth .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -613,12 +680,12 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-left-color: #D3D3D3;
 }
 
-#qvsbrzuooa .gt_caption {
+#bwiwvzncth .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qvsbrzuooa .gt_title {
+#bwiwvzncth .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -630,7 +697,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-width: 0;
 }
 
-#qvsbrzuooa .gt_subtitle {
+#bwiwvzncth .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -642,7 +709,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-top-width: 0;
 }
 
-#qvsbrzuooa .gt_heading {
+#bwiwvzncth .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -654,13 +721,13 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#qvsbrzuooa .gt_bottom_border {
+#bwiwvzncth .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qvsbrzuooa .gt_col_headings {
+#bwiwvzncth .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -675,7 +742,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#qvsbrzuooa .gt_col_heading {
+#bwiwvzncth .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -695,7 +762,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   overflow-x: hidden;
 }
 
-#qvsbrzuooa .gt_column_spanner_outer {
+#bwiwvzncth .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -707,15 +774,15 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 4px;
 }
 
-#qvsbrzuooa .gt_column_spanner_outer:first-child {
+#bwiwvzncth .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qvsbrzuooa .gt_column_spanner_outer:last-child {
+#bwiwvzncth .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qvsbrzuooa .gt_column_spanner {
+#bwiwvzncth .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -727,11 +794,11 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   width: 100%;
 }
 
-#qvsbrzuooa .gt_spanner_row {
+#bwiwvzncth .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qvsbrzuooa .gt_group_heading {
+#bwiwvzncth .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -757,7 +824,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   text-align: left;
 }
 
-#qvsbrzuooa .gt_empty_group_heading {
+#bwiwvzncth .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -772,15 +839,15 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   vertical-align: middle;
 }
 
-#qvsbrzuooa .gt_from_md > :first-child {
+#bwiwvzncth .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qvsbrzuooa .gt_from_md > :last-child {
+#bwiwvzncth .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qvsbrzuooa .gt_row {
+#bwiwvzncth .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -799,7 +866,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   overflow-x: hidden;
 }
 
-#qvsbrzuooa .gt_stub {
+#bwiwvzncth .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -812,7 +879,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#qvsbrzuooa .gt_stub_row_group {
+#bwiwvzncth .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -826,15 +893,15 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   vertical-align: top;
 }
 
-#qvsbrzuooa .gt_row_group_first td {
+#bwiwvzncth .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qvsbrzuooa .gt_row_group_first th {
+#bwiwvzncth .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qvsbrzuooa .gt_summary_row {
+#bwiwvzncth .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -844,16 +911,16 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#qvsbrzuooa .gt_first_summary_row {
+#bwiwvzncth .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qvsbrzuooa .gt_first_summary_row.thick {
+#bwiwvzncth .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qvsbrzuooa .gt_last_summary_row {
+#bwiwvzncth .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -863,7 +930,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-color: #D3D3D3;
 }
 
-#qvsbrzuooa .gt_grand_summary_row {
+#bwiwvzncth .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -873,7 +940,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#qvsbrzuooa .gt_first_grand_summary_row {
+#bwiwvzncth .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -883,7 +950,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-top-color: #D3D3D3;
 }
 
-#qvsbrzuooa .gt_last_grand_summary_row_top {
+#bwiwvzncth .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -893,11 +960,11 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-color: #D3D3D3;
 }
 
-#qvsbrzuooa .gt_striped {
+#bwiwvzncth .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qvsbrzuooa .gt_table_body {
+#bwiwvzncth .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -906,7 +973,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-color: #D3D3D3;
 }
 
-#qvsbrzuooa .gt_footnotes {
+#bwiwvzncth .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -920,7 +987,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#qvsbrzuooa .gt_footnote {
+#bwiwvzncth .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -929,7 +996,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#qvsbrzuooa .gt_sourcenotes {
+#bwiwvzncth .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -943,7 +1010,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#qvsbrzuooa .gt_sourcenote {
+#bwiwvzncth .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -951,72 +1018,72 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#qvsbrzuooa .gt_left {
+#bwiwvzncth .gt_left {
   text-align: left;
 }
 
-#qvsbrzuooa .gt_center {
+#bwiwvzncth .gt_center {
   text-align: center;
 }
 
-#qvsbrzuooa .gt_right {
+#bwiwvzncth .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qvsbrzuooa .gt_font_normal {
+#bwiwvzncth .gt_font_normal {
   font-weight: normal;
 }
 
-#qvsbrzuooa .gt_font_bold {
+#bwiwvzncth .gt_font_bold {
   font-weight: bold;
 }
 
-#qvsbrzuooa .gt_font_italic {
+#bwiwvzncth .gt_font_italic {
   font-style: italic;
 }
 
-#qvsbrzuooa .gt_super {
+#bwiwvzncth .gt_super {
   font-size: 65%;
 }
 
-#qvsbrzuooa .gt_footnote_marks {
+#bwiwvzncth .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qvsbrzuooa .gt_asterisk {
+#bwiwvzncth .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qvsbrzuooa .gt_indent_1 {
+#bwiwvzncth .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qvsbrzuooa .gt_indent_2 {
+#bwiwvzncth .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qvsbrzuooa .gt_indent_3 {
+#bwiwvzncth .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qvsbrzuooa .gt_indent_4 {
+#bwiwvzncth .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qvsbrzuooa .gt_indent_5 {
+#bwiwvzncth .gt_indent_5 {
   text-indent: 25px;
 }
 
-#qvsbrzuooa .katex-display {
+#bwiwvzncth .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#qvsbrzuooa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#bwiwvzncth div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1120,23 +1187,23 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 <div class="fragment fade-out">
 <div class="cell">
 <div class="cell-output-display">
-<div id="umzxyidmak" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#umzxyidmak table {
+<div id="fhjkybfhec" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fhjkybfhec table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#umzxyidmak thead, #umzxyidmak tbody, #umzxyidmak tfoot, #umzxyidmak tr, #umzxyidmak td, #umzxyidmak th {
+#fhjkybfhec thead, #fhjkybfhec tbody, #fhjkybfhec tfoot, #fhjkybfhec tr, #fhjkybfhec td, #fhjkybfhec th {
   border-style: none;
 }
 
-#umzxyidmak p {
+#fhjkybfhec p {
   margin: 0;
   padding: 0;
 }
 
-#umzxyidmak .gt_table {
+#fhjkybfhec .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1162,12 +1229,12 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-left-color: #D3D3D3;
 }
 
-#umzxyidmak .gt_caption {
+#fhjkybfhec .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#umzxyidmak .gt_title {
+#fhjkybfhec .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1179,7 +1246,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-width: 0;
 }
 
-#umzxyidmak .gt_subtitle {
+#fhjkybfhec .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1191,7 +1258,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-top-width: 0;
 }
 
-#umzxyidmak .gt_heading {
+#fhjkybfhec .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1203,13 +1270,13 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#umzxyidmak .gt_bottom_border {
+#fhjkybfhec .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#umzxyidmak .gt_col_headings {
+#fhjkybfhec .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1224,7 +1291,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#umzxyidmak .gt_col_heading {
+#fhjkybfhec .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1244,7 +1311,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   overflow-x: hidden;
 }
 
-#umzxyidmak .gt_column_spanner_outer {
+#fhjkybfhec .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1256,15 +1323,15 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 4px;
 }
 
-#umzxyidmak .gt_column_spanner_outer:first-child {
+#fhjkybfhec .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#umzxyidmak .gt_column_spanner_outer:last-child {
+#fhjkybfhec .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#umzxyidmak .gt_column_spanner {
+#fhjkybfhec .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1276,11 +1343,11 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   width: 100%;
 }
 
-#umzxyidmak .gt_spanner_row {
+#fhjkybfhec .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#umzxyidmak .gt_group_heading {
+#fhjkybfhec .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1306,7 +1373,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   text-align: left;
 }
 
-#umzxyidmak .gt_empty_group_heading {
+#fhjkybfhec .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1321,15 +1388,15 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   vertical-align: middle;
 }
 
-#umzxyidmak .gt_from_md > :first-child {
+#fhjkybfhec .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#umzxyidmak .gt_from_md > :last-child {
+#fhjkybfhec .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#umzxyidmak .gt_row {
+#fhjkybfhec .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1348,7 +1415,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   overflow-x: hidden;
 }
 
-#umzxyidmak .gt_stub {
+#fhjkybfhec .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1361,7 +1428,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#umzxyidmak .gt_stub_row_group {
+#fhjkybfhec .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1375,15 +1442,15 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   vertical-align: top;
 }
 
-#umzxyidmak .gt_row_group_first td {
+#fhjkybfhec .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#umzxyidmak .gt_row_group_first th {
+#fhjkybfhec .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#umzxyidmak .gt_summary_row {
+#fhjkybfhec .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1393,16 +1460,16 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#umzxyidmak .gt_first_summary_row {
+#fhjkybfhec .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#umzxyidmak .gt_first_summary_row.thick {
+#fhjkybfhec .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#umzxyidmak .gt_last_summary_row {
+#fhjkybfhec .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1412,7 +1479,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-color: #D3D3D3;
 }
 
-#umzxyidmak .gt_grand_summary_row {
+#fhjkybfhec .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1422,7 +1489,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#umzxyidmak .gt_first_grand_summary_row {
+#fhjkybfhec .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1432,7 +1499,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-top-color: #D3D3D3;
 }
 
-#umzxyidmak .gt_last_grand_summary_row_top {
+#fhjkybfhec .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1442,11 +1509,11 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-color: #D3D3D3;
 }
 
-#umzxyidmak .gt_striped {
+#fhjkybfhec .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#umzxyidmak .gt_table_body {
+#fhjkybfhec .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1455,7 +1522,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-color: #D3D3D3;
 }
 
-#umzxyidmak .gt_footnotes {
+#fhjkybfhec .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1469,7 +1536,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#umzxyidmak .gt_footnote {
+#fhjkybfhec .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1478,7 +1545,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#umzxyidmak .gt_sourcenotes {
+#fhjkybfhec .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1492,7 +1559,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#umzxyidmak .gt_sourcenote {
+#fhjkybfhec .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1500,72 +1567,72 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#umzxyidmak .gt_left {
+#fhjkybfhec .gt_left {
   text-align: left;
 }
 
-#umzxyidmak .gt_center {
+#fhjkybfhec .gt_center {
   text-align: center;
 }
 
-#umzxyidmak .gt_right {
+#fhjkybfhec .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#umzxyidmak .gt_font_normal {
+#fhjkybfhec .gt_font_normal {
   font-weight: normal;
 }
 
-#umzxyidmak .gt_font_bold {
+#fhjkybfhec .gt_font_bold {
   font-weight: bold;
 }
 
-#umzxyidmak .gt_font_italic {
+#fhjkybfhec .gt_font_italic {
   font-style: italic;
 }
 
-#umzxyidmak .gt_super {
+#fhjkybfhec .gt_super {
   font-size: 65%;
 }
 
-#umzxyidmak .gt_footnote_marks {
+#fhjkybfhec .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#umzxyidmak .gt_asterisk {
+#fhjkybfhec .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#umzxyidmak .gt_indent_1 {
+#fhjkybfhec .gt_indent_1 {
   text-indent: 5px;
 }
 
-#umzxyidmak .gt_indent_2 {
+#fhjkybfhec .gt_indent_2 {
   text-indent: 10px;
 }
 
-#umzxyidmak .gt_indent_3 {
+#fhjkybfhec .gt_indent_3 {
   text-indent: 15px;
 }
 
-#umzxyidmak .gt_indent_4 {
+#fhjkybfhec .gt_indent_4 {
   text-indent: 20px;
 }
 
-#umzxyidmak .gt_indent_5 {
+#fhjkybfhec .gt_indent_5 {
   text-indent: 25px;
 }
 
-#umzxyidmak .katex-display {
+#fhjkybfhec .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#umzxyidmak div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#fhjkybfhec div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2052,8 +2119,9 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 </div>
 </section>
 
-<section id="mapreduce-summary" class="title-slide slide level3 center">
-<h3>MapReduce summary</h3>
+
+<section id="mapreduce-summary" class="title-slide slide level2 center">
+<h2>MapReduce summary</h2>
 <div>
 <div style="font-size: 85%;">
 <ul>
@@ -2066,6 +2134,237 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 </div>
 </div>
 </section>
+
+<section id="gradient-descent" class="title-slide slide level2 center">
+<h2>Gradient Descent</h2>
+
+</section>
+<section id="use-cases-general" class="title-slide slide level3 center">
+<h3>Use Cases: General</h3>
+<div>
+<div style="font-size: 70%;">
+<ol type="1">
+<li class="fragment"><p><strong>Machine Learning:</strong> Used to train models like neural networks, improving accuracy by minimizing error functions.</p></li>
+<li class="fragment"><p><strong>Deep Learning:</strong> Vital for optimizing complex neural network architectures in tasks like image recognition and natural language processing.</p></li>
+<li class="fragment"><p><strong>Reinforcement Learning:</strong> Enables agents to learn optimal strategies by updating policies or value functions in interaction with environments.</p></li>
+<li class="fragment"><p><strong>Optimization Problems:</strong> Applies to various domains, including physics, engineering, finance, and healthcare, to minimize costs or maximize utility functions.</p></li>
+<li class="fragment"><p><strong>Computer Vision:</strong> Key for training convolutional neural networks to classify objects, detect features, and segment images accurately.</p></li>
+<li class="fragment"><p><strong>Finance and Economics:</strong> Helps in financial modeling, algorithmic trading, and risk management by optimizing trading strategies and pricing financial instruments.</p></li>
+<li class="fragment"><p><strong>Healthcare and Biology:</strong> Utilized in drug discovery, genomic analysis, and medical image analysis to optimize models for diagnosis and treatment planning.</p></li>
+</ol>
+</div>
+</div>
+</section>
+
+<section id="use-cases-statistical-learning" class="title-slide slide level3 center">
+<h3>Use Cases: Statistical Learning</h3>
+<div>
+<div style="font-size: 70%;">
+<ol type="1">
+<li class="fragment"><p><strong>Parameter Estimation:</strong> Used in maximum likelihood and maximum a posteriori estimation to find model parameters that best fit observed data.</p></li>
+<li class="fragment"><p><strong>Regression:</strong> Employed in linear and logistic regression to minimize errors between observed and predicted values.</p></li>
+<li class="fragment"><p><strong>Regularization:</strong> Implements L1 and L2 regularization to prevent overfitting in models.</p></li>
+<li class="fragment"><p><strong>Dimensionality Reduction:</strong> Utilized in PCA and factor analysis to reduce data dimensionality while preserving information.</p></li>
+<li class="fragment"><p><strong>Clustering:</strong> Optimizes objective functions in k-means and Gaussian mixture models for better cluster formation.</p></li>
+<li class="fragment"><p><strong>Survival Analysis:</strong> Estimates parameters in survival models like Cox proportional hazards model for analyzing time-to-event data.</p></li>
+</ol>
+</div>
+</div>
+</section>
+
+<section id="the-idea" class="title-slide slide level3 center">
+<h3>The idea</h3>
+<div data-animate="" data-src="img/gradient_descent.svg"><!-- setup:
+  - element: "#fun"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "1"
+  - element: "#text01"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "2"
+  - element: "#start"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "3"
+  - element: "#step01"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "4"
+  - element: "#step02"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "5"
+  - element: "#step03"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "6"
+  - element: "#step04"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "7"
+  - element: "#step05"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "8"
+  - element: "#step06"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "9" --></div>
+</section>
+
+<section id="the-loss-function---formulation" class="title-slide slide level3 center">
+<h3>The loss function - formulation</h3>
+<div style="font-size: 85%;">
+<ul>
+<li>The loss function is at the heart of the gradient descent algorithm. We start with linear regression.</li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<p><span class="math display">\[\begin{align}
+Y(x_i) = \theta_0 + \theta_1 x_i
+\end{align}\]</span></p>
+<div style="font-size: 85%;">
+<ul>
+<li>The loss function needs to be differentiable and convex, which is satisfied for the MSE.</li>
+</ul>
+</div>
+</div>
+<div class="fragment fade-in">
+<p><span class="math display">\[\begin{align}
+J(\theta_1,\theta_0) = \overbrace{\frac{1}{N}\sum_{i=1}^N(y(x_i)-y_i)^2}^{MSE}
+\end{align}\]</span></p>
+</div>
+</section>
+
+<section id="the-loss-function---partial-derivative" class="title-slide slide level3 center">
+<h3>The loss function - partial derivative</h3>
+<div style="font-size: 45%;">
+<p>In order to solve for the parameters we do some math and geht the partial derivatives:</p>
+<p><span class="math display">\[\begin{align}
+\frac{\partial \text{MSE}}{\partial \theta_0} &amp;= -\frac{2}{n} \sum_{i=1}^n (y_i - \hat{y}_i) \\
+\frac{\partial \text{MSE}}{\partial \theta_1} &amp;= -\frac{2}{n} \sum_{i=1}^n (y_i - \hat{y}_i) x_i
+\end{align}\]</span></p>
+<p><span class="math inline">\(\theta_0\)</span> and <span class="math inline">\(\theta_1\)</span> are then iteratively updated:</p>
+</div>
+<div style="font-size: 65%;">
+<p><span class="math display">\[\begin{align}
+\theta_0 &amp;\leftarrow \theta_0 - \alpha \frac{\partial \text{MSE}}{\partial \theta_0} \\
+\theta_0 &amp;\leftarrow \theta_0 + \alpha \left( \frac{2}{n} \sum_{i=1}^n (y_i - \hat{y}_i) \right)\\
+\theta_1 &amp;\leftarrow \theta_1 - \alpha \frac{\partial \text{MSE}}{\partial \theta_1}\\
+\theta_1 &amp;\leftarrow \theta_1 + \alpha \left( \frac{2}{n} \sum_{i=1}^n (y_i - \hat{y}_i) x_i \right)
+\end{align}\]</span></p>
+</div>
+</section>
+
+<section id="the-learning-rate-alpha" class="title-slide slide level3 center">
+<h3>The learning rate <span class="math inline">\(\alpha\)</span></h3>
+<ul>
+<li>Hyperparameter</li>
+<li>scales the gradient, influencing how model parameters are adjusted</li>
+</ul>
+
+<img data-src="img/learning_rate.svg" class="r-stretch"></section>
+
+<section id="classroom-1" class="title-slide slide level3 center">
+<h3>Classroom</h3>
+
+<img data-src="img/gd_classroom.svg" class="quarto-figure quarto-figure-center r-stretch"></section>
+
+<section id="algorithm" class="title-slide slide level3 center">
+<h3>Algorithm</h3>
+<div style="font-size: 50%;">
+<div class="pseudocode-container quarto-float" data-caption-prefix="Algorithm" data-line-number="true" data-pseudocode-number="1">
+<div class="pseudocode">
+\begin{algorithm} \caption{gradient descent} \begin{algorithmic} \Require cost function $J(\theta)$, learning rate $\alpha$, number of iterations $n$ \State $i \gets 0$ \State random $\theta$ \Procedure{GradientDescent}{$J(\theta),\theta, \alpha, n$} \For{$i$ \To $n$} \For{$j = 1$ \To number of training examples $m$} \State \textbf{Compute gradient of $J$ wrt $\theta$} \State gradient = $\nabla J(\theta, x^j, y^j)$ \State \textbf{Update the parameters $\theta$:} \State $\theta = \theta - \alpha \times gradient$ \EndFor \EndFor \EndProcedure \end{algorithmic} \end{algorithm}
+</div>
+</div>
+</div>
+</section>
+
+<section id="simulation" class="title-slide slide level3 center">
+<h3>Simulation</h3>
+<p><span class="math display">\[\begin{align}
+Y(x_i) = \theta_0 + \theta_1 x_i
+\end{align}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="|3|4|5|6|7|8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">set.seed</span>(<span class="dv">1000</span>) <span class="co">#reproducibility</span></span>
+<span id="cb1-2"><a></a></span>
+<span id="cb1-3"><a></a>theta_0 <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="co"># parameter 1</span></span>
+<span id="cb1-4"><a></a>theta_1 <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># parameter 2</span></span>
+<span id="cb1-5"><a></a>n_obs <span class="ot">&lt;-</span> <span class="dv">500</span> <span class="co"># number of datapoints</span></span>
+<span id="cb1-6"><a></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n_obs) <span class="co"># independent variable</span></span>
+<span id="cb1-7"><a></a>y <span class="ot">&lt;-</span> theta_1<span class="sc">*</span>x <span class="sc">+</span> theta_0 <span class="sc">+</span> <span class="fu">rnorm</span>(n_obs, <span class="dv">0</span>, <span class="dv">3</span>) <span class="co"># simulate data</span></span>
+<span id="cb1-8"><a></a><span class="fu">rm</span>(theta_0, theta_1) <span class="co"># get rid of ground truth</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="the-data" class="title-slide slide level4 center">
+<h4>The data</h4>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"></section>
+
+<section id="core-functions-and-parameters" class="title-slide slide level4 center">
+<h4>core functions and parameters</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="5,6,11,12,17,18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>gradient_desc <span class="ot">&lt;-</span> <span class="cf">function</span>(theta_0, theta_1, x, y){</span>
+<span id="cb2-2"><a></a>  N <span class="ot">=</span> <span class="fu">length</span>(x)</span>
+<span id="cb2-3"><a></a>  pred <span class="ot">&lt;-</span> theta_1<span class="sc">*</span>x <span class="sc">+</span> theta_0</span>
+<span id="cb2-4"><a></a>  res <span class="ot">&lt;-</span> y <span class="sc">-</span> pred</span>
+<span id="cb2-5"><a></a>  delta_theta_0 <span class="ot">&lt;-</span> (<span class="dv">2</span><span class="sc">/</span>N)<span class="sc">*</span><span class="fu">sum</span>(res)</span>
+<span id="cb2-6"><a></a>  delta_theta_1 <span class="ot">&lt;-</span> (<span class="dv">2</span><span class="sc">/</span>N)<span class="sc">*</span><span class="fu">sum</span>(res<span class="sc">*</span>x)</span>
+<span id="cb2-7"><a></a>  <span class="fu">return</span>(<span class="fu">c</span>(delta_theta_0, delta_theta_1))</span>
+<span id="cb2-8"><a></a>}</span>
+<span id="cb2-9"><a></a>minimize_function <span class="ot">&lt;-</span> <span class="cf">function</span>(theta_0, theta_1, x, y, alpha){</span>
+<span id="cb2-10"><a></a>  gd <span class="ot">&lt;-</span> <span class="fu">gradient_desc</span>(theta_0, theta_1, x, y)</span>
+<span id="cb2-11"><a></a>  d_theta_0 <span class="ot">&lt;-</span> gd[<span class="dv">1</span>] <span class="sc">*</span> alpha</span>
+<span id="cb2-12"><a></a>  d_theta_1 <span class="ot">&lt;-</span> gd[<span class="dv">2</span>] <span class="sc">*</span> alpha</span>
+<span id="cb2-13"><a></a>  new_theta_0 <span class="ot">&lt;-</span> theta_0 <span class="sc">+</span> d_theta_0</span>
+<span id="cb2-14"><a></a>  new_theta_1 <span class="ot">&lt;-</span> theta_1 <span class="sc">+</span> d_theta_1</span>
+<span id="cb2-15"><a></a>  <span class="fu">return</span>(<span class="fu">c</span>(new_theta_0, new_theta_1))</span>
+<span id="cb2-16"><a></a>}</span>
+<span id="cb2-17"><a></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb2-18"><a></a>iter <span class="ot">&lt;-</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+<section id="optimization" class="title-slide slide level4 center">
+<h4>optimization</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="4,5,6,7,8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>res <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb3-2"><a></a>res[[<span class="dv">1</span>]] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>iter){</span>
+<span id="cb3-5"><a></a>  res[[i]] <span class="ot">&lt;-</span> <span class="fu">minimize_function</span>(</span>
+<span id="cb3-6"><a></a>    res[[i<span class="dv">-1</span>]][<span class="dv">1</span>], res[[i<span class="dv">-1</span>]][<span class="dv">2</span>], data<span class="sc">$</span>x, data<span class="sc">$</span>y, alpha</span>
+<span id="cb3-7"><a></a>  )</span>
+<span id="cb3-8"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+<section id="mse-vs.-iteration" class="title-slide slide level4 center">
+<h4>mse vs.&nbsp;iteration</h4>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-27-1.png" width="960" class="r-stretch"></section>
+
+<section id="the-models" class="title-slide slide level4 center">
+<h4>the models</h4>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-28-1.gif" class="r-stretch"></section>
+
+<section id="different-learning-rates" class="title-slide slide level4 center">
+<h4>different learning rates</h4>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-29-1.png" width="960" class="r-stretch"></section>
+
 
 </section>
 <section id="references" class="title-slide slide level1 center">
@@ -2570,6 +2869,38 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
       }
     });
     </script>
+        <script type="text/javascript">
+        (function(d) {
+          d.querySelectorAll(".pseudocode-container").forEach(function(el) {
+            let pseudocodeOptions = {
+              indentSize: el.dataset.indentSize || "1.2em",
+              commentDelimiter: el.dataset.commentDelimiter || "//",
+              lineNumber: el.dataset.lineNumber === "true" ? true : false,
+              lineNumberPunc: el.dataset.lineNumberPunc || ":",
+              noEnd: el.dataset.noEnd === "true" ? true : false,
+              titlePrefix: el.dataset.captionPrefix || "Algorithm"
+            };
+            pseudocode.renderElement(el.querySelector(".pseudocode"), pseudocodeOptions);
+          });
+        })(document);
+        (function(d) {
+          d.querySelectorAll(".pseudocode-container").forEach(function(el) {
+            let captionSpan = el.querySelector(".ps-root > .ps-algorithm > .ps-line > .ps-keyword")
+            if (captionSpan !== null) {
+              let captionPrefix = el.dataset.captionPrefix + " ";
+              let captionNumber = "";
+              if (el.dataset.pseudocodeNumber) {
+                captionNumber = el.dataset.pseudocodeNumber + " ";
+                if (el.dataset.chapterLevel) {
+                  captionNumber = el.dataset.chapterLevel + "." + captionNumber;
+                }
+              }
+              captionSpan.innerHTML = captionPrefix + captionNumber;
+            }
+          });
+        })(document);
+        </script>
+      
     
 
 </body></html>

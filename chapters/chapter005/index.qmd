@@ -15,6 +15,7 @@ revealjs-plugins:
 filters: 
   - animate
   - reveal-header
+  - pseudocode
 editor_options: 
   chunk_output_type: console
 css: style.css
@@ -29,6 +30,7 @@ library(tidyverse)
 library(gt)
 library(here)
 library(quarto)
+library(gganimate)
 
 ```
 
@@ -577,7 +579,7 @@ Usually $R$ is smaller than $M$
 
 - Because output is spread across $R$ files
 
-### MapReduce summary
+## MapReduce summary
 
 ::: {.incremental}
 
@@ -592,6 +594,370 @@ Usually $R$ is smaller than $M$
 ::::
 
 :::
+
+## Gradient Descent
+
+### Use Cases: General
+
+::: {.incremental}
+::::{style="font-size: 70%;"}
+
+1. **Machine Learning:** Used to train models like neural networks, improving accuracy by minimizing error functions.
+  
+2. **Deep Learning:** Vital for optimizing complex neural network architectures in tasks like image recognition and natural language processing.
+
+3. **Reinforcement Learning:** Enables agents to learn optimal strategies by updating policies or value functions in interaction with environments.
+
+4. **Optimization Problems:** Applies to various domains, including physics, engineering, finance, and healthcare, to minimize costs or maximize utility functions.
+
+5. **Computer Vision:** Key for training convolutional neural networks to classify objects, detect features, and segment images accurately.
+
+6. **Finance and Economics:** Helps in financial modeling, algorithmic trading, and risk management by optimizing trading strategies and pricing financial instruments.
+
+7. **Healthcare and Biology:** Utilized in drug discovery, genomic analysis, and medical image analysis to optimize models for diagnosis and treatment planning.
+::::
+:::
+
+### Use Cases: Statistical Learning
+
+::: {.incremental}
+::::{style="font-size: 70%;"}
+
+1. **Parameter Estimation:** Used in maximum likelihood and maximum a posteriori estimation to find model parameters that best fit observed data.
+
+2. **Regression:** Employed in linear and logistic regression to minimize errors between observed and predicted values.
+
+3. **Regularization:** Implements L1 and L2 regularization to prevent overfitting in models.
+
+4. **Dimensionality Reduction:** Utilized in PCA and factor analysis to reduce data dimensionality while preserving information.
+
+5. **Clustering:** Optimizes objective functions in k-means and Gaussian mixture models for better cluster formation.
+
+6. **Survival Analysis:** Estimates parameters in survival models like Cox proportional hazards model for analyzing time-to-event data.
+
+::::
+:::
+
+### The idea
+
+{{< include img/_gd_anim.qmd >}}
+
+### The loss function - formulation
+
+::::{style="font-size: 85%;"}
+
+* The loss function is at the heart of the gradient descent algorithm. We start with linear regression.
+
+::::
+
+:::{.fragment .fade-in}
+
+\begin{align}
+Y(x_i) = \theta_0 + \theta_1 x_i
+\end{align}
+
+::::{style="font-size: 85%;"}
+
+* The loss function needs to be differentiable and convex, which is satisfied for the MSE.
+::::
+
+:::
+
+:::{.fragment .fade-in}
+
+\begin{align}
+J(\theta_1,\theta_0) = \overbrace{\frac{1}{N}\sum_{i=1}^N(y(x_i)-y_i)^2}^{MSE}
+\end{align}
+
+:::
+
+### The loss function - partial derivative
+
+::::{style="font-size: 45%;"}
+
+In order to solve for the parameters we do some math and geht the partial derivatives:
+
+\begin{align}
+\frac{\partial \text{MSE}}{\partial \theta_0} &= -\frac{2}{n} \sum_{i=1}^n (y_i - \hat{y}_i) \\
+\frac{\partial \text{MSE}}{\partial \theta_1} &= -\frac{2}{n} \sum_{i=1}^n (y_i - \hat{y}_i) x_i
+\end{align}
+
+$\theta_0$ and $\theta_1$ are then iteratively updated:
+
+::::
+
+::::{style="font-size: 65%;"}
+
+\begin{align}
+\theta_0 &\leftarrow \theta_0 - \alpha \frac{\partial \text{MSE}}{\partial \theta_0} \\
+\theta_0 &\leftarrow \theta_0 + \alpha \left( \frac{2}{n} \sum_{i=1}^n (y_i - \hat{y}_i) \right)\\
+\theta_1 &\leftarrow \theta_1 - \alpha \frac{\partial \text{MSE}}{\partial \theta_1}\\
+\theta_1 &\leftarrow \theta_1 + \alpha \left( \frac{2}{n} \sum_{i=1}^n (y_i - \hat{y}_i) x_i \right)
+\end{align}
+
+::::
+
+### The learning rate $\alpha$
+
+- Hyperparameter
+- scales the gradient, influencing how model parameters are adjusted
+
+![](img/learning_rate.svg)
+
+### Classroom
+
+![](img/gd_classroom.svg){fig-align="center"}
+
+### Algorithm
+
+::::{style="font-size: 50%;"}
+
+
+```pseudocode
+#| html-line-number: true
+#| pdf-line-number: true
+
+\begin{algorithm}
+\caption{gradient descent}
+\begin{algorithmic}
+\Require cost function $J(\theta)$, learning rate $\alpha$, number of iterations $n$
+\State $i \gets 0$
+\State random $\theta$
+\Procedure{GradientDescent}{$J(\theta),\theta, \alpha, n$}
+\For{$i$ \To $n$}
+\For{$j = 1$ \To number of training examples $m$}
+\State \textbf{Compute gradient of $J$ wrt $\theta$}
+\State gradient = $\nabla J(\theta, x^j, y^j)$
+\State \textbf{Update the parameters $\theta$:}
+\State $\theta = \theta - \alpha \times gradient$
+\EndFor
+\EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+```
+
+::::
+
+### Simulation
+
+\begin{align}
+Y(x_i) = \theta_0 + \theta_1 x_i
+\end{align}
+
+```{r}
+#| echo: true
+#| code-line-numbers: "|3|4|5|6|7|8"
+
+set.seed(1000) #reproducibility
+
+theta_0 <- 5 # parameter 1
+theta_1 <- 2 # parameter 2
+n_obs <- 500 # number of datapoints
+x <- rnorm(n_obs) # independent variable
+y <- theta_1*x + theta_0 + rnorm(n_obs, 0, 3) # simulate data
+rm(theta_0, theta_1) # get rid of ground truth
+```
+
+#### The data
+
+```{r}
+data <- tibble(x = x, y = y)
+
+ggplot(data, aes(x = x, y = y)) + geom_point(size = 2) + theme_bw() + labs(title = 'Simulated Data')
+
+```
+
+```{r}
+#| include: false
+
+# check coef with ols (for lecturer)
+
+ols_fit <- lm(y ~ x, data = data)
+summary(ols_fit)
+ols_fit$coefficients
+
+cost_function <- function(theta_0, theta_1, x, y){
+  pred <- theta_1*x + theta_0
+  res_sq <- (y - pred)^2
+  res_ss <- sum(res_sq)
+  return(mean(res_ss))
+}
+
+cost_function(theta_0 = ols_fit$coefficients[1][[1]],
+         theta_1 = ols_fit$coefficients[2][[1]],
+         x = data$x, y = data$y)
+
+sum(resid(ols_fit)^2)
+
+```
+
+#### core functions and parameters
+
+```{r}
+#| echo: true
+#| code-line-numbers: "5,6,11,12,17,18"
+
+gradient_desc <- function(theta_0, theta_1, x, y){
+  N = length(x)
+  pred <- theta_1*x + theta_0
+  res <- y - pred
+  delta_theta_0 <- (2/N)*sum(res)
+  delta_theta_1 <- (2/N)*sum(res*x)
+  return(c(delta_theta_0, delta_theta_1))
+}
+minimize_function <- function(theta_0, theta_1, x, y, alpha){
+  gd <- gradient_desc(theta_0, theta_1, x, y)
+  d_theta_0 <- gd[1] * alpha
+  d_theta_1 <- gd[2] * alpha
+  new_theta_0 <- theta_0 + d_theta_0
+  new_theta_1 <- theta_1 + d_theta_1
+  return(c(new_theta_0, new_theta_1))
+}
+alpha <- 0.1
+iter <- 100
+
+```
+
+#### optimization
+
+```{r}
+#| echo: true
+#| code-line-numbers: "4,5,6,7,8"
+
+res <- list()
+res[[1]] <- c(0, 0)
+
+for (i in 2:iter){
+  res[[i]] <- minimize_function(
+    res[[i-1]][1], res[[i-1]][2], data$x, data$y, alpha
+  )
+}
+```
+
+
+```{r}
+#| include: false
+
+res <- lapply(res, function(x) as.data.frame(t(x))) %>% bind_rows()
+colnames(res) <- c('theta0', 'theta1')
+
+loss <- res %>% as_tibble() %>% rowwise() %>%
+  summarise(mse = cost_function(theta0, theta1, data$x, data$y))
+
+res <- res %>% bind_cols(loss) %>%
+  mutate(iteration = seq(1, 100)) %>% as_tibble()
+
+res %>% glimpse()
+```
+
+#### mse vs. iteration
+
+```{r}
+ggplot(res, aes(x = iteration, y = mse)) + 
+  geom_point(size = 2) +
+  geom_line(aes(group = 1))+
+  theme_classic(base_size = 15) 
+
+```
+
+#### the models
+
+```{r}
+
+ggplot(data, aes(x = x, y = y)) +
+  geom_point(size = 2) +
+  geom_abline(aes(intercept = theta0, slope = theta1),
+              linewidth = 1.5,
+              data = res %>% slice_tail() |> select(-iteration), size = 0.5, color = 'green3')+
+    geom_abline(aes(intercept = theta0, slope = theta1),
+              data = res, size = 0.5, color = 'red') +
+    geom_abline(aes(intercept = theta0, slope = theta1),
+              data = res %>% slice_head() |> select(-iteration), size = 0.5, color = 'blue') +
+  theme_classic() +
+  labs(
+    title = "gradient descent at work"
+  )+
+  transition_states(states = iteration)+
+  shadow_mark(colour = 'gray85', size = 0.75)
+
+```
+
+#### different learning rates
+
+```{r}
+
+alpha001 <- 0.01
+alpha1 <- 1
+
+iter <- 100
+
+res001 <- list()
+res001[[1]] <- c(0, 0)
+
+for (i in 2:iter){
+  res001[[i]] <- minimize_function(
+    res001[[i-1]][1], res001[[i-1]][2], data$x, data$y, alpha001
+  )
+}
+
+res001 <- lapply(res001, function(x) as.data.frame(t(x))) %>% bind_rows()
+colnames(res001) <- c('theta0', 'theta1')
+
+loss001 <- res001 %>% as_tibble() %>% rowwise() %>%
+  summarise(mse = cost_function(theta0, theta1, data$x, data$y))
+
+res001 <- res001 %>% bind_cols(loss001) %>%
+  mutate(iteration = seq(1, 100)) %>% as_tibble()
+
+
+res1 <- list()
+res1[[1]] <- c(0, 0)
+
+for (i in 2:iter){
+  res1[[i]] <- minimize_function(
+    res1[[i-1]][1], res1[[i-1]][2], data$x, data$y, alpha1
+  )
+}
+
+res1 <- lapply(res1, function(x) as.data.frame(t(x))) %>% bind_rows()
+colnames(res1) <- c('theta0', 'theta1')
+
+loss1 <- res1 %>% as_tibble() %>% rowwise() %>%
+  summarise(mse = cost_function(theta0, theta1, data$x, data$y))
+
+res1 <- res1 %>% bind_cols(loss1) %>%
+  mutate(iteration = seq(1, 100)) %>% as_tibble()
+
+
+out <- 
+  data.frame(
+    alpha = c("good","low","high")
+  ) |> 
+  add_column(
+    result = list(res,res001,res1)
+  ) |> 
+  unnest(result)
+
+
+out |> 
+  ggplot(
+    aes(
+      x = iteration,
+      y = mse,
+      color = alpha
+    )
+  )+
+  geom_point(size = 2)+
+  geom_line()+
+  scale_color_brewer(palette = "Set1")+
+  theme_classic(base_size = 15)
+
+
+
+
+```
 
 
 # References
