@@ -7,8 +7,8 @@
     "text": "This page is directly linked to the Big Data exercises.\nAdministrative stuff is always announced via ilearn.\nThis is the lecture material for the courses “Big Data” and “Big Data Processing and Analytics”. Feel free to reference for your self study. You are not allowed to copy without the prior consent of the author. Your are not allowed to use material without prior consent. Ask - it’s a form of politeness. You will most probable get permission.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nIntroduction\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Sources\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Quality\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Bias\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Crunching\n\n\nProf. Dr. Tim Weber\n\n\n\n\nCrunching Methods\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "chapters/chapter005/index.html#central-tendency",
-    "href": "chapters/chapter005/index.html#central-tendency",
+    "objectID": "chapters/chapter500/index.html#central-tendency",
+    "href": "chapters/chapter500/index.html#central-tendency",
     "title": "Data Crunching",
     "section": "Central Tendency",
     "text": "Central Tendency",
@@ -18,8 +18,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter005/index.html#measures-of-spread",
-    "href": "chapters/chapter005/index.html#measures-of-spread",
+    "objectID": "chapters/chapter500/index.html#measures-of-spread",
+    "href": "chapters/chapter500/index.html#measures-of-spread",
     "title": "Data Crunching",
     "section": "Measures of Spread",
     "text": "Measures of Spread",
@@ -29,8 +29,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter005/index.html#measures-for-categoricals",
-    "href": "chapters/chapter005/index.html#measures-for-categoricals",
+    "objectID": "chapters/chapter500/index.html#measures-for-categoricals",
+    "href": "chapters/chapter500/index.html#measures-for-categoricals",
     "title": "Data Crunching",
     "section": "Measures for Categoricals",
     "text": "Measures for Categoricals",
@@ -40,8 +40,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter005/index.html#beware-of-summarized-data",
-    "href": "chapters/chapter005/index.html#beware-of-summarized-data",
+    "objectID": "chapters/chapter500/index.html#beware-of-summarized-data",
+    "href": "chapters/chapter500/index.html#beware-of-summarized-data",
     "title": "Data Crunching",
     "section": "Beware of summarized Data",
     "text": "Beware of summarized Data\n\n\n\n\n\n\n\n\n\n\ndataset\nmean_x\nmean_y\nstd_dev_x\nstd_dev_y\ncorr_x_y\n\n\n\n\naway\n54.266\n47.835\n16.770\n26.940\n−0.064\n\n\nbullseye\n54.269\n47.831\n16.769\n26.936\n−0.069\n\n\ncircle\n54.267\n47.838\n16.760\n26.930\n−0.068\n\n\ndino\n54.263\n47.832\n16.765\n26.935\n−0.064\n\n\ndots\n54.260\n47.840\n16.768\n26.930\n−0.060\n\n\nh_lines\n54.261\n47.830\n16.766\n26.940\n−0.062\n\n\nhigh_lines\n54.269\n47.835\n16.767\n26.940\n−0.069\n\n\nslant_down\n54.268\n47.836\n16.767\n26.936\n−0.069\n\n\nslant_up\n54.266\n47.831\n16.769\n26.939\n−0.069\n\n\nstar\n54.267\n47.840\n16.769\n26.930\n−0.063\n\n\nv_lines\n54.270\n47.837\n16.770\n26.938\n−0.069\n\n\nwide_lines\n54.267\n47.832\n16.770\n26.938\n−0.067\n\n\nx_shape\n54.260\n47.840\n16.770\n26.930\n−0.066",
@@ -51,8 +51,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter005/index.html#mapreduce",
-    "href": "chapters/chapter005/index.html#mapreduce",
+    "objectID": "chapters/chapter500/index.html#mapreduce",
+    "href": "chapters/chapter500/index.html#mapreduce",
     "title": "Data Crunching",
     "section": "MapReduce",
     "text": "MapReduce",
@@ -62,8 +62,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter005/index.html#mapreduce-summary",
-    "href": "chapters/chapter005/index.html#mapreduce-summary",
+    "objectID": "chapters/chapter500/index.html#mapreduce-summary",
+    "href": "chapters/chapter500/index.html#mapreduce-summary",
     "title": "Data Crunching",
     "section": "MapReduce summary",
     "text": "MapReduce summary\n\n\n\nMapReduce is significant for its role in enabling the processing of massive datasets efficiently across distributed computing clusters.\nIt revolutionized big data processing by providing a scalable and fault-tolerant framework for handling large-scale computations.\nIts simplicity and scalability made it accessible to a wide range of industries and applications, from web search engines to scientific research.\nMapReduce paved the way for the development of other big data processing frameworks and technologies, influencing the evolution of distributed computing paradigms.\nIts impact extends beyond its original implementation, as concepts and principles from MapReduce have influenced the design of subsequent systems and architectures for big data processing.",
@@ -73,8 +73,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter005/index.html#gradient-descent",
-    "href": "chapters/chapter005/index.html#gradient-descent",
+    "objectID": "chapters/chapter500/index.html#gradient-descent",
+    "href": "chapters/chapter500/index.html#gradient-descent",
     "title": "Data Crunching",
     "section": "Gradient Descent",
     "text": "Gradient Descent",
@@ -84,8 +84,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter005/index.html#maximum-likelihood-estimation-mle",
-    "href": "chapters/chapter005/index.html#maximum-likelihood-estimation-mle",
+    "objectID": "chapters/chapter500/index.html#maximum-likelihood-estimation-mle",
+    "href": "chapters/chapter500/index.html#maximum-likelihood-estimation-mle",
     "title": "Data Crunching",
     "section": "Maximum Likelihood Estimation (MLE)",
     "text": "Maximum Likelihood Estimation (MLE)\n\nMaximum Likelihood Estimation (MLE) is a statistical method used for estimating the parameters of a probability distribution by maximizing a likelihood function. This method finds the parameter values that make the observed data most probable.\n\n\n\nConsistency: As the sample size increases, the MLE converges to the true parameter value.\nAsymptotic Normality: The distribution of the MLE approaches a normal distribution as the sample size grows.\nEfficiency: Among unbiased estimators, the MLE has the lowest possible variance asymptotically.",
@@ -95,78 +95,57 @@
     ]
   },
   {
-    "objectID": "chapters/chapter003/index.html#quality",
-    "href": "chapters/chapter003/index.html#quality",
+    "objectID": "chapters/chapter300/index.html#quality",
+    "href": "chapters/chapter300/index.html#quality",
     "title": "Data Quality",
     "section": "Quality",
-    "text": "Quality\n\nQuality (dictionary)\n\nHow good or bad something is. Cambridge Dictionary\n\n\n“… Quality is a perceptual, conditional, and somewhat subjective attribute and may be understood differently by different people. …” Wiki",
-    "crumbs": [
-      "Data Quality"
-    ]
+    "text": "Quality\n\nQuality (dictionary)\n\nHow good or bad something is. Cambridge Dictionary\n\n\n“… Quality is a perceptual, conditional, and somewhat subjective attribute and may be understood differently by different people. …” Wiki"
   },
   {
-    "objectID": "chapters/chapter003/index.html#the-cathedral-and-the-bazaar",
-    "href": "chapters/chapter003/index.html#the-cathedral-and-the-bazaar",
+    "objectID": "chapters/chapter300/index.html#the-cathedral-and-the-bazaar",
+    "href": "chapters/chapter300/index.html#the-cathedral-and-the-bazaar",
     "title": "Data Quality",
     "section": "The Cathedral and the Bazaar",
-    "text": "The Cathedral and the Bazaar\n\n\n(Raymond 2001)",
-    "crumbs": [
-      "Data Quality"
-    ]
+    "text": "The Cathedral and the Bazaar\n\n\n(Raymond 2001)"
   },
   {
-    "objectID": "chapters/chapter003/index.html#iso-8000",
-    "href": "chapters/chapter003/index.html#iso-8000",
+    "objectID": "chapters/chapter300/index.html#iso-8000",
+    "href": "chapters/chapter300/index.html#iso-8000",
     "title": "Data Quality",
     "section": "ISO 8000",
-    "text": "ISO 8000\n\nISO\n\nInternational Standards Organization\n\n\n\n\nset of standards for data quality for the exchange between organizations and systems\nMaster data in the form of characteristic data that are\n\nexchanged between organizations and systems, and that\nconform to the data specifications that\ncan be validated by computer software.\n\n\n\n\n(ISO 2022)",
-    "crumbs": [
-      "Data Quality"
-    ]
+    "text": "ISO 8000\n\nISO\n\nInternational Standards Organization\n\n\n\n\nset of standards for data quality for the exchange between organizations and systems\nMaster data in the form of characteristic data that are\n\nexchanged between organizations and systems, and that\nconform to the data specifications that\ncan be validated by computer software.\n\n\n\n\n(ISO 2022)"
   },
   {
-    "objectID": "chapters/chapter003/index.html#data-quality-1",
-    "href": "chapters/chapter003/index.html#data-quality-1",
+    "objectID": "chapters/chapter300/index.html#data-quality-1",
+    "href": "chapters/chapter300/index.html#data-quality-1",
     "title": "Data Quality",
     "section": "Data Quality",
-    "text": "Data Quality\n“… Data are of high quality if they are “Fit for Use” in their intended operational, decision-making and other roles. … ”\n\n\n(Herzog, Scheuren, and Winkler May )",
-    "crumbs": [
-      "Data Quality"
-    ]
+    "text": "Data Quality\n“… Data are of high quality if they are “Fit for Use” in their intended operational, decision-making and other roles. … ”\n\n\n(Herzog, Scheuren, and Winkler May )"
   },
   {
-    "objectID": "chapters/chapter003/index.html#data-quality-issues",
-    "href": "chapters/chapter003/index.html#data-quality-issues",
+    "objectID": "chapters/chapter300/index.html#data-quality-issues",
+    "href": "chapters/chapter300/index.html#data-quality-issues",
     "title": "Data Quality",
     "section": "Data Quality issues",
-    "text": "Data Quality issues\n\n\nData Entry for the London Summer Olympics\n\nan employee simple typed \\(20,000\\) seats available, while there were only \\(10,000\\)\nbuyers were able to exchange the already bought tickets\n\nThe London Whale\n\nusing a risk model that involved copy and pasting different multiple spreadsheats\nnot only were \\(\\$2bn\\) losses wrongly calculated, they were actually counted as gains summing up to a loss of \\(\\$6.2bn\\)",
-    "crumbs": [
-      "Data Quality"
-    ]
+    "text": "Data Quality issues\n\n\nData Entry for the London Summer Olympics\n\nan employee simple typed \\(20,000\\) seats available, while there were only \\(10,000\\)\nbuyers were able to exchange the already bought tickets\n\nThe London Whale\n\nusing a risk model that involved copy and pasting different multiple spreadsheats\nnot only were \\(\\$2bn\\) losses wrongly calculated, they were actually counted as gains summing up to a loss of \\(\\$6.2bn\\)"
   },
   {
-    "objectID": "chapters/chapter003/index.html#data-quality-tools",
-    "href": "chapters/chapter003/index.html#data-quality-tools",
+    "objectID": "chapters/chapter300/index.html#data-quality-tools",
+    "href": "chapters/chapter300/index.html#data-quality-tools",
     "title": "Data Quality",
     "section": "Data Quality Tools",
-    "text": "Data Quality Tools",
-    "crumbs": [
-      "Data Quality"
-    ]
+    "text": "Data Quality Tools"
   },
   {
-    "objectID": "chapters/chapter003/index.html#data-quality-summary",
-    "href": "chapters/chapter003/index.html#data-quality-summary",
+    "objectID": "chapters/chapter300/index.html#data-quality-summary",
+    "href": "chapters/chapter300/index.html#data-quality-summary",
     "title": "Data Quality",
     "section": "Data Quality summary",
-    "text": "Data Quality summary\n\n\nData Quality is hard\nTop Down or Bottom up?\nsimple things go wrong in the real world\ntest stuff\nbe specific\nthere is no recipe\ngarbage in, garbage out\nclassic ways are not fancy, but useful. Use this to your advantage\nnever trust data\ninvest early, profit soon",
-    "crumbs": [
-      "Data Quality"
-    ]
+    "text": "Data Quality summary\n\n\nData Quality is hard\nTop Down or Bottom up?\nsimple things go wrong in the real world\ntest stuff\nbe specific\nthere is no recipe\ngarbage in, garbage out\nclassic ways are not fancy, but useful. Use this to your advantage\nnever trust data\ninvest early, profit soon"
   },
   {
-    "objectID": "chapters/chapter001/index.html#the-end-of-theory",
-    "href": "chapters/chapter001/index.html#the-end-of-theory",
+    "objectID": "chapters/chapter100/index.html#the-end-of-theory",
+    "href": "chapters/chapter100/index.html#the-end-of-theory",
     "title": "Introduction",
     "section": "The End of Theory?",
     "text": "The End of Theory?\n\n\n(Nast 2024) J. Craig Venter Institute",
@@ -175,8 +154,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter001/index.html#information-growth",
-    "href": "chapters/chapter001/index.html#information-growth",
+    "objectID": "chapters/chapter100/index.html#information-growth",
+    "href": "chapters/chapter100/index.html#information-growth",
     "title": "Introduction",
     "section": "Information growth",
     "text": "Information growth\n\n\n(Luraschi, Kuo, and Ruiz 2019)",
@@ -185,8 +164,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter001/index.html#drinking-leads-to-amazon-purchases",
-    "href": "chapters/chapter001/index.html#drinking-leads-to-amazon-purchases",
+    "objectID": "chapters/chapter100/index.html#drinking-leads-to-amazon-purchases",
+    "href": "chapters/chapter100/index.html#drinking-leads-to-amazon-purchases",
     "title": "Introduction",
     "section": "Drinking leads to Amazon purchases",
     "text": "Drinking leads to Amazon purchases\n\n\nTyler Vigen",
@@ -195,8 +174,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter001/index.html#central-limit-theorem-clt",
-    "href": "chapters/chapter001/index.html#central-limit-theorem-clt",
+    "objectID": "chapters/chapter100/index.html#central-limit-theorem-clt",
+    "href": "chapters/chapter100/index.html#central-limit-theorem-clt",
     "title": "Introduction",
     "section": "Central Limit Theorem (CLT)",
     "text": "Central Limit Theorem (CLT)",
@@ -205,8 +184,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter001/index.html#law-of-large-numbers",
-    "href": "chapters/chapter001/index.html#law-of-large-numbers",
+    "objectID": "chapters/chapter100/index.html#law-of-large-numbers",
+    "href": "chapters/chapter100/index.html#law-of-large-numbers",
     "title": "Introduction",
     "section": "Law of Large Numbers",
     "text": "Law of Large Numbers",
@@ -215,8 +194,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter001/index.html#history-of-big-data",
-    "href": "chapters/chapter001/index.html#history-of-big-data",
+    "objectID": "chapters/chapter100/index.html#history-of-big-data",
+    "href": "chapters/chapter100/index.html#history-of-big-data",
     "title": "Introduction",
     "section": "History of Big Data",
     "text": "History of Big Data",
@@ -225,8 +204,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter001/index.html#evolution-of-big-data",
-    "href": "chapters/chapter001/index.html#evolution-of-big-data",
+    "objectID": "chapters/chapter100/index.html#evolution-of-big-data",
+    "href": "chapters/chapter100/index.html#evolution-of-big-data",
     "title": "Introduction",
     "section": "Evolution of Big Data",
     "text": "Evolution of Big Data",
@@ -235,8 +214,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter001/index.html#big-data-ingredients",
-    "href": "chapters/chapter001/index.html#big-data-ingredients",
+    "objectID": "chapters/chapter100/index.html#big-data-ingredients",
+    "href": "chapters/chapter100/index.html#big-data-ingredients",
     "title": "Introduction",
     "section": "Big Data ingredients",
     "text": "Big Data ingredients",
@@ -245,8 +224,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter001/index.html#production-environment",
-    "href": "chapters/chapter001/index.html#production-environment",
+    "objectID": "chapters/chapter100/index.html#production-environment",
+    "href": "chapters/chapter100/index.html#production-environment",
     "title": "Introduction",
     "section": "Production Environment",
     "text": "Production Environment",
@@ -255,8 +234,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter001/index.html#six-sigma",
-    "href": "chapters/chapter001/index.html#six-sigma",
+    "objectID": "chapters/chapter100/index.html#six-sigma",
+    "href": "chapters/chapter100/index.html#six-sigma",
     "title": "Introduction",
     "section": "Six Sigma",
     "text": "Six Sigma",
@@ -265,8 +244,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter001/index.html#crisp-dm",
-    "href": "chapters/chapter001/index.html#crisp-dm",
+    "objectID": "chapters/chapter100/index.html#crisp-dm",
+    "href": "chapters/chapter100/index.html#crisp-dm",
     "title": "Introduction",
     "section": "CRISP-DM",
     "text": "CRISP-DM",
@@ -275,8 +254,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter001/index.html#unifying-approach",
-    "href": "chapters/chapter001/index.html#unifying-approach",
+    "objectID": "chapters/chapter100/index.html#unifying-approach",
+    "href": "chapters/chapter100/index.html#unifying-approach",
     "title": "Introduction",
     "section": "unifying approach",
     "text": "unifying approach\n\n\n(Schäfer et al. 2019)",
@@ -285,8 +264,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter002/index.html#which-do-you-want",
-    "href": "chapters/chapter002/index.html#which-do-you-want",
+    "objectID": "chapters/chapter200/index.html#which-do-you-want",
+    "href": "chapters/chapter200/index.html#which-do-you-want",
     "title": "Data Sources",
     "section": "Which do you want?",
     "text": "Which do you want?",
@@ -295,8 +274,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter002/index.html#databases",
-    "href": "chapters/chapter002/index.html#databases",
+    "objectID": "chapters/chapter200/index.html#databases",
+    "href": "chapters/chapter200/index.html#databases",
     "title": "Data Sources",
     "section": "Databases",
     "text": "Databases",
@@ -305,8 +284,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter004/index.html#why-data-bias-matters",
-    "href": "chapters/chapter004/index.html#why-data-bias-matters",
+    "objectID": "chapters/chapter400/index.html#why-data-bias-matters",
+    "href": "chapters/chapter400/index.html#why-data-bias-matters",
     "title": "Data Bias",
     "section": "Why Data Bias matters",
     "text": "Why Data Bias matters",
@@ -316,8 +295,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter004/index.html#types-of-data-bias",
-    "href": "chapters/chapter004/index.html#types-of-data-bias",
+    "objectID": "chapters/chapter400/index.html#types-of-data-bias",
+    "href": "chapters/chapter400/index.html#types-of-data-bias",
     "title": "Data Bias",
     "section": "Types of Data Bias",
     "text": "Types of Data Bias",
@@ -327,8 +306,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter004/index.html#bias-and-variance",
-    "href": "chapters/chapter004/index.html#bias-and-variance",
+    "objectID": "chapters/chapter400/index.html#bias-and-variance",
+    "href": "chapters/chapter400/index.html#bias-and-variance",
     "title": "Data Bias",
     "section": "Bias and Variance",
     "text": "Bias and Variance\n\nBias:\n\nerror introduced by approximating a real-world problem with a simplified model\nleads to underfitting\n\n\n\n\nVariance:\n\nsensitivity to fluctuations in the data, such as random noise, as if it were true patterns\nleads to overfitting",
@@ -338,8 +317,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter004/index.html#the-bias-variance-trade-off",
-    "href": "chapters/chapter004/index.html#the-bias-variance-trade-off",
+    "objectID": "chapters/chapter400/index.html#the-bias-variance-trade-off",
+    "href": "chapters/chapter400/index.html#the-bias-variance-trade-off",
     "title": "Data Bias",
     "section": "The Bias Variance Trade Off",
     "text": "The Bias Variance Trade Off\n\n\n\n\n\nfamiliar?",
@@ -349,8 +328,8 @@
     ]
   },
   {
-    "objectID": "chapters/chapter006/index.html#principal-component-analysis-pca",
-    "href": "chapters/chapter006/index.html#principal-component-analysis-pca",
+    "objectID": "chapters/chapter540_PCA/index.html#principal-component-analysis-pca",
+    "href": "chapters/chapter540_PCA/index.html#principal-component-analysis-pca",
     "title": "Crunching Methods",
     "section": "Principal Component Analysis (PCA)",
     "text": "Principal Component Analysis (PCA)"

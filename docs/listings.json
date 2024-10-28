@@ -2,12 +2,12 @@
   {
     "listing": "/index.html",
     "items": [
-      "/chapters/chapter001/index.html",
-      "/chapters/chapter002/index.html",
-      "/chapters/chapter003/index.html",
-      "/chapters/chapter004/index.html",
-      "/chapters/chapter005/index.html",
-      "/chapters/chapter006/index.html"
+      "/chapters/chapter100/index.html",
+      "/chapters/chapter200/index.html",
+      "/chapters/chapter300/index.html",
+      "/chapters/chapter400/index.html",
+      "/chapters/chapter500/index.html",
+      "/chapters/chapter540_PCA/index.html"
     ]
   }
 ]

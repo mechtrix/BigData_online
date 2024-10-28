@@ -28,19 +28,19 @@ website:
     contents: 
       - section: Introduction
         text: "slides"
-        href: chapters/chapter001/index.qmd
+        href: chapters/chapter100/index.qmd
         contents: 
           - text: "Introductory exercises in R"
             href: https://mechtrix.github.io/BigData_exercises/get_started.html
       - section: Data Sources
         text: "slides"
-        href: chapters/chapter002/index.qmd
+        href: chapters/chapter200/index.qmd
         contents: 
           - text: "Data Sources exercises in R"
             href: https://mechtrix.github.io/BigData_exercises/data_sources.html
       - section: Data Quality
         text: "slides"
-        href: chapters/chapter003/index.qmd
+        href: chapters/chapter300/index.qmd
         contents: 
           - text: "Data Distribution exercises in R"
             href: https://mechtrix.github.io/BigData_exercises/data_distributions.html
@@ -50,8 +50,8 @@ website:
         text: "slides"
         contents: 
           - text: "slides"
-            href: chapters/chapter004/index.qmd
+            href: chapters/chapter400/index.qmd
       - section: Data crunching
         contents: 
           - text: "slides"
-            href: chapters/chapter005/index.qmd
+            href: chapters/chapter500/index.qmd
