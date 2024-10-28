@@ -378,11 +378,19 @@ ggplot(datasaurus_dozen , aes(x = x, y = y))+
 
 ![](img/single_node_arch.svg)
 
+::: {.attribution}
+[@LeskovecUnknownTitle2014]
+:::
+
 ### Cluster Architecture
 
 ![](img/cluster_arch.svg)
 
 Google has an estimated 1M servers <http://bit.ly/Shh0RO>
+
+::: {.attribution}
+[@LeskovecUnknownTitle2014]
+:::
 
 ### SERVERS!!!
 
@@ -402,6 +410,9 @@ Machines fail:
 - If there are 1000 servers, expect to loose 1/day
 - Google estimate: 1M servers $\rightarrow$ 1000 machines fail EVERY DAY
 
+::: {.attribution}
+[@LeskovecUnknownTitle2014]
+:::
 
 ### Issue and Solution
 
@@ -417,6 +428,9 @@ Machines fail:
   - Storage Infrastructure - File System (Google: GFS, Hadoop: HDFS)
   - Programming Model: MapReduce
 
+::: {.attribution}
+[@LeskovecUnknownTitle2014]
+:::
 
 ### (D)istributed (F)ile (S)ystem
 
@@ -426,13 +440,25 @@ Machines fail:
   - Each chunk replicated (usually 2x or 3x)
   - Try to keep replicas in different racks
 
+::: {.attribution}
+[@LeskovecUnknownTitle2014]
+:::
+
 ### Chunk Servers
 
 ![](img/chunk_servers.svg)
 
+::: {.attribution}
+[@LeskovecUnknownTitle2014]
+:::
+
 ### Theory
 
 {{< include img/_MapReduce_anim.qmd >}}
+
+::: {.attribution}
+[@LeskovecUnknownTitle2014]
+:::
 
 ### Classroom
 
@@ -661,6 +687,10 @@ Usually $R$ is smaller than $M$
 ### The idea
 
 {{< include img/_gd_anim.qmd >}}
+
+::: {.attribution}
+[@an_jameswittenhastietibshirani_2021]
+:::
 
 ### The loss function - formulation
 
