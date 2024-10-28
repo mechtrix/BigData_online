@@ -664,6 +664,11 @@
     "href": "chapters/chapter554_dbscan/index.html#use-cases",
     "title": "Density Based Spatial Clustering and Application with Noise (DBSCAN)",
     "section": "Use Cases",
-    "text": "Use Cases\n\n\nClassical cluster algorithms work best for:\n\nspherical\nconvex\ncompact and well separated data\n\n\n\n\nDBSCAN groups data points based on density, making it effective for identifying clusters of various shapes and sizes.\n\nCore Points: Points with at least a minimum number of neighbors (MinPts) within a specified radius (ε).\nBorder Points: Points within the ε radius of core points but with fewer neighbors.\nNoise Points: Outliers that don’t belong to any cluster.\n\nClusters are formed by connecting core points and their reachable neighbors, separating high-density regions from low-density areas.\n\n\n\n\n(Ester et al. 1996)"
+    "text": "Use Cases\n\n\nClassical cluster algorithms work best for:\n\nspherical\nconvex\ncompact and well separated data\n\n\n\n\nDBSCAN groups data points based on density, making it effective for identifying clusters of various shapes and sizes.\n\nCore Points: Points with at least a minimum number of neighbors (MinPts) within a specified radius (ε).\nBorder Points: Points within the ε radius of core points but with fewer neighbors.\nNoise Points: Outliers that don’t belong to any cluster.\n\nClusters are formed by connecting core points and their reachable neighbors, separating high-density regions from low-density areas.\n\n\n\n\n(Ester et al. 1996)",
+    "crumbs": [
+      "Data crunching",
+      "Cluster Analysis",
+      "Density Based Spatial Clustering and Application with Noise (DBSCAN)"
+    ]
   }
 ]
