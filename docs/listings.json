@@ -6,7 +6,10 @@
       "/chapters/chapter200/index.html",
       "/chapters/chapter300/index.html",
       "/chapters/chapter400/index.html",
-      "/chapters/chapter500/index.html",
+      "/chapters/chapter500_TraditionalMeasures/index.html",
+      "/chapters/chapter510_MapReduce/index.html",
+      "/chapters/chapter520_GradientDescent/index.html",
+      "/chapters/chapter530_MLE/index.html",
       "/chapters/chapter540_PCA/index.html"
     ]
   }

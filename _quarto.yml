@@ -53,5 +53,13 @@ website:
             href: chapters/chapter400/index.qmd
       - section: Data crunching
         contents: 
-          - text: "slides"
-            href: chapters/chapter500/index.qmd
+          - text: "Traditional Methods"
+            href: chapters/chapter500_TraditionalMeasures/index.qmd
+          - text: "Map Reduce"
+            href: chapters/chapter510_MapReduce/index.qmd
+          - text: "Gradient Descent"
+            href: chapters/chapter520_GradientDescent/index.qmd
+          - text: "Maximum Likelihood Estimation"
+            href: chapters/chapter530_MLE/index.qmd
+          - text: "Principal Component Analysis"
+            href: chapters/chapter540_PCA/index.qmd

@@ -1,0 +1,551 @@
+---
+title: "Maximum Likelihood Estimation"
+bibliography: https://api.citedrive.com/bib/da291eae-8e2a-46b1-968e-0b79af55f87a/references.bib?x=eyJpZCI6ICJkYTI5MWVhZS04ZTJhLTQ2YjEtOTY4ZS0wYjc5YWY1NWY4N2EiLCAidXNlciI6ICI1NjQ5IiwgInNpZ25hdHVyZSI6ICI2ZDMyODMxM2QzZDQ3NmE3MGM4MDc5MzJiNzE1NjkzNjJmYmZjODYyNGMzNmJjNDBkMDk3Njk5N2RmZjQ5MTg5In0=/bibliography.bib
+format:
+  revealjs:
+    slide-level: 5
+    resource-path: 
+      - "img"
+    logo: img/back.svg
+    footer-logo-link: "https://mechtrix.github.io/BigData_online/"
+    footer: "Copyright Prof. Dr. Tim Weber, 2024"
+    include-in-header:
+      text: |
+        <script>
+        MathJax = {
+          loader: {
+            load: ['[tex]/boldsymbol']
+          },
+          tex: {
+            tags: "all",
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$'], ['\\[','\\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            packages: {
+              '[+]': ['boldsymbol']
+            }
+          }
+        };
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+revealjs-plugins:
+  - animate
+  - attribution
+filters: 
+  - animate
+  - reveal-header
+  - pseudocode
+editor_options: 
+  chunk_output_type: console
+css: style.css
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(datasauRus)
+library(tidyverse)
+library(gt)
+library(here)
+library(quarto)
+library(gganimate)
+
+```
+
+
+
+## Maximum Likelihood Estimation (MLE)
+
+::::{style="font-size: 85%;"}
+
+Maximum Likelihood Estimation (MLE) is a statistical method used for estimating the parameters of a probability distribution by maximizing a likelihood function. 
+This method finds the parameter values that make the observed data most probable.
+
+::::
+
+::: {.incremental}
+
+- Consistency: As the sample size increases, the MLE converges to the true parameter value.
+- Asymptotic Normality: The distribution of the MLE approaches a normal distribution as the sample size grows.
+- Efficiency: Among unbiased estimators, the MLE has the lowest possible variance asymptotically.
+
+:::
+
+### MLE and gradient descent
+
+::::{style="font-size: 85%;"}
+::: {.incremental}
+
+- Obective of MLE: MLE aims to find parameter values that maximize the likelihood function, which measures how well the model fits the data.
+
+- Optimization Problem: This is an optimization problem, typically involving the log-likelihood function for simplicity.
+
+- Gradient Descent: Gradient descent is a common method used to solve this optimization problem. It iteratively adjusts the parameters to increase the log-likelihood.
+
+- Gradient Calculation: The gradient of the log-likelihood function with respect to the parameters is calculated to guide the updates.
+
+:::
+::::
+
+### First example
+
+What is the probability of $x>100$ where $x$ follows a normal distribution with $\bar{x} = 50$ and $sd = 10$.
+
+We know:
+
+::: {.incremental}
+
+- normal distribution
+- mean
+- standard deviation
+
+:::
+
+---
+
+```{r}
+#| fig-align: center
+
+
+df <- data.frame(x = rnorm(50,50,10))
+ggplot(df, aes(x = x)) + 
+  geom_dotplot()+
+  scale_y_continuous(expand = c(0,0,0.05,0))+
+  theme_minimal(base_size = 15)+
+  labs(title = "The data")
+
+```
+
+::::{style="font-size: 55%;"}
+::: {.incremental}
+
+- What is the mean? 
+  - `r mean(df$x) |> round(digits = 2)`
+- What is the sd?
+  - `r sd(df$x) |> round(digits = 2)`
+- good for data, but the population  ?
+
+:::
+::::
+
+---
+
+In what scenario is probability to observe the data maximized?
+
+- $\bar{x} = 100, sd = 10$
+
+::: {.fragment .highlight-red}
+
+- $\bar{x} = 50, sd = 10$
+
+:::
+
+### Distribution parameters
+
+
+... are a quantity that indexes a family of probability distributions.
+
+::: {.fragment .fade-in}
+
+::: {.r-fit-text .v-c}
+
+AHA
+
+:::
+
+:::
+
+#### normal distribution
+
+![](img/Normal_Distribution_PDF.svg){fig-align="center"}
+
+#### Poisson distribution
+
+![](img/Poisson_pmf.svg){fig-align="center"}
+
+
+---
+
+Some values are more likely than others.
+
+::: {.fragment .fade-in}
+
+But we are faced with an inverse problem:
+
+Given the observed data and a model of interest, we need to find the one Probability Density Function/Probability Mass Function ($f(x|\theta)$), among all the probability densities that are most likely to have produced the data.
+
+:::
+
+::: {.fragment .fade-in}
+
+\begin{align}
+L(\theta|x) = f(x|\theta)
+\end{align}
+
+$\theta$
+:   distribution parameter
+
+$x$
+:   given observations
+
+:::
+
+### Log Likelihood
+
+$x_i$ are independent and identically drawn from a probability distribution $f_0$
+
+\begin{align}
+L(\theta|x) &= f_0(x_1.x_2,x_3, \ldots, x_n|\theta) = \nonumber \\
+&= f_0(x_1\mid\theta) * f_0(x_2\mid\theta) * f_0(x_3\mid\theta) * \ldots * f_0(x_n\mid\theta) \nonumber
+\end{align}
+
+Finding maximum/minimum:
+
+::: {.incremental}
+- derive $L$ wrt $\theta$ and equate to $0$
+- products $\rightarrow$ chain rule $\rightarrow$ cumbersome
+:::
+
+---
+
+::: {.incremental}
+- trick is to take the $\log$ of the likelihood function!
+- convert **products** into **sum** without impacting the value of $\theta$
+:::
+
+::: {.fragment .fade-in}
+
+\begin{align}
+&\log LL(\theta \mid x) = \log \left( \prod_{i=1}^n f_0(x_i \mid \theta) \right) \nonumber \\
+&= \sum_{i=1}^n \log f_0(x_i \mid \theta) \nonumber \\
+&= \log (f_0(x_1 \mid \theta)) + \log (f_0(x_2 \mid \theta)) + \ldots + \log (f_0(x_n \mid \theta)) \nonumber
+\end{align}
+
+:::
+
+### Determining predictive Model Coefficients
+
+::::{style="font-size: 75%;"}
+::: {.incremental}
+- large sample size of $n$ observations $y_1,y_2,\ldots,y_n$
+- can be treated as realizations of independent Poisson random variables with $Y_i \approx P(\mu_i)$
+- $\mu_i$ (and therefore the variance) depend on a vector of explanatory variables $x_i$
+- simple linear model: $\mu_i = x_i\theta$
+- Problem: RHS can assume any value, whereas a count can only be non-negative
+- Solution: GLM with log link
+:::
+::::
+
+::: {.fragment .fade-in}
+\begin{align}
+\log(\mu_1) &= x_i\theta\nonumber\\
+\mu_1 &= \exp(x_i\theta)
+\end{align}
+:::
+
+::: {.fragment .fade-in}
+Find $\theta$ using MLE
+:::
+
+### Poisson Distribution
+
+\begin{align}
+Pr\{Y = y \mid \mu\} = \frac{e^{-\mu}\mu^y}{y!}
+\end{align}
+
+The log-likelihood function is:
+
+::: {.fragment .fade-in}
+\begin{align}
+LL(\theta) = \sum (y_i\log(\mu_i)-\mu_i) \label{eqLL}
+\end{align}
+:::
+
+::::{style="font-size: 75%;"}
+
+::: {.fragment .fade-in}
+- Where $\mu_i$ depends on the covariates $x_i$ and a vector 0f $\theta$ coefficients
+- substitute $\mu_i = \exp(x_i\theta)$ to get $\theta$ that maximizes the likelihood
+- with $\theta$-vector we can predict the expeceted value using $x_i*\theta$
+:::
+
+::::
+
+### Practical example
+
+- count of tickets sold in each hour from 25th Aug 2012 to 25th Sep 2014  (about 18K records)
+- predict number of tickets sold in each hour
+- could be solved using linear regression, time series analysis ...
+- Here we will use statistical modeling
+
+#### hourly purchases
+
+```{r}
+#| include: false
+
+Train_Tickets <- read_csv(
+  here("data","Train_Tickets.csv"),
+  col_types =
+    cols(
+      Datetime =
+        col_datetime(
+          format = "%d-%m-%Y %H:%M"
+          )
+      )
+  ) |>
+  janitor::clean_names() |>
+  rename("hour_count" = "count")
+
+```
+
+
+```{r}
+#| fig-align: "center"
+
+Train_Tickets |>
+  ggplot(
+    aes(
+      x = datetime,
+      y = hour_count
+    )
+  )+
+  geom_line()+
+  geom_smooth() +
+  scale_y_continuous(
+    expand = c(0,0,0.05,0)
+  )+
+  theme_minimal(base_size = 15)
+
+```
+
+#### histogram of houry purchases
+
+```{r}
+#| fig-align: "center"
+
+
+
+
+Train_Tickets |>
+  ggplot(
+    aes(
+      x = hour_count
+    )
+  )+
+  geom_histogram(
+    aes(
+      y = after_stat(count)
+      ),
+    binwidth = 20,
+    color = "white",
+    alpha = 0.5,
+    fill = "steelblue"
+  )+
+  geom_density(
+    aes(
+      y = 20*after_stat(count)
+      )
+  )+
+  scale_x_continuous(
+    expand = c(0,0,0,0)
+  )+
+  scale_y_continuous(
+    expand = c(0,0,0.05,0)
+  )+
+  theme_minimal(base_size = 15)
+
+
+```
+
+::::{style="font-size: 75%;"}
+
+::: {.fragment .fade-in}
+
+significant increase of hourly purchases in time
+
+:::
+
+::::
+
+#### some more Background
+
+- we call `age` the number of weeks elapse since 25th of August 2012
+
+\begin{align}
+\mu = \exp(\theta_0 + age * \theta_1) \label{eqmodel}
+\end{align}
+
+$\mu$
+:   count of tickets sold $\rightarrow$ follow a Poisson Distribution
+
+$\theta_0$
+:   to be the estimated coefficient
+
+$\theta_1$
+:   to be the estimated coefficient
+
+#### modeling
+
+Combining \eqref{eqLL} and \eqref{eqmodel} we get:
+
+\begin{align}
+LL(\theta) = \sum\{y_i(\theta_0+age*\theta_1)-\exp(\theta_0+age*\theta_1)\}
+\end{align}
+
+::: {.fragment .fade-in}
+
+We use the `mle()` function in the `stats4` package
+
+:::
+
+#### prerequisites
+
+::: {.fragment .fade-in}
+
+**Negative Likelihood function which needs to be minimized:** This is the same as the one that we have just derived, but a negative sign in front [as maximizing the log-likelihood is the same as minimizing the negative log likelihood].
+
+:::
+
+::: {.fragment .fade-in}
+
+**Starting point for the coefficient vector:** This is the initial guess for the coefficient. 
+Results can vary based on these values as the function can hit local minima. 
+Hence, it is good to verify the results by running the function with different starting points.
+
+:::
+
+::: {.fragment .fade-in}
+
+Optionally, the method using which the likelihood function should be optimized. BFGS is the default method (a quasi-Newton method) [@practical_fletcher_1987]
+
+:::
+
+#### negative log-likelihood
+
+```{r}
+#| echo: true
+
+nll <- function(theta0,theta1) {
+    x <- Train_Tickets$age[-idx]
+    y <- Train_Tickets$hour_count[-idx]
+    mu = exp(theta0 + x*theta1)
+    -sum(y*(log(mu)) - mu)
+}
+
+```
+
+#### split dataset
+
+```{r}
+#| echo: true
+
+
+set.seed(200)
+idx <- caret::createDataPartition(Train_Tickets$hour_count, p=0.25,list=FALSE)
+```
+
+#### parameter estimation
+
+```{r}
+#| include: false
+
+start_date = strptime("2012-08-25", format = "%Y-%m-%d")
+
+diff_in_weeks = difftime(Train_Tickets$datetime, start_date, units = "weeks") # weeks
+
+Train_Tickets <- Train_Tickets |> 
+  mutate(
+    age = difftime(datetime,start_date,units = "weeks") |> as.numeric()
+  )
+
+```
+
+```{r}
+#| echo: true
+
+est <- stats4::mle(minuslog=nll, start=list(theta0=2,theta1=0))
+stats4::summary(est)
+
+```
+
+```{r}
+#| echo: true
+
+pred.ts <- (exp(stats4::coef(est)['theta0'] + Train_Tickets$age[idx]*stats4::coef(est)['theta1'] ))
+ModelMetrics::rmse(pred.ts, Train_Tickets$hour_count[idx])
+```
+
+#### comparison against lm
+
+```{r}
+#| echo: true
+
+lm.fit <-  lm(log(hour_count)~age, data=Train_Tickets[-idx,])
+
+summary(lm.fit)
+
+```
+
+```{r}
+#| echo: true
+
+pred.lm <- predict(lm.fit, Train_Tickets[idx,])
+ModelMetrics::rmse(exp(pred.lm), Train_Tickets$hour_count[idx]) 
+
+```
+
+#### using `glm`
+
+```{r}
+#| echo: true
+
+glm.fit <-  glm(hour_count ~ age, family = "poisson", data = Train_Tickets)
+
+summary(glm.fit)
+
+```
+
+
+#### standard error comparison
+
+```{r}
+#| fig-align: "center"
+
+
+glm <- glm.fit |> broom::augment() |> 
+  add_column(model = "glm")
+
+lm <- lm.fit |> broom::augment() |> 
+  add_column(model = "lm")
+
+lm_tidy <- lm.fit |> 
+  broom::tidy() |> 
+  add_column(model = "lm")
+
+glm_tidy <- glm.fit |> 
+  broom::tidy() |> 
+  add_column(model = "glm")
+
+models_tidy <-  bind_rows(lm_tidy,glm_tidy)
+
+models_tidy |> 
+  ggplot(
+    aes(x = model,
+        y = std.error)
+  )+
+  geom_col(
+    fill = "steelblue"
+  )+
+  facet_wrap(~term)+
+  scale_y_continuous(expand = c(0,0,0.05,0))+
+  scale_fill_brewer(palette = "Set1")+
+  theme_bw(base_size = 15)
+
+
+
+```
+
+
+# References

@@ -16,7 +16,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Tim Weber">
-  <title>Big Data lecture slides – Data Crunching</title>
+  <title>Big Data lecture slides – Traditional Methods</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -34,92 +34,7 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-    /* CSS for citations */
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-      margin-bottom: 0em;
-    }
-    .hanging-indent div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }  </style>
+  </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="style.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -436,7 +351,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Data Crunching</h1>
+  <h1 class="title">Traditional Methods</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -453,8 +368,8 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 </div>
 
 </section>
-<section id="ai" class="title-slide slide level1 center">
-<h1>AI</h1>
+<section id="data-crunching-as-seen-by-ai" class="title-slide slide level1 center">
+<h1>Data Crunching as seen by AI</h1>
 
 <img data-src="img/data_crunching.webp" class="quarto-figure quarto-figure-center r-stretch"></section>
 
@@ -676,23 +591,23 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 <h3>Ratios</h3>
 <div class="cell">
 <div class="cell-output-display">
-<div id="lapgyqkduz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lapgyqkduz table {
+<div id="ebrmxpdbpz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ebrmxpdbpz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lapgyqkduz thead, #lapgyqkduz tbody, #lapgyqkduz tfoot, #lapgyqkduz tr, #lapgyqkduz td, #lapgyqkduz th {
+#ebrmxpdbpz thead, #ebrmxpdbpz tbody, #ebrmxpdbpz tfoot, #ebrmxpdbpz tr, #ebrmxpdbpz td, #ebrmxpdbpz th {
   border-style: none;
 }
 
-#lapgyqkduz p {
+#ebrmxpdbpz p {
   margin: 0;
   padding: 0;
 }
 
-#lapgyqkduz .gt_table {
+#ebrmxpdbpz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -718,12 +633,12 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-left-color: #D3D3D3;
 }
 
-#lapgyqkduz .gt_caption {
+#ebrmxpdbpz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lapgyqkduz .gt_title {
+#ebrmxpdbpz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -735,7 +650,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-width: 0;
 }
 
-#lapgyqkduz .gt_subtitle {
+#ebrmxpdbpz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -747,7 +662,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-top-width: 0;
 }
 
-#lapgyqkduz .gt_heading {
+#ebrmxpdbpz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -759,13 +674,13 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#lapgyqkduz .gt_bottom_border {
+#ebrmxpdbpz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lapgyqkduz .gt_col_headings {
+#ebrmxpdbpz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -780,7 +695,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#lapgyqkduz .gt_col_heading {
+#ebrmxpdbpz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -800,7 +715,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   overflow-x: hidden;
 }
 
-#lapgyqkduz .gt_column_spanner_outer {
+#ebrmxpdbpz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -812,15 +727,15 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 4px;
 }
 
-#lapgyqkduz .gt_column_spanner_outer:first-child {
+#ebrmxpdbpz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lapgyqkduz .gt_column_spanner_outer:last-child {
+#ebrmxpdbpz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lapgyqkduz .gt_column_spanner {
+#ebrmxpdbpz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -832,11 +747,11 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   width: 100%;
 }
 
-#lapgyqkduz .gt_spanner_row {
+#ebrmxpdbpz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lapgyqkduz .gt_group_heading {
+#ebrmxpdbpz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -862,7 +777,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   text-align: left;
 }
 
-#lapgyqkduz .gt_empty_group_heading {
+#ebrmxpdbpz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -877,15 +792,15 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   vertical-align: middle;
 }
 
-#lapgyqkduz .gt_from_md > :first-child {
+#ebrmxpdbpz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lapgyqkduz .gt_from_md > :last-child {
+#ebrmxpdbpz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lapgyqkduz .gt_row {
+#ebrmxpdbpz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -904,7 +819,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   overflow-x: hidden;
 }
 
-#lapgyqkduz .gt_stub {
+#ebrmxpdbpz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -917,7 +832,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#lapgyqkduz .gt_stub_row_group {
+#ebrmxpdbpz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -931,15 +846,15 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   vertical-align: top;
 }
 
-#lapgyqkduz .gt_row_group_first td {
+#ebrmxpdbpz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lapgyqkduz .gt_row_group_first th {
+#ebrmxpdbpz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lapgyqkduz .gt_summary_row {
+#ebrmxpdbpz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -949,16 +864,16 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#lapgyqkduz .gt_first_summary_row {
+#ebrmxpdbpz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lapgyqkduz .gt_first_summary_row.thick {
+#ebrmxpdbpz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lapgyqkduz .gt_last_summary_row {
+#ebrmxpdbpz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -968,7 +883,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-color: #D3D3D3;
 }
 
-#lapgyqkduz .gt_grand_summary_row {
+#ebrmxpdbpz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -978,7 +893,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#lapgyqkduz .gt_first_grand_summary_row {
+#ebrmxpdbpz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -988,7 +903,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-top-color: #D3D3D3;
 }
 
-#lapgyqkduz .gt_last_grand_summary_row_top {
+#ebrmxpdbpz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -998,11 +913,11 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-color: #D3D3D3;
 }
 
-#lapgyqkduz .gt_striped {
+#ebrmxpdbpz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lapgyqkduz .gt_table_body {
+#ebrmxpdbpz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1011,7 +926,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-color: #D3D3D3;
 }
 
-#lapgyqkduz .gt_footnotes {
+#ebrmxpdbpz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1025,7 +940,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#lapgyqkduz .gt_footnote {
+#ebrmxpdbpz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1034,7 +949,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#lapgyqkduz .gt_sourcenotes {
+#ebrmxpdbpz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1048,7 +963,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#lapgyqkduz .gt_sourcenote {
+#ebrmxpdbpz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1056,72 +971,72 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#lapgyqkduz .gt_left {
+#ebrmxpdbpz .gt_left {
   text-align: left;
 }
 
-#lapgyqkduz .gt_center {
+#ebrmxpdbpz .gt_center {
   text-align: center;
 }
 
-#lapgyqkduz .gt_right {
+#ebrmxpdbpz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lapgyqkduz .gt_font_normal {
+#ebrmxpdbpz .gt_font_normal {
   font-weight: normal;
 }
 
-#lapgyqkduz .gt_font_bold {
+#ebrmxpdbpz .gt_font_bold {
   font-weight: bold;
 }
 
-#lapgyqkduz .gt_font_italic {
+#ebrmxpdbpz .gt_font_italic {
   font-style: italic;
 }
 
-#lapgyqkduz .gt_super {
+#ebrmxpdbpz .gt_super {
   font-size: 65%;
 }
 
-#lapgyqkduz .gt_footnote_marks {
+#ebrmxpdbpz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lapgyqkduz .gt_asterisk {
+#ebrmxpdbpz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lapgyqkduz .gt_indent_1 {
+#ebrmxpdbpz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lapgyqkduz .gt_indent_2 {
+#ebrmxpdbpz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lapgyqkduz .gt_indent_3 {
+#ebrmxpdbpz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lapgyqkduz .gt_indent_4 {
+#ebrmxpdbpz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lapgyqkduz .gt_indent_5 {
+#ebrmxpdbpz .gt_indent_5 {
   text-indent: 25px;
 }
 
-#lapgyqkduz .katex-display {
+#ebrmxpdbpz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#lapgyqkduz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ebrmxpdbpz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1225,23 +1140,23 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 <div class="fragment fade-out">
 <div class="cell">
 <div class="cell-output-display">
-<div id="ylzbbhmwya" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ylzbbhmwya table {
+<div id="ngozanpugi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ngozanpugi table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ylzbbhmwya thead, #ylzbbhmwya tbody, #ylzbbhmwya tfoot, #ylzbbhmwya tr, #ylzbbhmwya td, #ylzbbhmwya th {
+#ngozanpugi thead, #ngozanpugi tbody, #ngozanpugi tfoot, #ngozanpugi tr, #ngozanpugi td, #ngozanpugi th {
   border-style: none;
 }
 
-#ylzbbhmwya p {
+#ngozanpugi p {
   margin: 0;
   padding: 0;
 }
 
-#ylzbbhmwya .gt_table {
+#ngozanpugi .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1267,12 +1182,12 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-left-color: #D3D3D3;
 }
 
-#ylzbbhmwya .gt_caption {
+#ngozanpugi .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ylzbbhmwya .gt_title {
+#ngozanpugi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1284,7 +1199,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-width: 0;
 }
 
-#ylzbbhmwya .gt_subtitle {
+#ngozanpugi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1296,7 +1211,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-top-width: 0;
 }
 
-#ylzbbhmwya .gt_heading {
+#ngozanpugi .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1308,13 +1223,13 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#ylzbbhmwya .gt_bottom_border {
+#ngozanpugi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ylzbbhmwya .gt_col_headings {
+#ngozanpugi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1329,7 +1244,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#ylzbbhmwya .gt_col_heading {
+#ngozanpugi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1349,7 +1264,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   overflow-x: hidden;
 }
 
-#ylzbbhmwya .gt_column_spanner_outer {
+#ngozanpugi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1361,15 +1276,15 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 4px;
 }
 
-#ylzbbhmwya .gt_column_spanner_outer:first-child {
+#ngozanpugi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ylzbbhmwya .gt_column_spanner_outer:last-child {
+#ngozanpugi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ylzbbhmwya .gt_column_spanner {
+#ngozanpugi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1381,11 +1296,11 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   width: 100%;
 }
 
-#ylzbbhmwya .gt_spanner_row {
+#ngozanpugi .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ylzbbhmwya .gt_group_heading {
+#ngozanpugi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1411,7 +1326,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   text-align: left;
 }
 
-#ylzbbhmwya .gt_empty_group_heading {
+#ngozanpugi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1426,15 +1341,15 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   vertical-align: middle;
 }
 
-#ylzbbhmwya .gt_from_md > :first-child {
+#ngozanpugi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ylzbbhmwya .gt_from_md > :last-child {
+#ngozanpugi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ylzbbhmwya .gt_row {
+#ngozanpugi .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1453,7 +1368,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   overflow-x: hidden;
 }
 
-#ylzbbhmwya .gt_stub {
+#ngozanpugi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1466,7 +1381,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#ylzbbhmwya .gt_stub_row_group {
+#ngozanpugi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1480,15 +1395,15 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   vertical-align: top;
 }
 
-#ylzbbhmwya .gt_row_group_first td {
+#ngozanpugi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ylzbbhmwya .gt_row_group_first th {
+#ngozanpugi .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ylzbbhmwya .gt_summary_row {
+#ngozanpugi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1498,16 +1413,16 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#ylzbbhmwya .gt_first_summary_row {
+#ngozanpugi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ylzbbhmwya .gt_first_summary_row.thick {
+#ngozanpugi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ylzbbhmwya .gt_last_summary_row {
+#ngozanpugi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1517,7 +1432,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-color: #D3D3D3;
 }
 
-#ylzbbhmwya .gt_grand_summary_row {
+#ngozanpugi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1527,7 +1442,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#ylzbbhmwya .gt_first_grand_summary_row {
+#ngozanpugi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1537,7 +1452,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-top-color: #D3D3D3;
 }
 
-#ylzbbhmwya .gt_last_grand_summary_row_top {
+#ngozanpugi .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1547,11 +1462,11 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-color: #D3D3D3;
 }
 
-#ylzbbhmwya .gt_striped {
+#ngozanpugi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ylzbbhmwya .gt_table_body {
+#ngozanpugi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1560,7 +1475,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-bottom-color: #D3D3D3;
 }
 
-#ylzbbhmwya .gt_footnotes {
+#ngozanpugi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1574,7 +1489,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#ylzbbhmwya .gt_footnote {
+#ngozanpugi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1583,7 +1498,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#ylzbbhmwya .gt_sourcenotes {
+#ngozanpugi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1597,7 +1512,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   border-right-color: #D3D3D3;
 }
 
-#ylzbbhmwya .gt_sourcenote {
+#ngozanpugi .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1605,72 +1520,72 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
   padding-right: 5px;
 }
 
-#ylzbbhmwya .gt_left {
+#ngozanpugi .gt_left {
   text-align: left;
 }
 
-#ylzbbhmwya .gt_center {
+#ngozanpugi .gt_center {
   text-align: center;
 }
 
-#ylzbbhmwya .gt_right {
+#ngozanpugi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ylzbbhmwya .gt_font_normal {
+#ngozanpugi .gt_font_normal {
   font-weight: normal;
 }
 
-#ylzbbhmwya .gt_font_bold {
+#ngozanpugi .gt_font_bold {
   font-weight: bold;
 }
 
-#ylzbbhmwya .gt_font_italic {
+#ngozanpugi .gt_font_italic {
   font-style: italic;
 }
 
-#ylzbbhmwya .gt_super {
+#ngozanpugi .gt_super {
   font-size: 65%;
 }
 
-#ylzbbhmwya .gt_footnote_marks {
+#ngozanpugi .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ylzbbhmwya .gt_asterisk {
+#ngozanpugi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ylzbbhmwya .gt_indent_1 {
+#ngozanpugi .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ylzbbhmwya .gt_indent_2 {
+#ngozanpugi .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ylzbbhmwya .gt_indent_3 {
+#ngozanpugi .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ylzbbhmwya .gt_indent_4 {
+#ngozanpugi .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ylzbbhmwya .gt_indent_5 {
+#ngozanpugi .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ylzbbhmwya .katex-display {
+#ngozanpugi .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ylzbbhmwya div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ngozanpugi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1955,867 +1870,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 </div>
 </section>
 </section>
-<section>
-<section id="algorithms" class="title-slide slide level1 center">
-<h1>Algorithms</h1>
-
-</section>
-<section id="mapreduce" class="title-slide slide level2 center">
-<h2>MapReduce</h2>
-
-</section>
-<section id="single-node-architecture" class="title-slide slide level3 center">
-<h3>Single Node Architecture</h3>
-
-<img data-src="img/single_node_arch.svg" class="r-stretch"><div class="attribution">
-<p><span class="citation" data-cites="LeskovecUnknownTitle2014">(<a href="#/references" role="doc-biblioref" onclick="">Leskovec, Rajaraman, and Ullman 2014</a>)</span></p>
-</div>
-</section>
-
-<section id="cluster-architecture" class="title-slide slide level3 center">
-<h3>Cluster Architecture</h3>
-
-<img data-src="img/cluster_arch.svg" class="r-stretch"><p>Google has an estimated 1M servers <a href="http://bit.ly/Shh0RO" class="uri">http://bit.ly/Shh0RO</a></p>
-<div class="attribution">
-<p><span class="citation" data-cites="LeskovecUnknownTitle2014">(<a href="#/references" role="doc-biblioref" onclick="">Leskovec, Rajaraman, and Ullman 2014</a>)</span></p>
-</div>
-</section>
-
-<section id="servers" class="title-slide slide level3 center">
-<h3>SERVERS!!!</h3>
-<img data-src="img/servers.jpg" class="r-stretch">
-</section>
-
-<section id="large-scale-computing" class="title-slide slide level3 center">
-<h3>Large Scale Computing</h3>
-<ul>
-<li>Challenges:
-<ul>
-<li>How do you distribute computations?</li>
-<li>How can we make it easy to write distributed programs</li>
-</ul></li>
-</ul>
-<p>Machines fail:</p>
-<div class="fragment">
-<ul>
-<li>One Server may stay up 3 years (1000 days)</li>
-<li>If there are 1000 servers, expect to loose 1/day</li>
-<li>Google estimate: 1M servers <span class="math inline">\(\rightarrow\)</span> 1000 machines fail EVERY DAY</li>
-</ul>
-<div class="attribution">
-<p><span class="citation" data-cites="LeskovecUnknownTitle2014">(<a href="#/references" role="doc-biblioref" onclick="">Leskovec, Rajaraman, and Ullman 2014</a>)</span></p>
-</div>
-</div>
-</section>
-
-<section id="issue-and-solution" class="title-slide slide level3 center">
-<h3>Issue and Solution</h3>
-<ul>
-<li>Issue: Copying data over a network takes time</li>
-<li>Idea
-<ul>
-<li>Bring computation close to the data</li>
-<li>Store files multiple times for reliability</li>
-</ul></li>
-</ul>
-<div class="fragment">
-<ul>
-<li>MapReduce adresses these problems
-<ul>
-<li>Elegant way to work with big data</li>
-<li>Storage Infrastructure - File System (Google: GFS, Hadoop: HDFS)</li>
-<li>Programming Model: MapReduce</li>
-</ul></li>
-</ul>
-<div class="attribution">
-<p><span class="citation" data-cites="LeskovecUnknownTitle2014">(<a href="#/references" role="doc-biblioref" onclick="">Leskovec, Rajaraman, and Ullman 2014</a>)</span></p>
-</div>
-</div>
-</section>
-
-<section id="distributed-file-system" class="title-slide slide level3 center">
-<h3>(D)istributed (F)ile (S)ystem</h3>
-<ul>
-<li>Chunk servers
-<ul>
-<li>File is split into contiguous chunks</li>
-<li>Typically each chunk is 16-64MB</li>
-<li>Each chunk replicated (usually 2x or 3x)</li>
-<li>Try to keep replicas in different racks</li>
-</ul></li>
-</ul>
-<div class="attribution">
-<p><span class="citation" data-cites="LeskovecUnknownTitle2014">(<a href="#/references" role="doc-biblioref" onclick="">Leskovec, Rajaraman, and Ullman 2014</a>)</span></p>
-</div>
-</section>
-
-<section id="chunk-servers" class="title-slide slide level3 center">
-<h3>Chunk Servers</h3>
-
-<img data-src="img/chunk_servers.svg" class="r-stretch"><div class="attribution">
-<p><span class="citation" data-cites="LeskovecUnknownTitle2014">(<a href="#/references" role="doc-biblioref" onclick="">Leskovec, Rajaraman, and Ullman 2014</a>)</span></p>
-</div>
-</section>
-
-<section id="theory" class="title-slide slide level3 center">
-<h3>Theory</h3>
-<div data-animate="" data-src="img/MapReduce_lorem.svg"><!-- setup:
-  - element: "#map"
-    modifier: attr
-    parameters:
-      - class: fragment
-        data-fragment-index: "1"
-  - element: "#shuffle"
-    modifier: attr
-    parameters:
-      - class: fragment
-        data-fragment-index: "2"
-  - element: "#shuffle2"
-    modifier: attr
-    parameters:
-      - class: fragment
-        data-fragment-index: "2"
-  - element: "#reduce"
-    modifier: attr
-    parameters:
-      - class: fragment
-        data-fragment-index: "3" --></div>
-<div class="attribution">
-<p><span class="citation" data-cites="LeskovecUnknownTitle2014">(<a href="#/references" role="doc-biblioref" onclick="">Leskovec, Rajaraman, and Ullman 2014</a>)</span></p>
-</div>
-</section>
-
-<section id="classroom" class="title-slide slide level3 center">
-<h3>Classroom</h3>
-<p>We will simulate MapReduce in the classroom</p>
-<div style="font-size: 85%;">
-<ol type="1">
-<li>step: 4 students count the words in the raw data. Time is ticking.</li>
-<li>step: 2 groups are formed, the words are counted. One student acts as the reduce (collecting the counts in the end). Time is ticking.</li>
-<li>step: 4 groups are formed, the words are counted. One student acts as the reduce (collecting the counts in the end). Time is ticking.</li>
-<li>step: 5 groups are formed, the words are counted. One student acts as the reduce (collecting the counts in the end). Time is ticking.</li>
-<li>step: 10 groups are formed, the words are counted. One student acts as the reduce (collecting the counts in the end). Time is ticking.</li>
-<li>step: 20 groups are formed, the words are counted. One student acts as the reduce (collecting the counts in the end). Time is ticking.</li>
-</ol>
-</div>
-</section>
-<section id="classroom-evaluation" class="title-slide slide level4 center">
-<h4>Classroom Evaluation</h4>
-<ol type="1">
-<li>Which method took the longest?</li>
-<li>What was the most balanced method?</li>
-<li>Would more “servers” help?</li>
-</ol>
-</section>
-
-
-<section id="using-software" class="title-slide slide level3 center">
-<h3>using Software</h3>
-<div class="r-stack">
-<div class="fragment fade-out">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div class="fragment fade-in">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<section id="dealing-with-failures" class="title-slide slide level3 center">
-<h3>Dealing with Failures</h3>
-<div>
-<div style="font-size: 85%;">
-<ul>
-<li class="fragment">Map worker failure
-<ul>
-<li class="fragment">Map tasks completed or in-progress at worker are reset to idle</li>
-<li class="fragment">Reduce workers are notified when task is rescheduled on another worker</li>
-</ul></li>
-<li class="fragment">Reduce worker failure
-<ul>
-<li class="fragment">Only in-progress tasks are reset to idle</li>
-<li class="fragment">Reduce task is restarted</li>
-</ul></li>
-<li class="fragment">Master failure
-<ul>
-<li class="fragment">MapReduce task is aborted and client is notified</li>
-</ul></li>
-</ul>
-</div>
-</div>
-</section>
-
-<section id="how-many-mapreduce-jobs" class="title-slide slide level3 center">
-<h3>How many MapReduce jobs?</h3>
-<p><span class="math inline">\(M\)</span> map tasks, <span class="math inline">\(R\)</span> reduce tasks</p>
-<p>Rule of thumb:</p>
-<ul>
-<li>Make <span class="math inline">\(M\)</span> much larger than the number of nodes in the cluster</li>
-<li>One DFS chunk per Map is common</li>
-<li>Improves dynammics load balancing and speeds up recovery from worker failures</li>
-</ul>
-<div class="fragment">
-<p>Usually <span class="math inline">\(R\)</span> is smaller than <span class="math inline">\(M\)</span></p>
-<ul>
-<li>Because output is spread across <span class="math inline">\(R\)</span> files</li>
-</ul>
-</div>
-</section>
-
-
-<section id="mapreduce-summary" class="title-slide slide level2 center">
-<h2>MapReduce summary</h2>
-<div>
-<div style="font-size: 85%;">
-<ul>
-<li class="fragment">MapReduce is significant for its role in enabling the processing of massive datasets efficiently across distributed computing clusters.</li>
-<li class="fragment">It revolutionized big data processing by providing a scalable and fault-tolerant framework for handling large-scale computations.</li>
-<li class="fragment">Its simplicity and scalability made it accessible to a wide range of industries and applications, from web search engines to scientific research.</li>
-<li class="fragment">MapReduce paved the way for the development of other big data processing frameworks and technologies, influencing the evolution of distributed computing paradigms.</li>
-<li class="fragment">Its impact extends beyond its original implementation, as concepts and principles from MapReduce have influenced the design of subsequent systems and architectures for big data processing.</li>
-</ul>
-</div>
-</div>
-</section>
-
-<section id="gradient-descent" class="title-slide slide level2 center">
-<h2>Gradient Descent</h2>
-
-</section>
-<section id="use-cases-general" class="title-slide slide level3 center">
-<h3>Use Cases: General</h3>
-<div>
-<div style="font-size: 70%;">
-<ol type="1">
-<li class="fragment"><p><strong>Machine Learning:</strong> Used to train models like neural networks, improving accuracy by minimizing error functions.</p></li>
-<li class="fragment"><p><strong>Deep Learning:</strong> Vital for optimizing complex neural network architectures in tasks like image recognition and natural language processing.</p></li>
-<li class="fragment"><p><strong>Reinforcement Learning:</strong> Enables agents to learn optimal strategies by updating policies or value functions in interaction with environments.</p></li>
-<li class="fragment"><p><strong>Optimization Problems:</strong> Applies to various domains, including physics, engineering, finance, and healthcare, to minimize costs or maximize utility functions.</p></li>
-<li class="fragment"><p><strong>Computer Vision:</strong> Key for training convolutional neural networks to classify objects, detect features, and segment images accurately.</p></li>
-<li class="fragment"><p><strong>Finance and Economics:</strong> Helps in financial modeling, algorithmic trading, and risk management by optimizing trading strategies and pricing financial instruments.</p></li>
-<li class="fragment"><p><strong>Healthcare and Biology:</strong> Utilized in drug discovery, genomic analysis, and medical image analysis to optimize models for diagnosis and treatment planning.</p></li>
-</ol>
-</div>
-</div>
-</section>
-
-<section id="use-cases-statistical-learning" class="title-slide slide level3 center">
-<h3>Use Cases: Statistical Learning</h3>
-<div>
-<div style="font-size: 70%;">
-<ol type="1">
-<li class="fragment"><p><strong>Parameter Estimation:</strong> Used in maximum likelihood and maximum a posteriori estimation to find model parameters that best fit observed data.</p></li>
-<li class="fragment"><p><strong>Regression:</strong> Employed in linear and logistic regression to minimize errors between observed and predicted values.</p></li>
-<li class="fragment"><p><strong>Regularization:</strong> Implements L1 and L2 regularization to prevent overfitting in models.</p></li>
-<li class="fragment"><p><strong>Dimensionality Reduction:</strong> Utilized in PCA and factor analysis to reduce data dimensionality while preserving information.</p></li>
-<li class="fragment"><p><strong>Clustering:</strong> Optimizes objective functions in k-means and Gaussian mixture models for better cluster formation.</p></li>
-<li class="fragment"><p><strong>Survival Analysis:</strong> Estimates parameters in survival models like Cox proportional hazards model for analyzing time-to-event data.</p></li>
-</ol>
-</div>
-</div>
-</section>
-
-<section id="the-idea" class="title-slide slide level3 center">
-<h3>The idea</h3>
-<div data-animate="" data-src="img/gradient_descent.svg"><!-- setup:
-  - element: "#fun"
-    modifier: attr
-    parameters:
-      - class: fragment
-        data-fragment-index: "1"
-  - element: "#text01"
-    modifier: attr
-    parameters:
-      - class: fragment
-        data-fragment-index: "2"
-  - element: "#start"
-    modifier: attr
-    parameters:
-      - class: fragment
-        data-fragment-index: "3"
-  - element: "#step01"
-    modifier: attr
-    parameters:
-      - class: fragment
-        data-fragment-index: "4"
-  - element: "#step02"
-    modifier: attr
-    parameters:
-      - class: fragment
-        data-fragment-index: "5"
-  - element: "#step03"
-    modifier: attr
-    parameters:
-      - class: fragment
-        data-fragment-index: "6"
-  - element: "#step04"
-    modifier: attr
-    parameters:
-      - class: fragment
-        data-fragment-index: "7"
-  - element: "#step05"
-    modifier: attr
-    parameters:
-      - class: fragment
-        data-fragment-index: "8"
-  - element: "#step06"
-    modifier: attr
-    parameters:
-      - class: fragment
-        data-fragment-index: "9" --></div>
-<div class="attribution">
-<p><span class="citation" data-cites="an_jameswittenhastietibshirani_2021">(<a href="#/references" role="doc-biblioref" onclick="">James et al. 2021</a>)</span></p>
-</div>
-</section>
-
-<section id="the-loss-function---formulation" class="title-slide slide level3 center">
-<h3>The loss function - formulation</h3>
-<div style="font-size: 85%;">
-<ul>
-<li>The loss function is at the heart of the gradient descent algorithm. We start with linear regression.</li>
-</ul>
-</div>
-<div class="fragment fade-in">
-<p><span class="math display">\[\begin{align}
-Y(x_i) = \theta_0 + \theta_1 x_i
-\end{align}\]</span></p>
-<div style="font-size: 85%;">
-<ul>
-<li>The loss function needs to be differentiable and convex, which is satisfied for the MSE.</li>
-</ul>
-</div>
-</div>
-<div class="fragment fade-in">
-<p><span class="math display">\[\begin{align}
-J(\theta_1,\theta_0) = \overbrace{\frac{1}{N}\sum_{i=1}^N(y(x_i)-y_i)^2}^{MSE}
-\end{align}\]</span></p>
-</div>
-</section>
-
-<section id="the-loss-function---partial-derivative" class="title-slide slide level3 center">
-<h3>The loss function - partial derivative</h3>
-<div style="font-size: 45%;">
-<p>In order to solve for the parameters we do some math and geht the partial derivatives:</p>
-<p><span class="math display">\[\begin{align}
-\frac{\partial \text{MSE}}{\partial \theta_0} &amp;= -\frac{2}{n} \sum_{i=1}^n (y_i - \hat{y}_i) \\
-\frac{\partial \text{MSE}}{\partial \theta_1} &amp;= -\frac{2}{n} \sum_{i=1}^n (y_i - \hat{y}_i) x_i
-\end{align}\]</span></p>
-<p><span class="math inline">\(\theta_0\)</span> and <span class="math inline">\(\theta_1\)</span> are then iteratively updated:</p>
-</div>
-<div style="font-size: 65%;">
-<p><span class="math display">\[\begin{align}
-\theta_0 &amp;\leftarrow \theta_0 - \alpha \frac{\partial \text{MSE}}{\partial \theta_0} \\
-\theta_0 &amp;\leftarrow \theta_0 + \alpha \left( \frac{2}{n} \sum_{i=1}^n (y_i - \hat{y}_i) \right)\\
-\theta_1 &amp;\leftarrow \theta_1 - \alpha \frac{\partial \text{MSE}}{\partial \theta_1}\\
-\theta_1 &amp;\leftarrow \theta_1 + \alpha \left( \frac{2}{n} \sum_{i=1}^n (y_i - \hat{y}_i) x_i \right)
-\end{align}\]</span></p>
-</div>
-</section>
-
-<section id="the-learning-rate-alpha" class="title-slide slide level3 center">
-<h3>The learning rate <span class="math inline">\(\alpha\)</span></h3>
-<ul>
-<li>Hyperparameter</li>
-<li>scales the gradient, influencing how model parameters are adjusted</li>
-</ul>
-
-<img data-src="img/learning_rate.svg" class="r-stretch"></section>
-
-<section id="classroom-1" class="title-slide slide level3 center">
-<h3>Classroom</h3>
-
-<img data-src="img/gd_classroom.svg" class="quarto-figure quarto-figure-center r-stretch"></section>
-
-<section id="algorithm" class="title-slide slide level3 center">
-<h3>Algorithm</h3>
-<div style="font-size: 50%;">
-<div class="pseudocode-container quarto-float" data-pseudocode-number="1" data-caption-prefix="Algorithm" data-line-number="true">
-<div class="pseudocode">
-\begin{algorithm} \caption{gradient descent} \begin{algorithmic} \Require cost function $J(\theta)$, learning rate $\alpha$, number of iterations $n$ \State $i \gets 0$ \State random $\theta$ \Procedure{GradientDescent}{$J(\theta),\theta, \alpha, n$} \For{$i$ \To $n$} \For{$j = 1$ \To number of training examples $m$} \State \textbf{Compute gradient of $J$ wrt $\theta$} \State gradient = $\nabla J(\theta, x^j, y^j)$ \State \textbf{Update the parameters $\theta$:} \State $\theta = \theta - \alpha \times gradient$ \EndFor \EndFor \EndProcedure \end{algorithmic} \end{algorithm}
-</div>
-</div>
-</div>
-</section>
-
-<section id="simulation" class="title-slide slide level3 center">
-<h3>Simulation</h3>
-<p><span class="math display">\[\begin{align}
-Y(x_i) = \theta_0 + \theta_1 x_i
-\end{align}\]</span></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="|3|4|5|6|7|8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">set.seed</span>(<span class="dv">1000</span>) <span class="co">#reproducibility</span></span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a>theta_0 <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="co"># parameter 1</span></span>
-<span id="cb1-4"><a></a>theta_1 <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># parameter 2</span></span>
-<span id="cb1-5"><a></a>n_obs <span class="ot">&lt;-</span> <span class="dv">500</span> <span class="co"># number of datapoints</span></span>
-<span id="cb1-6"><a></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n_obs) <span class="co"># independent variable</span></span>
-<span id="cb1-7"><a></a>y <span class="ot">&lt;-</span> theta_1<span class="sc">*</span>x <span class="sc">+</span> theta_0 <span class="sc">+</span> <span class="fu">rnorm</span>(n_obs, <span class="dv">0</span>, <span class="dv">3</span>) <span class="co"># simulate data</span></span>
-<span id="cb1-8"><a></a><span class="fu">rm</span>(theta_0, theta_1) <span class="co"># get rid of ground truth</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="the-data" class="title-slide slide level4 center">
-<h4>The data</h4>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"></section>
-
-<section id="core-functions-and-parameters" class="title-slide slide level4 center">
-<h4>core functions and parameters</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="5,6,11,12,17,18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>gradient_desc <span class="ot">&lt;-</span> <span class="cf">function</span>(theta_0, theta_1, x, y){</span>
-<span id="cb2-2"><a></a>  N <span class="ot">=</span> <span class="fu">length</span>(x)</span>
-<span id="cb2-3"><a></a>  pred <span class="ot">&lt;-</span> theta_1<span class="sc">*</span>x <span class="sc">+</span> theta_0</span>
-<span id="cb2-4"><a></a>  res <span class="ot">&lt;-</span> y <span class="sc">-</span> pred</span>
-<span id="cb2-5"><a></a>  delta_theta_0 <span class="ot">&lt;-</span> (<span class="dv">2</span><span class="sc">/</span>N)<span class="sc">*</span><span class="fu">sum</span>(res)</span>
-<span id="cb2-6"><a></a>  delta_theta_1 <span class="ot">&lt;-</span> (<span class="dv">2</span><span class="sc">/</span>N)<span class="sc">*</span><span class="fu">sum</span>(res<span class="sc">*</span>x)</span>
-<span id="cb2-7"><a></a>  <span class="fu">return</span>(<span class="fu">c</span>(delta_theta_0, delta_theta_1))</span>
-<span id="cb2-8"><a></a>}</span>
-<span id="cb2-9"><a></a>minimize_function <span class="ot">&lt;-</span> <span class="cf">function</span>(theta_0, theta_1, x, y, alpha){</span>
-<span id="cb2-10"><a></a>  gd <span class="ot">&lt;-</span> <span class="fu">gradient_desc</span>(theta_0, theta_1, x, y)</span>
-<span id="cb2-11"><a></a>  d_theta_0 <span class="ot">&lt;-</span> gd[<span class="dv">1</span>] <span class="sc">*</span> alpha</span>
-<span id="cb2-12"><a></a>  d_theta_1 <span class="ot">&lt;-</span> gd[<span class="dv">2</span>] <span class="sc">*</span> alpha</span>
-<span id="cb2-13"><a></a>  new_theta_0 <span class="ot">&lt;-</span> theta_0 <span class="sc">+</span> d_theta_0</span>
-<span id="cb2-14"><a></a>  new_theta_1 <span class="ot">&lt;-</span> theta_1 <span class="sc">+</span> d_theta_1</span>
-<span id="cb2-15"><a></a>  <span class="fu">return</span>(<span class="fu">c</span>(new_theta_0, new_theta_1))</span>
-<span id="cb2-16"><a></a>}</span>
-<span id="cb2-17"><a></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
-<span id="cb2-18"><a></a>iter <span class="ot">&lt;-</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-
-<section id="optimization" class="title-slide slide level4 center">
-<h4>optimization</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="4,5,6,7,8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>res <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb3-2"><a></a>res[[<span class="dv">1</span>]] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb3-3"><a></a></span>
-<span id="cb3-4"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>iter){</span>
-<span id="cb3-5"><a></a>  res[[i]] <span class="ot">&lt;-</span> <span class="fu">minimize_function</span>(</span>
-<span id="cb3-6"><a></a>    res[[i<span class="dv">-1</span>]][<span class="dv">1</span>], res[[i<span class="dv">-1</span>]][<span class="dv">2</span>], data<span class="sc">$</span>x, data<span class="sc">$</span>y, alpha</span>
-<span id="cb3-7"><a></a>  )</span>
-<span id="cb3-8"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-
-<section id="mse-vs.-iteration" class="title-slide slide level4 center">
-<h4>mse vs.&nbsp;iteration</h4>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-27-1.png" width="960" class="r-stretch"></section>
-
-<section id="the-models" class="title-slide slide level4 center">
-<h4>the models</h4>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-28-1.gif" class="r-stretch"></section>
-
-<section id="different-learning-rates" class="title-slide slide level4 center">
-<h4>different learning rates</h4>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-29-1.png" width="960" class="r-stretch"></section>
-
-
-
-<section id="maximum-likelihood-estimation-mle" class="title-slide slide level2 center">
-<h2>Maximum Likelihood Estimation (MLE)</h2>
-<div style="font-size: 85%;">
-<p>Maximum Likelihood Estimation (MLE) is a statistical method used for estimating the parameters of a probability distribution by maximizing a likelihood function. This method finds the parameter values that make the observed data most probable.</p>
-</div>
-<div>
-<ul>
-<li class="fragment">Consistency: As the sample size increases, the MLE converges to the true parameter value.</li>
-<li class="fragment">Asymptotic Normality: The distribution of the MLE approaches a normal distribution as the sample size grows.</li>
-<li class="fragment">Efficiency: Among unbiased estimators, the MLE has the lowest possible variance asymptotically.</li>
-</ul>
-</div>
-</section>
-<section id="mle-and-gradient-descent" class="title-slide slide level3 center">
-<h3>MLE and gradient descent</h3>
-<div style="font-size: 85%;">
-<div>
-<ul>
-<li class="fragment"><p>Obective of MLE: MLE aims to find parameter values that maximize the likelihood function, which measures how well the model fits the data.</p></li>
-<li class="fragment"><p>Optimization Problem: This is an optimization problem, typically involving the log-likelihood function for simplicity.</p></li>
-<li class="fragment"><p>Gradient Descent: Gradient descent is a common method used to solve this optimization problem. It iteratively adjusts the parameters to increase the log-likelihood.</p></li>
-<li class="fragment"><p>Gradient Calculation: The gradient of the log-likelihood function with respect to the parameters is calculated to guide the updates.</p></li>
-</ul>
-</div>
-</div>
-</section>
-
-<section id="first-example" class="title-slide slide level3 center">
-<h3>First example</h3>
-<p>What is the probability of <span class="math inline">\(x&gt;100\)</span> where <span class="math inline">\(x\)</span> follows a normal distribution with <span class="math inline">\(\bar{x} = 50\)</span> and <span class="math inline">\(sd = 10\)</span>.</p>
-<p>We know:</p>
-<div>
-<ul>
-<li class="fragment">normal distribution</li>
-<li class="fragment">mean</li>
-<li class="fragment">standard deviation</li>
-</ul>
-</div>
-</section>
-<section class="slide level5">
-
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-30-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div style="font-size: 55%;">
-<div>
-<ul>
-<li class="fragment">What is the mean?
-<ul>
-<li class="fragment">49.71</li>
-</ul></li>
-<li class="fragment">What is the sd?
-<ul>
-<li class="fragment">9.6</li>
-</ul></li>
-<li class="fragment">good for data, but the population ?</li>
-</ul>
-</div>
-</div>
-</section>
-<section class="slide level5">
-
-<p>In what scenario is probability to observe the data maximized?</p>
-<ul>
-<li><span class="math inline">\(\bar{x} = 100, sd = 10\)</span></li>
-</ul>
-<div class="fragment highlight-red">
-<ul>
-<li><span class="math inline">\(\bar{x} = 50, sd = 10\)</span></li>
-</ul>
-</div>
-</section>
-
-<section id="distribution-parameters" class="title-slide slide level3 center">
-<h3>Distribution parameters</h3>
-<p>… are a quantity that indexes a family of probability distributions.</p>
-<div class="fragment fade-in">
-<div class="r-fit-text v-c">
-<p>AHA</p>
-</div>
-</div>
-</section>
-<section id="normal-distribution" class="title-slide slide level4 center">
-<h4>normal distribution</h4>
-
-<img data-src="img/Normal_Distribution_PDF.svg" class="quarto-figure quarto-figure-center r-stretch"></section>
-
-<section id="poisson-distribution" class="title-slide slide level4 center">
-<h4>Poisson distribution</h4>
-
-<img data-src="img/Poisson_pmf.svg" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section class="slide level5">
-
-<p>Some values are more likely than others.</p>
-<div class="fragment fade-in">
-<p>But we are faced with an inverse problem:</p>
-<p>Given the observed data and a model of interest, we need to find the one Probability Density Function/Probability Mass Function (<span class="math inline">\(f(x|\theta)\)</span>), among all the probability densities that are most likely to have produced the data.</p>
-</div>
-<div class="fragment fade-in">
-<p><span class="math display">\[\begin{align}
-L(\theta|x) = f(x|\theta)
-\end{align}\]</span></p>
-<dl>
-<dt><span class="math inline">\(\theta\)</span></dt>
-<dd>
-distribution parameter
-</dd>
-<dt><span class="math inline">\(x\)</span></dt>
-<dd>
-given observations
-</dd>
-</dl>
-</div>
-</section>
-
-
-<section id="log-likelihood" class="title-slide slide level3 center">
-<h3>Log Likelihood</h3>
-<p><span class="math inline">\(x_i\)</span> are independent and identically drawn from a probability distribution <span class="math inline">\(f_0\)</span></p>
-<p><span class="math display">\[\begin{align}
-L(\theta|x) &amp;= f_0(x_1.x_2,x_3, \ldots, x_n|\theta) = \nonumber \\
-&amp;= f_0(x_1\mid\theta) * f_0(x_2\mid\theta) * f_0(x_3\mid\theta) * \ldots * f_0(x_n\mid\theta) \nonumber
-\end{align}\]</span></p>
-<p>Finding maximum/minimum:</p>
-<div>
-<ul>
-<li class="fragment">derive <span class="math inline">\(L\)</span> wrt <span class="math inline">\(\theta\)</span> and equate to <span class="math inline">\(0\)</span></li>
-<li class="fragment">products <span class="math inline">\(\rightarrow\)</span> chain rule <span class="math inline">\(\rightarrow\)</span> cumbersome</li>
-</ul>
-</div>
-</section>
-<section class="slide level5">
-
-<div>
-<ul>
-<li class="fragment">trick is to take the <span class="math inline">\(\log\)</span> of the likelihood function!</li>
-<li class="fragment">convert <strong>products</strong> into <strong>sum</strong> without impacting the value of <span class="math inline">\(\theta\)</span></li>
-</ul>
-</div>
-<div class="fragment fade-in">
-<p><span class="math display">\[\begin{align}
-&amp;\log LL(\theta \mid x) = \log \left( \prod_{i=1}^n f_0(x_i \mid \theta) \right) \nonumber \\
-&amp;= \sum_{i=1}^n \log f_0(x_i \mid \theta) \nonumber \\
-&amp;= \log (f_0(x_1 \mid \theta)) + \log (f_0(x_2 \mid \theta)) + \ldots + \log (f_0(x_n \mid \theta)) \nonumber
-\end{align}\]</span></p>
-</div>
-</section>
-
-<section id="determining-predictive-model-coefficients" class="title-slide slide level3 center">
-<h3>Determining predictive Model Coefficients</h3>
-<div style="font-size: 75%;">
-<div>
-<ul>
-<li class="fragment">large sample size of <span class="math inline">\(n\)</span> observations <span class="math inline">\(y_1,y_2,\ldots,y_n\)</span></li>
-<li class="fragment">can be treated as realizations of independent Poisson random variables with <span class="math inline">\(Y_i \approx P(\mu_i)\)</span></li>
-<li class="fragment"><span class="math inline">\(\mu_i\)</span> (and therefore the variance) depend on a vector of explanatory variables <span class="math inline">\(x_i\)</span></li>
-<li class="fragment">simple linear model: <span class="math inline">\(\mu_i = x_i\theta\)</span></li>
-<li class="fragment">Problem: RHS can assume any value, whereas a count can only be non-negative</li>
-<li class="fragment">Solution: GLM with log link</li>
-</ul>
-</div>
-</div>
-<div class="fragment fade-in">
-<p><span class="math display">\[\begin{align}
-\log(\mu_1) &amp;= x_i\theta\nonumber\\
-\mu_1 &amp;= \exp(x_i\theta)
-\end{align}\]</span></p>
-</div>
-<div class="fragment fade-in">
-<p>Find <span class="math inline">\(\theta\)</span> using MLE</p>
-</div>
-</section>
-
-<section id="poisson-distribution-1" class="title-slide slide level3 center">
-<h3>Poisson Distribution</h3>
-<p><span class="math display">\[\begin{align}
-Pr\{Y = y \mid \mu\} = \frac{e^{-\mu}\mu^y}{y!}
-\end{align}\]</span></p>
-<p>The log-likelihood function is:</p>
-<div class="fragment fade-in">
-<p><span class="math display">\[\begin{align}
-LL(\theta) = \sum (y_i\log(\mu_i)-\mu_i) \label{eqLL}
-\end{align}\]</span></p>
-</div>
-<div style="font-size: 75%;">
-<div class="fragment fade-in">
-<ul>
-<li>Where <span class="math inline">\(\mu_i\)</span> depends on the covariates <span class="math inline">\(x_i\)</span> and a vector 0f <span class="math inline">\(\theta\)</span> coefficients</li>
-<li>substitute <span class="math inline">\(\mu_i = \exp(x_i\theta)\)</span> to get <span class="math inline">\(\theta\)</span> that maximizes the likelihood</li>
-<li>with <span class="math inline">\(\theta\)</span>-vector we can predict the expeceted value using <span class="math inline">\(x_i*\theta\)</span></li>
-</ul>
-</div>
-</div>
-</section>
-
-<section id="practical-example" class="title-slide slide level3 center">
-<h3>Practical example</h3>
-<ul>
-<li>count of tickets sold in each hour from 25th Aug 2012 to 25th Sep 2014 (about 18K records)</li>
-<li>predict number of tickets sold in each hour</li>
-<li>could be solved using linear regression, time series analysis …</li>
-<li>Here we will use statistical modeling</li>
-</ul>
-</section>
-<section id="hourly-purchases" class="title-slide slide level4 center">
-<h4>hourly purchases</h4>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-32-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
-
-<section id="histogram-of-houry-purchases" class="title-slide slide level4 center">
-<h4>histogram of houry purchases</h4>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-33-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div style="font-size: 75%;">
-<div class="fragment fade-in">
-<p>significant increase of hourly purchases in time</p>
-</div>
-</div>
-</section>
-
-<section id="some-more-background" class="title-slide slide level4 center">
-<h4>some more Background</h4>
-<ul>
-<li>we call <code>age</code> the number of weeks elapse since 25th of August 2012</li>
-</ul>
-<p><span class="math display">\[\begin{align}
-\mu = \exp(\theta_0 + age * \theta_1) \label{eqmodel}
-\end{align}\]</span></p>
-<dl>
-<dt><span class="math inline">\(\mu\)</span></dt>
-<dd>
-count of tickets sold <span class="math inline">\(\rightarrow\)</span> follow a Poisson Distribution
-</dd>
-<dt><span class="math inline">\(\theta_0\)</span></dt>
-<dd>
-to be the estimated coefficient
-</dd>
-<dt><span class="math inline">\(\theta_1\)</span></dt>
-<dd>
-to be the estimated coefficient
-</dd>
-</dl>
-</section>
-
-<section id="modeling" class="title-slide slide level4 center">
-<h4>modeling</h4>
-<p>Combining <span class="math inline">\(\eqref{eqLL}\)</span> and <span class="math inline">\(\eqref{eqmodel}\)</span> we get:</p>
-<p><span class="math display">\[\begin{align}
-LL(\theta) = \sum\{y_i(\theta_0+age*\theta_1)-\exp(\theta_0+age*\theta_1)\}
-\end{align}\]</span></p>
-<div class="fragment fade-in">
-<p>We use the <code>mle()</code> function in the <code>stats4</code> package</p>
-</div>
-</section>
-
-<section id="prerequisites" class="title-slide slide level4 center">
-<h4>prerequisites</h4>
-<div class="fragment fade-in">
-<p><strong>Negative Likelihood function which needs to be minimized:</strong> This is the same as the one that we have just derived, but a negative sign in front [as maximizing the log-likelihood is the same as minimizing the negative log likelihood].</p>
-</div>
-<div class="fragment fade-in">
-<p><strong>Starting point for the coefficient vector:</strong> This is the initial guess for the coefficient. Results can vary based on these values as the function can hit local minima. Hence, it is good to verify the results by running the function with different starting points.</p>
-</div>
-<div class="fragment fade-in">
-<p>Optionally, the method using which the likelihood function should be optimized. BFGS is the default method (a quasi-Newton method) <span class="citation" data-cites="practical_fletcher_1987">(<a href="#/references" role="doc-biblioref" onclick="">Fletcher 1987</a>)</span></p>
-</div>
-</section>
-
-<section id="negative-log-likelihood" class="title-slide slide level4 center">
-<h4>negative log-likelihood</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>nll <span class="ot">&lt;-</span> <span class="cf">function</span>(theta0,theta1) {</span>
-<span id="cb4-2"><a></a>    x <span class="ot">&lt;-</span> Train_Tickets<span class="sc">$</span>age[<span class="sc">-</span>idx]</span>
-<span id="cb4-3"><a></a>    y <span class="ot">&lt;-</span> Train_Tickets<span class="sc">$</span>hour_count[<span class="sc">-</span>idx]</span>
-<span id="cb4-4"><a></a>    mu <span class="ot">=</span> <span class="fu">exp</span>(theta0 <span class="sc">+</span> x<span class="sc">*</span>theta1)</span>
-<span id="cb4-5"><a></a>    <span class="sc">-</span><span class="fu">sum</span>(y<span class="sc">*</span>(<span class="fu">log</span>(mu)) <span class="sc">-</span> mu)</span>
-<span id="cb4-6"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-
-<section id="split-dataset" class="title-slide slide level4 center">
-<h4>split dataset</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">set.seed</span>(<span class="dv">200</span>)</span>
-<span id="cb5-2"><a></a>idx <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">createDataPartition</span>(Train_Tickets<span class="sc">$</span>hour_count, <span class="at">p=</span><span class="fl">0.25</span>,<span class="at">list=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-
-<section id="parameter-estimation" class="title-slide slide level4 center">
-<h4>parameter estimation</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>est <span class="ot">&lt;-</span> stats4<span class="sc">::</span><span class="fu">mle</span>(<span class="at">minuslog=</span>nll, <span class="at">start=</span><span class="fu">list</span>(<span class="at">theta0=</span><span class="dv">2</span>,<span class="at">theta1=</span><span class="dv">0</span>))</span>
-<span id="cb6-2"><a></a>stats4<span class="sc">::</span><span class="fu">summary</span>(est)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Maximum likelihood estimation
-
-Call:
-stats4::mle(minuslogl = nll, start = list(theta0 = 2, theta1 = 0))
-
-Coefficients:
-         Estimate   Std. Error
-theta0 2.66543169 2.567913e-03
-theta1 0.03276886 3.017038e-05
-
--2 log L: -16541196 </code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>pred.ts <span class="ot">&lt;-</span> (<span class="fu">exp</span>(stats4<span class="sc">::</span><span class="fu">coef</span>(est)[<span class="st">'theta0'</span>] <span class="sc">+</span> Train_Tickets<span class="sc">$</span>age[idx]<span class="sc">*</span>stats4<span class="sc">::</span><span class="fu">coef</span>(est)[<span class="st">'theta1'</span>] ))</span>
-<span id="cb8-2"><a></a>ModelMetrics<span class="sc">::</span><span class="fu">rmse</span>(pred.ts, Train_Tickets<span class="sc">$</span>hour_count[idx])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 91.19572</code></pre>
-</div>
-</div>
-</section>
-
-<section id="comparison-against-lm" class="title-slide slide level4 center">
-<h4>comparison against lm</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>lm.fit <span class="ot">&lt;-</span>  <span class="fu">lm</span>(<span class="fu">log</span>(hour_count)<span class="sc">~</span>age, <span class="at">data=</span>Train_Tickets[<span class="sc">-</span>idx,])</span>
-<span id="cb10-2"><a></a></span>
-<span id="cb10-3"><a></a><span class="fu">summary</span>(lm.fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = log(hour_count) ~ age, data = Train_Tickets[-idx, 
-    ])
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--3.8554 -0.4232  0.0342  0.4470  2.9884 
-
-Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 1.8961867  0.0110486   171.6   &lt;2e-16 ***
-age         0.0415008  0.0001755   236.5   &lt;2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 0.6468 on 13712 degrees of freedom
-Multiple R-squared:  0.8031,    Adjusted R-squared:  0.8031 
-F-statistic: 5.592e+04 on 1 and 13712 DF,  p-value: &lt; 2.2e-16</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>pred.lm <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm.fit, Train_Tickets[idx,])</span>
-<span id="cb12-2"><a></a>ModelMetrics<span class="sc">::</span><span class="fu">rmse</span>(<span class="fu">exp</span>(pred.lm), Train_Tickets<span class="sc">$</span>hour_count[idx]) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 97.59762</code></pre>
-</div>
-</div>
-</section>
-
-<section id="using-glm" class="title-slide slide level4 center">
-<h4>using <code>glm</code></h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>glm.fit <span class="ot">&lt;-</span>  <span class="fu">glm</span>(hour_count <span class="sc">~</span> age, <span class="at">family =</span> <span class="st">"poisson"</span>, <span class="at">data =</span> Train_Tickets)</span>
-<span id="cb14-2"><a></a></span>
-<span id="cb14-3"><a></a><span class="fu">summary</span>(glm.fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-glm(formula = hour_count ~ age, family = "poisson", data = Train_Tickets)
-
-Coefficients:
-             Estimate Std. Error z value Pr(&gt;|z|)    
-(Intercept) 2.665e+00  2.221e-03    1200   &lt;2e-16 ***
-age         3.280e-02  2.613e-05    1255   &lt;2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-(Dispersion parameter for poisson family taken to be 1)
-
-    Null deviance: 2698641  on 18287  degrees of freedom
-Residual deviance:  642277  on 18286  degrees of freedom
-AIC: 752123
-
-Number of Fisher Scoring iterations: 5</code></pre>
-</div>
-</div>
-</section>
-
-<section id="standard-error-comparison" class="title-slide slide level4 center">
-<h4>standard error comparison</h4>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-42-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
-
-
-</section>
-<section id="references" class="title-slide slide level1 smaller scrollable">
+<section id="references" class="title-slide slide level1 center">
 <h1>References</h1>
 
 <div class="quarto-auto-generated-content">
@@ -2836,17 +1891,6 @@ Number of Fisher Scoring iterations: 5</code></pre>
 </div>
 <div class="sb-title">
 <p> </p>
-</div>
-</div>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-practical_fletcher_1987" class="csl-entry" role="listitem">
-Fletcher, R. 1987. <em>Practical Methods of Optimization</em>. Wiley.
-</div>
-<div id="ref-an_jameswittenhastietibshirani_2021" class="csl-entry" role="listitem">
-James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. 2021. <em>An Introduction to Statistical Learning</em>. Springer.
-</div>
-<div id="ref-LeskovecUnknownTitle2014" class="csl-entry" role="listitem">
-Leskovec, Jure, Anand Rajaraman, and Jeffrey David Ullman. 2014. <span>“Mining of Massive Datasets,”</span> November. <a href="https://doi.org/10.1017/cbo9781139924801">https://doi.org/10.1017/cbo9781139924801</a>.
 </div>
 </div>
 </section>
