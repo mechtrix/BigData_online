@@ -65,5 +65,4 @@ website:
             href: chapters/chapter540_PCA/index.qmd
           - section: "Cluster Analysis"
             contents: 
-              - text: "kNN"
               - href: chapters/chapter551_kNN/index.qmd

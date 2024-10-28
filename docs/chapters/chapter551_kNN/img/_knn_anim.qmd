@@ -1,4 +1,4 @@
-```yaml { .animate src="chapter004/knn.svg"}
+```yaml { .animate src="img/knn.svg"}
 setup:
   - element: "#features"
     modifier: attr

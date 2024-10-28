@@ -16,7 +16,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Tim Weber">
-  <title>Big Data lecture slides – k- Neareast Neighbours</title>
+  <title>Big Data lecture slides – k - Nearest Neighbours</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -436,7 +436,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">k- Neareast Neighbours</h1>
+  <h1 class="title">k - Nearest Neighbours</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -453,8 +453,8 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 </div>
 
 </section>
-<section class="slide level5">
-
+<section id="uses" class="title-slide slide level2 center">
+<h2>Uses</h2>
 <div class="columns">
 <div class="column" style="width:40%;">
 <div style="font-size: 75%;">
@@ -500,10 +500,11 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 </div>
 </div></div>
 </section>
+
 <section>
 <section id="the-idea" class="title-slide slide level2 center">
 <h2>The idea</h2>
-<div data-animate="" data-src="chapter004/knn.svg"><!-- setup:
+<div data-animate="" data-src="img/knn.svg"><!-- setup:
   - element: "#features"
     modifier: attr
     parameters:
@@ -647,23 +648,23 @@ Levels: circle triangle</code></pre>
 <h4>as kNN measure: k = 3</h4>
 <div class="cell">
 <div class="cell-output-display">
-<div id="pisawqoaer" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pisawqoaer table {
+<div id="dzkujtfdxm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dzkujtfdxm table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#pisawqoaer thead, #pisawqoaer tbody, #pisawqoaer tfoot, #pisawqoaer tr, #pisawqoaer td, #pisawqoaer th {
+#dzkujtfdxm thead, #dzkujtfdxm tbody, #dzkujtfdxm tfoot, #dzkujtfdxm tr, #dzkujtfdxm td, #dzkujtfdxm th {
   border-style: none;
 }
 
-#pisawqoaer p {
+#dzkujtfdxm p {
   margin: 0;
   padding: 0;
 }
 
-#pisawqoaer .gt_table {
+#dzkujtfdxm .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -689,12 +690,12 @@ Levels: circle triangle</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#pisawqoaer .gt_caption {
+#dzkujtfdxm .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pisawqoaer .gt_title {
+#dzkujtfdxm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -706,7 +707,7 @@ Levels: circle triangle</code></pre>
   border-bottom-width: 0;
 }
 
-#pisawqoaer .gt_subtitle {
+#dzkujtfdxm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -718,7 +719,7 @@ Levels: circle triangle</code></pre>
   border-top-width: 0;
 }
 
-#pisawqoaer .gt_heading {
+#dzkujtfdxm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -730,13 +731,13 @@ Levels: circle triangle</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#pisawqoaer .gt_bottom_border {
+#dzkujtfdxm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pisawqoaer .gt_col_headings {
+#dzkujtfdxm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -751,7 +752,7 @@ Levels: circle triangle</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#pisawqoaer .gt_col_heading {
+#dzkujtfdxm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -771,7 +772,7 @@ Levels: circle triangle</code></pre>
   overflow-x: hidden;
 }
 
-#pisawqoaer .gt_column_spanner_outer {
+#dzkujtfdxm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -783,15 +784,15 @@ Levels: circle triangle</code></pre>
   padding-right: 4px;
 }
 
-#pisawqoaer .gt_column_spanner_outer:first-child {
+#dzkujtfdxm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pisawqoaer .gt_column_spanner_outer:last-child {
+#dzkujtfdxm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pisawqoaer .gt_column_spanner {
+#dzkujtfdxm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -803,11 +804,11 @@ Levels: circle triangle</code></pre>
   width: 100%;
 }
 
-#pisawqoaer .gt_spanner_row {
+#dzkujtfdxm .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#pisawqoaer .gt_group_heading {
+#dzkujtfdxm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -833,7 +834,7 @@ Levels: circle triangle</code></pre>
   text-align: left;
 }
 
-#pisawqoaer .gt_empty_group_heading {
+#dzkujtfdxm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -848,15 +849,15 @@ Levels: circle triangle</code></pre>
   vertical-align: middle;
 }
 
-#pisawqoaer .gt_from_md > :first-child {
+#dzkujtfdxm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pisawqoaer .gt_from_md > :last-child {
+#dzkujtfdxm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pisawqoaer .gt_row {
+#dzkujtfdxm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -875,7 +876,7 @@ Levels: circle triangle</code></pre>
   overflow-x: hidden;
 }
 
-#pisawqoaer .gt_stub {
+#dzkujtfdxm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -888,7 +889,7 @@ Levels: circle triangle</code></pre>
   padding-right: 5px;
 }
 
-#pisawqoaer .gt_stub_row_group {
+#dzkujtfdxm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -902,15 +903,15 @@ Levels: circle triangle</code></pre>
   vertical-align: top;
 }
 
-#pisawqoaer .gt_row_group_first td {
+#dzkujtfdxm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pisawqoaer .gt_row_group_first th {
+#dzkujtfdxm .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#pisawqoaer .gt_summary_row {
+#dzkujtfdxm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -920,16 +921,16 @@ Levels: circle triangle</code></pre>
   padding-right: 5px;
 }
 
-#pisawqoaer .gt_first_summary_row {
+#dzkujtfdxm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pisawqoaer .gt_first_summary_row.thick {
+#dzkujtfdxm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pisawqoaer .gt_last_summary_row {
+#dzkujtfdxm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -939,7 +940,7 @@ Levels: circle triangle</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#pisawqoaer .gt_grand_summary_row {
+#dzkujtfdxm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -949,7 +950,7 @@ Levels: circle triangle</code></pre>
   padding-right: 5px;
 }
 
-#pisawqoaer .gt_first_grand_summary_row {
+#dzkujtfdxm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -959,7 +960,7 @@ Levels: circle triangle</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#pisawqoaer .gt_last_grand_summary_row_top {
+#dzkujtfdxm .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -969,11 +970,11 @@ Levels: circle triangle</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#pisawqoaer .gt_striped {
+#dzkujtfdxm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pisawqoaer .gt_table_body {
+#dzkujtfdxm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -982,7 +983,7 @@ Levels: circle triangle</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#pisawqoaer .gt_footnotes {
+#dzkujtfdxm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -996,7 +997,7 @@ Levels: circle triangle</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#pisawqoaer .gt_footnote {
+#dzkujtfdxm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1005,7 +1006,7 @@ Levels: circle triangle</code></pre>
   padding-right: 5px;
 }
 
-#pisawqoaer .gt_sourcenotes {
+#dzkujtfdxm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1019,7 +1020,7 @@ Levels: circle triangle</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#pisawqoaer .gt_sourcenote {
+#dzkujtfdxm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1027,72 +1028,72 @@ Levels: circle triangle</code></pre>
   padding-right: 5px;
 }
 
-#pisawqoaer .gt_left {
+#dzkujtfdxm .gt_left {
   text-align: left;
 }
 
-#pisawqoaer .gt_center {
+#dzkujtfdxm .gt_center {
   text-align: center;
 }
 
-#pisawqoaer .gt_right {
+#dzkujtfdxm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pisawqoaer .gt_font_normal {
+#dzkujtfdxm .gt_font_normal {
   font-weight: normal;
 }
 
-#pisawqoaer .gt_font_bold {
+#dzkujtfdxm .gt_font_bold {
   font-weight: bold;
 }
 
-#pisawqoaer .gt_font_italic {
+#dzkujtfdxm .gt_font_italic {
   font-style: italic;
 }
 
-#pisawqoaer .gt_super {
+#dzkujtfdxm .gt_super {
   font-size: 65%;
 }
 
-#pisawqoaer .gt_footnote_marks {
+#dzkujtfdxm .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#pisawqoaer .gt_asterisk {
+#dzkujtfdxm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pisawqoaer .gt_indent_1 {
+#dzkujtfdxm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pisawqoaer .gt_indent_2 {
+#dzkujtfdxm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pisawqoaer .gt_indent_3 {
+#dzkujtfdxm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pisawqoaer .gt_indent_4 {
+#dzkujtfdxm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pisawqoaer .gt_indent_5 {
+#dzkujtfdxm .gt_indent_5 {
   text-indent: 25px;
 }
 
-#pisawqoaer .katex-display {
+#dzkujtfdxm .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#pisawqoaer div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dzkujtfdxm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1248,23 +1249,23 @@ Levels: circle triangle</code></pre>
 <h4>as kNN measure: k = 5</h4>
 <div class="cell">
 <div class="cell-output-display">
-<div id="crymfqlwwc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#crymfqlwwc table {
+<div id="pguqzkhcfb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pguqzkhcfb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#crymfqlwwc thead, #crymfqlwwc tbody, #crymfqlwwc tfoot, #crymfqlwwc tr, #crymfqlwwc td, #crymfqlwwc th {
+#pguqzkhcfb thead, #pguqzkhcfb tbody, #pguqzkhcfb tfoot, #pguqzkhcfb tr, #pguqzkhcfb td, #pguqzkhcfb th {
   border-style: none;
 }
 
-#crymfqlwwc p {
+#pguqzkhcfb p {
   margin: 0;
   padding: 0;
 }
 
-#crymfqlwwc .gt_table {
+#pguqzkhcfb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1290,12 +1291,12 @@ Levels: circle triangle</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#crymfqlwwc .gt_caption {
+#pguqzkhcfb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#crymfqlwwc .gt_title {
+#pguqzkhcfb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1307,7 +1308,7 @@ Levels: circle triangle</code></pre>
   border-bottom-width: 0;
 }
 
-#crymfqlwwc .gt_subtitle {
+#pguqzkhcfb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1319,7 +1320,7 @@ Levels: circle triangle</code></pre>
   border-top-width: 0;
 }
 
-#crymfqlwwc .gt_heading {
+#pguqzkhcfb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1331,13 +1332,13 @@ Levels: circle triangle</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#crymfqlwwc .gt_bottom_border {
+#pguqzkhcfb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#crymfqlwwc .gt_col_headings {
+#pguqzkhcfb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1352,7 +1353,7 @@ Levels: circle triangle</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#crymfqlwwc .gt_col_heading {
+#pguqzkhcfb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1372,7 +1373,7 @@ Levels: circle triangle</code></pre>
   overflow-x: hidden;
 }
 
-#crymfqlwwc .gt_column_spanner_outer {
+#pguqzkhcfb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1384,15 +1385,15 @@ Levels: circle triangle</code></pre>
   padding-right: 4px;
 }
 
-#crymfqlwwc .gt_column_spanner_outer:first-child {
+#pguqzkhcfb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#crymfqlwwc .gt_column_spanner_outer:last-child {
+#pguqzkhcfb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#crymfqlwwc .gt_column_spanner {
+#pguqzkhcfb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1404,11 +1405,11 @@ Levels: circle triangle</code></pre>
   width: 100%;
 }
 
-#crymfqlwwc .gt_spanner_row {
+#pguqzkhcfb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#crymfqlwwc .gt_group_heading {
+#pguqzkhcfb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1434,7 +1435,7 @@ Levels: circle triangle</code></pre>
   text-align: left;
 }
 
-#crymfqlwwc .gt_empty_group_heading {
+#pguqzkhcfb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1449,15 +1450,15 @@ Levels: circle triangle</code></pre>
   vertical-align: middle;
 }
 
-#crymfqlwwc .gt_from_md > :first-child {
+#pguqzkhcfb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#crymfqlwwc .gt_from_md > :last-child {
+#pguqzkhcfb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#crymfqlwwc .gt_row {
+#pguqzkhcfb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1476,7 +1477,7 @@ Levels: circle triangle</code></pre>
   overflow-x: hidden;
 }
 
-#crymfqlwwc .gt_stub {
+#pguqzkhcfb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1489,7 +1490,7 @@ Levels: circle triangle</code></pre>
   padding-right: 5px;
 }
 
-#crymfqlwwc .gt_stub_row_group {
+#pguqzkhcfb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1503,15 +1504,15 @@ Levels: circle triangle</code></pre>
   vertical-align: top;
 }
 
-#crymfqlwwc .gt_row_group_first td {
+#pguqzkhcfb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#crymfqlwwc .gt_row_group_first th {
+#pguqzkhcfb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#crymfqlwwc .gt_summary_row {
+#pguqzkhcfb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1521,16 +1522,16 @@ Levels: circle triangle</code></pre>
   padding-right: 5px;
 }
 
-#crymfqlwwc .gt_first_summary_row {
+#pguqzkhcfb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#crymfqlwwc .gt_first_summary_row.thick {
+#pguqzkhcfb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#crymfqlwwc .gt_last_summary_row {
+#pguqzkhcfb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1540,7 +1541,7 @@ Levels: circle triangle</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#crymfqlwwc .gt_grand_summary_row {
+#pguqzkhcfb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1550,7 +1551,7 @@ Levels: circle triangle</code></pre>
   padding-right: 5px;
 }
 
-#crymfqlwwc .gt_first_grand_summary_row {
+#pguqzkhcfb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1560,7 +1561,7 @@ Levels: circle triangle</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#crymfqlwwc .gt_last_grand_summary_row_top {
+#pguqzkhcfb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1570,11 +1571,11 @@ Levels: circle triangle</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#crymfqlwwc .gt_striped {
+#pguqzkhcfb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#crymfqlwwc .gt_table_body {
+#pguqzkhcfb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1583,7 +1584,7 @@ Levels: circle triangle</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#crymfqlwwc .gt_footnotes {
+#pguqzkhcfb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1597,7 +1598,7 @@ Levels: circle triangle</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#crymfqlwwc .gt_footnote {
+#pguqzkhcfb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1606,7 +1607,7 @@ Levels: circle triangle</code></pre>
   padding-right: 5px;
 }
 
-#crymfqlwwc .gt_sourcenotes {
+#pguqzkhcfb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1620,7 +1621,7 @@ Levels: circle triangle</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#crymfqlwwc .gt_sourcenote {
+#pguqzkhcfb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1628,72 +1629,72 @@ Levels: circle triangle</code></pre>
   padding-right: 5px;
 }
 
-#crymfqlwwc .gt_left {
+#pguqzkhcfb .gt_left {
   text-align: left;
 }
 
-#crymfqlwwc .gt_center {
+#pguqzkhcfb .gt_center {
   text-align: center;
 }
 
-#crymfqlwwc .gt_right {
+#pguqzkhcfb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#crymfqlwwc .gt_font_normal {
+#pguqzkhcfb .gt_font_normal {
   font-weight: normal;
 }
 
-#crymfqlwwc .gt_font_bold {
+#pguqzkhcfb .gt_font_bold {
   font-weight: bold;
 }
 
-#crymfqlwwc .gt_font_italic {
+#pguqzkhcfb .gt_font_italic {
   font-style: italic;
 }
 
-#crymfqlwwc .gt_super {
+#pguqzkhcfb .gt_super {
   font-size: 65%;
 }
 
-#crymfqlwwc .gt_footnote_marks {
+#pguqzkhcfb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#crymfqlwwc .gt_asterisk {
+#pguqzkhcfb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#crymfqlwwc .gt_indent_1 {
+#pguqzkhcfb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#crymfqlwwc .gt_indent_2 {
+#pguqzkhcfb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#crymfqlwwc .gt_indent_3 {
+#pguqzkhcfb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#crymfqlwwc .gt_indent_4 {
+#pguqzkhcfb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#crymfqlwwc .gt_indent_5 {
+#pguqzkhcfb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#crymfqlwwc .katex-display {
+#pguqzkhcfb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#crymfqlwwc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#pguqzkhcfb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2019,85 +2020,85 @@ $ Proline                   &lt;dbl&gt; 1065, 1050, 1185, 1480, 735, 1450, 1290,
 
 Pre-processing: centered (13), scaled (13) 
 Resampling: Cross-Validated (10 fold, repeated 3 times) 
-Summary of sample sizes: 121, 121, 121, 122, 121, 121, ... 
+Summary of sample sizes: 121, 121, 123, 121, 122, 121, ... 
 Resampling results across tuning parameters:
 
   k    Accuracy   Kappa       
-    5  0.9698474  0.9545184180
-    7  0.9621551  0.9427169773
-    9  0.9572100  0.9353030131
-   11  0.9502259  0.9245253805
-   13  0.9632906  0.9441471417
-   15  0.9633211  0.9446100928
-   17  0.9702747  0.9548866279
-   19  0.9726557  0.9584489689
-   21  0.9754029  0.9627380132
-   23  0.9779670  0.9665728215
-   25  0.9825702  0.9734684958
-   27  0.9750611  0.9621045500
-   29  0.9704579  0.9551526898
-   31  0.9726252  0.9584303636
-   33  0.9686020  0.9524259395
-   35  0.9706410  0.9554175431
-   37  0.9636569  0.9448549688
-   39  0.9636569  0.9448549688
-   41  0.9585287  0.9371853523
-   43  0.9587118  0.9374304169
-   45  0.9557204  0.9326607877
-   47  0.9563309  0.9333103895
-   49  0.9561172  0.9329819392
-   51  0.9537363  0.9293088209
-   53  0.9533394  0.9288591322
-   55  0.9456166  0.9167803587
-   57  0.9437912  0.9141879026
-   59  0.9511172  0.9255764428
-   61  0.9463553  0.9182579259
-   63  0.9439744  0.9144051398
-   65  0.9341087  0.8989825352
-   67  0.9242186  0.8838846550
-   69  0.9016056  0.8487562540
-   71  0.8820085  0.8173656469
-   73  0.8762698  0.8085022697
-   75  0.8449573  0.7583663524
-   77  0.8397192  0.7492320244
-   79  0.8445360  0.7570290796
-   81  0.8246459  0.7242232987
-   83  0.8076129  0.6972167293
-   85  0.8050488  0.6923019110
-   87  0.7612515  0.6198637995
-   89  0.7244567  0.5594696577
-   91  0.6919048  0.5072253233
-   93  0.6480769  0.4321882796
-   95  0.6089866  0.3667854543
-   97  0.5716972  0.3034116468
-   99  0.5222894  0.2182266914
-  101  0.4995177  0.1794058718
-  103  0.4705311  0.1273073715
-  105  0.4477350  0.0887421133
-  107  0.4151770  0.0306638283
-  109  0.4054457  0.0143649922
-  111  0.4005006  0.0044573444
-  113  0.4005006  0.0031202611
-  115  0.4005006  0.0003921569
-  117  0.4005006  0.0000000000
-  119  0.4005006  0.0000000000
-  121  0.4005006  0.0000000000
-  123  0.4005006  0.0000000000
-  125  0.4005006  0.0000000000
-  127  0.4005006  0.0000000000
-  129  0.4005006  0.0000000000
-  131  0.4005006  0.0000000000
-  133  0.4005006  0.0000000000
-  135  0.4005006  0.0000000000
-  137  0.4005006  0.0000000000
-  139  0.4005006  0.0000000000
-  141  0.4005006  0.0000000000
-  143  0.4005006  0.0000000000
-  145  0.4005006  0.0000000000
-  147  0.4005006  0.0000000000
-  149  0.4005006  0.0000000000
-  151  0.4005006  0.0000000000
-  153  0.4005006  0.0000000000
+    5  0.9746337  0.9619501270
+    7  0.9716728  0.9574392359
+    9  0.9740537  0.9610289795
+   11  0.9770147  0.9653569765
+   13  0.9766178  0.9647965104
+   15  0.9742369  0.9612341694
+   17  0.9825702  0.9738902288
+   19  0.9797924  0.9694861253
+   21  0.9768315  0.9649340360
+   23  0.9845543  0.9765759509
+   25  0.9871184  0.9804798548
+   27  0.9817766  0.9724002809
+   29  0.9843407  0.9762693285
+   31  0.9817766  0.9723654246
+   33  0.9817766  0.9723654246
+   35  0.9843407  0.9762693285
+   37  0.9843407  0.9762693285
+   39  0.9819597  0.9726795849
+   41  0.9793956  0.9687401910
+   43  0.9843407  0.9763541256
+   45  0.9796093  0.9692368131
+   47  0.9821734  0.9730355144
+   49  0.9746093  0.9616705821
+   51  0.9773871  0.9658450014
+   53  0.9746093  0.9616344751
+   55  0.9696642  0.9541924035
+   57  0.9723871  0.9582098176
+   59  0.9742674  0.9607196060
+   61  0.9744261  0.9610972346
+   63  0.9803236  0.9699284379
+   65  0.9754029  0.9624725548
+   67  0.9588706  0.9366274322
+   69  0.9188584  0.8743638923
+   71  0.8663675  0.7913381755
+   73  0.8487241  0.7628779224
+   75  0.8287057  0.7309332185
+   77  0.8189988  0.7148314413
+   79  0.8091087  0.6988875264
+   81  0.7696215  0.6341781734
+   83  0.7324115  0.5720661974
+   85  0.7020757  0.5225048666
+   87  0.6758669  0.4782018633
+   89  0.6419841  0.4222139550
+   91  0.6102747  0.3701782440
+   93  0.5805495  0.3191119054
+   95  0.5196642  0.2125272500
+   97  0.4796703  0.1423573940
+   99  0.4699695  0.1280877620
+  101  0.4452137  0.0860903129
+  103  0.4374908  0.0714386397
+  105  0.4075519  0.0155301893
+  107  0.4075519  0.0157582189
+  109  0.4029487  0.0064178660
+  111  0.4003846  0.0009769522
+  113  0.4003846  0.0000000000
+  115  0.4003846  0.0000000000
+  117  0.4003846  0.0000000000
+  119  0.4003846  0.0000000000
+  121  0.4003846  0.0000000000
+  123  0.4003846  0.0000000000
+  125  0.4003846  0.0000000000
+  127  0.4003846  0.0000000000
+  129  0.4003846  0.0000000000
+  131  0.4003846  0.0000000000
+  133  0.4003846  0.0000000000
+  135  0.4003846  0.0000000000
+  137  0.4003846  0.0000000000
+  139  0.4003846  0.0000000000
+  141  0.4003846  0.0000000000
+  143  0.4003846  0.0000000000
+  145  0.4003846  0.0000000000
+  147  0.4003846  0.0000000000
+  149  0.4003846  0.0000000000
+  151  0.4003846  0.0000000000
+  153  0.4003846  0.0000000000
 
 Accuracy was used to select the optimal model using the largest value.
 The final value used for the model was k = 25.</code></pre>
@@ -2128,32 +2129,32 @@ The final value used for the model was k = 25.</code></pre>
 
           Reference
 Prediction  1  2  3
-         1 14  1  0
-         2  0 15  0
+         1 14  2  0
+         2  0 14  0
          3  0  1 12
 
 Overall Statistics
                                           
-               Accuracy : 0.9535          
-                 95% CI : (0.8419, 0.9943)
+               Accuracy : 0.9302          
+                 95% CI : (0.8094, 0.9854)
     No Information Rate : 0.3953          
-    P-Value [Acc &gt; NIR] : 1.02e-14        
+    P-Value [Acc &gt; NIR] : 2.168e-13       
                                           
-                  Kappa : 0.93            
+                  Kappa : 0.8952          
                                           
  Mcnemar's Test P-Value : NA              
 
 Statistics by Class:
 
                      Class: 1 Class: 2 Class: 3
-Sensitivity            1.0000   0.8824   1.0000
-Specificity            0.9655   1.0000   0.9677
-Pos Pred Value         0.9333   1.0000   0.9231
-Neg Pred Value         1.0000   0.9286   1.0000
+Sensitivity            1.0000   0.8235   1.0000
+Specificity            0.9310   1.0000   0.9677
+Pos Pred Value         0.8750   1.0000   0.9231
+Neg Pred Value         1.0000   0.8966   1.0000
 Prevalence             0.3256   0.3953   0.2791
-Detection Rate         0.3256   0.3488   0.2791
-Detection Prevalence   0.3488   0.3488   0.3023
-Balanced Accuracy      0.9828   0.9412   0.9839</code></pre>
+Detection Rate         0.3256   0.3256   0.2791
+Detection Prevalence   0.3721   0.3256   0.3023
+Balanced Accuracy      0.9655   0.9118   0.9839</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>pred_out <span class="ot">&lt;-</span> test_wd2 <span class="sc">|&gt;</span> </span>
 <span id="cb16-2"><a></a>  <span class="fu">add_column</span>(<span class="at">pred.origin =</span> prediction_knn_wd2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
