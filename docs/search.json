@@ -4,139 +4,154 @@
     "href": "index.html",
     "title": "Big Data lecture slides",
     "section": "",
-    "text": "This page is directly linked to the Big Data exercises.\nAdministrative stuff is always announced via ilearn.\nThis is the lecture material for the courses “Big Data” and “Big Data Processing and Analytics”. Feel free to reference for your self study. You are not allowed to copy without the prior consent of the author. Your are not allowed to use material without prior consent. Ask - it’s a form of politeness. You will most probable get permission.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nIntroduction\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Sources\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Quality\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Bias\n\n\nProf. Dr. Tim Weber\n\n\n\n\nTraditional Methods\n\n\nProf. Dr. Tim Weber\n\n\n\n\nMap Reduce\n\n\nProf. Dr. Tim Weber\n\n\n\n\nGradient Descent\n\n\nProf. Dr. Tim Weber\n\n\n\n\nMaximum Likelihood Estimation\n\n\nProf. Dr. Tim Weber\n\n\n\n\nPrincipal Component Analysis\n\n\nProf. Dr. Tim Weber\n\n\n\n\nk - Nearest Neighbours\n\n\nProf. Dr. Tim Weber\n\n\n\n\nk- Means\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\nNo matching items"
+    "text": "This page is directly linked to the Big Data exercises.\nAdministrative stuff is always announced via ilearn.\nThis is the lecture material for the courses “Big Data” and “Big Data Processing and Analytics”. Feel free to reference for your self study. You are not allowed to copy without the prior consent of the author. Your are not allowed to use material without prior consent. Ask - it’s a form of politeness. You will most probable get permission.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nIntroduction\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Sources\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Quality\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Bias\n\n\nProf. Dr. Tim Weber\n\n\n\n\nTraditional Methods\n\n\nProf. Dr. Tim Weber\n\n\n\n\nMap Reduce\n\n\nProf. Dr. Tim Weber\n\n\n\n\nGradient Descent\n\n\nProf. Dr. Tim Weber\n\n\n\n\nMaximum Likelihood Estimation\n\n\nProf. Dr. Tim Weber\n\n\n\n\nPrincipal Component Analysis\n\n\nProf. Dr. Tim Weber\n\n\n\n\nk - Nearest Neighbours\n\n\nProf. Dr. Tim Weber\n\n\n\n\nk- Means\n\n\nProf. Dr. Tim Weber\n\n\n\n\n(P)artitioning (A)round (M)edoids\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "chapters/chapter551_kNN/index.html#uses",
-    "href": "chapters/chapter551_kNN/index.html#uses",
-    "title": "k - Nearest Neighbours",
-    "section": "Uses",
-    "text": "Uses\n\n\n\n\nClassification:\n\nMedical diagnosis\nImage recognition\nDocument classification\n\nRegression:\n\nStock price prediction\nWeather forecasting\n\nRecommendation Systems:\n\nProduct recommendations\nMovie recommendations\n\n\n\n\n\n\n\n\nAnomaly Detection:\n\nFraud detection\nNetwork security\n\nPattern Recognition:\n\nSpeech recognition\nHandwriting recognition\n\nData Imputation:\n\nFilling missing values",
+    "objectID": "chapters/chapter552_kMeans/index.html#use-cases",
+    "href": "chapters/chapter552_kMeans/index.html#use-cases",
+    "title": "k- Means",
+    "section": "Use Cases",
+    "text": "Use Cases\n\n\n\n\nMarketing: Segment customers.\nCompression: Reduce image colors.\nOrganization: Cluster documents.\nSecurity: Detect anomalies.\nTargeting: Segment markets.\nNetworking: Identify communities.\n\n\n\n\n\n\n\nBiology: Group genes/proteins.\nRecommendations: Enhance systems.\nGeography: Cluster regions.\nLogistics: Optimize inventory.\nHealthcare: Cluster patients.\nIoT: Analyze sensor data.",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",
-      "k - Nearest Neighbours"
+      "k- Means"
     ]
   },
   {
-    "objectID": "chapters/chapter551_kNN/index.html#the-idea",
-    "href": "chapters/chapter551_kNN/index.html#the-idea",
-    "title": "k - Nearest Neighbours",
-    "section": "The idea",
-    "text": "The idea",
+    "objectID": "chapters/chapter540_PCA/index.html#principal-component-analysis-pca",
+    "href": "chapters/chapter540_PCA/index.html#principal-component-analysis-pca",
+    "title": "Principal Component Analysis",
+    "section": "Principal Component Analysis (PCA)",
+    "text": "Principal Component Analysis (PCA)",
     "crumbs": [
       "Data crunching",
-      "Cluster Analysis",
-      "k - Nearest Neighbours"
+      "Principal Component Analysis"
     ]
   },
   {
-    "objectID": "chapters/chapter551_kNN/index.html#knn-summary",
-    "href": "chapters/chapter551_kNN/index.html#knn-summary",
-    "title": "k - Nearest Neighbours",
-    "section": "knn summary",
-    "text": "knn summary\n\n\nPros:\n\n\nNon-parametric: Does not assume a fixed form for the mapping function, allowing for flexibility in modeling complex relationships.\nAdaptable: Can easily adapt to new data by simply storing additional instances, making it suitable for dynamic environments.\nInterpretable: Easy to interpret results as the output is based on the majority class among neighbors or average of nearest points.\n\n\n\n\n\nCons:\n\n\nMemory Intensive: Requires storing the entire training dataset, which can be problematic for very large datasets.\nFeature Scaling: Performance depends heavily on the scale of the features, often necessitating normalization or standardization.\nImbalanced Data: Struggles with imbalanced datasets where the minority class may be overshadowed by the majority class due to the simple majority voting mechanism.",
+    "objectID": "chapters/chapter520_GradientDescent/index.html#gradient-descent",
+    "href": "chapters/chapter520_GradientDescent/index.html#gradient-descent",
+    "title": "Gradient Descent",
+    "section": "Gradient Descent",
+    "text": "Gradient Descent",
     "crumbs": [
       "Data crunching",
-      "Cluster Analysis",
-      "k - Nearest Neighbours"
+      "Gradient Descent"
     ]
   },
   {
-    "objectID": "chapters/chapter530_MLE/index.html#maximum-likelihood-estimation-mle",
-    "href": "chapters/chapter530_MLE/index.html#maximum-likelihood-estimation-mle",
-    "title": "Maximum Likelihood Estimation",
-    "section": "Maximum Likelihood Estimation (MLE)",
-    "text": "Maximum Likelihood Estimation (MLE)\n\nMaximum Likelihood Estimation (MLE) is a statistical method used for estimating the parameters of a probability distribution by maximizing a likelihood function. This method finds the parameter values that make the observed data most probable.\n\n\n\nConsistency: As the sample size increases, the MLE converges to the true parameter value.\nAsymptotic Normality: The distribution of the MLE approaches a normal distribution as the sample size grows.\nEfficiency: Among unbiased estimators, the MLE has the lowest possible variance asymptotically.",
+    "objectID": "chapters/chapter500_TraditionalMeasures/index.html#central-tendency",
+    "href": "chapters/chapter500_TraditionalMeasures/index.html#central-tendency",
+    "title": "Traditional Methods",
+    "section": "Central Tendency",
+    "text": "Central Tendency",
     "crumbs": [
       "Data crunching",
-      "Maximum Likelihood Estimation"
+      "Traditional Methods"
     ]
   },
   {
-    "objectID": "chapters/chapter510_MapReduce/index.html#mapreduce",
-    "href": "chapters/chapter510_MapReduce/index.html#mapreduce",
-    "title": "Map Reduce",
-    "section": "MapReduce",
-    "text": "MapReduce",
+    "objectID": "chapters/chapter500_TraditionalMeasures/index.html#measures-of-spread",
+    "href": "chapters/chapter500_TraditionalMeasures/index.html#measures-of-spread",
+    "title": "Traditional Methods",
+    "section": "Measures of Spread",
+    "text": "Measures of Spread",
     "crumbs": [
       "Data crunching",
-      "Map Reduce"
+      "Traditional Methods"
     ]
   },
   {
-    "objectID": "chapters/chapter510_MapReduce/index.html#mapreduce-summary",
-    "href": "chapters/chapter510_MapReduce/index.html#mapreduce-summary",
-    "title": "Map Reduce",
-    "section": "MapReduce summary",
-    "text": "MapReduce summary\n\n\n\nMapReduce is significant for its role in enabling the processing of massive datasets efficiently across distributed computing clusters.\nIt revolutionized big data processing by providing a scalable and fault-tolerant framework for handling large-scale computations.\nIts simplicity and scalability made it accessible to a wide range of industries and applications, from web search engines to scientific research.\nMapReduce paved the way for the development of other big data processing frameworks and technologies, influencing the evolution of distributed computing paradigms.\nIts impact extends beyond its original implementation, as concepts and principles from MapReduce have influenced the design of subsequent systems and architectures for big data processing.",
+    "objectID": "chapters/chapter500_TraditionalMeasures/index.html#measures-for-categoricals",
+    "href": "chapters/chapter500_TraditionalMeasures/index.html#measures-for-categoricals",
+    "title": "Traditional Methods",
+    "section": "Measures for Categoricals",
+    "text": "Measures for Categoricals",
     "crumbs": [
       "Data crunching",
-      "Map Reduce"
+      "Traditional Methods"
     ]
   },
   {
-    "objectID": "chapters/chapter400/index.html#why-data-bias-matters",
-    "href": "chapters/chapter400/index.html#why-data-bias-matters",
-    "title": "Data Bias",
-    "section": "Why Data Bias matters",
-    "text": "Why Data Bias matters",
+    "objectID": "chapters/chapter500_TraditionalMeasures/index.html#beware-of-summarized-data",
+    "href": "chapters/chapter500_TraditionalMeasures/index.html#beware-of-summarized-data",
+    "title": "Traditional Methods",
+    "section": "Beware of summarized Data",
+    "text": "Beware of summarized Data\n\n\n\n\n\n\n\n\n\n\ndataset\nmean_x\nmean_y\nstd_dev_x\nstd_dev_y\ncorr_x_y\n\n\n\n\naway\n54.266\n47.835\n16.770\n26.940\n−0.064\n\n\nbullseye\n54.269\n47.831\n16.769\n26.936\n−0.069\n\n\ncircle\n54.267\n47.838\n16.760\n26.930\n−0.068\n\n\ndino\n54.263\n47.832\n16.765\n26.935\n−0.064\n\n\ndots\n54.260\n47.840\n16.768\n26.930\n−0.060\n\n\nh_lines\n54.261\n47.830\n16.766\n26.940\n−0.062\n\n\nhigh_lines\n54.269\n47.835\n16.767\n26.940\n−0.069\n\n\nslant_down\n54.268\n47.836\n16.767\n26.936\n−0.069\n\n\nslant_up\n54.266\n47.831\n16.769\n26.939\n−0.069\n\n\nstar\n54.267\n47.840\n16.769\n26.930\n−0.063\n\n\nv_lines\n54.270\n47.837\n16.770\n26.938\n−0.069\n\n\nwide_lines\n54.267\n47.832\n16.770\n26.938\n−0.067\n\n\nx_shape\n54.260\n47.840\n16.770\n26.930\n−0.066",
     "crumbs": [
-      "Data Bias",
-      "slides"
+      "Data crunching",
+      "Traditional Methods"
     ]
   },
   {
-    "objectID": "chapters/chapter400/index.html#types-of-data-bias",
-    "href": "chapters/chapter400/index.html#types-of-data-bias",
-    "title": "Data Bias",
-    "section": "Types of Data Bias",
-    "text": "Types of Data Bias",
+    "objectID": "chapters/chapter300/index.html#quality",
+    "href": "chapters/chapter300/index.html#quality",
+    "title": "Data Quality",
+    "section": "Quality",
+    "text": "Quality\n\nQuality (dictionary)\n\nHow good or bad something is. Cambridge Dictionary\n\n\n“… Quality is a perceptual, conditional, and somewhat subjective attribute and may be understood differently by different people. …” Wiki",
     "crumbs": [
-      "Data Bias",
-      "slides"
+      "Data Quality"
     ]
   },
   {
-    "objectID": "chapters/chapter400/index.html#bias-and-variance",
-    "href": "chapters/chapter400/index.html#bias-and-variance",
-    "title": "Data Bias",
-    "section": "Bias and Variance",
-    "text": "Bias and Variance\n\nBias:\n\nerror introduced by approximating a real-world problem with a simplified model\nleads to underfitting\n\n\n\n\nVariance:\n\nsensitivity to fluctuations in the data, such as random noise, as if it were true patterns\nleads to overfitting",
+    "objectID": "chapters/chapter300/index.html#the-cathedral-and-the-bazaar",
+    "href": "chapters/chapter300/index.html#the-cathedral-and-the-bazaar",
+    "title": "Data Quality",
+    "section": "The Cathedral and the Bazaar",
+    "text": "The Cathedral and the Bazaar\n\n\n(Raymond 2001)",
     "crumbs": [
-      "Data Bias",
-      "slides"
+      "Data Quality"
     ]
   },
   {
-    "objectID": "chapters/chapter400/index.html#the-bias-variance-trade-off",
-    "href": "chapters/chapter400/index.html#the-bias-variance-trade-off",
-    "title": "Data Bias",
-    "section": "The Bias Variance Trade Off",
-    "text": "The Bias Variance Trade Off\n\n\n\n\n\nfamiliar?",
+    "objectID": "chapters/chapter300/index.html#iso-8000",
+    "href": "chapters/chapter300/index.html#iso-8000",
+    "title": "Data Quality",
+    "section": "ISO 8000",
+    "text": "ISO 8000\n\nISO\n\nInternational Standards Organization\n\n\n\n\nset of standards for data quality for the exchange between organizations and systems\nMaster data in the form of characteristic data that are\n\nexchanged between organizations and systems, and that\nconform to the data specifications that\ncan be validated by computer software.\n\n\n\n\n(ISO 2022)",
     "crumbs": [
-      "Data Bias",
-      "slides"
+      "Data Quality"
     ]
   },
   {
-    "objectID": "chapters/chapter200/index.html#which-do-you-want",
-    "href": "chapters/chapter200/index.html#which-do-you-want",
-    "title": "Data Sources",
-    "section": "Which do you want?",
-    "text": "Which do you want?",
+    "objectID": "chapters/chapter300/index.html#data-quality-1",
+    "href": "chapters/chapter300/index.html#data-quality-1",
+    "title": "Data Quality",
+    "section": "Data Quality",
+    "text": "Data Quality\n“… Data are of high quality if they are “Fit for Use” in their intended operational, decision-making and other roles. … ”\n\n\n(Herzog, Scheuren, and Winkler May )",
     "crumbs": [
-      "Data Sources"
+      "Data Quality"
     ]
   },
   {
-    "objectID": "chapters/chapter200/index.html#databases",
-    "href": "chapters/chapter200/index.html#databases",
-    "title": "Data Sources",
-    "section": "Databases",
-    "text": "Databases",
+    "objectID": "chapters/chapter300/index.html#data-quality-issues",
+    "href": "chapters/chapter300/index.html#data-quality-issues",
+    "title": "Data Quality",
+    "section": "Data Quality issues",
+    "text": "Data Quality issues\n\n\nData Entry for the London Summer Olympics\n\nan employee simple typed \\(20,000\\) seats available, while there were only \\(10,000\\)\nbuyers were able to exchange the already bought tickets\n\nThe London Whale\n\nusing a risk model that involved copy and pasting different multiple spreadsheats\nnot only were \\(\\$2bn\\) losses wrongly calculated, they were actually counted as gains summing up to a loss of \\(\\$6.2bn\\)",
     "crumbs": [
-      "Data Sources"
+      "Data Quality"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter300/index.html#data-quality-tools",
+    "href": "chapters/chapter300/index.html#data-quality-tools",
+    "title": "Data Quality",
+    "section": "Data Quality Tools",
+    "text": "Data Quality Tools",
+    "crumbs": [
+      "Data Quality"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter300/index.html#data-quality-summary",
+    "href": "chapters/chapter300/index.html#data-quality-summary",
+    "title": "Data Quality",
+    "section": "Data Quality summary",
+    "text": "Data Quality summary\n\n\nData Quality is hard\nTop Down or Bottom up?\nsimple things go wrong in the real world\ntest stuff\nbe specific\nthere is no recipe\ngarbage in, garbage out\nclassic ways are not fancy, but useful. Use this to your advantage\nnever trust data\ninvest early, profit soon",
+    "crumbs": [
+      "Data Quality"
     ]
   },
   {
@@ -260,146 +275,352 @@
     ]
   },
   {
-    "objectID": "chapters/chapter300/index.html#quality",
-    "href": "chapters/chapter300/index.html#quality",
-    "title": "Data Quality",
-    "section": "Quality",
-    "text": "Quality\n\nQuality (dictionary)\n\nHow good or bad something is. Cambridge Dictionary\n\n\n“… Quality is a perceptual, conditional, and somewhat subjective attribute and may be understood differently by different people. …” Wiki",
+    "objectID": "chapters/chapter200/index.html#which-do-you-want",
+    "href": "chapters/chapter200/index.html#which-do-you-want",
+    "title": "Data Sources",
+    "section": "Which do you want?",
+    "text": "Which do you want?",
     "crumbs": [
-      "Data Quality"
+      "Data Sources"
     ]
   },
   {
-    "objectID": "chapters/chapter300/index.html#the-cathedral-and-the-bazaar",
-    "href": "chapters/chapter300/index.html#the-cathedral-and-the-bazaar",
-    "title": "Data Quality",
-    "section": "The Cathedral and the Bazaar",
-    "text": "The Cathedral and the Bazaar\n\n\n(Raymond 2001)",
+    "objectID": "chapters/chapter200/index.html#databases",
+    "href": "chapters/chapter200/index.html#databases",
+    "title": "Data Sources",
+    "section": "Databases",
+    "text": "Databases",
     "crumbs": [
-      "Data Quality"
+      "Data Sources"
     ]
   },
   {
-    "objectID": "chapters/chapter300/index.html#iso-8000",
-    "href": "chapters/chapter300/index.html#iso-8000",
-    "title": "Data Quality",
-    "section": "ISO 8000",
-    "text": "ISO 8000\n\nISO\n\nInternational Standards Organization\n\n\n\n\nset of standards for data quality for the exchange between organizations and systems\nMaster data in the form of characteristic data that are\n\nexchanged between organizations and systems, and that\nconform to the data specifications that\ncan be validated by computer software.\n\n\n\n\n(ISO 2022)",
+    "objectID": "chapters/chapter400/index.html#why-data-bias-matters",
+    "href": "chapters/chapter400/index.html#why-data-bias-matters",
+    "title": "Data Bias",
+    "section": "Why Data Bias matters",
+    "text": "Why Data Bias matters",
     "crumbs": [
-      "Data Quality"
+      "Data Bias",
+      "slides"
     ]
   },
   {
-    "objectID": "chapters/chapter300/index.html#data-quality-1",
-    "href": "chapters/chapter300/index.html#data-quality-1",
-    "title": "Data Quality",
-    "section": "Data Quality",
-    "text": "Data Quality\n“… Data are of high quality if they are “Fit for Use” in their intended operational, decision-making and other roles. … ”\n\n\n(Herzog, Scheuren, and Winkler May )",
+    "objectID": "chapters/chapter400/index.html#types-of-data-bias",
+    "href": "chapters/chapter400/index.html#types-of-data-bias",
+    "title": "Data Bias",
+    "section": "Types of Data Bias",
+    "text": "Types of Data Bias",
     "crumbs": [
-      "Data Quality"
+      "Data Bias",
+      "slides"
     ]
   },
   {
-    "objectID": "chapters/chapter300/index.html#data-quality-issues",
-    "href": "chapters/chapter300/index.html#data-quality-issues",
-    "title": "Data Quality",
-    "section": "Data Quality issues",
-    "text": "Data Quality issues\n\n\nData Entry for the London Summer Olympics\n\nan employee simple typed \\(20,000\\) seats available, while there were only \\(10,000\\)\nbuyers were able to exchange the already bought tickets\n\nThe London Whale\n\nusing a risk model that involved copy and pasting different multiple spreadsheats\nnot only were \\(\\$2bn\\) losses wrongly calculated, they were actually counted as gains summing up to a loss of \\(\\$6.2bn\\)",
+    "objectID": "chapters/chapter400/index.html#bias-and-variance",
+    "href": "chapters/chapter400/index.html#bias-and-variance",
+    "title": "Data Bias",
+    "section": "Bias and Variance",
+    "text": "Bias and Variance\n\nBias:\n\nerror introduced by approximating a real-world problem with a simplified model\nleads to underfitting\n\n\n\n\nVariance:\n\nsensitivity to fluctuations in the data, such as random noise, as if it were true patterns\nleads to overfitting",
     "crumbs": [
-      "Data Quality"
+      "Data Bias",
+      "slides"
     ]
   },
   {
-    "objectID": "chapters/chapter300/index.html#data-quality-tools",
-    "href": "chapters/chapter300/index.html#data-quality-tools",
-    "title": "Data Quality",
-    "section": "Data Quality Tools",
-    "text": "Data Quality Tools",
+    "objectID": "chapters/chapter400/index.html#the-bias-variance-trade-off",
+    "href": "chapters/chapter400/index.html#the-bias-variance-trade-off",
+    "title": "Data Bias",
+    "section": "The Bias Variance Trade Off",
+    "text": "The Bias Variance Trade Off\n\n\n\n\n\nfamiliar?",
     "crumbs": [
-      "Data Quality"
+      "Data Bias",
+      "slides"
     ]
   },
   {
-    "objectID": "chapters/chapter300/index.html#data-quality-summary",
-    "href": "chapters/chapter300/index.html#data-quality-summary",
-    "title": "Data Quality",
-    "section": "Data Quality summary",
-    "text": "Data Quality summary\n\n\nData Quality is hard\nTop Down or Bottom up?\nsimple things go wrong in the real world\ntest stuff\nbe specific\nthere is no recipe\ngarbage in, garbage out\nclassic ways are not fancy, but useful. Use this to your advantage\nnever trust data\ninvest early, profit soon",
-    "crumbs": [
-      "Data Quality"
-    ]
-  },
-  {
-    "objectID": "chapters/chapter500_TraditionalMeasures/index.html#central-tendency",
-    "href": "chapters/chapter500_TraditionalMeasures/index.html#central-tendency",
-    "title": "Traditional Methods",
-    "section": "Central Tendency",
-    "text": "Central Tendency",
+    "objectID": "chapters/chapter510_MapReduce/index.html#mapreduce",
+    "href": "chapters/chapter510_MapReduce/index.html#mapreduce",
+    "title": "Map Reduce",
+    "section": "MapReduce",
+    "text": "MapReduce",
     "crumbs": [
       "Data crunching",
-      "Traditional Methods"
+      "Map Reduce"
     ]
   },
   {
-    "objectID": "chapters/chapter500_TraditionalMeasures/index.html#measures-of-spread",
-    "href": "chapters/chapter500_TraditionalMeasures/index.html#measures-of-spread",
-    "title": "Traditional Methods",
-    "section": "Measures of Spread",
-    "text": "Measures of Spread",
+    "objectID": "chapters/chapter510_MapReduce/index.html#mapreduce-summary",
+    "href": "chapters/chapter510_MapReduce/index.html#mapreduce-summary",
+    "title": "Map Reduce",
+    "section": "MapReduce summary",
+    "text": "MapReduce summary\n\n\n\nMapReduce is significant for its role in enabling the processing of massive datasets efficiently across distributed computing clusters.\nIt revolutionized big data processing by providing a scalable and fault-tolerant framework for handling large-scale computations.\nIts simplicity and scalability made it accessible to a wide range of industries and applications, from web search engines to scientific research.\nMapReduce paved the way for the development of other big data processing frameworks and technologies, influencing the evolution of distributed computing paradigms.\nIts impact extends beyond its original implementation, as concepts and principles from MapReduce have influenced the design of subsequent systems and architectures for big data processing.",
     "crumbs": [
       "Data crunching",
-      "Traditional Methods"
+      "Map Reduce"
     ]
   },
   {
-    "objectID": "chapters/chapter500_TraditionalMeasures/index.html#measures-for-categoricals",
-    "href": "chapters/chapter500_TraditionalMeasures/index.html#measures-for-categoricals",
-    "title": "Traditional Methods",
-    "section": "Measures for Categoricals",
-    "text": "Measures for Categoricals",
+    "objectID": "chapters/chapter530_MLE/index.html#maximum-likelihood-estimation-mle",
+    "href": "chapters/chapter530_MLE/index.html#maximum-likelihood-estimation-mle",
+    "title": "Maximum Likelihood Estimation",
+    "section": "Maximum Likelihood Estimation (MLE)",
+    "text": "Maximum Likelihood Estimation (MLE)\n\nMaximum Likelihood Estimation (MLE) is a statistical method used for estimating the parameters of a probability distribution by maximizing a likelihood function. This method finds the parameter values that make the observed data most probable.\n\n\n\nConsistency: As the sample size increases, the MLE converges to the true parameter value.\nAsymptotic Normality: The distribution of the MLE approaches a normal distribution as the sample size grows.\nEfficiency: Among unbiased estimators, the MLE has the lowest possible variance asymptotically.",
     "crumbs": [
       "Data crunching",
-      "Traditional Methods"
+      "Maximum Likelihood Estimation"
     ]
   },
   {
-    "objectID": "chapters/chapter500_TraditionalMeasures/index.html#beware-of-summarized-data",
-    "href": "chapters/chapter500_TraditionalMeasures/index.html#beware-of-summarized-data",
-    "title": "Traditional Methods",
-    "section": "Beware of summarized Data",
-    "text": "Beware of summarized Data\n\n\n\n\n\n\n\n\n\n\ndataset\nmean_x\nmean_y\nstd_dev_x\nstd_dev_y\ncorr_x_y\n\n\n\n\naway\n54.266\n47.835\n16.770\n26.940\n−0.064\n\n\nbullseye\n54.269\n47.831\n16.769\n26.936\n−0.069\n\n\ncircle\n54.267\n47.838\n16.760\n26.930\n−0.068\n\n\ndino\n54.263\n47.832\n16.765\n26.935\n−0.064\n\n\ndots\n54.260\n47.840\n16.768\n26.930\n−0.060\n\n\nh_lines\n54.261\n47.830\n16.766\n26.940\n−0.062\n\n\nhigh_lines\n54.269\n47.835\n16.767\n26.940\n−0.069\n\n\nslant_down\n54.268\n47.836\n16.767\n26.936\n−0.069\n\n\nslant_up\n54.266\n47.831\n16.769\n26.939\n−0.069\n\n\nstar\n54.267\n47.840\n16.769\n26.930\n−0.063\n\n\nv_lines\n54.270\n47.837\n16.770\n26.938\n−0.069\n\n\nwide_lines\n54.267\n47.832\n16.770\n26.938\n−0.067\n\n\nx_shape\n54.260\n47.840\n16.770\n26.930\n−0.066",
+    "objectID": "chapters/chapter551_kNN/index.html#uses",
+    "href": "chapters/chapter551_kNN/index.html#uses",
+    "title": "k - Nearest Neighbours",
+    "section": "Uses",
+    "text": "Uses\n\n\n\n\nClassification:\n\nMedical diagnosis\nImage recognition\nDocument classification\n\nRegression:\n\nStock price prediction\nWeather forecasting\n\nRecommendation Systems:\n\nProduct recommendations\nMovie recommendations\n\n\n\n\n\n\n\n\nAnomaly Detection:\n\nFraud detection\nNetwork security\n\nPattern Recognition:\n\nSpeech recognition\nHandwriting recognition\n\nData Imputation:\n\nFilling missing values",
     "crumbs": [
       "Data crunching",
-      "Traditional Methods"
+      "Cluster Analysis",
+      "k - Nearest Neighbours"
     ]
   },
   {
-    "objectID": "chapters/chapter520_GradientDescent/index.html#gradient-descent",
-    "href": "chapters/chapter520_GradientDescent/index.html#gradient-descent",
-    "title": "Gradient Descent",
-    "section": "Gradient Descent",
-    "text": "Gradient Descent",
+    "objectID": "chapters/chapter551_kNN/index.html#the-idea",
+    "href": "chapters/chapter551_kNN/index.html#the-idea",
+    "title": "k - Nearest Neighbours",
+    "section": "The idea",
+    "text": "The idea",
     "crumbs": [
       "Data crunching",
-      "Gradient Descent"
+      "Cluster Analysis",
+      "k - Nearest Neighbours"
     ]
   },
   {
-    "objectID": "chapters/chapter540_PCA/index.html#principal-component-analysis-pca",
-    "href": "chapters/chapter540_PCA/index.html#principal-component-analysis-pca",
-    "title": "Principal Component Analysis",
-    "section": "Principal Component Analysis (PCA)",
-    "text": "Principal Component Analysis (PCA)",
+    "objectID": "chapters/chapter551_kNN/index.html#knn-summary",
+    "href": "chapters/chapter551_kNN/index.html#knn-summary",
+    "title": "k - Nearest Neighbours",
+    "section": "knn summary",
+    "text": "knn summary\n\n\nPros:\n\n\nNon-parametric: Does not assume a fixed form for the mapping function, allowing for flexibility in modeling complex relationships.\nAdaptable: Can easily adapt to new data by simply storing additional instances, making it suitable for dynamic environments.\nInterpretable: Easy to interpret results as the output is based on the majority class among neighbors or average of nearest points.\n\n\n\n\n\nCons:\n\n\nMemory Intensive: Requires storing the entire training dataset, which can be problematic for very large datasets.\nFeature Scaling: Performance depends heavily on the scale of the features, often necessitating normalization or standardization.\nImbalanced Data: Struggles with imbalanced datasets where the minority class may be overshadowed by the majority class due to the simple majority voting mechanism.",
     "crumbs": [
       "Data crunching",
-      "Principal Component Analysis"
+      "Cluster Analysis",
+      "k - Nearest Neighbours"
     ]
   },
   {
-    "objectID": "chapters/chapter552_kMeans/index.html#use-cases",
-    "href": "chapters/chapter552_kMeans/index.html#use-cases",
-    "title": "k- Means",
-    "section": "Use Cases",
-    "text": "Use Cases"
+    "objectID": "chapters/chapter553_pam/index.html#robustness-to-noise-and-outliers",
+    "href": "chapters/chapter553_pam/index.html#robustness-to-noise-and-outliers",
+    "title": "(P)artitioning (A)round (M)edoids",
+    "section": "Robustness to Noise and Outliers",
+    "text": "Robustness to Noise and Outliers\n\nPAM: Uses medoids (actual data points) as cluster centers, which makes it more robust to noise and outliers. The medoid is less influenced by outliers compared to the centroid used in K-means.\nK-means: Uses centroids (mean of the points in a cluster) as cluster centers, which can be significantly influenced by outliers and noise.",
+    "crumbs": [
+      "Data crunching",
+      "Cluster Analysis",
+      "(P)artitioning (A)round (M)edoids"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter553_pam/index.html#interpretability",
+    "href": "chapters/chapter553_pam/index.html#interpretability",
+    "title": "(P)artitioning (A)round (M)edoids",
+    "section": "Interpretability",
+    "text": "Interpretability\n\nPAM: Since medoids are actual data points from the dataset, the cluster centers are more interpretable and meaningful in real-world scenarios.\nK-means: Centroids are not actual data points but rather the mean of the cluster members, which might be less intuitive to interpret.",
+    "crumbs": [
+      "Data crunching",
+      "Cluster Analysis",
+      "(P)artitioning (A)round (M)edoids"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter553_pam/index.html#suitable-for-arbitrary-distance-metrics",
+    "href": "chapters/chapter553_pam/index.html#suitable-for-arbitrary-distance-metrics",
+    "title": "(P)artitioning (A)round (M)edoids",
+    "section": "Suitable for Arbitrary Distance Metrics",
+    "text": "Suitable for Arbitrary Distance Metrics\n\nPAM: Can use any distance metric, making it more flexible for different types of data (e.g., categorical, ordinal, or non-Euclidean).\nK-means: Typically uses Euclidean distance, which may not be suitable for all types of data or similarity measures.",
+    "crumbs": [
+      "Data crunching",
+      "Cluster Analysis",
+      "(P)artitioning (A)round (M)edoids"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter553_pam/index.html#cluster-shape",
+    "href": "chapters/chapter553_pam/index.html#cluster-shape",
+    "title": "(P)artitioning (A)round (M)edoids",
+    "section": "Cluster Shape",
+    "text": "Cluster Shape\n\nPAM: Can handle clusters of various shapes and sizes better than K-means because it doesn’t assume spherical clusters centered around a mean.\nK-means: Assumes clusters are spherical and equally sized, which might not always be the case.",
+    "crumbs": [
+      "Data crunching",
+      "Cluster Analysis",
+      "(P)artitioning (A)round (M)edoids"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter553_pam/index.html#convergence-to-a-global-optimum",
+    "href": "chapters/chapter553_pam/index.html#convergence-to-a-global-optimum",
+    "title": "(P)artitioning (A)round (M)edoids",
+    "section": "Convergence to a Global Optimum",
+    "text": "Convergence to a Global Optimum\n\nPAM: Uses a more exhaustive search (swap between medoids and non-medoids) to find the optimal set of medoids, which can lead to better overall clustering results.\nK-means: Relies on iterative refinement, which can get stuck in local optima and is sensitive to the initial placement of centroids.",
+    "crumbs": [
+      "Data crunching",
+      "Cluster Analysis",
+      "(P)artitioning (A)round (M)edoids"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter553_pam/index.html#histograms",
+    "href": "chapters/chapter553_pam/index.html#histograms",
+    "title": "(P)artitioning (A)round (M)edoids",
+    "section": "histograms",
+    "text": "histograms",
+    "crumbs": [
+      "Data crunching",
+      "Cluster Analysis",
+      "(P)artitioning (A)round (M)edoids"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter553_pam/index.html#density",
+    "href": "chapters/chapter553_pam/index.html#density",
+    "title": "(P)artitioning (A)round (M)edoids",
+    "section": "density",
+    "text": "density",
+    "crumbs": [
+      "Data crunching",
+      "Cluster Analysis",
+      "(P)artitioning (A)round (M)edoids"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter553_pam/index.html#multivariate",
+    "href": "chapters/chapter553_pam/index.html#multivariate",
+    "title": "(P)artitioning (A)round (M)edoids",
+    "section": "multivariate",
+    "text": "multivariate",
+    "crumbs": [
+      "Data crunching",
+      "Cluster Analysis",
+      "(P)artitioning (A)round (M)edoids"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter553_pam/index.html#optimal-number-of-clusters",
+    "href": "chapters/chapter553_pam/index.html#optimal-number-of-clusters",
+    "title": "(P)artitioning (A)round (M)edoids",
+    "section": "optimal number of clusters",
+    "text": "optimal number of clusters",
+    "crumbs": [
+      "Data crunching",
+      "Cluster Analysis",
+      "(P)artitioning (A)round (M)edoids"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter553_pam/index.html#average-silhouette-method",
+    "href": "chapters/chapter553_pam/index.html#average-silhouette-method",
+    "title": "(P)artitioning (A)round (M)edoids",
+    "section": "average silhouette method",
+    "text": "average silhouette method\n\ncompute the average distance (\\(a(i)\\)) of each point within its cluster (within cluster distance)\ncompute the distance of each point to all points in the nearest cluster (next closest cluster)\n\nSilhouette Score:\n\\[\\begin{align}\ns(i) = \\frac{b(i)-a(i)}{max(a(i),(b(i)))}\n\\end{align}\\]",
+    "crumbs": [
+      "Data crunching",
+      "Cluster Analysis",
+      "(P)artitioning (A)round (M)edoids"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter553_pam/index.html#average-silhouette-method-example-on-toy-data",
+    "href": "chapters/chapter553_pam/index.html#average-silhouette-method-example-on-toy-data",
+    "title": "(P)artitioning (A)round (M)edoids",
+    "section": "average silhouette method: example on toy data",
+    "text": "average silhouette method: example on toy data",
+    "crumbs": [
+      "Data crunching",
+      "Cluster Analysis",
+      "(P)artitioning (A)round (M)edoids"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter553_pam/index.html#modeling-k-2",
+    "href": "chapters/chapter553_pam/index.html#modeling-k-2",
+    "title": "(P)artitioning (A)round (M)edoids",
+    "section": "modeling (k = 2)",
+    "text": "modeling (k = 2)\n\nclust_mdl &lt;- pam(cluster_data,2)\n\npoint_assigned &lt;- augment(clust_mdl,cluster_data)",
+    "crumbs": [
+      "Data crunching",
+      "Cluster Analysis",
+      "(P)artitioning (A)round (M)edoids"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter553_pam/index.html#silhouette-plot-n-2",
+    "href": "chapters/chapter553_pam/index.html#silhouette-plot-n-2",
+    "title": "(P)artitioning (A)round (M)edoids",
+    "section": "silhouette plot (n = 2)",
+    "text": "silhouette plot (n = 2)\n\n\n  cluster size ave.sil.width\n1       1    7          0.33\n2       2    7          0.35",
+    "crumbs": [
+      "Data crunching",
+      "Cluster Analysis",
+      "(P)artitioning (A)round (M)edoids"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter553_pam/index.html#silhouette-plot-n-2345",
+    "href": "chapters/chapter553_pam/index.html#silhouette-plot-n-2345",
+    "title": "(P)artitioning (A)round (M)edoids",
+    "section": "silhouette plot (n = 2,3,4,5)",
+    "text": "silhouette plot (n = 2,3,4,5)",
+    "crumbs": [
+      "Data crunching",
+      "Cluster Analysis",
+      "(P)artitioning (A)round (M)edoids"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter553_pam/index.html#cluster-plot-on-toy-data",
+    "href": "chapters/chapter553_pam/index.html#cluster-plot-on-toy-data",
+    "title": "(P)artitioning (A)round (M)edoids",
+    "section": "cluster plot on toy data",
+    "text": "cluster plot on toy data",
+    "crumbs": [
+      "Data crunching",
+      "Cluster Analysis",
+      "(P)artitioning (A)round (M)edoids"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter553_pam/index.html#back-to-business",
+    "href": "chapters/chapter553_pam/index.html#back-to-business",
+    "title": "(P)artitioning (A)round (M)edoids",
+    "section": "back to business",
+    "text": "back to business",
+    "crumbs": [
+      "Data crunching",
+      "Cluster Analysis",
+      "(P)artitioning (A)round (M)edoids"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter553_pam/index.html#cluster-plt",
+    "href": "chapters/chapter553_pam/index.html#cluster-plt",
+    "title": "(P)artitioning (A)round (M)edoids",
+    "section": "cluster plt",
+    "text": "cluster plt",
+    "crumbs": [
+      "Data crunching",
+      "Cluster Analysis",
+      "(P)artitioning (A)round (M)edoids"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter553_pam/index.html#cluster-output",
+    "href": "chapters/chapter553_pam/index.html#cluster-output",
+    "title": "(P)artitioning (A)round (M)edoids",
+    "section": "cluster output",
+    "text": "cluster output\n\n\nMedoids:\n           ID     Murder    Assault   UrbanPop       Rape\nNew Mexico 31  0.8292944  1.3708088  0.3081225  1.1603196\nNebraska   27 -0.8008247 -0.8250772 -0.2445636 -0.5052109\nClustering vector:\n       Alabama         Alaska        Arizona       Arkansas     California \n             1              1              1              2              1 \n      Colorado    Connecticut       Delaware        Florida        Georgia \n             1              2              2              1              1 \n        Hawaii          Idaho       Illinois        Indiana           Iowa \n             2              2              1              2              2 \n        Kansas       Kentucky      Louisiana          Maine       Maryland \n             2              2              1              2              1 \n Massachusetts       Michigan      Minnesota    Mississippi       Missouri \n             2              1              2              1              1 \n       Montana       Nebraska         Nevada  New Hampshire     New Jersey \n             2              2              1              2              2 \n    New Mexico       New York North Carolina   North Dakota           Ohio \n             1              1              1              2              2 \n      Oklahoma         Oregon   Pennsylvania   Rhode Island South Carolina \n             2              2              2              2              1 \n  South Dakota      Tennessee          Texas           Utah        Vermont \n             2              1              1              2              2 \n      Virginia     Washington  West Virginia      Wisconsin        Wyoming \n             2              2              2              2              2 \nObjective function:\n   build     swap \n1.441358 1.368969 \n\nAvailable components:\n [1] \"medoids\"    \"id.med\"     \"clustering\" \"objective\"  \"isolation\" \n [6] \"clusinfo\"   \"silinfo\"    \"diss\"       \"call\"       \"data\"",
+    "crumbs": [
+      "Data crunching",
+      "Cluster Analysis",
+      "(P)artitioning (A)round (M)edoids"
+    ]
   }
 ]

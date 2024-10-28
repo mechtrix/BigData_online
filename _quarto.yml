@@ -66,3 +66,5 @@ website:
           - section: "Cluster Analysis"
             contents: 
               - href: chapters/chapter551_kNN/index.qmd
+              - href: chapters/chapter552_kMeans/index.qmd
+              - href: chapters/chapter553_pam/index.qmd
