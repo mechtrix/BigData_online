@@ -66,6 +66,10 @@ library(broom)
 
 - reduce the number of variables of a data set, while preserving as much information as possible.
 
+::: {.attribution}
+[@an_jameswittenhastietibshirani_2021]
+:::
+
 #### The whole game
 
 1. Standardize the range of continuous initial variables
@@ -74,6 +78,10 @@ library(broom)
 4. Create a feature vector to decide which principal components to keep
 5. Recast the data along the principal components axes
 6. Interpreting the results
+
+::: {.attribution}
+[@an_jameswittenhastietibshirani_2021]
+:::
 
 ### Step 1: Standardization
 
@@ -445,7 +453,11 @@ The effect of the matrix on the vector is therefore the same, as if the vector i
 
 ##### Eigenvalue computation
 
+::::{style="font-size: 75%;"}
+
 This results in the fundamental *eigenvalue* equation \eqref{eigval} and the rearranged \eqref{eigval2}.
+
+::::
 
 \begin{align}
   Av = \lambda v \label{eigval} \\
@@ -584,7 +596,7 @@ Once the eigenvalues are unlocked, the step to finding the eigenvectors is simpl
 
 ##### Example
 
-::::{style="font-size: 75%;"}
+::::{style="font-size: 35%;"}
 
 Imagine $2\times 2$ matrix of which the eigenvalues shall be computed.
 Using \eqref{det} a characteristic polynomial can be computed and solved for the eigenvalues.
@@ -686,6 +698,8 @@ v
 
 ```
 
+---
+
 ::::{style="font-size: 75%;"}
 
 The resulting eigenvalues of $A$ are $\lambda_1 = `r v$values[1]`$, $\lambda_2 = `r v$values[2]`$ and $\lambda_3 = `r v$values[3]`$.
@@ -786,6 +800,8 @@ For this the eigenvalues must first be *diagonalized* so a unit matrix can be fo
 \Lambda = \begin{bmatrix} \lambda_1 & 0 & 0 \\ 0 & \lambda_2 & 0 \\ 0 & 0 & \lambda_3 \end{bmatrix} \label{Lambda}
 \end{align}
 
+---
+
 ```{r}
 #| echo: true
 #| output: true
@@ -852,7 +868,7 @@ all.equal(A, A_reconstructed)
 
 ### Step 4: Feature vector
 
-::::{style="font-size: 75%;"}
+::::{style="font-size: 55%;"}
 
 The feature vector is simply a matrix that has as columns the eigenvectors of the components that we decide to keep. 
 This makes it the first step towards dimensionality reduction, because if we choose to keep only $p$ eigenvectors (components) out of $n$, the final data set will have only p dimensions.
@@ -865,7 +881,7 @@ Therefore the dimensions are reduced from $2$ to $1$.
 \vec{v_1} &= \begin{bmatrix} `r eigen_mat$vectors[[1,1]]` \\ `r eigen_mat$vectors[[2,1]]`  \end{bmatrix} &&\lambda_1 = `r eigen_mat$values[[1]]` \nonumber
 \end{align}
 
-::::{style="font-size: 75%;"}
+::::{style="font-size: 55%;"}
 
 This shall showcase that the dimensionality reduction is up to the user, who has to decide how much variance (information) shall be retained in the data.
 
@@ -951,7 +967,7 @@ This is indeed the case when qualitatively inspecting @fig-pc-construction.
 
 ### Connection to linear regression
 
-::::{style="font-size: 75%;"}
+::::{style="font-size: 55%;"}
 
 This bears the question: How does PCA connect to classical linear regression?
 For this, we build a classical linear regression model from the toy data \eqref{linreg}.
@@ -1022,6 +1038,8 @@ Production processes get multivariate really quick, lets see the data-
 ::::
 
 ```{r}
+#| output: false
+
 # Simulation of 3 components with high e.v.
 set.seed(1)
 simul <- SimulateComponents(pk = c(6,3,2), ev_xx = 0.6)

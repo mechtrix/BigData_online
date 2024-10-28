@@ -1,0 +1,1077 @@
+---
+title: "k- Neareast Neighbours"
+bibliography: https://api.citedrive.com/bib/da291eae-8e2a-46b1-968e-0b79af55f87a/references.bib?x=eyJpZCI6ICJkYTI5MWVhZS04ZTJhLTQ2YjEtOTY4ZS0wYjc5YWY1NWY4N2EiLCAidXNlciI6ICI1NjQ5IiwgInNpZ25hdHVyZSI6ICI2ZDMyODMxM2QzZDQ3NmE3MGM4MDc5MzJiNzE1NjkzNjJmYmZjODYyNGMzNmJjNDBkMDk3Njk5N2RmZjQ5MTg5In0=/bibliography.bib
+format:
+  revealjs:
+    slide-level: 5
+    resource-path: 
+      - "img"
+    logo: img/back.svg
+    footer-logo-link: "https://mechtrix.github.io/BigData_online/"
+    footer: "Copyright Prof. Dr. Tim Weber, 2024"
+    include-in-header:
+      text: |
+        <script>
+        MathJax = {
+          loader: {
+            load: ['[tex]/boldsymbol']
+          },
+          tex: {
+            tags: "all",
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$'], ['\\[','\\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            packages: {
+              '[+]': ['boldsymbol']
+            }
+          }
+        };
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+revealjs-plugins:
+  - animate
+  - attribution
+filters: 
+  - animate
+  - reveal-header
+  - pseudocode
+editor_options: 
+  chunk_output_type: console
+css: style.css
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+
+library(tidyverse)
+library(gtExtras)
+library(ggforce)
+library(caret)
+library(patchwork)
+library(factoextra)
+library(here)
+
+
+```
+
+:::: {.columns}
+
+::: {.column width="40%" .incremental}
+
+::::{style="font-size: 75%;"}
+
+1. **Classification:**
+   - Medical diagnosis
+   - Image recognition
+   - Document classification
+
+2. **Regression:**
+   - Stock price prediction
+   - Weather forecasting
+
+3. **Recommendation Systems:**
+   - Product recommendations
+   - Movie recommendations
+
+::::
+
+:::
+
+::: {.column width="20%"}
+
+:::
+
+::: {.column width="40%" .incremental}
+
+::::{style="font-size: 75%;"}
+
+4. **Anomaly Detection:**
+   - Fraud detection
+   - Network security
+
+5. **Pattern Recognition:**
+   - Speech recognition
+   - Handwriting recognition
+
+6. **Data Imputation:**
+   - Filling missing values
+
+::::
+   
+:::
+
+::::
+
+## The idea
+
+{{< include img/_knn_anim.qmd >}}
+
+### example at work
+
+- training data
+
+```{r}
+#| echo: true
+
+cluster_data <- data.frame(
+  feature_01 = c(1,1,2.5,3.5,5,5.5,7,
+                 3,4,5,5,6,8.5,8.5
+                 ),
+  feature_02 = c(5.5,4,1,3,2.5,3.5,1.5,
+                 9,6,9,6,7.5,5,3.5
+                 ),
+  cluster = c(rep("triangle",7),
+              rep("circle",7)
+              ) |> as.factor()
+)
+```
+
+- new data
+
+```{r}
+#| echo: true
+new_data <- data.frame(
+  feature_01 = 5,
+  feature_02 = 5,
+  cluster = "new data" |> as.factor()
+)
+```
+
+#### raw data plot
+
+```{r}
+
+cluster_data |> 
+  ggplot(
+    aes(
+      x = feature_01,
+      y = feature_02,
+      shape = cluster,
+      color = cluster
+    )
+  )+
+  geom_point(
+    size = 8,
+  )+
+  geom_point(
+    data = new_data,
+    size = 8,
+    stroke = 3
+  )+
+  scale_x_continuous(
+    breaks = seq(1,10),
+  )+
+  scale_y_continuous(
+    breaks = seq(1,10)
+  )+
+  scale_color_brewer(palette = "Set1")+
+  scale_shape_manual(
+    values = c("triangle" = 17, "circle" = 16, "new data" = 4)
+  )+
+  coord_equal()+
+  theme_minimal(base_size = 15)
+
+```
+
+#### clustering: code
+
+```{r}
+#| echo: true
+#| output: true
+
+out_k3 <- class::knn(cluster_data[,1:2],
+                     new_data[,1:2],
+                     cluster_data$cluster,
+                     k = 3)
+out_k3
+
+out_k5 <- class::knn(cluster_data[,1:2],
+                     new_data[,1:2],
+                     cluster_data$cluster,
+                     k = 5)
+out_k5
+
+```
+
+#### cluster plot
+
+```{r}
+
+k3_new_data <- data.frame(
+  feature_01 = new_data$feature_01,
+  feature_02 = new_data$feature_02,
+  cluster = out_k3,
+  knn = "3"
+)
+
+k5_new_data <- data.frame(
+  feature_01 = new_data$feature_01,
+  feature_02 = new_data$feature_02,
+  cluster = out_k5,
+  knn = "5"
+)
+
+cluster_data_knn3 <- cluster_data |> 
+  add_column(
+    knn = "3"
+  )
+
+cluster_data_knn5 <- cluster_data |> 
+  add_column(
+    knn = "5"
+  )
+
+plt_data <- 
+  bind_rows(
+    cluster_data_knn3,
+    cluster_data_knn5,
+    k3_new_data,
+    k5_new_data
+  )
+
+plt_data |> 
+  ggplot(
+    aes(
+      x = feature_01,
+      y = feature_02,
+      shape = cluster,
+      color = cluster
+    )
+  )+
+  geom_point(
+    size = 8,
+  )+
+  annotate(
+    geom = "point",
+    shape = 4,
+    x = 5,
+    y =5,
+    size = 8,
+    stroke = 3
+  )+
+  facet_wrap(~knn,
+             labeller = label_both)+
+  scale_x_continuous(
+    breaks = seq(1,10),
+  )+
+  scale_y_continuous(
+    breaks = seq(1,10)
+  )+
+  scale_color_brewer(palette = "Set1")+
+  scale_shape_manual(
+    values = c("triangle" = 17, "circle" = 16, "new data" = 4)
+  )+
+  coord_equal()+
+  theme_bw(base_size = 15)
+
+```
+
+#### cluster: classroom
+
+We need:
+
+- two clusters
+
+- one new data point
+
+::: {.fragment .fade-in}
+
+How did you decide to which cluster the data point belongs?
+
+:::
+
+### Euclidean distance 
+
+![](img/knn_d_euclidean01.svg){fig-align="center"}
+
+#### the math
+
+$n$-dimensions:
+
+:   $d(p,q) = \sqrt{(p_1-q_1)^2+(p_2-q_2)^2+\ldots+(p_n-q_n)^2}$
+
+$n=2$-dimensions:
+
+:   $d(p,q)= \sqrt{(p_1-q_1)^2+(p_2-q_2)^2}$
+
+general:
+
+:   $d(p,q) = \lVert{p-q}\rVert$
+
+#### the application
+
+![](chapter004/knn_d_euclidean.svg){fig-align="center"}
+
+#### the data
+
+```{r}
+dist_mat <- stats::dist(cluster_data[,1:2],method = "euclidean")
+
+plt_dist_mat <- dist_mat|>
+  as.matrix() |>
+  as_tibble(rownames = "A") |>
+  pivot_longer(-A,names_to = "B",values_to = "distances") |>
+  mutate(
+   A_num = parse_number(A),
+   B_num = parse_number(B),
+   cluster = 
+     case_when(
+       A_num<8 & B_num<8  ~ "triangle",
+       A_num>7 & B_num>7 ~ "circle",
+       TRUE ~ "no cluster"
+       ),
+   A = str_pad(A, 2, pad = "0"),
+   B = str_pad(B,2,pad = "0")
+   )
+
+plt_dist_mat |>
+  ggplot(
+    aes(
+      x = A,
+      y = B,
+      fill = distances,
+      color = cluster
+    )
+  )+
+  geom_tile(
+    linewidth = 2
+  )+
+  scale_x_discrete(
+    expand = c(0,0,0,0)
+  )+
+  scale_y_discrete(
+    expand = c(0,0,0,0)
+  )+
+  scale_fill_viridis_c(
+    option = "turbo"
+  )+
+  scale_color_manual(
+    values = c("circle" = "red","triangle" = "steelblue","no cluster" = "NA")
+  )+
+  labs(
+    title = "Euclidean distance matrix"
+  )+
+  coord_equal()
+
+
+
+```
+
+#### as kNN measure: k = 3
+
+```{r}
+d_mat <- data.frame(
+  feature_01 = cluster_data$feature_01,
+  feature_02 = cluster_data$feature_02,
+  cluster = cluster_data$cluster,
+  new_data_feature_01 = new_data$feature_01,
+  new_data_feature_02 = new_data$feature_02,
+  new_data_cluster = "new data"
+)
+  
+
+d_mat <- d_mat |> 
+  mutate(
+    d_dist = sqrt((new_data_feature_01-feature_01)^2+(new_data_feature_02-feature_02)^2)
+  ) |> 
+  arrange(d_dist) |> 
+  rowid_to_column("idx")
+```
+
+
+```{r}
+d_mat |> 
+  select(-new_data_cluster) |> 
+  gt() |> 
+  gt_highlight_rows(
+     rows = 1:3,
+     fill = "lightgrey",
+     bold_target_only = TRUE,
+     target_col = idx
+   )
+
+```
+
+#### as kNN measure: k = 5
+
+```{r}
+d_mat |> 
+  select(-new_data_cluster) |> 
+  gt() |> 
+  gt_highlight_rows(
+     rows = 1:5,
+     fill = "lightgrey",
+     bold_target_only = TRUE,
+     target_col = idx
+   )
+
+```
+
+#### as kNN measure - in a plot
+
+```{r}
+d_mat |> 
+  ggplot(
+  )+
+  geom_point(
+    aes(
+      x = feature_01,
+      y = feature_02,
+      shape = cluster,
+      color = d_dist
+    ),
+    size = 8
+  )+
+  annotate(
+    geom = "point",
+    x = 5,
+    y = 5,
+    shape = 4,
+    size = 8,
+    stroke = 3
+  )+
+  geom_circle(
+    data = d_mat |> head(n = 3),
+    aes(
+      x0 = new_data_feature_01,
+      y0 = new_data_feature_02,
+      r = max(d_mat |> head(n = 3) |> pull(d_dist))
+    )
+  )+
+  geom_circle(
+    data = d_mat |> head(n = 5),
+    aes(
+      x0 = new_data_feature_01,
+      y0 = new_data_feature_02,
+      r = max(d_mat |> head(n = 5) |> pull(d_dist))
+    )
+  )+
+  scale_color_viridis_c(option = "inferno")+
+  scale_x_continuous(
+    breaks = seq(0,10)
+  )+
+  scale_y_continuous(
+    breaks = seq(0,10)
+  )+
+  coord_equal()+
+  theme_minimal(
+    base_size = 15
+  )
+```
+
+### multi-dimensional clustering or "How many k's?"
+
+[Thank you kaggle](https://www.kaggle.com/datasets/aarontanjaya/uci-wine-dataset-edit)
+
+find more info here: [@Aeberhard_1994]
+
+```{r}
+#| echo: false
+#| output: true
+
+wine_data <- read_csv(here("data","wine.csv"),col_names = c("idx","Origin", "Alcohol", "Malic_acid", "Ash", "Alkalinity_of_ash", 
+                  "Magnesium", "Total_phenols", "Flavanoids", "Nonflavonoids_phenols", 
+                  "Proanthocyanins", "Color_intensity", "Hue", "OD280_OD315_diluted_wines", 
+                  "Proline"),
+               skip = 1)
+
+glimpse(wine_data)
+```
+
+
+#### quick eda
+
+```{r}
+plot(wine_data)
+```
+
+### some preprocessing
+
+- same proportions?
+
+```{r}
+#| output: true
+
+wine_data$Origin <- as.factor(wine_data$Origin)
+
+round(prop.table(table(wine_data$Origin)), 2)
+
+```
+
+- `NA`'s?
+
+```{r}
+#| output: true
+
+summary(wine_data)
+```
+
+
+#### splitting the data
+
+```{r}
+#| echo: true
+
+wd2 <- wine_data |> 
+  janitor::clean_names() |> 
+  select(-idx)
+
+param_split_wd2 <- createDataPartition(
+  wd2$origin, 
+  p = 0.75, 
+  list = FALSE)
+
+train_wd2 <- wd2[param_split_wd2, ]
+test_wd2 <- wd2[-param_split_wd2, ]
+```
+
+#### controlling the training
+
+```{r}
+#| echo: true
+#| code-line-numbers: "|2"
+
+
+trnctrl_wd2 <- trainControl(
+  method = "repeatedcv", 
+  number = 10, 
+  repeats = 3,
+  savePredictions = TRUE)
+```
+
+:::{.incremental}
+
+- What is `repeatedcv`?
+  - repeated cross validation
+  
+- What is cross validation?
+  
+:::
+
+#### Cross Validation - why?
+
+![](img/cv_why.svg){fig-align="center"}
+
+#### Cross Validation - how?
+
+![](img/cv_how.svg){fig-align="center"}
+
+#### Cross Validation - what?
+
+::::{style="font-size: 75%;"}
+
+* **k-Fold Cross-Validation:** The dataset is divided into k subsets. The model is trained on $k - 1$ subsets and tested on the remaining one. This process is repeated $k$ times.
+
+* **Leave-One-Out Cross-Validation (LOOCV):** A special case of k-fold cross-validation where $k$ is equal to the number of data points. Each data point is used as a test set exactly once, and the model is trained on all remaining data points.
+
+* **Stratified k-Fold Cross-Validation:** Similar to k-fold but ensures that each fold has a representative proportion of classes, useful in classification problems with imbalanced classes.
+
+* **Repeated k-Fold Cross-Validation:** The k-fold cross-validation process is repeated multiple times with different random splits of the data to ensure more robust performance estimates.
+
+::::
+
+#### Cross Validation - advantages
+
+* **Model Evaluation:** Provides a more accurate estimate of model performance on unseen data compared to a single train-test split.
+
+* **Bias-Variance Trade-Off:** Helps in tuning model hyperparameters by providing insights into the model's bias and variance.
+
+* **Data Utilization:** Maximizes the use of the available data for both training and testing, leading to better model performance assessment.
+
+#### modeling
+
+
+```{r}
+#| echo: true
+
+model_knn_wd2 <- train(origin ~., 
+                       data = train_wd2, 
+                       method = "knn", 
+                       trControl = trnctrl_wd2, 
+                       preProcess = c("center", "scale"),  
+                       tuneLength = 75)
+
+model_knn_wd2
+
+```
+
+#### modeling diagnostics
+
+```{r}
+
+ggplot(model_knn_wd2)+
+  theme_minimal(base_size = 15)+
+  geom_vline(
+    xintercept = model_knn_wd2$bestTune$k
+  )+
+  scale_y_continuous(
+    expand = c(0,0,0.05,0),
+    breaks = seq(0,1,0.1),
+    limits = c(0,1),
+    labels = scales::percent
+  )+
+  labs(
+    title = paste0("best k: ",model_knn_wd2$bestTune$k)
+  )+
+  scale_x_continuous(
+    breaks = c(1,seq(10,200,10)),
+    expand = c(0.005,0,0,0),
+    limits = c(0,NA)
+  )
+
+```
+
+#### PREDICTION
+
+::: {.r-fit-text .v-c}
+
+All models are wrong, 
+
+some are useful.
+
+:::
+
+---
+
+```{r}
+#| echo: true
+#| output: true
+
+prediction_knn_wd2 <- predict(model_knn_wd2, newdata = test_wd2)
+
+confusionMatrix(prediction_knn_wd2, reference = test_wd2$origin)
+
+pred_out <- test_wd2 |> 
+  add_column(pred.origin = prediction_knn_wd2)
+
+```
+
+#### many plots - but how?
+
+- First: define plotting function that takes varnames as input
+
+```{r}
+#| echo: true
+
+plt_clust <- function(
+    dataset,
+    varname1,
+    varname2,
+    train_data){
+  
+  varset <- dataset |> 
+    select({{varname1}},{{varname2}}) |> 
+    colnames() 
+  
+  ds_plt <- dataset |> 
+    rowid_to_column(
+      var = "idx"
+    )
+  
+  p <- ds_plt |>
+    ggplot(
+      aes(
+        x = {{varname1}},
+        y = {{varname2}}
+      )
+    )+
+    geom_point(
+      aes(
+        shape = pred.origin,
+        color = pred.origin,
+        fill = pred.origin
+      ),
+      size =3)+
+    geom_text(
+      aes(
+        label = idx
+      )
+    )+
+    labs(
+      title = paste0(varset[1]," vs. ",varset[2])
+    )+
+  stat_ellipse(
+    aes(
+        color = pred.origin,
+        fill = pred.origin
+      ),
+    type = "t",geom = "polygon",alpha = 0.4)+
+  stat_ellipse(
+    data = train_data,
+    aes(
+        color = origin,
+        fill = origin
+      ),
+    linetype = "dashed",
+    type = "t",
+    geom = "polygon",
+    alpha = 0.1)+
+  scale_fill_brewer(palette = "Set1")+
+  scale_color_brewer(palette = "Set1")+
+  theme_classic(base_size = 15)+
+  theme(
+    legend.position = "bottom"
+  )
+  
+  return(p)
+}
+
+# plt_clust(pred_out,alcohol,malic_acid,train_wd2)
+
+```
+
+---
+
+- Second: compute all possible varname combinations, without predictor, omit duplicates
+
+```{r}
+#| echo: true
+
+colnames_vec <- colnames(pred_out[,3:ncol(pred_out)-1])
+
+colnames_combinations <- expand_grid(
+  varname1 = colnames_vec,
+  varname2 = colnames_vec
+) |> 
+  mutate(
+    rem_col = 
+      case_when(
+        varname1 == varname2 ~ FALSE,
+        TRUE ~ TRUE
+      )
+  ) |> 
+  filter(
+    rem_col
+  ) |> 
+  select(-rem_col)
+```
+
+---
+
+- Third: map over the rows, create anonymous function
+
+```{r}
+#| echo: true
+
+plt_out <- map(
+  seq(1:nrow(colnames_combinations)),
+  function(x) plt_clust(pred_out,
+                        !!sym(colnames_combinations[x,1] |> 
+                                pull(varname1)),
+                        !!sym(colnames_combinations[x,2] |> 
+                                pull(varname2)
+                              ),
+                        train_wd2
+                        )
+  )
+
+
+
+```
+
+---
+
+- Fourth: do the plots, first just one, then all
+
+```{r}
+plt_out[1]
+```
+
+---
+
+```{r}
+#| fig-height: 7
+wrap_plots(plt_out[1:12]) +  plot_layout(guides = 'collect') & theme_classic(base_size = 8) & theme(legend.position = "bottom") 
+```
+
+---
+
+```{r}
+#| fig-height: 7
+wrap_plots(plt_out[13:24]) +  plot_layout(guides = 'collect') & theme_classic(base_size = 8) & theme(legend.position = "bottom") 
+```
+
+---
+
+```{r}
+#| fig-height: 7
+wrap_plots(plt_out[25:36]) +  plot_layout(guides = 'collect') & theme_classic(base_size = 8) & theme(legend.position = "bottom") 
+```
+
+---
+
+```{r}
+#| fig-height: 7
+wrap_plots(plt_out[37:48]) +  plot_layout(guides = 'collect') & theme_classic(base_size = 8) & theme(legend.position = "bottom") 
+```
+
+---
+
+```{r}
+#| fig-height: 7
+wrap_plots(plt_out[49:60]) +  plot_layout(guides = 'collect') & theme_classic(base_size = 8) & theme(legend.position = "bottom") 
+```
+
+---
+
+```{r}
+#| fig-height: 7
+wrap_plots(plt_out[61:72]) +  plot_layout(guides = 'collect') & theme_classic(base_size = 8) & theme(legend.position = "bottom") 
+```
+
+---
+
+```{r}
+#| fig-height: 7
+wrap_plots(plt_out[73:84]) +  plot_layout(guides = 'collect') & theme_classic(base_size = 8) & theme(legend.position = "bottom") 
+```
+
+---
+
+```{r}
+#| fig-height: 7
+wrap_plots(plt_out[85:96]) +  plot_layout(guides = 'collect') & theme_classic(base_size = 8) & theme(legend.position = "bottom") 
+```
+
+---
+
+```{r}
+#| fig-height: 7
+wrap_plots(plt_out[97:108]) +  plot_layout(guides = 'collect') & theme_classic(base_size = 8) & theme(legend.position = "bottom") 
+```
+
+---
+
+```{r}
+#| fig-height: 7
+wrap_plots(plt_out[109:120]) +  plot_layout(guides = 'collect') & theme_classic(base_size = 8) & theme(legend.position = "bottom") 
+```
+
+---
+
+```{r}
+#| fig-height: 7
+wrap_plots(plt_out[121:132]) +  plot_layout(guides = 'collect') & theme_classic(base_size = 8) & theme(legend.position = "bottom") 
+```
+
+---
+
+```{r}
+#| fig-height: 7
+wrap_plots(plt_out[133:144]) +  plot_layout(guides = 'collect') & theme_classic(base_size = 8) & theme(legend.position = "bottom") 
+```
+
+---
+
+```{r}
+#| fig-height: 7
+wrap_plots(plt_out[145:156]) +  plot_layout(guides = 'collect') & theme_classic(base_size = 8) & theme(legend.position = "bottom") 
+```
+
+#### The curse of dimensionality
+
+:::: {.columns}
+
+::: {.column width="50%" .incremental}
+
+::::{style="font-size: 50%;"}
+
+- **Increased Volume**: 
+  - Space volume grows exponentially with dimensions.
+  - Data points become sparse, complicating pattern recognition.
+
+- **Distance Measures**: 
+  - Distances between data points become similar.
+  - Distance-based algorithms (e.g., k-nearest neighbors) lose effectiveness.
+
+- **Data Sparsity**: 
+  - Data becomes sparser in high dimensions.
+  - Higher risk of overfitting, requiring more data for reliability.
+
+- **Computational Complexity**: 
+  - Processing high-dimensional data is computationally expensive.
+  - Algorithm complexity often increases exponentially with dimensions.
+
+::::
+
+:::
+
+::: {.column width="50%" .incremental}
+
+::::{style="font-size: 50%;"}
+
+- **Feature Selection and Extraction**: 
+  - Methods like PCA and t-SNE reduce dimensions while retaining key information.
+
+- **Visualization**: 
+  - Visualizing high-dimensional data is difficult.
+  - Projections to lower dimensions are necessary for interpretation.
+
+- **Overfitting**: 
+  - High-dimensional data increases the risk of overfitting.
+  - Regularization and cross-validation help mitigate this.
+
+::::
+   
+:::
+
+::::
+
+#### Mitigation Strategies {.incremental}
+
+  - **Dimensionality Reduction**: Techniques such as PCA and autoencoders.
+  - **Feature Selection**: Choosing the most relevant features.
+  - **Regularization**: L1 and L2 regularization to prevent overfitting.
+  - **Domain Knowledge**: Using expertise to identify important features.
+  
+#### PCA
+
+```{r}
+
+pca_in <- train_wd2 |>
+  select(-origin) |>
+  scale()
+
+pca_out <- prcomp(pca_in)
+
+cum_percentage <- summary(pca_out)$importance |> 
+  t() |> 
+  as.data.frame() |> 
+  rowid_to_column(var = "PC") |> 
+  janitor::clean_names() |> 
+  mutate(
+    sum_gt_90 = 
+      case_when(
+        cumulative_proportion < 0.93 ~ "include",
+        TRUE ~"exclude"
+      )
+  )
+  
+
+cum_percentage |> 
+  ggplot(
+    aes(
+      x = pc,
+      y = cumulative_proportion
+    )
+  )+
+  geom_col(
+    aes(
+      fill = sum_gt_90
+    )
+  )+
+  geom_line()+
+  geom_hline(
+    yintercept = 0.9
+  )+
+  scale_x_continuous(
+    expand = c(0,0,0,0),
+    breaks = seq(1,50)
+  )+
+  scale_y_continuous(
+    labels = scales::percent,
+    expand = c(0,0,0,0),
+    breaks = seq(0,1,0.1)
+  )+
+  scale_fill_manual(
+    values = c("include" = "green4","exclude" = "red3")
+  )+
+  labs(
+    title = "Cumulative proportions",
+    x = "Principal Component No.",
+    y = "Cumulative proportion",
+    fill = ""
+  )+
+  theme_minimal(
+    base_size = 15
+  )+
+  theme(
+    legend.position = "bottom"
+  )
+
+```
+
+---
+
+```{r}
+#| fig-width: 10
+#| fig-height: 10
+#| fig-align: "center"
+
+dim0102 <- fviz_pca_var(pca_out,
+             axes = c(1,2),
+             col.var = "contrib", # Color by contributions to the PC
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE     # Avoid text overlapping
+             )
+
+dim_0304 <- fviz_pca_var(pca_out,
+             axes = c(3,4),
+             col.var = "contrib", # Color by contributions to the PC
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE     # Avoid text overlapping
+             )
+
+dim_0506 <- fviz_pca_var(pca_out,
+             axes = c(5,6),
+             col.var = "contrib", # Color by contributions to the PC
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE     # Avoid text overlapping
+             )
+
+dim_0708 <- fviz_pca_var(pca_out,
+             axes = c(7,8),
+             col.var = "contrib", # Color by contributions to the PC
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE     # Avoid text overlapping
+             )
+
+(dim0102+dim_0304) / (dim_0506+dim_0708) + theme(legend.position = "bottom")
+
+```
+
+## knn summary
+
+:::: {.columns .v-center-container}
+
+::: {.column width="40%" .incremental}
+
+Pros:
+
+::::{style="font-size: 65%;"}
+
+- **Non-parametric**: Does not assume a fixed form for the mapping function, allowing for flexibility in modeling complex relationships.
+- **Adaptable**: Can easily adapt to new data by simply storing additional instances, making it suitable for dynamic environments.
+- **Interpretable**: Easy to interpret results as the output is based on the majority class among neighbors or average of nearest points.
+
+::::
+
+:::
+
+::: {.column width="10%" .incremental}
+
+:::
+
+::: {.column width="40%" .incremental}
+
+Cons:
+
+::::{style="font-size: 65%;"}
+
+- **Memory Intensive**: Requires storing the entire training dataset, which can be problematic for very large datasets.
+- **Feature Scaling**: Performance depends heavily on the scale of the features, often necessitating normalization or standardization.
+- **Imbalanced Data**: Struggles with imbalanced datasets where the minority class may be overshadowed by the majority class due to the simple majority voting mechanism.
+
+::::
+   
+:::
+
+::::
+
+
+
+
+# References

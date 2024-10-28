@@ -63,3 +63,7 @@ website:
             href: chapters/chapter530_MLE/index.qmd
           - text: "Principal Component Analysis"
             href: chapters/chapter540_PCA/index.qmd
+          - section: "Cluster Analysis"
+            contents: 
+              - text: "kNN"
+              - href: chapters/chapter551_kNN/index.qmd
