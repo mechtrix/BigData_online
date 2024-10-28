@@ -99,7 +99,27 @@
     code span.va { color: #111111; } /* Variable */
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="style.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -473,8 +493,8 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 </ul>
 </section>
 
-<section id="disadvantages-to-k-means" class="title-slide slide level1 center">
-<h1>Disadvantages to k-means</h1>
+<section id="disadvantages-to-k-means" class="title-slide slide level2 center">
+<h2>Disadvantages to k-means</h2>
 <ol type="1">
 <li><p><strong>Scalability</strong>:</p>
 <ul>
@@ -489,8 +509,8 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 </ol>
 </section>
 
-<section id="the-idea" class="title-slide slide level1 center">
-<h1>the idea</h1>
+<section id="the-idea" class="title-slide slide level2 center">
+<h2>the idea</h2>
 <div data-animate="" data-src="img/pam.svg"><!-- setup:
   - element: "#data"
     modifier: attr
@@ -529,9 +549,8 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
         data-fragment-index: "7"         --></div>
 </section>
 
-<section>
-<section id="doing-it" class="title-slide slide level1 center">
-<h1>doing it</h1>
+<section id="doing-it" class="title-slide slide level2 center">
+<h2>doing it</h2>
 <ul>
 <li><code>data("USArrests")</code></li>
 <li><span class="math inline">\(50\)</span> observations</li>
@@ -543,7 +562,11 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 <li><code>Rape</code>: number of rape arrests per <span class="math inline">\(100,000\)</span></li>
 </ul></li>
 </ul>
+<div class="attribution">
+<p><span class="citation" data-cites="practical_kassambara_2017">(<a href="#/references" role="doc-biblioref" onclick="">Kassambara 2017</a>)</span></p>
+</div>
 </section>
+
 <section id="histograms" class="title-slide slide level2 center">
 <h2>histograms</h2>
 
@@ -618,26 +641,15 @@ s(i) = \frac{b(i)-a(i)}{max(a(i),(b(i)))}
 
 <img data-src="index_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
 
-<section id="cluster-plt" class="title-slide slide level2 center">
-<h2>cluster plt</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-13-2.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
+<section>
+<section id="cluster-plot" class="title-slide slide level2 center">
+<h2>cluster plot</h2>
 
+<img data-src="index_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
+<section class="slide level5">
+
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section></section>
 <section id="cluster-output" class="title-slide slide level2 center">
 <h2>cluster output</h2>
 <div class="cell">
@@ -677,8 +689,8 @@ Available components:
 </div>
 </div>
 </section>
-</section>
-<section id="references" class="title-slide slide level1 center">
+
+<section id="references" class="title-slide slide level1 smaller scrollable">
 <h1>References</h1>
 
 <div class="quarto-auto-generated-content">
@@ -699,6 +711,11 @@ Available components:
 </div>
 <div class="sb-title">
 <p> </p>
+</div>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-practical_kassambara_2017" class="csl-entry" role="listitem">
+Kassambara, Alboukadel. 2017. <em>Practical Guide to Cluster Analysis in r</em>. STHDA.
 </div>
 </div>
 </section>

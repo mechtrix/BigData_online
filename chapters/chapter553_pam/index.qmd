@@ -86,7 +86,7 @@ library(patchwork)
    
    - **K-means**: Relies on iterative refinement, which can get stuck in local optima and is sensitive to the initial placement of centroids.
 
-# Disadvantages to k-means
+## Disadvantages to k-means
 
 1. **Scalability**:
    
@@ -99,12 +99,12 @@ library(patchwork)
    
    - **K-means**: Simpler and faster to implement.
 
-# the idea
+## the idea
 
 
 {{< include img/_pam_anim.qmd >}}
 
-# doing it
+## doing it
 
 - `data("USArrests")`
 - $50$ observations
@@ -113,7 +113,13 @@ library(patchwork)
   - `Assault`: number of assault arrests per $100,000$
   - `UrbanPop`: percent urban population
   - `Rape`: number of rape arrests per $100,000$
-  
+
+::: {.attribution}
+
+[@practical_kassambara_2017]
+
+:::
+
 ## histograms
 
 ```{r}
@@ -388,10 +394,9 @@ fviz_nbclust(df,pam,method = "silhouette")+
 
 ```
 
-## cluster plt
+## cluster plot
 
 ```{r}
-
 fviz_cluster(pam(df,2))+
   theme_bw(base_size = 15)+
   theme(legend.position = "bottom")+
@@ -401,7 +406,11 @@ fviz_cluster(pam(df,2))+
 mdl_arrest <- pam(df,2)
 
 pts <- augment(mdl_arrest,USArrests)
+```
 
+---
+
+```{r}
 pts |> 
   ggplot(
     aes(
