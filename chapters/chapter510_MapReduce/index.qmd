@@ -192,7 +192,7 @@ lorem_smpl <- sample(
 
 writeLines(lorem_smpl, here("data","exchange.txt"))
 
-quarto_render(input = here("data","_MapReduce_classroom.qmd"))
+quarto::quarto_render(input = here("data","_MapReduce_classroom.qmd"))
 
 lorem_freq_tbl <- word_count_simple(lorem_smpl)
 
