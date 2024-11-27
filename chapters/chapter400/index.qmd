@@ -341,14 +341,17 @@ plt_dist_coins <- coins_sample %>%
     expand = c(0,0,0.05,0)
   )+
   scale_x_continuous(
-    breaks = seq(1900,2500,1)
+    breaks = seq(1900,2500,1),
+    limits = c(2002,2024),
+    expand = c(0,0,0,0)
   )+
   labs(
     title = "Distribution of the minting year in the 50 coins"
   )+
   theme_bw(
-    base_size = 20
-  )
+    base_size = 10
+  )+
+  coord_flip()
 
 plt_dist_coins
 
@@ -411,10 +414,9 @@ plt_dist_coins+
 #| echo: true
 
 virtual_resample <- coins_sample %>% 
-  infer::rep_sample_n(size = 50, replace = TRUE,reps = 1000)
+  infer::rep_sample_n(size = 10, replace = TRUE,reps = 100)
 
-# virtual_resample01 <- coins_sample %>%
-#   rep_sample_n(size = 50, replace = TRUE,reps = 100000)
+
 
 ```
 
@@ -427,11 +429,6 @@ cmp <- virtual_resample %>%
   )
 
 
-# cmp02 <- virtual_resample01 %>% 
-#   group_by(replicate) %>% 
-#   summarise(
-#     mean_year = mean(year)
-#   )
 
 plt_btstrp <- cmp %>% 
   ggplot(
@@ -446,7 +443,8 @@ plt_btstrp <- cmp %>%
     expand = c(0,0,0.05,0)
   )+
   scale_x_continuous(
-    breaks = seq(2000,2500,1)
+    breaks = seq(2000,2500,1),
+    limits = c(2009,2018)
   )+
   labs(
     title = "mean year from 1000 replications",
@@ -457,6 +455,11 @@ plt_btstrp <- cmp %>%
     color = "red",
     linewidth = 2
   )+
+  # geom_vline(
+  #   xintercept = mean(cmp02$mean_year),
+  #   color = "green",
+  #   linewidth = 2
+  # )+
   theme_bw(
     base_size = 20
   )
@@ -564,6 +567,111 @@ plt_btstrp+
   )
 
 ```
+
+##### so... how many resamples?
+
+```{r}
+
+param_study <- expand_grid(
+  # n_size = 10^seq(1,3,1) |> as.integer(),
+  n_size = 50,
+  n_reps = 10^(seq(1,6,1)) |> as.integer()
+)
+
+param_study <- expand_grid(
+  # n_size = 10^seq(1,3,1) |> as.integer(),
+  n_size = 50,
+  n_reps = c(
+    seq(10,90,10),
+    seq(100,900,100),
+    seq(1000,9000,1000),
+    seq(10000,90000,10000)
+    ) |> 
+    as.integer()
+)
+
+
+param_study <- param_study |> 
+  rowwise() |> 
+  mutate(
+    bootstrap = list(
+      infer::rep_sample_n(
+        tbl = data.frame(sample_year = coins_sample$year), 
+        size = n_size, 
+        reps = n_reps, 
+        replace = TRUE)
+      )
+  ) |> 
+  ungroup()
+
+res_param_study <- param_study |> 
+  unnest(cols = bootstrap) |> 
+  group_by(
+    n_size,
+    n_reps,
+    replicate
+  ) |> 
+  summarise(
+    avg_year = mean(sample_year)
+  )
+
+res_param_study <- res_param_study |> 
+  ungroup() |> 
+  group_by(
+    n_size,
+    n_reps
+  ) |> 
+  summarise(
+    lo_quant = quantile(avg_year,0.025),
+    hi_quant = quantile(avg_year,0.975)
+  ) |> 
+  mutate(
+    ci = hi_quant-lo_quant
+  )
+
+
+res_param_study |> 
+  ggplot(
+    aes(
+      x = n_reps,
+      # color = as.factor(n_size),
+      y = ci
+    )
+  )+
+  geom_smooth(
+    se = F,
+    color = "gray80"
+  )+
+  geom_point()+
+  geom_line()+
+  scale_x_continuous(
+    # breaks = function(x) pretty(x,n=5),
+    trans = "log10"
+  )+
+  scale_y_continuous(
+    trans = "log10"
+  )+
+  # geom_vline(
+  #   xintercept = c(10,100,1000,10000,100000),
+  #   color = "gray70"
+  # )+
+  labs(
+    title = "How often shold you resample?",
+    x = "number of repitions",
+    y = "95% confidence interval (percentile method)"
+  )+
+  theme_bw(
+    base_size = 12
+  )+
+  theme(
+    # panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank()
+  )
+
+
+```
+
+
 
 ### Historical Bias
 

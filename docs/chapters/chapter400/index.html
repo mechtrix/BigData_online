@@ -789,10 +789,7 @@ the action of supporting or opposing a particular person or thing in an unfair w
 <div class="fragment fade-in-then-out">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>virtual_resample <span class="ot">&lt;-</span> coins_sample <span class="sc">%&gt;%</span> </span>
-<span id="cb1-2"><a></a>  infer<span class="sc">::</span><span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>,<span class="at">reps =</span> <span class="dv">1000</span>)</span>
-<span id="cb1-3"><a></a></span>
-<span id="cb1-4"><a></a><span class="co"># virtual_resample01 &lt;- coins_sample %&gt;%</span></span>
-<span id="cb1-5"><a></a><span class="co">#   rep_sample_n(size = 50, replace = TRUE,reps = 100000)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a></a>  infer<span class="sc">::</span><span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>,<span class="at">reps =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -821,7 +818,7 @@ the action of supporting or opposing a particular person or thing in an unfair w
 <div class="fragment fade-out">
 <ul>
 <li>take the middle <span class="math inline">\(95\%\)</span> of all bootstrapped values</li>
-<li>compute the <span class="math inline">\(2.5th\)</span> and the <span class="math inline">\(97.5th\)</span> percentile (<span class="math inline">\(2011.56\)</span> and <span class="math inline">\(2015.1\)</span>)</li>
+<li>compute the <span class="math inline">\(2.5th\)</span> and the <span class="math inline">\(97.5th\)</span> percentile (<span class="math inline">\(2010.19\)</span> and <span class="math inline">\(2017.1\)</span>)</li>
 </ul>
 </div>
 <div class="fragment fade-in-then-out">
@@ -846,19 +843,23 @@ the action of supporting or opposing a particular person or thing in an unfair w
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>SE <span class="ot">&lt;-</span> cmp  <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">SE =</span> <span class="fu">sd</span>(mean_year)) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(SE) <span class="sc">%&gt;%</span> <span class="fu">round</span>(.,<span class="at">digits =</span> <span class="dv">2</span>)</span>
 <span id="cb2-2"><a></a>SE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.87</code></pre>
+<pre><code>[1] 1.84</code></pre>
 </div>
 </div>
 <p><span class="math display">\[\begin{align}
 \bar{x} \pm 1.96 &amp;= (\bar{x}+1.96 * SE, \bar{x}-1.96*SE) \nonumber \\
-&amp;= (2013.36 + 1.96 * 0.87, 2013.36 - 1.96 * 0.87) \nonumber \\
-&amp;= (2015.07, 2011.65) \nonumber
+&amp;= (2013.66 + 1.96 * 1.84, 2013.66 - 1.96 * 1.84) \nonumber \\
+&amp;= (2017.27, 2010.05) \nonumber
 \end{align}\]</span></p>
 </section>
 <section id="comparison-of-both-methods" class="slide level5">
 <h5>comparison of both methods</h5>
 
 <img data-src="index_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
+<section id="so-how-many-resamples" class="slide level5">
+<h5>so… how many resamples?</h5>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
 
 
 <section id="historical-bias" class="title-slide slide level3 center">
@@ -1018,17 +1019,6 @@ the action of supporting or opposing a particular person or thing in an unfair w
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div class="fragment fade-in-then-out">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="index_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
 </figure>
 </div>
@@ -1041,6 +1031,17 @@ the action of supporting or opposing a particular person or thing in an unfair w
 <div>
 <figure>
 <p><img data-src="index_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in-then-out">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1186,17 +1187,6 @@ Y &amp;= f(X) + \epsilon \nonumber
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-14-1.png" style="width:95.0%;height:95.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div class="fragment fade-in-then-out">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="index_files/figure-revealjs/unnamed-chunk-15-1.png" style="width:95.0%;height:95.0%"></p>
 </figure>
 </div>
@@ -1230,7 +1220,7 @@ Y &amp;= f(X) + \epsilon \nonumber
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-19-1.png" style="width:95.0%;height:95.0%"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-18-1.png" style="width:95.0%;height:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -1241,7 +1231,18 @@ Y &amp;= f(X) + \epsilon \nonumber
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-21-1.png" style="width:95.0%;height:95.0%"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-20-1.png" style="width:95.0%;height:95.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in-then-out">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-22-1.png" style="width:95.0%;height:95.0%"></p>
 </figure>
 </div>
 </div>
