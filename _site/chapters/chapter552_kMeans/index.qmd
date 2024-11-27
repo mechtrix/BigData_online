@@ -1,0 +1,568 @@
+---
+title: "k- Means"
+bibliography: https://api.citedrive.com/bib/da291eae-8e2a-46b1-968e-0b79af55f87a/references.bib?x=eyJpZCI6ICJkYTI5MWVhZS04ZTJhLTQ2YjEtOTY4ZS0wYjc5YWY1NWY4N2EiLCAidXNlciI6ICI1NjQ5IiwgInNpZ25hdHVyZSI6ICI2ZDMyODMxM2QzZDQ3NmE3MGM4MDc5MzJiNzE1NjkzNjJmYmZjODYyNGMzNmJjNDBkMDk3Njk5N2RmZjQ5MTg5In0=/bibliography.bib
+format:
+  revealjs:
+    slide-level: 5
+    resource-path: 
+      - "img"
+    logo: img/back.svg
+    footer-logo-link: "https://mechtrix.github.io/BigData_online/"
+    footer: "Copyright Prof. Dr. Tim Weber, 2024"
+    include-in-header:
+      text: |
+        <script>
+        MathJax = {
+          loader: {
+            load: ['[tex]/boldsymbol']
+          },
+          tex: {
+            tags: "all",
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$'], ['\\[','\\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            packages: {
+              '[+]': ['boldsymbol']
+            }
+          }
+        };
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+revealjs-plugins:
+  - animate
+  - attribution
+filters: 
+  - animate
+  - reveal-header
+  - pseudocode
+editor_options: 
+  chunk_output_type: console
+css: style.css
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+
+library(tidyverse)
+library(gtExtras)
+library(ggforce)
+library(caret)
+library(patchwork)
+library(factoextra)
+library(here)
+
+
+```
+
+
+## Use Cases
+
+:::: {.columns}
+
+::: {.column width="40%" .incremental}
+
+::::{style="font-size: 75%;"}
+
+1. **Marketing**: Segment customers.
+2. **Compression**: Reduce image colors.
+3. **Organization**: Cluster documents.
+4. **Security**: Detect anomalies.
+5. **Targeting**: Segment markets.
+6. **Networking**: Identify communities.
+
+::::
+
+:::
+
+::: {.column width="20%"}
+
+:::
+
+::: {.column width="40%" .incremental}
+
+::::{style="font-size: 75%;"}
+
+7. **Biology**: Group genes/proteins.
+8. **Recommendations**: Enhance systems.
+9. **Geography**: Cluster regions.
+10. **Logistics**: Optimize inventory.
+11. **Healthcare**: Cluster patients.
+12. **IoT**: Analyze sensor data.
+
+::::
+   
+:::
+
+::::
+
+### The idea
+
+{{< include img/_kmeans_anim.qmd >}}
+
+### example at work
+
+```{r}
+#| output: true
+#| 
+normalize_values <- function(x, mean, sd) {
+  (x-mean)/sd
+}
+
+unnormalize_values <- function(x, mean, sd) {
+  (x*sd)+mean
+}
+
+set.seed(2021) # So you can reproduce this example
+
+quakes_raw <- quakes %>% 
+  dplyr::select(-stations) %>% 
+  dplyr::as_tibble()
+
+summary(quakes_raw)
+
+```
+
+### quick eda
+
+```{r}
+
+plot(quakes_raw)
+```
+
+### first kmeans
+
+```{r}
+#| echo: true
+#| output: true
+#| 
+kclust <- quakes_raw %>% 
+  dplyr::select(depth, mag) %>% 
+  kmeans(centers = 4, iter.max = 10, nstart = 5)
+kclust
+
+```
+
+### some post processing
+
+```{r}
+#| echo: true
+#| output: true
+
+# Add the cluster number onto to our original data
+point_assignments <- broom::augment(kclust, quakes_raw) 
+head(point_assignments)
+```
+
+### more cluster info
+
+```{r}
+# Summarize each cluster
+cluster_info <- broom::tidy(kclust)
+cluster_info
+
+# Summary stats about our model's fit
+model_stats <- broom::glance(kclust)
+model_stats
+
+```
+
+### visuals!
+
+```{r}
+
+ggplot2::ggplot() +
+  ggplot2::geom_point(
+    data = point_assignments, aes(x = depth, y = mag, color = .cluster)
+  ) + 
+  ggplot2::geom_point(
+    data = cluster_info, aes(x = depth, y = mag),  size = 7, stroke = 3, shape = "x"
+  ) +
+  ggplot2::labs(
+    title = "k-Means analysis of earthquakes near Fiji",
+    subtitle = "Clustered on raw values of depth and magnitude",
+    caption = "Source: Harvard PRIM-H project / 1000 seismic events of MB > 4.0 since 1964",
+    x = "Depth",
+    y = "Magnitude"
+  )+
+  scale_color_brewer(palette = "Set1")+
+  theme_bw(base_size = 15)
+
+```
+
+---
+
+What went wrong?
+
+---
+
+```{r}
+
+ggplot2::ggplot() +
+  ggplot2::geom_point(
+    data = point_assignments, aes(x = depth, y = mag, color = .cluster)
+  ) + 
+  ggplot2::geom_point(
+    data = cluster_info, aes(x = depth, y = mag), size = 4, shape = "x"
+  ) +
+  ggplot2::labs(
+    title = "k-Means analysis of earthquakes near Fiji",
+    subtitle = "Clustered on raw values of depth and magnitude",
+    caption = "Source: Harvard PRIM-H project / 1000 seismic events of MB > 4.0 since 1964",
+    x = "Depth",
+    y = "Magnitude"
+  )+
+  scale_color_brewer(palette = "Set1")+
+  theme_bw(base_size = 15)
+
+```
+
+### feature scaling
+
+Do it when:
+
+- comparing unlike units (meters, kilmeters)
+- independent measures (height in meters and circumference in meters)
+
+Leave as is when:
+
+- units are related
+
+\begin{align}
+X_{scaled} = \frac{X-\bar{X}}{sd(X)}
+\end{align}
+
+```{r}
+#| output: true
+
+quakes_sum <- quakes_raw |> 
+  summarise(
+    lat_mean = mean(lat),
+    lat_sd = sd(lat),
+    long_mean = mean(long),
+    long_sd = sd(long),
+    depth_mean = mean(depth),
+    depth_sd = sd(depth),
+    mag_mean = mean(mag),
+    mag_sd = sd(mag)
+  )
+
+quakes_scaled <- quakes_raw |> 
+  mutate(
+    lat = scale(lat) |> as.vector(),
+    long = scale(long) |> as.vector(),
+    depth = scale(depth) |> as.vector(),
+    mag = scale(mag) |> as.vector()
+  )
+
+summary(quakes_scaled)
+
+```
+
+### kmeans on scaled data
+
+```{r}
+#| output: true
+#| echo: true
+
+kclust <- quakes_scaled %>% 
+  dplyr::select(depth, mag) %>% 
+  kmeans(centers = 4, iter.max = 10, nstart = 5)
+kclust
+```
+
+### "unscale" data
+
+```{r}
+#| echo: true
+#| output: true
+
+
+point_assignments <- broom::augment(kclust, quakes_scaled) |> 
+  select(-lat,-long) |> 
+  mutate(
+    depth = depth*quakes_sum$depth_sd+quakes_sum$depth_mean,
+    mag = mag*quakes_sum$mag_sd+quakes_sum$mag_mean
+  )
+```
+
+### model stats and cluster info
+
+```{r}
+#| output: true
+
+
+cluster_info <- broom::tidy(kclust) %>% 
+  dplyr::mutate(
+    depth = depth*quakes_sum$depth_sd+quakes_sum$depth_mean,
+    mag = mag*quakes_sum$mag_sd+quakes_sum$mag_mean
+  )
+
+cluster_info
+
+model_stats <- broom::glance(kclust)
+
+model_stats
+
+```
+
+### visualize!!
+
+```{r}
+ggplot2::ggplot() +
+  ggplot2::geom_point(
+    data = point_assignments, aes(x = depth, y = mag, color = .cluster)
+  ) + 
+  ggplot2::geom_point(
+    data = cluster_info, aes(x = depth, y = mag), size = 7, stroke = 3, shape = "x"
+  ) +
+  ggplot2::labs(
+    title = "k-Means analysis of earthquakes near Fiji",
+    subtitle = "Clustered on normalized values of depth and magnitude",
+    caption = "Source: Harvard PRIM-H project / 1000 seismic events of MB > 4.0 since 1964",
+    x = "Depth",
+    y = "Magnitude"
+  )+
+  scale_color_brewer(palette = "Set1")+
+  theme_bw(base_size = 15)
+
+```
+
+### more dimensions!
+
+```{r}
+#| output: true
+
+sum_quakes <- quakes_raw |> 
+  pivot_longer(
+    cols = everything(),
+    names_to = "varname",
+    values_to = "val"
+  ) |> 
+  group_by(
+    varname
+  ) |> 
+  summarise(
+    mean_val = mean(val),
+    sd_val = sd(val)
+  )
+
+
+kclust_alldim <- kmeans(
+  quakes_scaled,
+  centers = 4,
+  iter.max = 10,
+  nstart = 5
+)
+
+kclust_alldim
+
+```
+
+### assign clusters
+
+```{r}
+
+point_assignments_ad <- broom::augment(kclust_alldim, quakes_scaled) |> 
+  mutate(
+    depth = depth*quakes_sum$depth_sd+quakes_sum$depth_mean,
+    mag = mag*quakes_sum$mag_sd+quakes_sum$mag_mean,
+    lat = lat*quakes_sum$lat_mean+quakes_sum$lat_mean,
+    long = long*quakes_sum$long_sd+quakes_sum$long_mean
+  )
+
+cluster_info_ad <- broom::tidy(kclust_alldim) |> 
+  mutate(
+    depth = depth*quakes_sum$depth_sd+quakes_sum$depth_mean,
+    mag = mag*quakes_sum$mag_sd+quakes_sum$mag_mean,
+    lat = lat*quakes_sum$lat_mean+quakes_sum$lat_mean,
+    long = long*quakes_sum$long_sd+quakes_sum$long_mean
+  )
+
+model_stats <- broom::glance(kclust_alldim)
+
+
+```
+
+
+```{r}
+
+plotly::plot_ly() %>% 
+  plotly::add_trace(
+    data = point_assignments_ad,
+    x = ~long, y = ~lat, z = ~depth*-1, size = ~mag,
+    color = ~.cluster,
+    type = "scatter3d", mode = "markers",
+    marker = list(symbol = "circle", sizemode = "diameter"),
+    sizes = c(5, 30)
+  ) %>% 
+  plotly::layout(scene = list(
+    xaxis = list(title = "Longitude"),
+    yaxis = list(title = "Latitude"),
+    zaxis = list(title = "Depth")
+  ))
+
+```
+
+### How many k?
+
+```{r}
+
+kclusts <- 
+  dplyr::tibble(n_clusts = 1:12) %>%
+  dplyr::mutate(
+    kclust = purrr::map(
+      n_clusts,
+      ~kmeans(quakes_scaled, centers = .x, iter.max = 10, nstart = 5)
+    ),
+    augmented = purrr::map(kclust, broom::augment, quakes_scaled),
+    tidied = purrr::map(kclust, broom::tidy),
+    glanced = purrr::map(kclust, broom::glance)
+  ) %>%
+  dplyr::select(-kclust)
+
+point_assignments <- kclusts %>%
+  dplyr::select(n_clusts, augmented) %>%
+  tidyr::unnest(augmented)
+
+cluster_info <- kclusts %>%
+  dplyr::select(n_clusts, tidied) %>% 
+  tidyr::unnest(tidied)
+
+model_stats <- kclusts %>%
+  dplyr::select(n_clusts, glanced) %>% 
+  tidyr::unnest(glanced)
+
+```
+
+```{r}
+ggplot2::ggplot() +
+  ggplot2::geom_point(
+    data = point_assignments, 
+    aes(
+      x = long, 
+      y = lat, 
+      color = .cluster
+      )
+  ) + 
+  ggplot2::geom_point(
+    data = cluster_info, 
+    aes(
+      x = long, 
+      y = lat), 
+    size = 4, 
+    shape = "x"
+  ) +
+  ggplot2::facet_wrap(
+    ~n_clusts
+    )+
+  theme_bw(base_size = 15)
+
+```
+
+### elbow plot
+
+```{r}
+
+ggplot2::ggplot(
+  data = model_stats, 
+  aes(
+    n_clusts, 
+    tot.withinss
+    )
+  ) +
+  ggplot2::geom_line(
+    linewidth = 2
+  ) +
+  ggplot2::scale_x_continuous(
+    limits = c(1, 12), 
+    breaks = seq(1, 12, 1)
+    ) +
+  ggplot2::ggtitle("Total within sum of squares, by # clusters")+
+  theme_bw(base_size = 15)
+
+```
+
+#### withinss (Within-Cluster Sum of Squares for Each Cluster)
+
+   - This is the sum of squared distances between each point and the centroid of its assigned cluster.
+   - It quantifies how tightly the points in a cluster are grouped around the centroid.
+   - For each cluster $k$, withinss can be calculated as:
+     $$
+     \text{withinss}_k = \sum_{i \in C_k} \left\| x_i - \mu_k \right\|^2
+     $$
+     where $C_k$ is the set of points in cluster \$k$, $x_i$ is a data point in cluster $k$, and $\mu_k$ is the centroid of cluster $k$.
+
+#### totss (Total Sum of Squares)
+
+   - This is the sum of squared distances between each point and the overall mean of the data (not the centroids of the clusters).
+   - It represents the total variability in the dataset.
+   - totss can be calculated as:
+     $$
+     \text{totss} = \sum_{i=1}^n \left\| x_i - \mu \right\|^2
+     $$
+     
+     where $x_i$ is a data point and $\mu$ is the overall mean of the dataset.
+
+#### tot.withinss (Total Within-Cluster Sum of Squares)
+   - This is the sum of the within-cluster sum of squares for all clusters.
+   - It is a measure of the total intra-cluster variation in the dataset.
+   - tot.withinss can be calculated as:
+     $$
+     \text{tot.withinss} = \sum_{k=1}^K \text{withinss}_k
+     $$
+     where $K$ is the number of clusters.
+
+#### summary k-means sum of squares
+
+- **withinss** indicates how compact each cluster is.
+- **totss** reflects the overall variability in the data before clustering.
+- **tot.withinss** shows the total variability within all clusters after clustering. 
+
+In k-means clustering, the goal is typically to minimize tot.withinss, which indicates that the clusters are well-formed and points are closely grouped around their respective centroids.
+
+### summary k means
+
+:::: {.columns}
+
+::: {.column width="40%" .incremental}
+
+::::{style="font-size: 85%;"}
+
+Pros:
+
+- Simplicity: Easy to implement and understand
+
+- Scalability: Efficient for large datasets due to its linear time complexity.
+
+- Speed: Quick convergence to local optima with fewer iterations.
+
+::::
+
+:::
+
+::: {.column width="20%"}
+
+:::
+
+::: {.column width="40%" .incremental}
+
+::::{style="font-size: 85%;"}
+
+Cons:
+
+- Sensitivity: Initial centroids significantly impact final clusters.
+
+- Shape Limitation: Struggles with non-spherical clusters.
+
+- Outliers: Sensitive to outliers and noise.
+
+::::
+   
+:::
+
+::::
+
+# References

@@ -656,9 +656,9 @@ res_param_study |>
   #   color = "gray70"
   # )+
   labs(
-    title = "How often shold you resample?",
+    title = "How often should you resample?",
     x = "number of repitions",
-    y = "95% confidence interval (percentile method)"
+    y = "95% confidence interval (percentile method) in years"
   )+
   theme_bw(
     base_size = 12
