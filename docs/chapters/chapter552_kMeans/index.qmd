@@ -223,7 +223,7 @@ ggplot2::ggplot() +
 
 Do it when:
 
-- comparing unlike units (meters, kilmeters)
+- comparing unlike units (meters, kilometers)
 - independent measures (height in meters and circumference in meters)
 
 Leave as is when:

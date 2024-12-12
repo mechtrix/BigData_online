@@ -14,7 +14,8 @@
       "/chapters/chapter551_kNN/index.html",
       "/chapters/chapter552_kMeans/index.html",
       "/chapters/chapter553_pam/index.html",
-      "/chapters/chapter554_dbscan/index.html"
+      "/chapters/chapter554_dbscan/index.html",
+      "/chapters/chapter555_agglomerative/index.html"
     ]
   }
 ]

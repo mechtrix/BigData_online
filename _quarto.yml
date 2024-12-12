@@ -69,3 +69,4 @@ website:
               - href: chapters/chapter552_kMeans/index.qmd
               - href: chapters/chapter553_pam/index.qmd
               - href: chapters/chapter554_dbscan/index.qmd
+              - href: chapters/chapter555_agglomerative/index.qmd

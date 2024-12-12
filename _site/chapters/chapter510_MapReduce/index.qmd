@@ -185,7 +185,7 @@ lorem <- read_lines(here("data","loremipsum_source.txt"))
 
 lorem_smpl <- sample(
   lorem, 
-  size = 500, 
+  size = 200, 
   replace = TRUE,
   # prob = rep(c(0.05),500)
   )
