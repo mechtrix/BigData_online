@@ -406,7 +406,7 @@ J(\theta_1,\theta_0) = \overbrace{\frac{1}{N}\sum_{i=1}^N(y(x_i)-y_i)^2}^{MSE}
 <section id="algorithm" class="title-slide slide level3 center">
 <h3>Algorithm</h3>
 <div style="font-size: 50%;">
-<div class="pseudocode-container quarto-float" data-line-number="true" data-pseudocode-number="1" data-caption-prefix="Algorithm">
+<div class="pseudocode-container quarto-float" data-caption-prefix="Algorithm" data-line-number="true" data-pseudocode-number="1">
 <div class="pseudocode">
 \begin{algorithm} \caption{gradient descent} \begin{algorithmic} \Require cost function $J(\theta)$, learning rate $\alpha$, number of iterations $n$ \State $i \gets 0$ \State random $\theta$ \Procedure{GradientDescent}{$J(\theta),\theta, \alpha, n$} \For{$i$ \To $n$} \For{$j = 1$ \To number of training examples $m$} \State \textbf{Compute gradient of $J$ wrt $\theta$} \State gradient = $\nabla J(\theta, x^j, y^j)$ \State \textbf{Update the parameters $\theta$:} \State $\theta = \theta - \alpha \times gradient$ \EndFor \EndFor \EndProcedure \end{algorithmic} \end{algorithm}
 </div>

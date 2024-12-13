@@ -1,0 +1,18 @@
+```yaml { .animate src="img/dendogram_ex.svg"}
+setup:
+  - element: "#step02"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "1"
+  - element: "#step03"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "2"
+  - element: "#step04"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "3"
+```

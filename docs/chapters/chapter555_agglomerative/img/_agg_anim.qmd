@@ -1,0 +1,23 @@
+```yaml { .animate src="img/agg_cluster.svg"}
+setup:
+  - element: "#step02"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "1"
+  - element: "#step03"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "2"
+  - element: "#step04"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "3"
+  - element: "#step05"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "4"
+```
