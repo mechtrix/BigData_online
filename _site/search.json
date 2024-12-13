@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Big Data lecture slides",
     "section": "",
-    "text": "This page is directly linked to the Big Data exercises.\nAdministrative stuff is always announced via ilearn.\nThis is the lecture material for the courses “Big Data” and “Big Data Processing and Analytics”. Feel free to reference for your self study. You are not allowed to copy without the prior consent of the author. Your are not allowed to use material without prior consent. Ask - it’s a form of politeness. You will most probable get permission.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nIntroduction\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Sources\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Quality\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Bias\n\n\nProf. Dr. Tim Weber\n\n\n\n\nTraditional Methods\n\n\nProf. Dr. Tim Weber\n\n\n\n\nMap Reduce\n\n\nProf. Dr. Tim Weber\n\n\n\n\nGradient Descent\n\n\nProf. Dr. Tim Weber\n\n\n\n\nMaximum Likelihood Estimation\n\n\nProf. Dr. Tim Weber\n\n\n\n\nPrincipal Component Analysis\n\n\nProf. Dr. Tim Weber\n\n\n\n\nk - Nearest Neighbours\n\n\nProf. Dr. Tim Weber\n\n\n\n\nk- Means\n\n\nProf. Dr. Tim Weber\n\n\n\n\n(P)artitioning (A)round (M)edoids\n\n\nProf. Dr. Tim Weber\n\n\n\n\nDensity Based Spatial Clustering and Application with Noise (DBSCAN)\n\n\nProf. Dr. Tim Weber\n\n\n\n\nAgglomerative Clustering\n\n\nProf. Dr. Tim Weber\n\n\n\n\nChecking Cluster Validity\n\n\nProf. Dr. Tim Weber\n\n\n\n\nChecking Cluster Validity\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\nNo matching items"
+    "text": "This page is directly linked to the Big Data exercises.\nAdministrative stuff is always announced via ilearn.\nThis is the lecture material for the courses “Big Data” and “Big Data Processing and Analytics”. Feel free to reference for your self study. You are not allowed to copy without the prior consent of the author. Your are not allowed to use material without prior consent. Ask - it’s a form of politeness. You will most probable get permission.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nIntroduction\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Sources\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Quality\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Bias\n\n\nProf. Dr. Tim Weber\n\n\n\n\nTraditional Methods\n\n\nProf. Dr. Tim Weber\n\n\n\n\nMap Reduce\n\n\nProf. Dr. Tim Weber\n\n\n\n\nGradient Descent\n\n\nProf. Dr. Tim Weber\n\n\n\n\nMaximum Likelihood Estimation\n\n\nProf. Dr. Tim Weber\n\n\n\n\nPrincipal Component Analysis\n\n\nProf. Dr. Tim Weber\n\n\n\n\nk - Nearest Neighbours\n\n\nProf. Dr. Tim Weber\n\n\n\n\nk- Means\n\n\nProf. Dr. Tim Weber\n\n\n\n\n(P)artitioning (A)round (M)edoids\n\n\nProf. Dr. Tim Weber\n\n\n\n\nDensity Based Spatial Clustering and Application with Noise (DBSCAN)\n\n\nProf. Dr. Tim Weber\n\n\n\n\nAgglomerative Clustering\n\n\nProf. Dr. Tim Weber\n\n\n\n\nChecking Cluster Validity\n\n\nProf. Dr. Tim Weber\n\n\n\n\nModel Based Clustering\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "chapters/chapter556_validity/index.html#cluster-tendency",
@@ -1010,205 +1010,205 @@
   {
     "objectID": "chapters/chapter557_mbc/index.html#model-based-clustering",
     "href": "chapters/chapter557_mbc/index.html#model-based-clustering",
-    "title": "Checking Cluster Validity",
+    "title": "Model Based Clustering",
     "section": "model based clustering",
     "text": "model based clustering\n\ntraditional clustering methods …\n\n\n\n… are not based on formal models\n\n\n\n\n… require the user to specify the number of clusters\n\n\n\nmodel based clustering …\n\n\n\n… assumes data coming from a mixture of two or more clusters\n\n\n\n\n… uses a soft assignment (each point has a certain probability of belonging to a cluster)",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",
-      "Checking Cluster Validity"
+      "Model Based Clustering"
     ]
   },
   {
     "objectID": "chapters/chapter557_mbc/index.html#concept-of-model-based-clustering",
     "href": "chapters/chapter557_mbc/index.html#concept-of-model-based-clustering",
-    "title": "Checking Cluster Validity",
+    "title": "Model Based Clustering",
     "section": "Concept of model based clustering",
     "text": "Concept of model based clustering\nEach component (cluster) \\(k\\) is modeled by the normal distribution (Kassambara 2017)\n\n\n\\(\\mu\\)\n\nmean vector\n\n\n\n\n\n\\(\\sum_k\\)\n\ncovariance matrix\n\n\n\n\n… an associated probability in the mixture. Each point has a probability of belonging to each cluster",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",
-      "Checking Cluster Validity"
+      "Model Based Clustering"
     ]
   },
   {
     "objectID": "chapters/chapter557_mbc/index.html#introductory-example",
     "href": "chapters/chapter557_mbc/index.html#introductory-example",
-    "title": "Checking Cluster Validity",
+    "title": "Model Based Clustering",
     "section": "introductory example",
     "text": "introductory example\n\n\n\n\n3 cluster?\n3 ellipses similar in terms of volume, shape and orientation\n\nhomogenous covariance matrix?",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",
-      "Checking Cluster Validity"
+      "Model Based Clustering"
     ]
   },
   {
     "objectID": "chapters/chapter557_mbc/index.html#estimating-model-parameters",
     "href": "chapters/chapter557_mbc/index.html#estimating-model-parameters",
-    "title": "Checking Cluster Validity",
+    "title": "Model Based Clustering",
     "section": "Estimating model parameters",
     "text": "Estimating model parameters\n\n\n(E)xpectation-(M)aximization as initialized by hierarchical clustering\ngeometric features (shape, volume, orientation) are determined by the covariance matrix\ndifferent parametrizations of \\(\\sum_k\\)\navailable model options: EII, VII, EEI, VEI, EVI, VVI, EEE, EEV, VEV, VVV",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",
-      "Checking Cluster Validity"
+      "Model Based Clustering"
     ]
   },
   {
     "objectID": "chapters/chapter557_mbc/index.html#available-models",
     "href": "chapters/chapter557_mbc/index.html#available-models",
-    "title": "Checking Cluster Validity",
+    "title": "Model Based Clustering",
     "section": "available models:",
     "text": "available models:\n\n\n1st identifier refers to volume, 2nd to shape, 3rd to orientation\nE for equal, V for variable, I for coordinate axes\n\nEVI denotes a model with Equal volume, Variable shape and the orientation is the Identity\nEEE means that the clusters have Equal volume, Equal shape and Equal orientation",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",
-      "Checking Cluster Validity"
+      "Model Based Clustering"
     ]
   },
   {
     "objectID": "chapters/chapter557_mbc/index.html#choosing-the-best-model",
     "href": "chapters/chapter557_mbc/index.html#choosing-the-best-model",
-    "title": "Checking Cluster Validity",
+    "title": "Model Based Clustering",
     "section": "choosing the best model",
     "text": "choosing the best model\n\n\nuse mle to fit all models for a range of \\(k\\) components\nmodel selection based on the (B)ayesian (I)nformation (C)riterion (BIC)\na greater BIC score is considered better in mbc\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThe BIC shall only be used to compare model within one method (as in model based cluster vs. model based cluster) not across different modeling methods (as in linear vs. logisitc regression)",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",
-      "Checking Cluster Validity"
+      "Model Based Clustering"
     ]
   },
   {
     "objectID": "chapters/chapter557_mbc/index.html#bayersion-information-criterion",
     "href": "chapters/chapter557_mbc/index.html#bayersion-information-criterion",
-    "title": "Checking Cluster Validity",
+    "title": "Model Based Clustering",
     "section": "Bayersion Information Criterion",
     "text": "Bayersion Information Criterion\n\\[\\begin{align}\nBIC = k \\ln(n)-2ln(\\hat{L})\n\\end{align}\\]\n\n\n\\(\\hat{L}\\)\n\nthe maximized value of the likelihood function of the model\n\n\\(n\\)\n\nnumber of data points\n\n\\(k\\)\n\nthe number of parameters estimated by the model\n\n\nA model could perform better by overfitting. The BIC introduces a penalty to the model parameters. Compare \\(r^2\\) and \\(r^2_{adjusted}\\)",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",
-      "Checking Cluster Validity"
+      "Model Based Clustering"
     ]
   },
   {
     "objectID": "chapters/chapter557_mbc/index.html#data-for-clustering",
     "href": "chapters/chapter557_mbc/index.html#data-for-clustering",
-    "title": "Checking Cluster Validity",
+    "title": "Model Based Clustering",
     "section": "data for clustering",
     "text": "data for clustering\n\ndata(\"diabetes\")\n\nhead(diabetes)\n\n   class glucose insulin sspg\n1 Normal      80     356  124\n2 Normal      97     289  117\n3 Normal     105     319  143\n4 Normal      90     356  199\n5 Normal      90     323  240\n6 Normal      86     381  157\n\n\n\nclass: diagnosis: normal, chemically diabetic and overly diabetic. Will be excluded\nglucose: plasma glucose response to oral glucose\ninsulin: plasma insulin respnse to oral glucose\nsspg: steady-state plasma glucose (measures insuline resistance)",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",
-      "Checking Cluster Validity"
+      "Model Based Clustering"
     ]
   },
   {
     "objectID": "chapters/chapter557_mbc/index.html#model-output",
     "href": "chapters/chapter557_mbc/index.html#model-output",
-    "title": "Checking Cluster Validity",
+    "title": "Model Based Clustering",
     "section": "model output",
     "text": "model output\n\ndf &lt;- scale(diabetes[,-1])\nmc &lt;- Mclust(df)\n\nsummary(mc)\n\n---------------------------------------------------- \nGaussian finite mixture model fitted by EM algorithm \n---------------------------------------------------- \n\nMclust VVV (ellipsoidal, varying volume, shape, and orientation) model with 3\ncomponents: \n\n log-likelihood   n df       BIC       ICL\n      -169.0908 145 29 -482.5069 -501.4662\n\nClustering table:\n 1  2  3 \n81 36 28",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",
-      "Checking Cluster Validity"
+      "Model Based Clustering"
     ]
   },
   {
     "objectID": "chapters/chapter557_mbc/index.html#detailed-model-output",
     "href": "chapters/chapter557_mbc/index.html#detailed-model-output",
-    "title": "Checking Cluster Validity",
+    "title": "Model Based Clustering",
     "section": "detailed model output",
     "text": "detailed model output\n\nmc$modelName\n\n[1] \"VVV\"\n\nmc$G\n\n[1] 3",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",
-      "Checking Cluster Validity"
+      "Model Based Clustering"
     ]
   },
   {
     "objectID": "chapters/chapter557_mbc/index.html#visualize-cluster-output",
     "href": "chapters/chapter557_mbc/index.html#visualize-cluster-output",
-    "title": "Checking Cluster Validity",
+    "title": "Model Based Clustering",
     "section": "visualize cluster output",
     "text": "visualize cluster output",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",
-      "Checking Cluster Validity"
+      "Model Based Clustering"
     ]
   },
   {
     "objectID": "chapters/chapter557_mbc/index.html#geysers",
     "href": "chapters/chapter557_mbc/index.html#geysers",
-    "title": "Checking Cluster Validity",
+    "title": "Model Based Clustering",
     "section": "geysers?",
     "text": "geysers?",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",
-      "Checking Cluster Validity"
+      "Model Based Clustering"
     ]
   },
   {
     "objectID": "chapters/chapter557_mbc/index.html#univariate-clustering",
     "href": "chapters/chapter557_mbc/index.html#univariate-clustering",
-    "title": "Checking Cluster Validity",
+    "title": "Model Based Clustering",
     "section": "univariate clustering",
     "text": "univariate clustering",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",
-      "Checking Cluster Validity"
+      "Model Based Clustering"
     ]
   },
   {
     "objectID": "chapters/chapter557_mbc/index.html#clustering",
     "href": "chapters/chapter557_mbc/index.html#clustering",
-    "title": "Checking Cluster Validity",
+    "title": "Model Based Clustering",
     "section": "clustering",
     "text": "clustering\n\nuv_clust &lt;- densityMclust(acidity)\n\n\n\n\n\n\n\nuv_clust &lt;- densityMclust(acidity, modelName = \"V\" )\n\n\n\n\n\n\n\nsummary(uv_clust)\n\n------------------------------------------------------- \nDensity estimation via Gaussian finite mixture modeling \n------------------------------------------------------- \n\nMclust V (univariate, unequal variance) model with 3 components: \n\n log-likelihood   n df       BIC       ICL\n      -178.7817 155  8 -397.9108 -458.8648\n\ntmp &lt;- acidity |&gt; \n  add_column(\n    classification = uv_clust$classification\n  ) |&gt; \n  add_column(\n    uncertainty = uv_clust$uncertainty\n  )\n\ntmp |&gt; \n  ggplot(\n    aes(\n      x = classification,\n      y = acidity,\n      size = uncertainty\n    )\n  )+\n  geom_jitter()+\n  geom_text(\n    aes(\n      label = uncertainty |&gt; round(digits = 2)\n    ),\n    size = 9\n  )",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",
-      "Checking Cluster Validity"
+      "Model Based Clustering"
     ]
   },
   {
     "objectID": "chapters/chapter557_mbc/index.html#modeling-visualization",
     "href": "chapters/chapter557_mbc/index.html#modeling-visualization",
-    "title": "Checking Cluster Validity",
+    "title": "Model Based Clustering",
     "section": "modeling visualization",
     "text": "modeling visualization",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",
-      "Checking Cluster Validity"
+      "Model Based Clustering"
     ]
   },
   {
     "objectID": "chapters/chapter557_mbc/index.html#cluster-visualization",
     "href": "chapters/chapter557_mbc/index.html#cluster-visualization",
-    "title": "Checking Cluster Validity",
+    "title": "Model Based Clustering",
     "section": "cluster visualization",
     "text": "cluster visualization",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",
-      "Checking Cluster Validity"
+      "Model Based Clustering"
     ]
   },
   {
     "objectID": "chapters/chapter557_mbc/index.html#more-viz",
     "href": "chapters/chapter557_mbc/index.html#more-viz",
-    "title": "Checking Cluster Validity",
+    "title": "Model Based Clustering",
     "section": "more viz",
     "text": "more viz",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",
-      "Checking Cluster Validity"
+      "Model Based Clustering"
     ]
   }
 ]
