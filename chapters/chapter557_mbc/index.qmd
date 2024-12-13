@@ -1,0 +1,453 @@
+---
+title: "Checking Cluster Validity"
+bibliography: https://api.citedrive.com/bib/da291eae-8e2a-46b1-968e-0b79af55f87a/references.bib?x=eyJpZCI6ICJkYTI5MWVhZS04ZTJhLTQ2YjEtOTY4ZS0wYjc5YWY1NWY4N2EiLCAidXNlciI6ICI1NjQ5IiwgInNpZ25hdHVyZSI6ICI2ZDMyODMxM2QzZDQ3NmE3MGM4MDc5MzJiNzE1NjkzNjJmYmZjODYyNGMzNmJjNDBkMDk3Njk5N2RmZjQ5MTg5In0=/bibliography.bib
+format:
+  revealjs:
+    slide-level: 5
+    resource-path: 
+      - "img"
+    logo: img/back.svg
+    footer-logo-link: "https://mechtrix.github.io/BigData_online/"
+    footer: "Copyright Prof. Dr. Tim Weber, 2024"
+revealjs-plugins:
+  - animate
+  - attribution
+filters: 
+  - animate
+  - reveal-header
+editor_options: 
+  chunk_output_type: console
+css: style.css
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(tidyverse)
+library(gt)
+library(factoextra)
+library(here)
+library(MASS)
+library(mclust)
+library(patchwork)
+library(ggExtra)
+
+```
+
+## model based clustering
+
+. . .
+
+traditional clustering methods ...
+
+. . . 
+
+* ... are not based on formal models
+
+. . . 
+
+* ... require the user to specify the number of clusters
+
+. . .
+
+model based clustering ...
+
+. . .
+
+* ... assumes data coming from a mixture of two or more clusters
+
+. . .
+
+* ... uses a soft assignment (each point has a certain probability of belonging to a cluster)
+
+## Concept of model based clustering
+
+Each component (cluster) $k$ is modeled by the normal distribution [@kassambara2017practical]
+
+::: {.fragment}
+
+$\mu$
+
+:   mean vector
+
+:::
+
+::: {.fragment}
+
+$\sum_k$
+
+: covariance matrix
+
+:::
+
+::: {.fragment}
+
+... an associated probability in the mixture. Each point has a probability of belonging to each cluster
+
+:::
+
+## introductory example
+
+```{r}
+#| fig-align: center
+
+data("geyser")
+
+geyser |> 
+  ggplot(
+    aes(
+      x = duration,
+      y = waiting
+    )
+  )+
+  geom_point()+
+  geom_density2d()+
+  labs(
+    title = "geyser data"
+  )+
+  theme_classic(
+    base_size = 15
+  )
+
+```
+
+::: {.fragment}
+
+::::{style="font-size: 75%;"}
+
+* 3 cluster?
+* 3 ellipses similar in terms of volume, shape and orientation
+  * homogenous covariance matrix?
+
+::::
+
+:::
+
+## Estimating model parameters 
+
+::: {.incremental}
+
+* (E)xpectation-(M)aximization as initialized by hierarchical clustering
+* geometric features (shape, volume, orientation) are determined by the covariance matrix
+* different parametrizations of $\sum_k$
+* available model options: EII, VII, EEI, VEI, EVI, VVI, EEE, EEV, VEV, VVV
+
+:::
+
+## available models: {.incremental}
+
+::: {.incremental}
+
+* 1st identifier refers to `volume`, 2nd to `shape`, 3rd to `orientation`
+* `E` for *equal*, `V` for *variable*, `I` for *coordinate axes* 
+  * `EVI` denotes a model with `E`qual volume, `V`ariable shape and the orientation is the `I`dentity
+  * `EEE` means that the clusters have `E`qual volume, `E`qual shape and `E`qual orientation
+  
+:::
+
+## choosing the best model
+
+::: {.incremental}
+
+* use `mle` to fit all models for a range of $k$ components
+* model selection based on the (B)ayesian (I)nformation (C)riterion (BIC)
+* a greater BIC score is considered better in mbc
+
+:::
+
+::: {.fragment}
+
+::: {.callout-important}
+
+The BIC shall only be used to compare model within one method (as in *model based cluster vs. model based cluster*) not across different modeling methods (as in *linear vs. logisitc regression*)
+
+:::
+
+:::
+
+## Bayersion Information Criterion
+
+\begin{align}
+BIC = k \ln(n)-2ln(\hat{L})
+\end{align}
+
+::::{style="font-size: 75%;"}
+
+$\hat{L}$
+
+:   the maximized value of the likelihood function of the model
+
+$n$
+
+:   number of data points
+
+$k$
+
+: the number of parameters estimated by the model
+
+A model could perform better by overfitting. The *BIC* introduces a penalty to the model parameters. Compare $r^2$ and $r^2_{adjusted}$
+
+::::
+
+## data for clustering
+
+```{r}
+#| echo: true
+
+data("diabetes")
+
+head(diabetes)
+
+```
+
+* class: diagnosis: normal, chemically diabetic and overly diabetic. Will be excluded
+* glucose: plasma glucose response to oral glucose
+* insulin: plasma insulin respnse to oral glucose
+* sspg: steady-state plasma glucose (measures insuline resistance)
+
+## model output
+
+```{r}
+#| echo: true
+
+df <- scale(diabetes[,-1])
+mc <- Mclust(df)
+
+summary(mc)
+```
+
+## detailed model output
+
+```{r}
+#| echo: true
+
+mc$modelName
+mc$G
+
+
+
+```
+
+## visualize cluster output
+
+### model selection
+
+```{r}
+
+fviz_mclust(mc,"BIC",palette= "jco")
+
+```
+
+### show the clustering
+
+```{r}
+
+fviz_mclust(mc, "classification", geom = "point", pointsize = 1.5, palette = "jco")
+
+```
+
+### classification uncertainty
+
+```{r}
+
+fviz_mclust(mc,"uncertainty",palette = "jco")
+
+```
+
+## geysers?
+
+```{r}
+
+geyser_scaled <- scale(geyser,scale = TRUE)
+
+geyser_mdb <- Mclust(geyser_scaled,modelNames = c("EEE"))
+
+geyser_mdb_02 <- Mclust(geyser_scaled)
+
+```
+
+### model selection
+
+```{r}
+
+fviz_mclust(geyser_mdb,"BIC",palette= "jco")
+
+fviz_mclust(geyser_mdb_02,"BIC",palette= "jco")
+
+```
+
+### show the clustering
+
+```{r}
+
+fviz_mclust(geyser_mdb, "classification", geom = "point", pointsize = 1.5, palette = "jco")
+
+fviz_mclust(geyser_mdb_02, "classification", geom = "point", pointsize = 1.5, palette = "jco")
+
+```
+
+### classification uncertainty
+
+```{r}
+
+fviz_mclust(geyser_mdb,"uncertainty",palette = "jco")
+
+
+fviz_mclust(geyser_mdb_02,"uncertainty",palette = "jco")
+
+```
+
+## univariate clustering
+
+```{r}
+#| fig-align: center
+
+
+data("acidity")
+
+acidity <- acidity |> as.data.frame()
+
+acidity |> 
+  ggplot(
+    aes(
+      x = acidity
+    )
+  )+
+  geom_density()+
+  labs(
+    title = "density plot"
+  )+
+  theme_classic(
+    base_size = 15
+  )+
+  acidity |> 
+  ggplot(
+    aes(
+      x = acidity
+    )
+  )+
+  geom_histogram(
+    fill = "steelblue",
+    color = "white"
+  )+
+  labs(title = "histogram")+
+  theme_classic(
+    base_size = 15
+  )
+
+
+```
+
+## clustering
+
+```{r}
+#| echo: true
+
+uv_clust <- densityMclust(acidity)
+
+uv_clust <- densityMclust(acidity, modelName = "V" )
+
+summary(uv_clust)
+
+tmp <- acidity |> 
+  add_column(
+    classification = uv_clust$classification
+  ) |> 
+  add_column(
+    uncertainty = uv_clust$uncertainty
+  )
+
+tmp |> 
+  ggplot(
+    aes(
+      x = classification,
+      y = acidity,
+      size = uncertainty
+    )
+  )+
+  geom_jitter()+
+  geom_text(
+    aes(
+      label = uncertainty |> round(digits = 2)
+    ),
+    size = 9
+  )
+
+```
+
+## modeling visualization
+
+```{r}
+
+fviz_mclust(uv_clust,"BIC")
+
+```
+
+## cluster visualization
+
+```{r}
+
+uv_out <- acidity |> 
+  add_column(
+    cluster_idx = as_factor(uv_clust$classification)
+  )
+
+uv_out |> 
+  ggplot(
+    aes(
+      x = acidity
+    )
+  )+
+  geom_density(
+    aes(
+       fill = cluster_idx,
+      group = cluster_idx
+    )
+    )+
+  geom_density(
+    aes(
+      linetype = "original"
+    ),
+    key_glyph = "path",
+    fill = "gray",
+    alpha = 0.5
+  )+
+  scale_fill_brewer(
+    palette = "Set2"
+  )+
+  theme_classic(
+    base_size = 15
+  )+
+  scale_x_continuous(
+    expand = c(0,0,0,0)
+  )+
+  scale_y_continuous(
+    expand = c(0,0,0,0)
+  )+
+  theme(
+    legend.position = "bottom"
+  )
+
+```
+
+## more viz
+
+```{r}
+
+plt <- uv_out |> 
+  ggplot(
+    aes(
+      x = cluster_idx,
+      y = acidity
+    )
+  )+
+  geom_point()+
+  geom_boxplot()
+
+ggMarginal(plt)
+
+```
+
+
+# References
