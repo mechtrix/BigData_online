@@ -694,5 +694,41 @@
       "Cluster Analysis",
       "Agglomerative Clustering"
     ]
+  },
+  {
+    "objectID": "chapters/chapter555_agglomerative/index.html#whats-a-dendogram",
+    "href": "chapters/chapter555_agglomerative/index.html#whats-a-dendogram",
+    "title": "Agglomerative Clustering",
+    "section": "What’s a dendogram",
+    "text": "What’s a dendogram",
+    "crumbs": [
+      "Data crunching",
+      "Cluster Analysis",
+      "Agglomerative Clustering"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter555_agglomerative/index.html#what-is-similar",
+    "href": "chapters/chapter555_agglomerative/index.html#what-is-similar",
+    "title": "Agglomerative Clustering",
+    "section": "What is similar?",
+    "text": "What is similar?\n\n\n… the classification of observations into groups requires some methods for computing the distance or the (dis)similarity between each pair of observations. The result of this computation is known as a dissimilarity or distance matrix. (Kassambara 2017)",
+    "crumbs": [
+      "Data crunching",
+      "Cluster Analysis",
+      "Agglomerative Clustering"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter555_agglomerative/index.html#distance-measures",
+    "href": "chapters/chapter555_agglomerative/index.html#distance-measures",
+    "title": "Agglomerative Clustering",
+    "section": "distance measures",
+    "text": "distance measures\n\n\nClassical\n\nEuclidean\nManhatten\n\nCorrelation based\n\nPearson correlation\nEisen cosine correlation distance\nSpearman correlation distance\nKendall correlation distance",
+    "crumbs": [
+      "Data crunching",
+      "Cluster Analysis",
+      "Agglomerative Clustering"
+    ]
   }
 ]

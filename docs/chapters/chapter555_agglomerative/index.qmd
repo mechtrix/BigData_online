@@ -38,5 +38,71 @@ library(tidyverse)
 
 {{< include img/_agg_anim.qmd >}}
 
+## What's a dendogram
+
+{{< include img/_dendogram_anim.qmd >}}
+
+## What is similar?
+
+![](img/similar.png)
+
+::: {.fragment .fade-in}
+
+... the classification of observations into groups requires some methods for computing the **distance** or the **(dis)similarity** between each pair of observations. The result of this computation is known as a **dissimilarity** or **distance matrix**.  [@kassambara2017practical]
+
+:::
+
+## distance measures
+
+::: {.incremental}
+
+- Classical
+  * Euclidean
+  * Manhatten
+
+- Correlation based
+  * Pearson correlation
+  * Eisen cosine correlation distance
+  * Spearman correlation distance
+  * Kendall correlation distance
+
+:::
+
+### Manhatten distance
+
+
+![](img/manhatten.svg){width=2500px fig-align="center"}
+
+\begin{align}
+d_{man}(x,y) = \sum_{i=1}^n|x_i-y|
+\end{align}
+
+---
+
+::: {style="font-size: 60%;"}
+
+Pros:
+
+1. **Robustness to Outliers**:
+   - Less sensitive to outliers compared to Euclidean distance.
+
+2. **Computational Simplicity**:
+   - Involves only addition and subtraction, making it computationally simpler and faster.
+
+3. **Suitability for High-Dimensional Data**:
+   - Performs better in high-dimensional spaces, less affected by the "curse of dimensionality."
+
+Cons:
+
+1. **Ignores Diagonal Distance**:
+   - Only considers movements along the coordinate axes, ignoring diagonal relationships.
+
+2. **Dependence on Scale**:
+   - Affected by the scale and units of features, requiring proper normalization.
+
+3. **Less Effective for Spherical Clusters**:
+   - May not capture the true geometric relationships in spherical or circular clusters as accurately as Euclidean distance.
+
+:::
 
 # References

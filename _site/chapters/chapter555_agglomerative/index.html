@@ -31,7 +31,27 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-bbe7401fe57d4b791b917637bb662036.css">
   <link rel="stylesheet" href="style.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -183,7 +203,98 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
         data-fragment-index: "4" --></div>
 </section>
 
-<section id="references" class="title-slide slide level1 center">
+<section id="whats-a-dendogram" class="title-slide slide level2 center">
+<h2>What’s a dendogram</h2>
+<div data-animate="" data-src="img/dendogram_ex.svg"><!-- setup:
+  - element: "#step02"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "1"
+  - element: "#step03"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "2"
+  - element: "#step04"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "3" --></div>
+</section>
+
+<section id="what-is-similar" class="title-slide slide level2 center">
+<h2>What is similar?</h2>
+
+<img data-src="img/similar.png" class="r-stretch"><div class="fragment fade-in">
+<p>… the classification of observations into groups requires some methods for computing the <strong>distance</strong> or the <strong>(dis)similarity</strong> between each pair of observations. The result of this computation is known as a <strong>dissimilarity</strong> or <strong>distance matrix</strong>. <span class="citation" data-cites="kassambara2017practical">(<a href="#/references" role="doc-biblioref" onclick="">Kassambara 2017</a>)</span></p>
+</div>
+</section>
+
+<section>
+<section id="distance-measures" class="title-slide slide level2 center">
+<h2>distance measures</h2>
+<div>
+<ul>
+<li class="fragment">Classical
+<ul>
+<li class="fragment">Euclidean</li>
+<li class="fragment">Manhatten</li>
+</ul></li>
+<li class="fragment">Correlation based
+<ul>
+<li class="fragment">Pearson correlation</li>
+<li class="fragment">Eisen cosine correlation distance</li>
+<li class="fragment">Spearman correlation distance</li>
+<li class="fragment">Kendall correlation distance</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="manhatten-distance" class="title-slide slide level3 center">
+<h3>Manhatten distance</h3>
+
+<img data-src="img/manhatten.svg" class="quarto-figure quarto-figure-center r-stretch" width="2500"><p><span class="math display">\[\begin{align}
+d_{man}(x,y) = \sum_{i=1}^n|x_i-y|
+\end{align}\]</span></p>
+</section>
+<section class="slide level5">
+
+<div style="font-size: 60%;">
+<p>Pros:</p>
+<ol type="1">
+<li><strong>Robustness to Outliers</strong>:
+<ul>
+<li>Less sensitive to outliers compared to Euclidean distance.</li>
+</ul></li>
+<li><strong>Computational Simplicity</strong>:
+<ul>
+<li>Involves only addition and subtraction, making it computationally simpler and faster.</li>
+</ul></li>
+<li><strong>Suitability for High-Dimensional Data</strong>:
+<ul>
+<li>Performs better in high-dimensional spaces, less affected by the “curse of dimensionality.”</li>
+</ul></li>
+</ol>
+<p>Cons:</p>
+<ol type="1">
+<li><strong>Ignores Diagonal Distance</strong>:
+<ul>
+<li>Only considers movements along the coordinate axes, ignoring diagonal relationships.</li>
+</ul></li>
+<li><strong>Dependence on Scale</strong>:
+<ul>
+<li>Affected by the scale and units of features, requiring proper normalization.</li>
+</ul></li>
+<li><strong>Less Effective for Spherical Clusters</strong>:
+<ul>
+<li>May not capture the true geometric relationships in spherical or circular clusters as accurately as Euclidean distance.</li>
+</ul></li>
+</ol>
+</div>
+</section>
+</section>
+<section id="references" class="title-slide slide level1 smaller scrollable">
 <h1>References</h1>
 
 
@@ -199,6 +310,11 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 </div>
 <div class="sb-title">
 <p> </p>
+</div>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-kassambara2017practical" class="csl-entry" role="listitem">
+Kassambara, Alboukadel. 2017. <em>Practical Guide to Cluster Analysis in r: Unsupervised Machine Learning</em>. Vol. 1. STHDA.
 </div>
 </div>
 </section>
