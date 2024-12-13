@@ -70,3 +70,4 @@ website:
               - href: chapters/chapter553_pam/index.qmd
               - href: chapters/chapter554_dbscan/index.qmd
               - href: chapters/chapter555_agglomerative/index.qmd
+              - href: chapters/chapter556_validity/index.qmd
