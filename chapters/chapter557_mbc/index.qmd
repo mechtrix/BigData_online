@@ -270,9 +270,12 @@ geyser_mdb_02 <- Mclust(geyser_scaled)
 ### model selection
 
 ```{r}
-
 fviz_mclust(geyser_mdb,"BIC",palette= "jco")
+```
 
+---
+
+```{r}
 fviz_mclust(geyser_mdb_02,"BIC",palette= "jco")
 
 ```
@@ -280,9 +283,12 @@ fviz_mclust(geyser_mdb_02,"BIC",palette= "jco")
 ### show the clustering
 
 ```{r}
-
 fviz_mclust(geyser_mdb, "classification", geom = "point", pointsize = 1.5, palette = "jco")
+```
 
+---
+
+```{r}
 fviz_mclust(geyser_mdb_02, "classification", geom = "point", pointsize = 1.5, palette = "jco")
 
 ```
@@ -290,10 +296,12 @@ fviz_mclust(geyser_mdb_02, "classification", geom = "point", pointsize = 1.5, pa
 ### classification uncertainty
 
 ```{r}
-
 fviz_mclust(geyser_mdb,"uncertainty",palette = "jco")
+```
 
+---
 
+```{r}
 fviz_mclust(geyser_mdb_02,"uncertainty",palette = "jco")
 
 ```
