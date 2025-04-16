@@ -6,13 +6,13 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-a37c72dd2dbac68997fcdc15a3622e78.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.js" defer="true"></script>
 <link href="../../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet">
 <script src="../../site_libs/quarto-contrib/pseudocode-2.4.1/pseudocode.min.js"></script>
 <link href="../../site_libs/quarto-contrib/pseudocode-2.4.1/pseudocode.min.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.6.39">
+  <meta name="generator" content="quarto-1.7.24">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Tim Weber">
   <title>Big Data lecture slides – k - Nearest Neighbours</title>
@@ -34,8 +34,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -46,7 +47,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -119,7 +120,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-bbe7401fe57d4b791b917637bb662036.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
   <link rel="stylesheet" href="style.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -449,23 +450,23 @@ Levels: circle triangle</code></pre>
 <h4>as kNN measure: k = 3</h4>
 <div class="cell">
 <div class="cell-output-display">
-<div id="vvmuhwswfo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vvmuhwswfo table {
+<div id="crfbywnagm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#crfbywnagm table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vvmuhwswfo thead, #vvmuhwswfo tbody, #vvmuhwswfo tfoot, #vvmuhwswfo tr, #vvmuhwswfo td, #vvmuhwswfo th {
+#crfbywnagm thead, #crfbywnagm tbody, #crfbywnagm tfoot, #crfbywnagm tr, #crfbywnagm td, #crfbywnagm th {
   border-style: none;
 }
 
-#vvmuhwswfo p {
+#crfbywnagm p {
   margin: 0;
   padding: 0;
 }
 
-#vvmuhwswfo .gt_table {
+#crfbywnagm .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -491,12 +492,12 @@ Levels: circle triangle</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#vvmuhwswfo .gt_caption {
+#crfbywnagm .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vvmuhwswfo .gt_title {
+#crfbywnagm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -508,7 +509,7 @@ Levels: circle triangle</code></pre>
   border-bottom-width: 0;
 }
 
-#vvmuhwswfo .gt_subtitle {
+#crfbywnagm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -520,7 +521,7 @@ Levels: circle triangle</code></pre>
   border-top-width: 0;
 }
 
-#vvmuhwswfo .gt_heading {
+#crfbywnagm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -532,13 +533,13 @@ Levels: circle triangle</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#vvmuhwswfo .gt_bottom_border {
+#crfbywnagm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vvmuhwswfo .gt_col_headings {
+#crfbywnagm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -553,7 +554,7 @@ Levels: circle triangle</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#vvmuhwswfo .gt_col_heading {
+#crfbywnagm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -573,7 +574,7 @@ Levels: circle triangle</code></pre>
   overflow-x: hidden;
 }
 
-#vvmuhwswfo .gt_column_spanner_outer {
+#crfbywnagm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -585,15 +586,15 @@ Levels: circle triangle</code></pre>
   padding-right: 4px;
 }
 
-#vvmuhwswfo .gt_column_spanner_outer:first-child {
+#crfbywnagm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vvmuhwswfo .gt_column_spanner_outer:last-child {
+#crfbywnagm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vvmuhwswfo .gt_column_spanner {
+#crfbywnagm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -605,11 +606,11 @@ Levels: circle triangle</code></pre>
   width: 100%;
 }
 
-#vvmuhwswfo .gt_spanner_row {
+#crfbywnagm .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vvmuhwswfo .gt_group_heading {
+#crfbywnagm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -635,7 +636,7 @@ Levels: circle triangle</code></pre>
   text-align: left;
 }
 
-#vvmuhwswfo .gt_empty_group_heading {
+#crfbywnagm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -650,15 +651,15 @@ Levels: circle triangle</code></pre>
   vertical-align: middle;
 }
 
-#vvmuhwswfo .gt_from_md > :first-child {
+#crfbywnagm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vvmuhwswfo .gt_from_md > :last-child {
+#crfbywnagm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vvmuhwswfo .gt_row {
+#crfbywnagm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -677,7 +678,7 @@ Levels: circle triangle</code></pre>
   overflow-x: hidden;
 }
 
-#vvmuhwswfo .gt_stub {
+#crfbywnagm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -690,7 +691,7 @@ Levels: circle triangle</code></pre>
   padding-right: 5px;
 }
 
-#vvmuhwswfo .gt_stub_row_group {
+#crfbywnagm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -704,15 +705,15 @@ Levels: circle triangle</code></pre>
   vertical-align: top;
 }
 
-#vvmuhwswfo .gt_row_group_first td {
+#crfbywnagm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vvmuhwswfo .gt_row_group_first th {
+#crfbywnagm .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vvmuhwswfo .gt_summary_row {
+#crfbywnagm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -722,16 +723,16 @@ Levels: circle triangle</code></pre>
   padding-right: 5px;
 }
 
-#vvmuhwswfo .gt_first_summary_row {
+#crfbywnagm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vvmuhwswfo .gt_first_summary_row.thick {
+#crfbywnagm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vvmuhwswfo .gt_last_summary_row {
+#crfbywnagm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -741,7 +742,7 @@ Levels: circle triangle</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#vvmuhwswfo .gt_grand_summary_row {
+#crfbywnagm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -751,7 +752,7 @@ Levels: circle triangle</code></pre>
   padding-right: 5px;
 }
 
-#vvmuhwswfo .gt_first_grand_summary_row {
+#crfbywnagm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -761,7 +762,7 @@ Levels: circle triangle</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#vvmuhwswfo .gt_last_grand_summary_row_top {
+#crfbywnagm .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -771,11 +772,11 @@ Levels: circle triangle</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#vvmuhwswfo .gt_striped {
+#crfbywnagm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vvmuhwswfo .gt_table_body {
+#crfbywnagm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -784,7 +785,7 @@ Levels: circle triangle</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#vvmuhwswfo .gt_footnotes {
+#crfbywnagm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -798,7 +799,7 @@ Levels: circle triangle</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#vvmuhwswfo .gt_footnote {
+#crfbywnagm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -807,7 +808,7 @@ Levels: circle triangle</code></pre>
   padding-right: 5px;
 }
 
-#vvmuhwswfo .gt_sourcenotes {
+#crfbywnagm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -821,7 +822,7 @@ Levels: circle triangle</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#vvmuhwswfo .gt_sourcenote {
+#crfbywnagm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -829,72 +830,72 @@ Levels: circle triangle</code></pre>
   padding-right: 5px;
 }
 
-#vvmuhwswfo .gt_left {
+#crfbywnagm .gt_left {
   text-align: left;
 }
 
-#vvmuhwswfo .gt_center {
+#crfbywnagm .gt_center {
   text-align: center;
 }
 
-#vvmuhwswfo .gt_right {
+#crfbywnagm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vvmuhwswfo .gt_font_normal {
+#crfbywnagm .gt_font_normal {
   font-weight: normal;
 }
 
-#vvmuhwswfo .gt_font_bold {
+#crfbywnagm .gt_font_bold {
   font-weight: bold;
 }
 
-#vvmuhwswfo .gt_font_italic {
+#crfbywnagm .gt_font_italic {
   font-style: italic;
 }
 
-#vvmuhwswfo .gt_super {
+#crfbywnagm .gt_super {
   font-size: 65%;
 }
 
-#vvmuhwswfo .gt_footnote_marks {
+#crfbywnagm .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vvmuhwswfo .gt_asterisk {
+#crfbywnagm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vvmuhwswfo .gt_indent_1 {
+#crfbywnagm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vvmuhwswfo .gt_indent_2 {
+#crfbywnagm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vvmuhwswfo .gt_indent_3 {
+#crfbywnagm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vvmuhwswfo .gt_indent_4 {
+#crfbywnagm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vvmuhwswfo .gt_indent_5 {
+#crfbywnagm .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vvmuhwswfo .katex-display {
+#crfbywnagm .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vvmuhwswfo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#crfbywnagm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1050,23 +1051,23 @@ Levels: circle triangle</code></pre>
 <h4>as kNN measure: k = 5</h4>
 <div class="cell">
 <div class="cell-output-display">
-<div id="ookjgdmcqf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ookjgdmcqf table {
+<div id="nbrqdphaoz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nbrqdphaoz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ookjgdmcqf thead, #ookjgdmcqf tbody, #ookjgdmcqf tfoot, #ookjgdmcqf tr, #ookjgdmcqf td, #ookjgdmcqf th {
+#nbrqdphaoz thead, #nbrqdphaoz tbody, #nbrqdphaoz tfoot, #nbrqdphaoz tr, #nbrqdphaoz td, #nbrqdphaoz th {
   border-style: none;
 }
 
-#ookjgdmcqf p {
+#nbrqdphaoz p {
   margin: 0;
   padding: 0;
 }
 
-#ookjgdmcqf .gt_table {
+#nbrqdphaoz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1092,12 +1093,12 @@ Levels: circle triangle</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#ookjgdmcqf .gt_caption {
+#nbrqdphaoz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ookjgdmcqf .gt_title {
+#nbrqdphaoz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1109,7 +1110,7 @@ Levels: circle triangle</code></pre>
   border-bottom-width: 0;
 }
 
-#ookjgdmcqf .gt_subtitle {
+#nbrqdphaoz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1121,7 +1122,7 @@ Levels: circle triangle</code></pre>
   border-top-width: 0;
 }
 
-#ookjgdmcqf .gt_heading {
+#nbrqdphaoz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1133,13 +1134,13 @@ Levels: circle triangle</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ookjgdmcqf .gt_bottom_border {
+#nbrqdphaoz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ookjgdmcqf .gt_col_headings {
+#nbrqdphaoz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1154,7 +1155,7 @@ Levels: circle triangle</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ookjgdmcqf .gt_col_heading {
+#nbrqdphaoz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1174,7 +1175,7 @@ Levels: circle triangle</code></pre>
   overflow-x: hidden;
 }
 
-#ookjgdmcqf .gt_column_spanner_outer {
+#nbrqdphaoz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1186,15 +1187,15 @@ Levels: circle triangle</code></pre>
   padding-right: 4px;
 }
 
-#ookjgdmcqf .gt_column_spanner_outer:first-child {
+#nbrqdphaoz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ookjgdmcqf .gt_column_spanner_outer:last-child {
+#nbrqdphaoz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ookjgdmcqf .gt_column_spanner {
+#nbrqdphaoz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1206,11 +1207,11 @@ Levels: circle triangle</code></pre>
   width: 100%;
 }
 
-#ookjgdmcqf .gt_spanner_row {
+#nbrqdphaoz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ookjgdmcqf .gt_group_heading {
+#nbrqdphaoz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1236,7 +1237,7 @@ Levels: circle triangle</code></pre>
   text-align: left;
 }
 
-#ookjgdmcqf .gt_empty_group_heading {
+#nbrqdphaoz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1251,15 +1252,15 @@ Levels: circle triangle</code></pre>
   vertical-align: middle;
 }
 
-#ookjgdmcqf .gt_from_md > :first-child {
+#nbrqdphaoz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ookjgdmcqf .gt_from_md > :last-child {
+#nbrqdphaoz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ookjgdmcqf .gt_row {
+#nbrqdphaoz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1278,7 +1279,7 @@ Levels: circle triangle</code></pre>
   overflow-x: hidden;
 }
 
-#ookjgdmcqf .gt_stub {
+#nbrqdphaoz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1291,7 +1292,7 @@ Levels: circle triangle</code></pre>
   padding-right: 5px;
 }
 
-#ookjgdmcqf .gt_stub_row_group {
+#nbrqdphaoz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1305,15 +1306,15 @@ Levels: circle triangle</code></pre>
   vertical-align: top;
 }
 
-#ookjgdmcqf .gt_row_group_first td {
+#nbrqdphaoz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ookjgdmcqf .gt_row_group_first th {
+#nbrqdphaoz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ookjgdmcqf .gt_summary_row {
+#nbrqdphaoz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1323,16 +1324,16 @@ Levels: circle triangle</code></pre>
   padding-right: 5px;
 }
 
-#ookjgdmcqf .gt_first_summary_row {
+#nbrqdphaoz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ookjgdmcqf .gt_first_summary_row.thick {
+#nbrqdphaoz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ookjgdmcqf .gt_last_summary_row {
+#nbrqdphaoz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1342,7 +1343,7 @@ Levels: circle triangle</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ookjgdmcqf .gt_grand_summary_row {
+#nbrqdphaoz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1352,7 +1353,7 @@ Levels: circle triangle</code></pre>
   padding-right: 5px;
 }
 
-#ookjgdmcqf .gt_first_grand_summary_row {
+#nbrqdphaoz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1362,7 +1363,7 @@ Levels: circle triangle</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#ookjgdmcqf .gt_last_grand_summary_row_top {
+#nbrqdphaoz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1372,11 +1373,11 @@ Levels: circle triangle</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ookjgdmcqf .gt_striped {
+#nbrqdphaoz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ookjgdmcqf .gt_table_body {
+#nbrqdphaoz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1385,7 +1386,7 @@ Levels: circle triangle</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#ookjgdmcqf .gt_footnotes {
+#nbrqdphaoz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1399,7 +1400,7 @@ Levels: circle triangle</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ookjgdmcqf .gt_footnote {
+#nbrqdphaoz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1408,7 +1409,7 @@ Levels: circle triangle</code></pre>
   padding-right: 5px;
 }
 
-#ookjgdmcqf .gt_sourcenotes {
+#nbrqdphaoz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1422,7 +1423,7 @@ Levels: circle triangle</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#ookjgdmcqf .gt_sourcenote {
+#nbrqdphaoz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1430,72 +1431,72 @@ Levels: circle triangle</code></pre>
   padding-right: 5px;
 }
 
-#ookjgdmcqf .gt_left {
+#nbrqdphaoz .gt_left {
   text-align: left;
 }
 
-#ookjgdmcqf .gt_center {
+#nbrqdphaoz .gt_center {
   text-align: center;
 }
 
-#ookjgdmcqf .gt_right {
+#nbrqdphaoz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ookjgdmcqf .gt_font_normal {
+#nbrqdphaoz .gt_font_normal {
   font-weight: normal;
 }
 
-#ookjgdmcqf .gt_font_bold {
+#nbrqdphaoz .gt_font_bold {
   font-weight: bold;
 }
 
-#ookjgdmcqf .gt_font_italic {
+#nbrqdphaoz .gt_font_italic {
   font-style: italic;
 }
 
-#ookjgdmcqf .gt_super {
+#nbrqdphaoz .gt_super {
   font-size: 65%;
 }
 
-#ookjgdmcqf .gt_footnote_marks {
+#nbrqdphaoz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ookjgdmcqf .gt_asterisk {
+#nbrqdphaoz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ookjgdmcqf .gt_indent_1 {
+#nbrqdphaoz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ookjgdmcqf .gt_indent_2 {
+#nbrqdphaoz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ookjgdmcqf .gt_indent_3 {
+#nbrqdphaoz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ookjgdmcqf .gt_indent_4 {
+#nbrqdphaoz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ookjgdmcqf .gt_indent_5 {
+#nbrqdphaoz .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ookjgdmcqf .katex-display {
+#nbrqdphaoz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ookjgdmcqf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#nbrqdphaoz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1759,7 +1760,6 @@ $ Proline                   &lt;dbl&gt; 1065, 1050, 1185, 1480, 735, 1450, 1290,
 <span id="cb11-4"><a></a>  <span class="at">repeats =</span> <span class="dv">3</span>,</span>
 <span id="cb11-5"><a></a>  <span class="at">savePredictions =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div>
 <ul>
 <li class="fragment">What is <code>repeatedcv</code>?
 <ul>
@@ -1767,7 +1767,6 @@ $ Proline                   &lt;dbl&gt; 1065, 1050, 1185, 1480, 735, 1450, 1290,
 </ul></li>
 <li class="fragment">What is cross validation?</li>
 </ul>
-</div>
 </section>
 
 <section id="cross-validation---why" class="title-slide slide level4 center">
@@ -1821,88 +1820,88 @@ $ Proline                   &lt;dbl&gt; 1065, 1050, 1185, 1480, 735, 1450, 1290,
 
 Pre-processing: centered (13), scaled (13) 
 Resampling: Cross-Validated (10 fold, repeated 3 times) 
-Summary of sample sizes: 122, 120, 120, 121, 122, 123, ... 
+Summary of sample sizes: 122, 122, 122, 121, 120, 123, ... 
 Resampling results across tuning parameters:
 
   k    Accuracy   Kappa       
-    5  0.9599389  0.9391469826
-    7  0.9744567  0.9613824895
-    9  0.9772344  0.9657287719
-   11  0.9739011  0.9607511432
-   13  0.9667338  0.9499504447
-   15  0.9770513  0.9656555702
-   17  0.9844017  0.9765463367
-   19  0.9718376  0.9575858221
-   21  0.9799573  0.9697882031
-   23  0.9819658  0.9728149140
-   25  0.9847436  0.9770254403
-   27  0.9852991  0.9778802619
-   29  0.9825214  0.9736697356
-   31  0.9854823  0.9781253266
-   33  0.9779182  0.9667242873
-   35  0.9779182  0.9667242873
-   37  0.9825214  0.9736697356
-   39  0.9697985  0.9543999477
-   41  0.9692735  0.9536402894
-   43  0.9664957  0.9494297631
-   45  0.9617094  0.9418781215
-   47  0.9617094  0.9418781215
-   49  0.9617094  0.9418781215
-   51  0.9545421  0.9303988431
-   53  0.9543834  0.9303288864
-   55  0.9523443  0.9272867251
-   57  0.9496215  0.9233271322
-   59  0.9547253  0.9308521158
-   61  0.9574481  0.9343701397
-   63  0.9480037  0.9202032195
-   65  0.9452808  0.9160998245
-   67  0.9281685  0.8896112191
-   69  0.9341148  0.8987402644
-   71  0.8943162  0.8367969431
-   73  0.8717582  0.8007622196
-   75  0.8503846  0.7665675584
-   77  0.8177228  0.7132533821
-   79  0.8230647  0.7214762476
-   81  0.7986813  0.6835797909
-   83  0.7493101  0.6030143428
-   85  0.7087912  0.5370742566
-   87  0.7010684  0.5242152627
-   89  0.6600183  0.4567798785
-   91  0.6299573  0.4030408013
-   93  0.5882112  0.3345150143
-   95  0.5522527  0.2719970010
-   97  0.5012576  0.1854346517
-   99  0.4723810  0.1323873506
-  101  0.4382112  0.0730061296
-  103  0.4308852  0.0586607556
-  105  0.4187729  0.0365667458
-  107  0.4162088  0.0316291440
-  109  0.4085165  0.0166583838
-  111  0.4006105  0.0008076564
-  113  0.4006105  0.0003174603
-  115  0.4006105  0.0000000000
-  117  0.4006105  0.0000000000
-  119  0.4006105  0.0000000000
-  121  0.4006105  0.0000000000
-  123  0.4006105  0.0000000000
-  125  0.4006105  0.0000000000
-  127  0.4006105  0.0000000000
-  129  0.4006105  0.0000000000
-  131  0.4006105  0.0000000000
-  133  0.4006105  0.0000000000
-  135  0.4006105  0.0000000000
-  137  0.4006105  0.0000000000
-  139  0.4006105  0.0000000000
-  141  0.4006105  0.0000000000
-  143  0.4006105  0.0000000000
-  145  0.4006105  0.0000000000
-  147  0.4006105  0.0000000000
-  149  0.4006105  0.0000000000
-  151  0.4006105  0.0000000000
-  153  0.4006105  0.0000000000
+    5  0.9523687  0.9276567691
+    7  0.9536081  0.9297166694
+    9  0.9569658  0.9348638717
+   11  0.9608547  0.9403986157
+   13  0.9759585  0.9635701327
+   15  0.9657998  0.9483330644
+   17  0.9731807  0.9594725617
+   19  0.9706166  0.9557050308
+   21  0.9660134  0.9488093565
+   23  0.9636325  0.9452146019
+   25  0.9632357  0.9446212015
+   27  0.9808791  0.9711990139
+   29  0.9808791  0.9711990139
+   31  0.9734982  0.9601534204
+   33  0.9639744  0.9457957607
+   35  0.9681807  0.9519729604
+   37  0.9689194  0.9530942141
+   39  0.9611966  0.9414681831
+   41  0.9611966  0.9414955857
+   43  0.9610134  0.9412231184
+   45  0.9606960  0.9406885191
+   47  0.9684188  0.9522573663
+   49  0.9632906  0.9447932515
+   51  0.9658547  0.9484586650
+   53  0.9680769  0.9519837644
+   55  0.9655128  0.9481489562
+   57  0.9609096  0.9406804111
+   59  0.9610928  0.9411943807
+   61  0.9557509  0.9335744397
+   63  0.9563065  0.9343415420
+   65  0.9586874  0.9378478032
+   67  0.9632906  0.9447919570
+   69  0.9583455  0.9366440065
+   71  0.9419963  0.9110325935
+   73  0.9072711  0.8566860693
+   75  0.8977228  0.8407029812
+   77  0.8749817  0.8052383394
+   79  0.8594505  0.7802286422
+   81  0.8381563  0.7459648011
+   83  0.8040720  0.6906785810
+   85  0.7884676  0.6645809942
+   87  0.7348474  0.5758634397
+   89  0.7030647  0.5235617322
+   91  0.6861905  0.4948676844
+   93  0.6589744  0.4494160027
+   95  0.6064774  0.3612692626
+   97  0.5520391  0.2688943246
+   99  0.5168926  0.2075454346
+  101  0.4688523  0.1257393095
+  103  0.4464530  0.0864105166
+  105  0.4183089  0.0350756414
+  107  0.4109280  0.0227257610
+  109  0.4057448  0.0114349956
+  111  0.4031807  0.0053467001
+  113  0.4006166  0.0003921569
+  115  0.4006166  0.0000000000
+  117  0.4006166  0.0000000000
+  119  0.4006166  0.0000000000
+  121  0.4006166  0.0000000000
+  123  0.4006166  0.0000000000
+  125  0.4006166  0.0000000000
+  127  0.4006166  0.0000000000
+  129  0.4006166  0.0000000000
+  131  0.4006166  0.0000000000
+  133  0.4006166  0.0000000000
+  135  0.4006166  0.0000000000
+  137  0.4006166  0.0000000000
+  139  0.4006166  0.0000000000
+  141  0.4006166  0.0000000000
+  143  0.4006166  0.0000000000
+  145  0.4006166  0.0000000000
+  147  0.4006166  0.0000000000
+  149  0.4006166  0.0000000000
+  151  0.4006166  0.0000000000
+  153  0.4006166  0.0000000000
 
 Accuracy was used to select the optimal model using the largest value.
-The final value used for the model was k = 31.</code></pre>
+The final value used for the model was k = 29.</code></pre>
 </div>
 </div>
 </section>
@@ -1930,9 +1929,9 @@ The final value used for the model was k = 31.</code></pre>
 
           Reference
 Prediction  1  2  3
-         1 14  2  0
+         1 14  1  0
          2  0 15  0
-         3  0  0 12
+         3  0  1 12
 
 Overall Statistics
                                           
@@ -1941,7 +1940,7 @@ Overall Statistics
     No Information Rate : 0.3953          
     P-Value [Acc &gt; NIR] : 1.02e-14        
                                           
-                  Kappa : 0.9299          
+                  Kappa : 0.93            
                                           
  Mcnemar's Test P-Value : NA              
 
@@ -1949,13 +1948,13 @@ Statistics by Class:
 
                      Class: 1 Class: 2 Class: 3
 Sensitivity            1.0000   0.8824   1.0000
-Specificity            0.9310   1.0000   1.0000
-Pos Pred Value         0.8750   1.0000   1.0000
+Specificity            0.9655   1.0000   0.9677
+Pos Pred Value         0.9333   1.0000   0.9231
 Neg Pred Value         1.0000   0.9286   1.0000
 Prevalence             0.3256   0.3953   0.2791
 Detection Rate         0.3256   0.3488   0.2791
-Detection Prevalence   0.3721   0.3488   0.2791
-Balanced Accuracy      0.9655   0.9412   1.0000</code></pre>
+Detection Prevalence   0.3488   0.3488   0.3023
+Balanced Accuracy      0.9828   0.9412   0.9839</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>pred_out <span class="ot">&lt;-</span> test_wd2 <span class="sc">|&gt;</span> </span>
 <span id="cb16-2"><a></a>  <span class="fu">add_column</span>(<span class="at">pred.origin =</span> prediction_knn_wd2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2561,190 +2560,172 @@ Aeberhard, Stefan, Danny Coomans, and Olivier de Vel. 1994. <span>“Comparative
     
 
     <script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
-          }
-        }
-        return false;
-      }
-      const onCopySuccess = function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
-          }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
             }
           }
-          return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
-      });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          return false;
         }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
             }
-          }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
         }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
-          }
-        });
-      }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
-          }
-        } else {
-          return undefined;
-        }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
               }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
           });
         }
-      }
-    });
-    </script>
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
         <script type="text/javascript">
         (function(d) {
           d.querySelectorAll(".pseudocode-container").forEach(function(el) {

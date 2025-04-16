@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Big Data lecture slides",
     "section": "",
-    "text": "This page is directly linked to the Big Data exercises.\nAdministrative stuff is always announced via ilearn.\nThis is the lecture material for the courses “Big Data” and “Big Data Processing and Analytics”. Feel free to reference for your self study. You are not allowed to copy without the prior consent of the author. Your are not allowed to use material without prior consent. Ask - it’s a form of politeness. You will most probable get permission.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nIntroduction\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Sources\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Quality\n\n\nProf. Dr. Tim Weber\n\n\n\n\nData Bias\n\n\nProf. Dr. Tim Weber\n\n\n\n\nTraditional Methods\n\n\nProf. Dr. Tim Weber\n\n\n\n\nMap Reduce\n\n\nProf. Dr. Tim Weber\n\n\n\n\nGradient Descent\n\n\nProf. Dr. Tim Weber\n\n\n\n\nMaximum Likelihood Estimation\n\n\nProf. Dr. Tim Weber\n\n\n\n\nPrincipal Component Analysis\n\n\nProf. Dr. Tim Weber\n\n\n\n\nk - Nearest Neighbours\n\n\nProf. Dr. Tim Weber\n\n\n\n\nk- Means\n\n\nProf. Dr. Tim Weber\n\n\n\n\n(P)artitioning (A)round (M)edoids\n\n\nProf. Dr. Tim Weber\n\n\n\n\nDensity Based Spatial Clustering and Application with Noise (DBSCAN)\n\n\nProf. Dr. Tim Weber\n\n\n\n\nAgglomerative Clustering\n\n\nProf. Dr. Tim Weber\n\n\n\n\nChecking Cluster Validity\n\n\nProf. Dr. Tim Weber\n\n\n\n\nModel Based Clustering\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\nNo matching items"
+    "text": "This page is directly linked to the Big Data exercises.\nAdministrative stuff is always announced via ilearn.\nThis is the lecture material for the courses “Big Data” and “Big Data Processing and Analytics”. Feel free to reference for your self study. You are not allowed to copy without the prior consent of the author. Your are not allowed to use material without prior consent. Ask - it’s a form of politeness. You will most probable get permission.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\nIntroduction\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nData Sources\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nData Quality\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nData Bias\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nTraditional Methods\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nMap Reduce\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nGradient Descent\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nMaximum Likelihood Estimation\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nPrincipal Component Analysis\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nk - Nearest Neighbours\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nk- Means\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\n(P)artitioning (A)round (M)edoids\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nDensity Based Spatial Clustering and Application with Noise (DBSCAN)\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nAgglomerative Clustering\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nChecking Cluster Validity\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nModel Based Clustering\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "chapters/chapter556_validity/index.html#cluster-tendency",
@@ -83,7 +83,7 @@
     "href": "chapters/chapter556_validity/index.html#how-it-works",
     "title": "Checking Cluster Validity",
     "section": "how it works",
-    "text": "how it works\n\nLet \\(D\\) be a real dataset, the Hopkins statistic is calculated as follows:\n\n\nSample uniformly \\(n\\) points ($p_1, , p_n $) from \\(D\\)\nFor each point \\(p_i \\in D\\), find its nearest neighbor \\(p_j\\), then compute the distance between \\(p_i\\) and \\(p_j\\) and denote it as \\(x_i = dist(p_i,p_j)\\)\nGenerate a simulated dataset (\\(random_D\\)) drawn from a random uniform distribution with \\(n-\\)points and the same variation as the original real dataset \\(D\\)\nFor each point \\(q_i \\in random_D\\), find its nearest neighbor \\(q_j\\) in \\(D\\); then compute the distance between \\(q_i\\) and \\(q_j\\) and denote it \\(y_i = dist(q_i,q_j)\\)\nCalculate the Hopkins statistics (\\(H\\)) as the mean nearest neighbor distance in the random dataset divided by the sum of the mean nearest neighbor distances in the real and across the simulated dataset.\n\n\n\n\\[\\begin{align}\nH = \\frac{\\sum^n_{i = 1} y_i}{\\sum^n_{i = 1} x_i+\\sum^n_{i = 1} y_i}\n\\end{align}\\]",
+    "text": "how it works\n\nLet \\(D\\) be a real dataset, the Hopkins statistic is calculated as follows:\n\nSample uniformly \\(n\\) points ($p_1, , p_n $) from \\(D\\)\nFor each point \\(p_i \\in D\\), find its nearest neighbor \\(p_j\\), then compute the distance between \\(p_i\\) and \\(p_j\\) and denote it as \\(x_i = dist(p_i,p_j)\\)\nGenerate a simulated dataset (\\(random_D\\)) drawn from a random uniform distribution with \\(n-\\)points and the same variation as the original real dataset \\(D\\)\nFor each point \\(q_i \\in random_D\\), find its nearest neighbor \\(q_j\\) in \\(D\\); then compute the distance between \\(q_i\\) and \\(q_j\\) and denote it \\(y_i = dist(q_i,q_j)\\)\nCalculate the Hopkins statistics (\\(H\\)) as the mean nearest neighbor distance in the random dataset divided by the sum of the mean nearest neighbor distances in the real and across the simulated dataset.\n\n\n\\[\\begin{align}\nH = \\frac{\\sum^n_{i = 1} y_i}{\\sum^n_{i = 1} x_i+\\sum^n_{i = 1} y_i}\n\\end{align}\\]",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",
@@ -95,7 +95,7 @@
     "href": "chapters/chapter556_validity/index.html#visual-assessment-of-tendency-vat",
     "title": "Checking Cluster Validity",
     "section": "visual assessment of tendency (VAT)",
-    "text": "visual assessment of tendency (VAT)\n\n\nCompute the (dis)similarity matrix (DM) between the objects in the dataset using the Euclidean distance measure\nReorder the (DM) so that similar objects are close to another. This process creates an ordered dissimilarity matrix (ODM)\nThe ODM is displayed as an ordered dissimilarity image (ODI), which is the visual output of VAT",
+    "text": "visual assessment of tendency (VAT)\n\nCompute the (dis)similarity matrix (DM) between the objects in the dataset using the Euclidean distance measure\nReorder the (DM) so that similar objects are close to another. This process creates an ordered dissimilarity matrix (ODM)\nThe ODM is displayed as an ordered dissimilarity image (ODI), which is the visual output of VAT",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",
@@ -217,7 +217,7 @@
     "href": "chapters/chapter300/index.html#iso-8000",
     "title": "Data Quality",
     "section": "ISO 8000",
-    "text": "ISO 8000\n\nISO\n\nInternational Standards Organization\n\n\n\n\nset of standards for data quality for the exchange between organizations and systems\nMaster data in the form of characteristic data that are\n\nexchanged between organizations and systems, and that\nconform to the data specifications that\ncan be validated by computer software.\n\n\n\n\n(ISO 2022)",
+    "text": "ISO 8000\n\nISO\n\nInternational Standards Organization\n\n\n\nset of standards for data quality for the exchange between organizations and systems\nMaster data in the form of characteristic data that are\n\nexchanged between organizations and systems, and that\nconform to the data specifications that\ncan be validated by computer software.\n\n\n\n(ISO 2022)",
     "crumbs": [
       "Data Quality"
     ]
@@ -227,7 +227,7 @@
     "href": "chapters/chapter300/index.html#data-quality-1",
     "title": "Data Quality",
     "section": "Data Quality",
-    "text": "Data Quality\n“… Data are of high quality if they are “Fit for Use” in their intended operational, decision-making and other roles. … ”\n\n\n(Herzog, Scheuren, and Winkler May )",
+    "text": "Data Quality\n“… Data are of high quality if they are “Fit for Use” in their intended operational, decision-making and other roles. … ”\n\n\n(Herzog, Scheuren, and Winkler May)",
     "crumbs": [
       "Data Quality"
     ]
@@ -237,7 +237,7 @@
     "href": "chapters/chapter300/index.html#data-quality-issues",
     "title": "Data Quality",
     "section": "Data Quality issues",
-    "text": "Data Quality issues\n\n\nData Entry for the London Summer Olympics\n\nan employee simple typed \\(20,000\\) seats available, while there were only \\(10,000\\)\nbuyers were able to exchange the already bought tickets\n\nThe London Whale\n\nusing a risk model that involved copy and pasting different multiple spreadsheats\nnot only were \\(\\$2bn\\) losses wrongly calculated, they were actually counted as gains summing up to a loss of \\(\\$6.2bn\\)",
+    "text": "Data Quality issues\n\nData Entry for the London Summer Olympics\n\nan employee simple typed \\(20,000\\) seats available, while there were only \\(10,000\\)\nbuyers were able to exchange the already bought tickets\n\nThe London Whale\n\nusing a risk model that involved copy and pasting different multiple spreadsheats\nnot only were \\(\\$2bn\\) losses wrongly calculated, they were actually counted as gains summing up to a loss of \\(\\$6.2bn\\)",
     "crumbs": [
       "Data Quality"
     ]
@@ -257,7 +257,7 @@
     "href": "chapters/chapter300/index.html#data-quality-summary",
     "title": "Data Quality",
     "section": "Data Quality summary",
-    "text": "Data Quality summary\n\n\nData Quality is hard\nTop Down or Bottom up?\nsimple things go wrong in the real world\ntest stuff\nbe specific\nthere is no recipe\ngarbage in, garbage out\nclassic ways are not fancy, but useful. Use this to your advantage\nnever trust data\ninvest early, profit soon",
+    "text": "Data Quality summary\n\nData Quality is hard\nTop Down or Bottom up?\nsimple things go wrong in the real world\ntest stuff\nbe specific\nthere is no recipe\ngarbage in, garbage out\nclassic ways are not fancy, but useful. Use this to your advantage\nnever trust data\ninvest early, profit soon",
     "crumbs": [
       "Data Quality"
     ]
@@ -462,7 +462,7 @@
     "href": "chapters/chapter510_MapReduce/index.html#mapreduce-summary",
     "title": "Map Reduce",
     "section": "MapReduce summary",
-    "text": "MapReduce summary\n\n\n\nMapReduce is significant for its role in enabling the processing of massive datasets efficiently across distributed computing clusters.\nIt revolutionized big data processing by providing a scalable and fault-tolerant framework for handling large-scale computations.\nIts simplicity and scalability made it accessible to a wide range of industries and applications, from web search engines to scientific research.\nMapReduce paved the way for the development of other big data processing frameworks and technologies, influencing the evolution of distributed computing paradigms.\nIts impact extends beyond its original implementation, as concepts and principles from MapReduce have influenced the design of subsequent systems and architectures for big data processing.",
+    "text": "MapReduce summary\n\n\nMapReduce is significant for its role in enabling the processing of massive datasets efficiently across distributed computing clusters.\nIt revolutionized big data processing by providing a scalable and fault-tolerant framework for handling large-scale computations.\nIts simplicity and scalability made it accessible to a wide range of industries and applications, from web search engines to scientific research.\nMapReduce paved the way for the development of other big data processing frameworks and technologies, influencing the evolution of distributed computing paradigms.\nIts impact extends beyond its original implementation, as concepts and principles from MapReduce have influenced the design of subsequent systems and architectures for big data processing.",
     "crumbs": [
       "Data crunching",
       "Map Reduce"
@@ -473,7 +473,7 @@
     "href": "chapters/chapter530_MLE/index.html#maximum-likelihood-estimation-mle",
     "title": "Maximum Likelihood Estimation",
     "section": "Maximum Likelihood Estimation (MLE)",
-    "text": "Maximum Likelihood Estimation (MLE)\n\nMaximum Likelihood Estimation (MLE) is a statistical method used for estimating the parameters of a probability distribution by maximizing a likelihood function. This method finds the parameter values that make the observed data most probable.\n\n\n\nConsistency: As the sample size increases, the MLE converges to the true parameter value.\nAsymptotic Normality: The distribution of the MLE approaches a normal distribution as the sample size grows.\nEfficiency: Among unbiased estimators, the MLE has the lowest possible variance asymptotically.",
+    "text": "Maximum Likelihood Estimation (MLE)\n\nMaximum Likelihood Estimation (MLE) is a statistical method used for estimating the parameters of a probability distribution by maximizing a likelihood function. This method finds the parameter values that make the observed data most probable.\n\n\nConsistency: As the sample size increases, the MLE converges to the true parameter value.\nAsymptotic Normality: The distribution of the MLE approaches a normal distribution as the sample size grows.\nEfficiency: Among unbiased estimators, the MLE has the lowest possible variance asymptotically.",
     "crumbs": [
       "Data crunching",
       "Maximum Likelihood Estimation"
@@ -820,7 +820,7 @@
     "href": "chapters/chapter555_agglomerative/index.html#distance-measures",
     "title": "Agglomerative Clustering",
     "section": "distance measures",
-    "text": "distance measures\n\n\nClassical\n\nEuclidean\nManhatten\n\nCorrelation based\n\nPearson correlation\nEisen cosine correlation distance\nSpearman correlation distance\nKendall correlation distance",
+    "text": "distance measures\n\nClassical\n\nEuclidean\nManhatten\n\nCorrelation based\n\nPearson correlation\nEisen cosine correlation distance\nSpearman correlation distance\nKendall correlation distance",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",
@@ -1048,7 +1048,7 @@
     "href": "chapters/chapter557_mbc/index.html#estimating-model-parameters",
     "title": "Model Based Clustering",
     "section": "Estimating model parameters",
-    "text": "Estimating model parameters\n\n\n(E)xpectation-(M)aximization as initialized by hierarchical clustering\ngeometric features (shape, volume, orientation) are determined by the covariance matrix\ndifferent parametrizations of \\(\\sum_k\\)\navailable model options: EII, VII, EEI, VEI, EVI, VVI, EEE, EEV, VEV, VVV",
+    "text": "Estimating model parameters\n\n(E)xpectation-(M)aximization as initialized by hierarchical clustering\ngeometric features (shape, volume, orientation) are determined by the covariance matrix\ndifferent parametrizations of \\(\\sum_k\\)\navailable model options: EII, VII, EEI, VEI, EVI, VVI, EEE, EEV, VEV, VVV",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",
@@ -1060,7 +1060,7 @@
     "href": "chapters/chapter557_mbc/index.html#available-models",
     "title": "Model Based Clustering",
     "section": "available models:",
-    "text": "available models:\n\n\n1st identifier refers to volume, 2nd to shape, 3rd to orientation\nE for equal, V for variable, I for coordinate axes\n\nEVI denotes a model with Equal volume, Variable shape and the orientation is the Identity\nEEE means that the clusters have Equal volume, Equal shape and Equal orientation",
+    "text": "available models:\n\n1st identifier refers to volume, 2nd to shape, 3rd to orientation\nE for equal, V for variable, I for coordinate axes\n\nEVI denotes a model with Equal volume, Variable shape and the orientation is the Identity\nEEE means that the clusters have Equal volume, Equal shape and Equal orientation",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",
@@ -1072,7 +1072,7 @@
     "href": "chapters/chapter557_mbc/index.html#choosing-the-best-model",
     "title": "Model Based Clustering",
     "section": "choosing the best model",
-    "text": "choosing the best model\n\n\nuse mle to fit all models for a range of \\(k\\) components\nmodel selection based on the (B)ayesian (I)nformation (C)riterion (BIC)\na greater BIC score is considered better in mbc\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThe BIC shall only be used to compare model within one method (as in model based cluster vs. model based cluster) not across different modeling methods (as in linear vs. logisitc regression)",
+    "text": "choosing the best model\n\nuse mle to fit all models for a range of \\(k\\) components\nmodel selection based on the (B)ayesian (I)nformation (C)riterion (BIC)\na greater BIC score is considered better in mbc\n\n\n\n\n\n\n\n\nImportant\n\n\nThe BIC shall only be used to compare model within one method (as in model based cluster vs. model based cluster) not across different modeling methods (as in linear vs. logisitc regression)",
     "crumbs": [
       "Data crunching",
       "Cluster Analysis",

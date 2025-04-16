@@ -6,11 +6,11 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-a37c72dd2dbac68997fcdc15a3622e78.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.js" defer="true"></script>
 <link href="../../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.6.39">
+  <meta name="generator" content="quarto-1.7.24">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Tim Weber">
   <title>Big Data lecture slides – Data Quality</title>
@@ -32,8 +32,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -44,7 +45,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -117,7 +118,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-bbe7401fe57d4b791b917637bb662036.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
   <link rel="stylesheet" href="style.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -300,7 +301,6 @@ How good or bad something is. <a href="https://dictionary.cambridge.org/dictiona
 International Standards Organization
 </dd>
 </dl>
-<div>
 <ul>
 <li class="fragment"><p>set of standards for data quality for the exchange between organizations and systems</p></li>
 <li class="fragment"><p>Master data in the form of characteristic data that are</p>
@@ -310,14 +310,12 @@ International Standards Organization
 <li class="fragment">can be validated by computer software.</li>
 </ul></li>
 </ul>
-</div>
 <div class="attribution">
 <p><span class="citation" data-cites="iso8000">(<a href="#/references" role="doc-biblioref" onclick="">ISO 2022</a>)</span></p>
 </div>
 </section>
 <section id="part-1-general-requirements" class="title-slide slide level3 smaller center">
 <h3>Part 1: General Requirements</h3>
-<div>
 <ul>
 <li class="fragment">Part 1.a The master data message shall unambiguously state all information necessary for the receiver to determine its meaning</li>
 <li class="fragment">Part 1.b A formal syntax must be specified using a formal notation</li>
@@ -326,19 +324,16 @@ International Standards Organization
 <li class="fragment">Part 1.e It must be possible to check the correctness of the master data message against both its formal syntax and its data specifications</li>
 <li class="fragment">Part 1.f The references within the master data message to data dictionary entries must be in the form of unambiguous identifiers conforming to an internationally recognized scheme</li>
 </ul>
-</div>
 </section>
 
 <section id="part-2-syntax-of-the-message" class="title-slide slide level3 center">
 <h3>Part 2: Syntax of the message</h3>
-<div>
 <ul>
 <li class="fragment">The message shall contain in its header a reference to the formal syntax to which it complies.</li>
 <li class="fragment">The reference shall be an unambiguous identifier for the specific version of the formal syntax used to encode the message.</li>
 <li class="fragment">The formal syntax shall be available to all interested parties.</li>
 <li class="fragment"><code>&lt;?xml version=1.0”?&gt;</code></li>
 </ul>
-</div>
 </section>
 
 <section id="part-3-semantic-encoding" class="title-slide slide level3 smaller center">
@@ -366,13 +361,11 @@ Request for Comments - the first technical specifications of the inner workings 
 </section>
 <section id="data-dictionary" class="title-slide slide level4 center">
 <h4>Data dictionary!!!</h4>
-<div>
 <ol type="1">
 <li class="fragment"><p>unique identifier (URI) - <a href="https://datatracker.ietf.org/doc/html/rfc3986">RFC 3986</a></p></li>
 <li class="fragment"><p>term (name)</p></li>
 <li class="fragment"><p>clear definition</p></li>
 </ol>
-</div>
 <pre><code>Identifier: ICTIP.Property.ABC.105
 Term: Individual_Income_Bracket
 Definition:  Range of individual income given in increments of $25,000 starting at $0 and coded with single letters “A”, “B”, “C”, “D”, and “E” 
@@ -390,13 +383,12 @@ Definition:  Range of individual income given in increments of $25,000 starting 
 <p>“… Data are of high quality if they are “Fit for Use” in their intended operational, decision-making and other roles. … ”</p>
 
 <img data-src="img/data_quality_dimensions.svg" class="quarto-figure quarto-figure-center r-stretch"><div class="attribution">
-<p><span class="citation" data-cites="978-0-387-69502-0">(<a href="#/references" role="doc-biblioref" onclick="">Herzog, Scheuren, and Winkler May </a>)</span></p>
+<p><span class="citation" data-cites="978-0-387-69502-0">(<a href="#/references" role="doc-biblioref" onclick="">Herzog, Scheuren, and Winkler May</a>)</span></p>
 </div>
 </section>
 
 <section id="data-quality-issues" class="title-slide slide level2 center">
 <h2>Data Quality issues</h2>
-<div>
 <ul>
 <li class="fragment"><a href="https://www.bbc.com/news/uk-16409480?utm_source=SolvinFinance&amp;utm_medium=Blog_Post&amp;utm_campaign=The_Wall_of_Shame_for_the_Worst_Excel_Errors">Data Entry for the London Summer Olympics</a>
 <ul>
@@ -409,7 +401,6 @@ Definition:  Range of individual income given in increments of $25,000 starting 
 <li class="fragment">not only were <span class="math inline">\(\$2bn\)</span> losses wrongly calculated, they were actually counted as gains summing up to a loss of <span class="math inline">\(\$6.2bn\)</span></li>
 </ul></li>
 </ul>
-</div>
 </section>
 
 <section id="data-quality-tools" class="title-slide slide level2 center">
@@ -452,14 +443,12 @@ Definition:  Range of individual income given in increments of $25,000 starting 
 
 <section id="requirements-documents" class="title-slide slide level3 center">
 <h3>Requirements Documents</h3>
-<div>
 <ul>
 <li class="fragment">Why should the database be established?</li>
 <li class="fragment">How are the data to be collected?</li>
 <li class="fragment">How do analysts plan to use the data?</li>
 <li class="fragment">What database-design issues may affect these data uses?</li>
 </ul>
-</div>
 </section>
 
 <section id="tests" class="title-slide slide level3 center">
@@ -468,7 +457,6 @@ Definition:  Range of individual income given in increments of $25,000 starting 
 </section>
 <section id="deterministic-tests" class="title-slide slide level4 center">
 <h4>Deterministic Tests</h4>
-<div>
 <ul>
 <li class="fragment">Range Test</li>
 <li class="fragment">If-then Test</li>
@@ -476,12 +464,10 @@ Definition:  Range of individual income given in increments of $25,000 starting 
 <li class="fragment">Zero Control Test (the components of a sum a listed seperartly)</li>
 <li class="fragment">Other internal consistency tests</li>
 </ul>
-</div>
 </section>
 
 <section id="statistical-tests" class="title-slide slide level4 center">
 <h4>Statistical Tests</h4>
-<div>
 <ul>
 <li class="fragment">Outlier detection
 <ul>
@@ -489,18 +475,15 @@ Definition:  Range of individual income given in increments of $25,000 starting 
 </ul></li>
 <li class="fragment">(E)xploratory (D)ata (A)nalysis</li>
 </ul>
-</div>
 </section>
 
 <section id="minimizing-processing-errors" class="title-slide slide level4 center">
 <h4>Minimizing Processing Errors</h4>
-<div>
 <ul>
 <li class="fragment"><p>“… review of the codes assigned on a schedule is oftentimes not a matter of correcting wrong codes, but merely a matter of honest differences of opinion between coder and reviewer. …”</p></li>
 <li class="fragment"><p>“… even though the two sets of instructions supposedly say the same thing in different words. …”</p></li>
 <li class="fragment"><p>“… it is impossible to define a perfect job of coding except in terms of the <span style="color:red;">distributions</span> produced because there is no way of determining whether the individual codes have been assigned correctly. …”</p></li>
 </ul>
-</div>
 <div class="attribution">
 <p><span class="citation" data-cites="DemingUnknownTitle2006">(<a href="#/references" role="doc-biblioref" onclick="">Deming 2006</a>)</span></p>
 </div>
@@ -508,7 +491,6 @@ Definition:  Range of individual income given in increments of $25,000 starting 
 
 <section id="recommendations" class="title-slide slide level4 center">
 <h4>Recommendations</h4>
-<div>
 <ul>
 <li class="fragment"><p>Readily correct obvious errors that are easy to fix</p></li>
 <li class="fragment"><p>Preserve the orginal dataset (Excel)</p></li>
@@ -517,21 +499,18 @@ Definition:  Range of individual income given in increments of $25,000 starting 
 <li class="fragment"><p>Do consistency checks.</p></li>
 <li class="fragment"><p>Build in redundancy (ZIP Code AND postal adress)</p></li>
 </ul>
-</div>
 <div class="attribution">
-<p><span class="citation" data-cites="978-0-387-69502-0">(<a href="#/references" role="doc-biblioref" onclick="">Herzog, Scheuren, and Winkler May </a>)</span></p>
+<p><span class="citation" data-cites="978-0-387-69502-0">(<a href="#/references" role="doc-biblioref" onclick="">Herzog, Scheuren, and Winkler May</a>)</span></p>
 </div>
 </section>
 
 
 <section id="measuring-data-quality" class="title-slide slide level3 center">
 <h3>Measuring Data Quality</h3>
-<div>
 <ul>
 <li class="fragment"><p>“… trust and data quality are inextricably linked …”</p></li>
 <li class="fragment"><p>“… The business user should invest in, on a prioritized basis, establishing data quality metrics for datasets and stores of interest, as well as in building data quality reporting processes for them. …</p></li>
 </ul>
-</div>
 <div class="attribution">
 <p><span class="citation" data-cites="FleckensteinUnknownTitle2018">(<a href="#/references" role="doc-biblioref" onclick="">Fleckenstein and Fellows 2018</a>)</span></p>
 </div>
@@ -707,14 +686,12 @@ C_{pk} &amp;= \frac{\min(USL-\mu,\mu-LSL)}{3\sigma}\\
 <section id="measurement-system-analysis-type-1-msa1" class="title-slide slide level4 center">
 <h4>Measurement System Analysis Type 1 (MSA1)</h4>
 <p>A type 1 gage study assesses only the variation that comes from the gage. Specifically, this study assesses the effects of bias and repeatability on measurements from one operator and one reference part.</p>
-<div>
 <ul>
 <li class="fragment">Focus on gage as the only source of variation</li>
 <li class="fragment">First Step</li>
 <li class="fragment">50 Measurements</li>
 <li class="fragment">repeated on a reference part</li>
 </ul>
-</div>
 </section>
 <section id="potential-capability-index-c_g" class="slide level5 smaller">
 <h5>Potential Capability index <span class="math inline">\(C_g\)</span></h5>
@@ -851,12 +828,10 @@ standard deviation of the measurements
 </section>
 <section id="formal-test-for-distribution" class="slide level5">
 <h5>Formal test for distribution</h5>
-<div>
 <ul>
 <li class="fragment"><span class="math inline">\(H_0\)</span>: Data is normal distributed.</li>
 <li class="fragment"><span class="math inline">\(H_a\)</span>: Data is not normal distributed.</li>
 </ul>
-</div>
 <div class="fragment fade-in">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>measured_data <span class="sc">%&gt;%</span> </span>
@@ -887,23 +862,23 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
 </figcaption>
 <div aria-describedby="tbl-CgCgk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="btazapphww" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#btazapphww table {
+<div id="ytyvvpwvpx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ytyvvpwvpx table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#btazapphww thead, #btazapphww tbody, #btazapphww tfoot, #btazapphww tr, #btazapphww td, #btazapphww th {
+#ytyvvpwvpx thead, #ytyvvpwvpx tbody, #ytyvvpwvpx tfoot, #ytyvvpwvpx tr, #ytyvvpwvpx td, #ytyvvpwvpx th {
   border-style: none;
 }
 
-#btazapphww p {
+#ytyvvpwvpx p {
   margin: 0;
   padding: 0;
 }
 
-#btazapphww .gt_table {
+#ytyvvpwvpx .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -929,12 +904,12 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
   border-left-color: #D3D3D3;
 }
 
-#btazapphww .gt_caption {
+#ytyvvpwvpx .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#btazapphww .gt_title {
+#ytyvvpwvpx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -946,7 +921,7 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
   border-bottom-width: 0;
 }
 
-#btazapphww .gt_subtitle {
+#ytyvvpwvpx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -958,7 +933,7 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
   border-top-width: 0;
 }
 
-#btazapphww .gt_heading {
+#ytyvvpwvpx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -970,13 +945,13 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
   border-right-color: #D3D3D3;
 }
 
-#btazapphww .gt_bottom_border {
+#ytyvvpwvpx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#btazapphww .gt_col_headings {
+#ytyvvpwvpx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -991,7 +966,7 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
   border-right-color: #D3D3D3;
 }
 
-#btazapphww .gt_col_heading {
+#ytyvvpwvpx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1011,7 +986,7 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
   overflow-x: hidden;
 }
 
-#btazapphww .gt_column_spanner_outer {
+#ytyvvpwvpx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1023,15 +998,15 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
   padding-right: 4px;
 }
 
-#btazapphww .gt_column_spanner_outer:first-child {
+#ytyvvpwvpx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#btazapphww .gt_column_spanner_outer:last-child {
+#ytyvvpwvpx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#btazapphww .gt_column_spanner {
+#ytyvvpwvpx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1043,11 +1018,11 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
   width: 100%;
 }
 
-#btazapphww .gt_spanner_row {
+#ytyvvpwvpx .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#btazapphww .gt_group_heading {
+#ytyvvpwvpx .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1073,7 +1048,7 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
   text-align: left;
 }
 
-#btazapphww .gt_empty_group_heading {
+#ytyvvpwvpx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1088,15 +1063,15 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
   vertical-align: middle;
 }
 
-#btazapphww .gt_from_md > :first-child {
+#ytyvvpwvpx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#btazapphww .gt_from_md > :last-child {
+#ytyvvpwvpx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#btazapphww .gt_row {
+#ytyvvpwvpx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1115,7 +1090,7 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
   overflow-x: hidden;
 }
 
-#btazapphww .gt_stub {
+#ytyvvpwvpx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1128,7 +1103,7 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
   padding-right: 5px;
 }
 
-#btazapphww .gt_stub_row_group {
+#ytyvvpwvpx .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1142,15 +1117,15 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
   vertical-align: top;
 }
 
-#btazapphww .gt_row_group_first td {
+#ytyvvpwvpx .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#btazapphww .gt_row_group_first th {
+#ytyvvpwvpx .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#btazapphww .gt_summary_row {
+#ytyvvpwvpx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1160,16 +1135,16 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
   padding-right: 5px;
 }
 
-#btazapphww .gt_first_summary_row {
+#ytyvvpwvpx .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#btazapphww .gt_first_summary_row.thick {
+#ytyvvpwvpx .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#btazapphww .gt_last_summary_row {
+#ytyvvpwvpx .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1179,7 +1154,7 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
   border-bottom-color: #D3D3D3;
 }
 
-#btazapphww .gt_grand_summary_row {
+#ytyvvpwvpx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1189,7 +1164,7 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
   padding-right: 5px;
 }
 
-#btazapphww .gt_first_grand_summary_row {
+#ytyvvpwvpx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1199,7 +1174,7 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
   border-top-color: #D3D3D3;
 }
 
-#btazapphww .gt_last_grand_summary_row_top {
+#ytyvvpwvpx .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1209,11 +1184,11 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
   border-bottom-color: #D3D3D3;
 }
 
-#btazapphww .gt_striped {
+#ytyvvpwvpx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#btazapphww .gt_table_body {
+#ytyvvpwvpx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1222,7 +1197,7 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
   border-bottom-color: #D3D3D3;
 }
 
-#btazapphww .gt_footnotes {
+#ytyvvpwvpx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1236,7 +1211,7 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
   border-right-color: #D3D3D3;
 }
 
-#btazapphww .gt_footnote {
+#ytyvvpwvpx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1245,7 +1220,7 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
   padding-right: 5px;
 }
 
-#btazapphww .gt_sourcenotes {
+#ytyvvpwvpx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1259,7 +1234,7 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
   border-right-color: #D3D3D3;
 }
 
-#btazapphww .gt_sourcenote {
+#ytyvvpwvpx .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1267,72 +1242,72 @@ Table&nbsp;1: <span class="math inline">\(C_g, C_{gk}\)</span> for the measured 
   padding-right: 5px;
 }
 
-#btazapphww .gt_left {
+#ytyvvpwvpx .gt_left {
   text-align: left;
 }
 
-#btazapphww .gt_center {
+#ytyvvpwvpx .gt_center {
   text-align: center;
 }
 
-#btazapphww .gt_right {
+#ytyvvpwvpx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#btazapphww .gt_font_normal {
+#ytyvvpwvpx .gt_font_normal {
   font-weight: normal;
 }
 
-#btazapphww .gt_font_bold {
+#ytyvvpwvpx .gt_font_bold {
   font-weight: bold;
 }
 
-#btazapphww .gt_font_italic {
+#ytyvvpwvpx .gt_font_italic {
   font-style: italic;
 }
 
-#btazapphww .gt_super {
+#ytyvvpwvpx .gt_super {
   font-size: 65%;
 }
 
-#btazapphww .gt_footnote_marks {
+#ytyvvpwvpx .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#btazapphww .gt_asterisk {
+#ytyvvpwvpx .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#btazapphww .gt_indent_1 {
+#ytyvvpwvpx .gt_indent_1 {
   text-indent: 5px;
 }
 
-#btazapphww .gt_indent_2 {
+#ytyvvpwvpx .gt_indent_2 {
   text-indent: 10px;
 }
 
-#btazapphww .gt_indent_3 {
+#ytyvvpwvpx .gt_indent_3 {
   text-indent: 15px;
 }
 
-#btazapphww .gt_indent_4 {
+#ytyvvpwvpx .gt_indent_4 {
   text-indent: 20px;
 }
 
-#btazapphww .gt_indent_5 {
+#ytyvvpwvpx .gt_indent_5 {
   text-indent: 25px;
 }
 
-#btazapphww .katex-display {
+#ytyvvpwvpx .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#btazapphww div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ytyvvpwvpx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1469,14 +1444,12 @@ Precision under reproducibility conditions (where test results are obtained usin
 <li>A battery manufacturer makes several types of batteries for domestic use.</li>
 <li>Voltage is <strong>C</strong>ritical <strong>T</strong>o <strong>Q</strong>uality (CTQ)</li>
 </ul>
-<div>
 <ul>
 <li class="fragment">the parts are the batteries <span class="math inline">\(a = 3\)</span></li>
 <li class="fragment">the appraisers are the voltmeters <span class="math inline">\(b = 2\)</span></li>
 <li class="fragment">measurement is taken three times <span class="math inline">\(n = 3\)</span></li>
 <li class="fragment"><span class="math inline">\(a \times b \times n = 3 \times 2 \times 3 = 18\)</span> measurements</li>
 </ul>
-</div>
 </section>
 
 <section id="the-data" class="title-slide slide level4 center">
@@ -1966,7 +1939,13 @@ Total Variation   0.14470690 0.8682414    100.00      86.82</code></pre>
 
 <section id="results" class="title-slide slide level4 center">
 <h4>Results</h4>
-<div id="tbl-aaa" class="cell">
+<div class="cell">
+<div id="tbl-aaa" class="cell quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-tbl">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-aaa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2
+</figcaption>
+<div aria-describedby="tbl-aaa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div id="xxcjeayger" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#xxcjeayger table {
@@ -2418,7 +2397,7 @@ Total Variation   0.14470690 0.8682414    100.00      86.82</code></pre>
 }
 </style>
 
-<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table do-not-create-environment caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="appraiser" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">appraiser</th>
@@ -2517,6 +2496,9 @@ Total Variation   0.14470690 0.8682414    100.00      86.82</code></pre>
 </table>
 
 </div>
+</div>
+</div>
+</figure>
 </div>
 </div>
 </section>
@@ -2622,7 +2604,13 @@ number of reference agreement in for appraisers in reference class
 number of agreements for the <span class="math inline">\(i\)</span>-th appraiser and the <span class="math inline">\(i\)</span>-th standard
 </dd>
 </dl>
-<div id="tbl-app-ref-agree" class="cell">
+<div class="cell">
+<div id="tbl-app-ref-agree" class="cell quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-tbl">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-app-ref-agree-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3
+</figcaption>
+<div aria-describedby="tbl-app-ref-agree-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div id="hnkxgdpcyi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#hnkxgdpcyi table {
@@ -3074,7 +3062,7 @@ number of agreements for the <span class="math inline">\(i\)</span>-th appraiser
 }
 </style>
 
-<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table do-not-create-environment caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="appraiser" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">appraiser</th>
@@ -3107,6 +3095,9 @@ number of agreements for the <span class="math inline">\(i\)</span>-th appraiser
 </table>
 
 </div>
+</div>
+</div>
+</figure>
 </div>
 </div>
 </section>
@@ -3158,9 +3149,6 @@ number of agreements for the <span class="math inline">\(i\)</span>-th appraiser
 </div>
 </div>
 <div class="fragment fade-in-then-out">
-<div>
-
-</div>
 <div class="cell quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
@@ -3204,14 +3192,12 @@ number of agreements for the <span class="math inline">\(i\)</span>-th appraiser
 
 <section id="representation" class="title-slide slide level4 center">
 <h4>Representation</h4>
-<div>
 <ol type="1">
 <li class="fragment"><p><code>Null</code> or <code>NA</code></p></li>
 <li class="fragment"><p>Blank or Empty Cells</p></li>
 <li class="fragment"><p>Placeholder Values: <code>-9999</code>, <code>-1</code>, values that are unlikely to occur in the actual data.</p></li>
 <li class="fragment"><p>Special Characters: <code>?</code>, <code>*</code></p></li>
 </ol>
-</div>
 </section>
 
 <section id="types-of-missing-values" class="title-slide slide level4 center">
@@ -3238,7 +3224,6 @@ number of agreements for the <span class="math inline">\(i\)</span>-th appraiser
 </section>
 <section id="missing-completly-at-random" class="slide level5">
 <h5>(M)issing (C)ompletly (A)t (R)andom</h5>
-<div>
 <ul>
 <li class="fragment">same probability of data missing for all observations</li>
 <li class="fragment">completely independent of other data (no pattern)</li>
@@ -3246,14 +3231,12 @@ number of agreements for the <span class="math inline">\(i\)</span>-th appraiser
 <li class="fragment">system/equipment failure</li>
 <li class="fragment">statistical analysis remains unbiased</li>
 </ul>
-</div>
 <div class="attribution">
 <p><span class="citation" data-cites="ChristinaMack2018">(<a href="#/references" role="doc-biblioref" onclick="">Mack, Su, and Westreich 2018</a>)</span></p>
 </div>
 </section>
 <section id="missing-at-random" class="slide level5">
 <h5>(M)issing (A)t (R)andom</h5>
-<div>
 <ul>
 <li class="fragment">can be explained by other variables (on which information is available)</li>
 <li class="fragment">only missing in sub-samples of the data</li>
@@ -3261,14 +3244,12 @@ number of agreements for the <span class="math inline">\(i\)</span>-th appraiser
 <li class="fragment">often Females do not want to reveal their age</li>
 <li class="fragment">probability depends on variable <code>Gender</code> (but missing value can not be predicted)</li>
 </ul>
-</div>
 <div class="attribution">
 <p><span class="citation" data-cites="ChristinaMack2018">(<a href="#/references" role="doc-biblioref" onclick="">Mack, Su, and Westreich 2018</a>)</span></p>
 </div>
 </section>
 <section id="missing-not-at-random" class="slide level5">
 <h5>(M)issing (N)ot (A)t (R)andom</h5>
-<div>
 <ul>
 <li class="fragment">not MCAR or MAR</li>
 <li class="fragment">probability depends on unobserved data</li>
@@ -3277,7 +3258,6 @@ number of agreements for the <span class="math inline">\(i\)</span>-th appraiser
 <li class="fragment">this may be due to concerns about taxation, privacy or social stigma</li>
 <li class="fragment">the probability of data missing directly depends on the data itself</li>
 </ul>
-</div>
 <div class="attribution">
 <p><span class="citation" data-cites="ChristinaMack2018">(<a href="#/references" role="doc-biblioref" onclick="">Mack, Su, and Westreich 2018</a>)</span></p>
 </div>
@@ -3285,14 +3265,12 @@ number of agreements for the <span class="math inline">\(i\)</span>-th appraiser
 
 <section id="treating-missing-values" class="title-slide slide level4 center">
 <h4>treating missing values</h4>
-<div>
 <ul>
 <li class="fragment">Deleting missing values</li>
 <li class="fragment">Imputing missing values</li>
 <li class="fragment">Imputing missing values for categorical features</li>
 <li class="fragment">Use as feature</li>
 </ul>
-</div>
 <div class="attribution">
 <p><span class="citation" data-cites="Little_2002">(<a href="#/references" role="doc-biblioref" onclick="">Little and Rubin 2002</a>)</span></p>
 </div>
@@ -3300,23 +3278,19 @@ number of agreements for the <span class="math inline">\(i\)</span>-th appraiser
 <section id="deleting" class="slide level5 smaller">
 <h5>Deleting</h5>
 <p>Pros:</p>
-<div>
 <ul>
 <li class="fragment">Easy</li>
 <li class="fragment">Improves the quality of the dataset by removing incomplete or unreliable observations.</li>
 <li class="fragment">Prevents bias that may arise from imputing missing values, ensuring more accurate results.</li>
 <li class="fragment">Reduces computational complexity, as imputation methods can be resource-intensive.</li>
 </ul>
-</div>
 <p>Cons:</p>
-<div>
 <ul>
 <li class="fragment">Reduces the size of the dataset, potentially leading to loss of information and statistical power.</li>
 <li class="fragment">Deletes potentially valuable data points, especially if missingness is not completely random.</li>
 <li class="fragment">Can introduce bias if missingness is related to the outcome or other variables of interest.</li>
 <li class="fragment">Eliminates the opportunity to explore patterns or reasons behind missingness, which could provide valuable insights.</li>
 </ul>
-</div>
 </section>
 <section id="imputing-missing-values" class="slide level5">
 <h5>Imputing missing values</h5>
@@ -5381,7 +5355,6 @@ number of agreements for the <span class="math inline">\(i\)</span>-th appraiser
 
 <section id="data-quality-summary" class="title-slide slide level2 smaller center">
 <h2>Data Quality summary</h2>
-<div>
 <ul>
 <li class="fragment">Data Quality is hard</li>
 <li class="fragment">Top Down or Bottom up?</li>
@@ -5394,7 +5367,6 @@ number of agreements for the <span class="math inline">\(i\)</span>-th appraiser
 <li class="fragment">never trust data</li>
 <li class="fragment">invest early, profit soon</li>
 </ul>
-</div>
 </section>
 </section>
 <section id="references" class="title-slide slide level1 smaller scrollable">
@@ -5749,190 +5721,172 @@ Shapiro, S. S., and M. B. Wilk. 1965. <span>“An Analysis of Variance Test for 
     
 
     <script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
-          }
-        }
-        return false;
-      }
-      const onCopySuccess = function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
-          }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
             }
           }
-          return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
-      });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          return false;
         }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
             }
-          }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
         }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
-          }
-        });
-      }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
-          }
-        } else {
-          return undefined;
-        }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
               }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
           });
         }
-      }
-    });
-    </script>
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
     
 
 </body></html>
