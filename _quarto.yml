@@ -57,6 +57,8 @@ website:
             href: chapters/chapter500_TraditionalMeasures/index.qmd
           - text: "Map Reduce"
             href: chapters/chapter510_MapReduce/index.qmd
+          - text: "FIM"
+            href: chapters/chapter511_FIM/index.qmd
           - text: "Gradient Descent"
             href: chapters/chapter520_GradientDescent/index.qmd
           - text: "Maximum Likelihood Estimation"

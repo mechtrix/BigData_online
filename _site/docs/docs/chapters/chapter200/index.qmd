@@ -1,0 +1,1255 @@
+---
+title: "Data Sources"
+bibliography: https://api.citedrive.com/bib/da291eae-8e2a-46b1-968e-0b79af55f87a/references.bib?x=eyJpZCI6ICJkYTI5MWVhZS04ZTJhLTQ2YjEtOTY4ZS0wYjc5YWY1NWY4N2EiLCAidXNlciI6ICI1NjQ5IiwgInNpZ25hdHVyZSI6ICI2ZDMyODMxM2QzZDQ3NmE3MGM4MDc5MzJiNzE1NjkzNjJmYmZjODYyNGMzNmJjNDBkMDk3Njk5N2RmZjQ5MTg5In0=/bibliography.bib
+format:
+  revealjs:
+    slide-level: 5
+    resource-path: 
+      - "img"
+    logo: img/back.svg
+    footer-logo-link: "https://mechtrix.github.io/BigData_online/"
+    footer: "Copyright Prof. Dr. Tim Weber, 2024"
+revealjs-plugins:
+  - animate
+  - attribution
+filters: 
+  - animate
+  - reveal-header
+editor_options: 
+  chunk_output_type: console
+css: style.css
+---
+
+
+```{r}
+#| label: setup
+#| include: false
+
+library(tidyverse)
+library(ggthemes)
+library(here)
+library(rvest)
+
+```
+
+# Data Sources
+
+![](img/word-cloud.png){fig-align="center"}
+
+
+## Which do you want?
+
+```{r}
+#| fig-asp: 0.55
+#| 
+sources <- data.frame(
+  Source = c("Databases", "API", "Distributed\nStorage", "File\nSystem", 
+             "Data\nStreaming", "Log\nFiles", "Sensors\nand\nIoT Devices", "Web\nScraping"),
+  Structured_Data = c(8, 7, 7, 6, 6, 5, 4, 3),
+  Accessibility = c(8, 7, 6, 7, 6, 6, 5, 4),
+  Balance = c(8, 7, 6.5, 6.5, 6, 5.5, 4.5, 3.5)
+)
+
+sources %>% 
+  ggplot(
+    aes(
+      x = Structured_Data,
+      y = Accessibility,
+      label = Source
+    )
+  )+
+  geom_label()+
+  scale_x_continuous(
+    limits = c(2.5,8.5),
+    labels = NULL
+  )+
+  scale_y_continuous(
+    limits = c(3.5,8.5),
+    labels = NULL
+  )+
+  labs(
+    title = "Data Sources",
+    x = "Structure",
+    y = "Accessibility"
+  )+
+  coord_equal()+
+  theme_minimal(base_size = 15)+
+  theme(
+    axis.line = 
+      element_line(
+        arrow = arrow(
+          type = "closed",
+          angle = 15
+        ),
+        linewidth = 1.5
+        ),
+    panel.grid = element_blank(),
+    # text = element_text(family = "Bahnschrift")
+  )
+```
+
+
+## Databases
+
+![](img/excel_db.webp){fig-align="center"}
+
+### Overview {.smaller}
+
+:::: {.columns}
+
+::: {.column width="45%"}
+RDBMS:
+
+* Organizes data into tables with predefined schemas.
+* Uses SQL for querying and manipulation.
+* Ensures data integrity through constraints and normalization.
+* Traditionally scales vertically, though can scale horizontally with features like sharding and replication.
+
+:::
+
+::: {.column width="45%"}
+NoSQL:
+
+* Diverse data models, including document, key-value, column-family, and graph.
+* Offers flexible schemas or schema-less design.
+* Optimized for horizontal scalability, handling large volumes of unstructured data.
+* Uses various query languages, often tailored to specific data models.
+
+:::
+
+::::
+
+### RDBMS
+
+![](img/rdbms.svg){fig-align="center"}
+
+### NoSQL {.smaller}
+
+```
+
+{
+   "_id": 1,
+   "customer": "A"
+   "production_line": ["1000"],
+   "machine_nr": ["1","2","3"],
+   "machine_type": ["SolderReflow","SolderReflow","SolderWave"],
+   "plant": "1",
+   "product": ["ToyRobot"]
+}
+
+{
+   "_id": 2,
+   "customer": "B"
+   "production_line": ["2000"],
+   "machine_nr": ["1"],
+   "machine_type": ["SolderReflow"],
+   "plant": "2",
+   "product": ["Car"]
+}
+
+```
+
+### Databases Summary
+
+Pros:
+
+* highly structured
+* highly accessible
+
+Cons:
+
+* difficult to setup (at scale)
+* difficult to interface
+
+### File Systems
+
+* FAT32: Common for USB drives, compatible with many systems.
+* NTFS: Windows file system, supports encryption and permissions.
+* ext4: Linux default, offers better performance.
+* HFS+: macOS system with journaling and encryption.
+* APFS: Optimized for Apple's flash storage, with snapshots.
+* exFAT: Microsoft's format for large files, works on Windows and macOS.
+* ZFS: Known for data integrity, used in enterprise storage.
+
+#### File System as a User
+
+![](img/winfs.svg){fig-align="center"}
+
+### File System Summary
+
+Pros:
+
+* highly accessible
+* semi structured
+
+Cons:
+
+* often only available on local machine
+* rules are there to be broken
+
+### Application Programming Interface (API)
+
+- APIs enable software applications to communicate and share data.
+- They define rules for accessing functionalities.
+- APIs provide endpoints and methods for developers to interact with.
+
+#### How an API call looks
+
+
+```
+>> res = GET("https://api.open-notify.org/astros.json")
+>> res
+Response [https://api.open-notify.org/astros.json]
+  Date: 2020-01-30 18:07
+  Status: 200
+  Content-Type: application/json
+  Size: 314 B
+  
+
+```
+#### key-value pairs
+
+```
+{
+    “name”: “Jane Doe”,
+    “number_of_skills”: 2
+}
+
+```
+
+#### JSON
+
+<https://www.json.org/json-en.html>
+
+[![JSON for the win](https://www.json.org/img/json160.gif)](https://https://www.json.org/json-en.html)
+
+```
+[1] "{\"people\": [{\"name\": \"Christina Koch\", \"craft\": \"ISS\"}, {\"name\": \"Alexander Skvortsov\", \"craft\": \"ISS\"}, {\"name\": \"Luca Parmitano\", \"craft\": \"ISS\"}, {\"name\": \"Andrew Morgan\", \"craft\": \"ISS\"}, {\"name\": \"Oleg Skripochka\", \"craft\": \"ISS\"}, {\"name\": \"Jessica Meir\", \"craft\": \"ISS\"}], \"number\": 6, \"message\": \"success\"}"
+
+```
+
+### API Summary
+
+Pros:
+
+* interoperability
+* efficiency
+* JSON
+
+Cons:
+
+* must be provided
+* security
+* JSON
+
+
+### Distributed Storage 
+
+  * Hadoop 
+  * Cloud (Amazon S3, Google, Azure)
+  * Data warehouse (Redshift, Google Big Query, Snowflake)
+  
+#### The Cloud
+
+![](img/the_cloud.png)
+
+::: {.attribution}
+[xkcd](https://xkcd.com/908/)
+:::
+
+#### The idea
+
+![](img/distributed.svg){fig-align="center"}
+
+#### Criticism
+
+::: {.r-fit-text .v-c}
+
+It's not a cloud, it's just someone elses computer
+
+:::
+  
+### Distributed Storage Summary
+
+Pros:
+
+* high availability
+* scalability
+* geographic distribution
+
+Cons:
+
+* complexity
+* consistency
+* network overhead
+
+### Data Streaming
+
+"... Datasets with an infinite amount of entries are known as streams. ..."
+
+::: {.attribution}
+[@1492046361]
+:::
+
+### Workflow
+
+![](img/streaming-working-1.png)
+
+::: {.attribution}
+[@1492046361]
+:::
+
+### Kafka
+
+![](img/streaming-kafka-apis-1.png)
+
+::: {.attribution}
+[@1492046361]
+:::
+
+### Data streaming summary
+
+Pros:
+
+* real-time insights
+* scalability
+* efficiency
+
+Cons:
+
+* complexity
+* cost
+* data consistency
+
+### Log-files
+
+* Record system events.
+* Include timestamps, messages.
+* Used for troubleshooting, monitoring.
+* Essential in IT, software development.
+
+#### log4j
+
+![](https://imgs.xkcd.com/comics/dependency.png){fig-align="center"}
+
+::: {.fragment .fade-in}
+
+[log4j](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Informationen-und-Empfehlungen/Empfehlungen-nach-Angriffszielen/Webanwendungen/log4j/log4j_node.html)
+
+:::
+
+::: {.attribution}
+[xkcd](https://xkcd.com/2347/)
+:::
+
+#### example log file {.scrollable}
+
+```
+
+ 01 
+03/22 08:51:01 INFO   :.main: *************** RSVP Agent started ***************
+ 02 
+03/22 08:51:01 INFO   :...locate_configFile: Specified configuration file: /u/user10/rsvpd1.conf
+03/22 08:51:01 INFO   :.main: Using log level 511
+03/22 08:51:01 INFO   :..settcpimage: Get TCP images rc - EDC8112I Operation not supported on socket.
+ 03 
+03/22 08:51:01 INFO   :..settcpimage: Associate with TCP/IP image name = TCPCS
+03/22 08:51:02 INFO   :..reg_process: registering process with the system
+03/22 08:51:02 INFO   :..reg_process: attempt OS/390 registration
+03/22 08:51:02 INFO   :..reg_process: return from registration rc=0
+ 04 
+03/22 08:51:06 TRACE  :...read_physical_netif: Home list entries returned = 7
+03/22 08:51:06 INFO   :...read_physical_netif: index #0, interface VLINK1 has address 129.1.1.1, ifidx 0
+03/22 08:51:06 INFO   :...read_physical_netif: index #1, interface TR1 has address 9.37.65.139, ifidx 1
+03/22 08:51:06 INFO   :...read_physical_netif: index #2, interface LINK11 has address 9.67.100.1, ifidx 2
+03/22 08:51:06 INFO   :...read_physical_netif: index #3, interface LINK12 has address 9.67.101.1, ifidx 3
+03/22 08:51:06 INFO   :...read_physical_netif: index #4, interface CTCD0 has address 9.67.116.98, ifidx 4
+03/22 08:51:06 INFO   :...read_physical_netif: index #5, interface CTCD2 has address 9.67.117.98, ifidx 5
+03/22 08:51:06 INFO   :...read_physical_netif: index #6, interface LOOPBACK has address 127.0.0.1, ifidx 0
+03/22 08:51:06 INFO   :....mailslot_create: creating mailslot for timer
+03/22 08:51:06 INFO   :...mailbox_register: mailbox allocated for timer
+ 05 
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP via UDP
+ 06 
+03/22 08:51:06 WARNING:.....mailslot_create: setsockopt(MCAST_ADD) failed - EDC8116I Address not available.
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp-udp
+03/22 08:51:06 TRACE  :..entity_initialize: interface 129.1.1.1, entity for rsvp allocated and initialized
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP via UDP
+03/22 08:51:06 WARNING:.....mailslot_create: setsockopt(MCAST_ADD) failed - EDC8116I Address not available.
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp-udp
+03/22 08:51:06 TRACE  :..entity_initialize: interface 9.37.65.139, entity for rsvp allocated and 
+initialized
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP via UDP
+03/22 08:51:06 WARNING:.....mailslot_create: setsockopt(MCAST_ADD) failed - EDC8116I Address not available.
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp-udp
+03/22 08:51:06 TRACE  :..entity_initialize: interface 9.67.100.1, entity for rsvp allocated and initialized
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP via UDP
+03/22 08:51:06 WARNING:.....mailslot_create: setsockopt(MCAST_ADD) failed - EDC8116I Address not available.
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp-udp
+03/22 08:51:06 TRACE  :..entity_initialize: interface 9.67.101.1, entity for rsvp allocated and initialized
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP via UDP
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp-udp
+03/22 08:51:06 TRACE  :..entity_initialize: interface 9.67.116.98, entity for rsvp allocated and 
+initialized
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp
+03/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP via UDP
+03/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp-udp
+03/22 08:51:06 TRACE  :..entity_initialize: interface 9.67.117.98, entity for rsvp allocated and 
+initialized
+
+```
+
+#### common log format 
+
+[“The Common Log Format is a standardized text file format used by web servers when generating server log files.”](https://en.wikipedia.org/wiki/Common_Log_Format)
+
+#### commong log format example {.smaller}
+
+```
+pd9049dac.dip.t-dialin.net - - [01/May/2001:01:51:25 -0700] "GET /accesswatch/accesswatch-1.33/ HTTP/1.0" 200 1004
+
+```
+
+* A `"-"` in a field indicates missing data.
+* `pd9049dac.dip.t-dialin.net` is the IP address of the client (remote host) which made the request to the server.
+* `[01/May/2001:01:51:25 -0700]` is the date, time, and time zone that the request was received, by default in strftime format `%d/%b/%Y:%H:%M:%S %z`.
+* `"GET /accesswatch/accesswatch-1.33/ HTTP/1.0"` is the request line from the client.
+* The method `GET, /accesswatch/accesswatch-1.33/` is the resource requested, and `HTTP/1.0` is the HTTP protocol.
+* `200` is the HTTP status code returned to the client.
+* `2xx` is a successful response
+* `3xx` a redirection
+* `4xx` a client error, and
+* `5xx` a server error
+* `1004` is the size of the object returned to the client, measured in bytes
+
+#### analyising a log file
+
+```{r}
+#| echo: true
+#| output: true
+
+logs <- readLines("https://raw.githubusercontent.com/mechtrix/BigData_online/refs/heads/main/data/logfile.txt")
+head(logs)
+
+```
+
+#### how many requests involved an image file?
+
+```{r}
+#| echo: true
+#| output: true
+
+
+# subset a sample of lines
+set.seed(98765)
+s <- sample(1:length(logs), size = 50)
+sublogs <- logs[s]
+```
+
+---
+
+```{r}
+#| echo: true
+#| output: true
+
+
+# matching "jpg" (which lements)
+grep("jpg", sublogs)
+```
+
+---
+
+```{r}
+#| echo: true
+#| output: true
+
+
+grep("jpg", sublogs, value = TRUE)
+```
+
+---
+
+```{r}
+#| echo: true
+#| output: true
+
+grep("\\.jpg ", sublogs, value = TRUE)
+```
+
+---
+
+```{r}
+#| echo: true
+#| output: true
+
+
+str_detect(string = sublogs, pattern = "\\.jpg")
+
+```
+
+---
+
+```{r}
+#| echo: true
+#| output: true
+
+str_detect(string = sublogs, pattern = "\\.png")
+
+```
+
+---
+
+```{r}
+#| echo: true
+#| output: true
+
+
+# looking for image file extensions
+jpgs <- str_detect(logs, pattern = "\\.jpg ")
+sum(jpgs)
+
+pngs <- str_detect(logs, pattern = "\\.png ")
+sum(pngs)
+
+gifs <- str_detect(logs, pattern = "\\.gif")
+sum(gifs)
+
+icos <- str_detect(logs, pattern = "\\.ico ")
+sum(icos)
+
+```
+
+---
+
+```{r}
+#| echo: true
+#| output: true
+
+
+img_extensions <- str_extract(logs, "\\.(jpg|png|gif|ico)")
+
+```
+
+---
+
+```{r}
+
+img_extensions_df <- img_extensions %>% table() %>% as.data.frame() %>% janitor::clean_names() 
+
+img_extensions_df %>% 
+  ggplot(
+    aes(
+      x = reorder(x,freq),
+      y = freq
+    )
+  )+
+  geom_col()+
+  labs(
+    x = "img ext",
+    y = "count",
+    title = "image extension requests"
+  )+
+  scale_y_continuous(
+    expand = c(0,0,0.05,0)
+  )+
+  theme_bw()
+
+
+```
+
+---
+
+::: {.r-fit-text .v-c}
+
+It's a mess!
+
+:::
+
+### log files summary
+
+Pros:
+
+* Rich Data
+* Real-time
+* Cost-effective
+
+Cons:
+
+* Volume
+* Complexity
+* Privacy Risks
+
+### Sensors and IoT Devices
+
+![](img/sensors_iot.png)
+
+#### MQTT Protocol
+
+MQTT
+
+: **M**essage **Q**ueue **T**elemetry **T**ransport
+
+::: {.incremental}
+
+* The protocol of things
+* developed 1999 (IBM)
+* standardized since 2013 ([OASIS](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html)) [@MQTT-2024-03-22]
+* Machine-to-Machine Communication (M2M)
+* build on [TCP/IP](https://de.wikipedia.org/wiki/Transmission_Control_Protocol/Internet_Protocol) (Port 1883 8883)
+
+:::
+
+#### MQTT in general
+
+::: {.incremental}
+
+* simple to implement
+* lightweight with minimal protocol-overhead
+* push-messaging
+* adaptable **Q**uality **o**f **S**ervice (QoS)
+* data agnostic
+* message persistant
+* persistant sessions
+
+:::
+
+#### How does MQTT work?
+
+{{< include img/_mqtt_anim.qmd >}}
+
+#### MQTT Broker
+
+Many [Implementations](https://github.com/mqtt/mqtt.org/wiki/servers) 
+
+* Moquette
+* Mosquitto
+* MQTTRoute
+* Emqttd
+* HiveMQ
+* HBMQTT
+
+#### MQTT Clients
+
+There are [many](https://github.com/mqtt/mqtt.org/wiki/tools) [Implementations](https://www.hivemq.com/mqtt-toolbox/)
+
+* mosquitto_sub, mosquitto_pub
+* MQTTLens
+* MQTT.fx
+* mqttfs
+
+#### MQTT Messages
+
+Consist of a [Topic]{style="color:green;"} and a [Payload]{style="color:red;"}.
+
+{{< include img/_mqtt_message_anim.qmd >}}
+
+#### MQTT Topic
+
+::: {.fragment}
+
+::: {.incremental}
+
+* the *channel*, *mailing list*, *usenet*-group, *WhatsApp* group chat over which a certain type of data will be exchanged
+  * Client (Publisher) sends *data* to a *topic*
+  * Client (Subscriber) *subscribes* one or more *topics*
+* Organization like a folder structure on a file system
+
+:::
+
+:::
+
+::: {.fragment}
+
+```
+/sensors/sensor1/temperature
+/sensors/sensor1/humidity
+/sensors/sensor2/temperature
+...
+computername/sysinfo/mem/free
+computername/sysinfo/mem/swap
+...
+
+```
+:::
+
+#### Quality of Service - QoS
+
+::: {.incremental}
+
+* QoS defines garantuees regarding the delivery of messages
+
+  0. maximum once
+
+  1. at least once
+
+  2. exactly once
+
+* works in both directions
+
+* the client dictates the QoS - level
+
+:::
+
+#### Sensor Network
+
+
+::: {.r-stack}
+
+::: {.fragment .fade-out}
+
+![](img/sens_network.png)
+
+::: {.attribution}
+[@Berger2018]
+:::
+
+:::
+
+::: {.fragment .fade-in}
+
+![](img/sens_network_out.png)
+
+::: {.attribution}
+[@Berger2018]
+:::
+
+:::
+
+:::
+
+### MQTT summary
+
+Pros:
+
+* Lightweight and efficient.
+* Supports asynchronous communication.
+* Facilitates scalable messaging patterns.
+
+Cons:
+
+* Initial lack of robust security features.
+* Quality of Service (QoS) limitations.
+* Dependency on a central message broker for reliability.
+
+### Web scraping
+
+![](img/Types-of-web-data.png)
+
+#### Hierarchical Data - structure
+
+{{< include img/_hierdata_anim.qmd >}}
+
+#### Hierarchical Data - types
+
+::: {.incremental}
+
+* JSON
+  - standardized format
+  - intimidating in raw format - but many methods available
+
+* XML
+  - predecessor to JSON
+  - first try to standardize
+  - "... is a different beast ..." (but tameable)
+
+:::
+
+#### XML (Extensible Markup Language) {.nostretch}
+
+![](img/xml.svg){width=20% fig-align="center"}
+
+::: {.incremental}
+
+* Fields are represented by named *tags*
+
+* Each tag has an open `<tag>` and a close `<\tag>`
+
+* Children are represented by nested tags
+
+* Repeated fields are represented by repeated tags
+
+:::
+
+#### simple XML
+
+```
+<note>
+<to>Tove</to>
+<from>Jani</from>
+<heading>Reminder</heading>
+<body>Don't forget me this weekend!</body>
+</note>
+```
+
+#### CD Catalogue {.scrollable}
+
+```
+
+<?xml version="1.0" encoding="UTF-8"?>
+<CATALOG>
+  <CD>
+    <TITLE>Empire Burlesque</TITLE>
+    <ARTIST>Bob Dylan</ARTIST>
+    <COUNTRY>USA</COUNTRY>
+    <COMPANY>Columbia</COMPANY>
+    <PRICE>10.90</PRICE>
+    <YEAR>1985</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Hide your heart</TITLE>
+    <ARTIST>Bonnie Tyler</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>CBS Records</COMPANY>
+    <PRICE>9.90</PRICE>
+    <YEAR>1988</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Greatest Hits</TITLE>
+    <ARTIST>Dolly Parton</ARTIST>
+    <COUNTRY>USA</COUNTRY>
+    <COMPANY>RCA</COMPANY>
+    <PRICE>9.90</PRICE>
+    <YEAR>1982</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Still got the blues</TITLE>
+    <ARTIST>Gary Moore</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>Virgin records</COMPANY>
+    <PRICE>10.20</PRICE>
+    <YEAR>1990</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Eros</TITLE>
+    <ARTIST>Eros Ramazzotti</ARTIST>
+    <COUNTRY>EU</COUNTRY>
+    <COMPANY>BMG</COMPANY>
+    <PRICE>9.90</PRICE>
+    <YEAR>1997</YEAR>
+  </CD>
+  <CD>
+    <TITLE>One night only</TITLE>
+    <ARTIST>Bee Gees</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>Polydor</COMPANY>
+    <PRICE>10.90</PRICE>
+    <YEAR>1998</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Sylvias Mother</TITLE>
+    <ARTIST>Dr.Hook</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>CBS</COMPANY>
+    <PRICE>8.10</PRICE>
+    <YEAR>1973</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Maggie May</TITLE>
+    <ARTIST>Rod Stewart</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>Pickwick</COMPANY>
+    <PRICE>8.50</PRICE>
+    <YEAR>1990</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Romanza</TITLE>
+    <ARTIST>Andrea Bocelli</ARTIST>
+    <COUNTRY>EU</COUNTRY>
+    <COMPANY>Polydor</COMPANY>
+    <PRICE>10.80</PRICE>
+    <YEAR>1996</YEAR>
+  </CD>
+  <CD>
+    <TITLE>When a man loves a woman</TITLE>
+    <ARTIST>Percy Sledge</ARTIST>
+    <COUNTRY>USA</COUNTRY>
+    <COMPANY>Atlantic</COMPANY>
+    <PRICE>8.70</PRICE>
+    <YEAR>1987</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Black angel</TITLE>
+    <ARTIST>Savage Rose</ARTIST>
+    <COUNTRY>EU</COUNTRY>
+    <COMPANY>Mega</COMPANY>
+    <PRICE>10.90</PRICE>
+    <YEAR>1995</YEAR>
+  </CD>
+  <CD>
+    <TITLE>1999 Grammy Nominees</TITLE>
+    <ARTIST>Many</ARTIST>
+    <COUNTRY>USA</COUNTRY>
+    <COMPANY>Grammy</COMPANY>
+    <PRICE>10.20</PRICE>
+    <YEAR>1999</YEAR>
+  </CD>
+  <CD>
+    <TITLE>For the good times</TITLE>
+    <ARTIST>Kenny Rogers</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>Mucik Master</COMPANY>
+    <PRICE>8.70</PRICE>
+    <YEAR>1995</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Big Willie style</TITLE>
+    <ARTIST>Will Smith</ARTIST>
+    <COUNTRY>USA</COUNTRY>
+    <COMPANY>Columbia</COMPANY>
+    <PRICE>9.90</PRICE>
+    <YEAR>1997</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Tupelo Honey</TITLE>
+    <ARTIST>Van Morrison</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>Polydor</COMPANY>
+    <PRICE>8.20</PRICE>
+    <YEAR>1971</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Soulsville</TITLE>
+    <ARTIST>Jorn Hoel</ARTIST>
+    <COUNTRY>Norway</COUNTRY>
+    <COMPANY>WEA</COMPANY>
+    <PRICE>7.90</PRICE>
+    <YEAR>1996</YEAR>
+  </CD>
+  <CD>
+    <TITLE>The very best of</TITLE>
+    <ARTIST>Cat Stevens</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>Island</COMPANY>
+    <PRICE>8.90</PRICE>
+    <YEAR>1990</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Stop</TITLE>
+    <ARTIST>Sam Brown</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>A and M</COMPANY>
+    <PRICE>8.90</PRICE>
+    <YEAR>1988</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Bridge of Spies</TITLE>
+    <ARTIST>T'Pau</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>Siren</COMPANY>
+    <PRICE>7.90</PRICE>
+    <YEAR>1987</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Private Dancer</TITLE>
+    <ARTIST>Tina Turner</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>Capitol</COMPANY>
+    <PRICE>8.90</PRICE>
+    <YEAR>1983</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Midt om natten</TITLE>
+    <ARTIST>Kim Larsen</ARTIST>
+    <COUNTRY>EU</COUNTRY>
+    <COMPANY>Medley</COMPANY>
+    <PRICE>7.80</PRICE>
+    <YEAR>1983</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Pavarotti Gala Concert</TITLE>
+    <ARTIST>Luciano Pavarotti</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>DECCA</COMPANY>
+    <PRICE>9.90</PRICE>
+    <YEAR>1991</YEAR>
+  </CD>
+  <CD>
+    <TITLE>The dock of the bay</TITLE>
+    <ARTIST>Otis Redding</ARTIST>
+    <COUNTRY>USA</COUNTRY>
+    <COMPANY>Stax Records</COMPANY>
+    <PRICE>7.90</PRICE>
+    <YEAR>1968</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Picture book</TITLE>
+    <ARTIST>Simply Red</ARTIST>
+    <COUNTRY>EU</COUNTRY>
+    <COMPANY>Elektra</COMPANY>
+    <PRICE>7.20</PRICE>
+    <YEAR>1985</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Red</TITLE>
+    <ARTIST>The Communards</ARTIST>
+    <COUNTRY>UK</COUNTRY>
+    <COMPANY>London</COMPANY>
+    <PRICE>7.80</PRICE>
+    <YEAR>1987</YEAR>
+  </CD>
+  <CD>
+    <TITLE>Unchain my heart</TITLE>
+    <ARTIST>Joe Cocker</ARTIST>
+    <COUNTRY>USA</COUNTRY>
+    <COMPANY>EMI</COMPANY>
+    <PRICE>8.20</PRICE>
+    <YEAR>1987</YEAR>
+  </CD>
+</CATALOG>
+
+```
+#### XML Growth
+
+![limited spec means limited control](img/ListOfXML.gif)
+
+#### HyperText Markup Language (HTML)
+
+::: {.incremental}
+
+* HTML is the standard language for describing the layout of webpages
+
+* Is is *like* XML, with special tags for hyperlinks, tables, images, etc
+
+* You don't need to be an HTML expert to scrape webpages, but some basics are necessary
+
+:::
+
+#### Hyperlinks
+
+The `<a>` tag indicates a (hyper)link
+
+::: {.incremental}
+
+* the `href=` attribute contains the URL
+* the dispayed text is within the `<a>` tag
+
+:::
+
+#### https://example.com/
+
+```
+
+<!doctype html>
+<html>
+<head>
+    <title>Example Domain</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+    body {
+        background-color: #f0f0f2;
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    }
+    div {
+        width: 600px;
+        margin: 5em auto;
+        padding: 2em;
+        background-color: #fdfdff;
+        border-radius: 0.5em;
+        box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);
+    }
+    a:link, a:visited {
+        color: #38488f;
+        text-decoration: none;
+    }
+    @media (max-width: 700px) {
+        div {
+            margin: 0 auto;
+            width: auto;
+        }
+    }
+    </style>
+</head>
+
+<body>
+<div>
+    <h1>Example Domain</h1>
+    <p>This domain is for use in illustrative examples in documents. You may use this
+    domain in literature without prior coordination or asking for permission.</p>
+    <p><a href="https://www.iana.org/domains/example">More information...</a></p>
+</div>
+</body>
+</html>
+
+```
+
+#### Tables
+
+The `<table>` tag indicates a table
+
+::: {.incremental}
+
+* the `<tr>` indicates a row
+* the `<th>` and `<td>` tags indicate a cell within a row
+
+:::
+
+##### Tables example
+
+::: columns
+::: {.column width="60%"}
+
+```
+<table>
+<thead>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Number</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Meier</td>
+    <td>Alexander</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>Müller</td>
+    <td>Melanie</td>
+    <td>2</td>
+  </tr>
+</tbody>
+</table>
+
+```
+
+:::
+
+::: {.column width="40%"}
+
+![](img/simple_table.png)
+
+:::
+
+:::
+
+#### Web scraping example
+
+```{r}
+#| echo: true
+
+html <- read_html("http://rvest.tidyverse.org/")
+html
+```
+
+::: {.attribution}
+[@978-1-4920-9740-2]
+::: 
+
+#### Scraping a table I - get the data in
+
+```{r}
+#| echo: true
+
+html <- minimal_html("
+  <table class='mytable'>
+<thead>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Number</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Meier</td>
+    <td>Alexander</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>Müller</td>
+    <td>Melanie</td>
+    <td>2</td>
+  </tr>
+</tbody>
+</table>
+  ")
+
+html
+
+```
+
+#### Scraping a table II - transform to useable output
+
+```{r}
+#| echo: true
+
+html |>
+  html_element(".mytable") |>
+  html_table()
+
+```
+
+#### Ethics
+
+::: {.incremental}
+
+* Website owners have to pay a small amount each time you
+visit a webpage.
+* This is usually offset by advertising.
+* But when you do web scraping:
+  * it is easy to rack up many webpage visits,
+  * and you don’t see any ads to offset this cost.
+
+:::
+
+#### `robots.txt`
+
+::: {.incremental}
+
+* Most websites have a `robots.txt` file in the home directory that indicate which bots are allowed to scrape and which pages they can scrape.
+* Here are a few examples:
+  * <http://www.espn.com/robots.txt>
+  * <http://www.nytimes.com/robots.txt>
+* However, `robots.txt` is informational only. It doesn’t prevent bots from scraping a webpage
+
+:::
+
+### Web scraping summary
+
+Pros:
+
+::: {.incremental}
+
+* Enriches big data with diverse online sources.
+* Provides real-time data updates.
+* Offers cost-effective automated extraction.
+
+:::
+
+Cons:
+
+::: {.incremental}
+
+* Raises legal and ethical concerns.
+* May compromise data quality.
+* Poses technical challenges like handling dynamic websites.
+
+:::
+
+---
+
+::: {.r-fit-text .v-c}
+
+It's a mess!
+
+:::
+
+# References

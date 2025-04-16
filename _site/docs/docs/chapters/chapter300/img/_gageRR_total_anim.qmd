@@ -1,0 +1,53 @@
+```yaml { .animate src="img/gage_rr_total.svg"}
+setup:
+  - element: "#sigtotal"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "0"
+  - element: "#sigp2p"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "1"
+  - element: "#p01"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "2"
+  - element: "#sigrr"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "3"
+  - element: "#sigrepeat"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "4"
+  - element: "#p02"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "5"
+  - element: "#sigrepr"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "6"
+  - element: "#sigappr"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "7"
+  - element: "#p03"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "8"
+  - element: "#siginteract"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "9"
+```

@@ -1,0 +1,38 @@
+```yaml { .animate src="img/027_SSE.svg"}
+setup:
+  - element: "#datapoints"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "0"
+  - element: "#bestfit"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "1"
+  - element: "#datavalue"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "2"
+  - element: "#predictedvalue"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "3"
+  - element: "#squares"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "4"
+  - element: "#sse"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "5"
+  - element: "#mse"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "6"
+```

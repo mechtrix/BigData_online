@@ -1,0 +1,38 @@
+```yaml { .animate src="img/dbscan.svg"}
+setup:
+  - element: "#rA"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "1"
+  - element: "#core"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "2"
+  - element: "#arrows"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "3"
+  - element: "#firstborder"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "4"
+  - element: "#secondborder"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "5"
+  - element: "#noise"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "6"
+  - element: "#step06"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "7"        
+```

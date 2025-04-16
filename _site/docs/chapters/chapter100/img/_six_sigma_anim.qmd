@@ -1,0 +1,54 @@
+```yaml { .animate src="img/dmaic.svg"}
+setup:
+  - element: "#Output"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "0"
+  - element: "#Line01"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "1"
+  - element: "#Line02"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "2"
+  - element: "#QC"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "3"
+  - element: "#EmplProd"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "4"
+  - element: "#InvStock"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "5"
+  - element: "#SC"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "6"
+  - element: "#Management"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "7"
+  - element: "#Ressources"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "8"
+  - element: "#Environment"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "9"  
+
+```

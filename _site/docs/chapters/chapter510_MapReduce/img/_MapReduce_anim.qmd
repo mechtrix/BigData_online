@@ -1,0 +1,23 @@
+```yaml { .animate src="img/MapReduce_lorem.svg"}
+setup:
+  - element: "#map"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "1"
+  - element: "#shuffle"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "2"
+  - element: "#shuffle2"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "2"
+  - element: "#reduce"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "3"
+```

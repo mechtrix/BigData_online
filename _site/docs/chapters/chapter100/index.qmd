@@ -1,0 +1,392 @@
+---
+title: "Introduction"
+bibliography: https://api.citedrive.com/bib/da291eae-8e2a-46b1-968e-0b79af55f87a/references.bib?x=eyJpZCI6ICJkYTI5MWVhZS04ZTJhLTQ2YjEtOTY4ZS0wYjc5YWY1NWY4N2EiLCAidXNlciI6ICI1NjQ5IiwgInNpZ25hdHVyZSI6ICI2ZDMyODMxM2QzZDQ3NmE3MGM4MDc5MzJiNzE1NjkzNjJmYmZjODYyNGMzNmJjNDBkMDk3Njk5N2RmZjQ5MTg5In0=/bibliography.bib
+format:
+  revealjs:
+    slide-level: 5
+    resource-path: 
+      - "img"
+    logo: img/back.svg
+    footer-logo-link: "https://mechtrix.github.io/BigData_online/"
+    footer: "Copyright Prof. Dr. Tim Weber, 2024"
+revealjs-plugins:
+  - animate
+  - attribution
+filters: 
+  - animate
+  - reveal-header
+editor_options: 
+  chunk_output_type: console
+css: style.css
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(tidyverse)
+library(ggthemes)
+
+```
+
+
+# Introduction
+
+::: {.r-fit-text .v-c}
+
+"... Welcome to the era of Big Data, 
+
+::: {.fragment .fade-in}
+
+and look out! ..." 
+
+:::
+
+:::
+
+::: {.attribution}
+[@978-0071799669]
+:::
+
+
+## The End of Theory? 
+
+
+![](img/model_vs_data.svg){fig-align="center"}
+
+::: {.attribution}
+[@End-2024-04-17]
+[J. Craig Venter Institute](https://www.jcvi.org/)
+:::
+
+
+## Information growth
+
+
+![](img/intro-world-store-capacity-resized.png)
+
+::: {.attribution}
+[@1492046361]
+:::
+
+## Drinking leads to Amazon purchases
+
+![](img/amazon_vs_breweries.png)
+
+::: {.attribution}
+[Tyler Vigen](https://www.tylervigen.com/spurious/correlation/1338_the-number-of-breweries-in-the-united-states_correlates-with_amazoncoms-stock-price)
+:::
+
+### Source
+
+![](img/ai_paper.png)
+
+::: {.attribution}
+[Tyler Vigen](https://www.tylervigen.com/spurious/correlation/1338_the-number-of-breweries-in-the-united-states_correlates-with_amazoncoms-stock-price)
+:::
+
+### correlation coefficient: 
+
+* $r =  0.8982364$
+
+::: {.fragment .fade-in}
+
+Correlation is a measure of how much the variables move together. 
+If it is 0.99, when one goes up the other goes up. 
+If it is 0.02, the connection is very weak or non-existent. 
+If it is -0.99, then when one goes up the other goes down. 
+If it is 1.00, you probably messed up your correlation function.
+
+:::
+
+::: {.attribution}
+[Tyler Vigen](https://www.tylervigen.com/spurious/correlation/1338_the-number-of-breweries-in-the-united-states_correlates-with_amazoncoms-stock-price)
+:::
+
+### coefficient of determination: 
+
+* $r^2 = 0.8068287$
+
+::: {.fragment .fade-in}
+
+This means $80.7\%$ of the change in the one variable (i.e., Amazon.com's stock price (AMZN)) is predictable based on the change in the other (i.e., The number of Breweries in the United States) over the 21 years from 2002 through 2022.
+:::
+
+### p-value: 
+
+* $p = 3.3 \times10^{-8} <0.01$
+
+::: {.fragment .fade-in}
+
+The p-value is $3.3\times 10^{-8}$. 
+The p-value is a measure of how probable it is that we would randomly find a result this extreme. 
+On average, you will find a correlation as strong as $0.9$ in $3.3\times10^{-6}\%$ of random cases. 
+Said differently, if you correlated $30,543,230$ random variables with the same 20 degrees of freedom, you would randomly expect to find a correlation as strong as this one.
+
+:::
+
+::: {.attribution}
+[Tyler Vigen](https://www.tylervigen.com/spurious/correlation/1338_the-number-of-breweries-in-the-united-states_correlates-with_amazoncoms-stock-price)
+:::
+
+### confidence intervall: 
+
+* $[ 0.76, 0.96 ]$ $95\%$ correlation confidence interval.
+
+### Explanation
+
+As the number of breweries in the United States increased, so did the demand for unique and specialized beer products. 
+This led to a surge in online sales of craft beers and beer-related merchandise on Amazon.com. 
+As a result, Amazon's overall revenue and market share in the alcohol industry saw a hoppy, frothy rise, prompting investors to raise a glass to the company's success and driving up its stock price. 
+Cheers to the unexpected connection between beer production and e-commerce dominance!
+
+---
+
+::: {.r-fit-text .v-c}
+
+WOW!
+
+:::
+
+::: {.attribution}
+[Tyler Vigen](https://www.tylervigen.com/spurious/correlation/1338_the-number-of-breweries-in-the-united-states_correlates-with_amazoncoms-stock-price)
+:::
+
+### Data dredging
+
+I have 25,153 variables in my database. 
+I compare all these variables against each other to find ones that randomly match up. 
+That's 632,673,409 correlation calculations! 
+This is called “data dredging.” 
+Instead of starting with a hypothesis and testing it, I instead abused the data to see what correlations shake out. 
+It’s a dangerous way to go about analysis, because any sufficiently large dataset will yield strong correlations completely at random.
+
+### Lack of causal connection
+
+There is probably no direct connection between these variables, despite what the AI says above. 
+This is exacerbated by the fact that I used "Years" as the base variable. 
+Lots of things happen in a year that are not related to each other! 
+Most studies would use something like "one person" in stead of "one year" to be the "thing" studied.
+
+### Observations not independent
+
+For many variables, sequential years are not independent of each other. 
+If a population of people is continuously doing something every day, there is no reason to think they would suddenly change how they are doing that thing on January 1. 
+A simple p-value calculation does not take this into account, so mathematically it appears less probable than it really is.
+
+## Central Limit Theorem (CLT)
+
+::: {.r-stack}
+
+::: {.fragment .fade-out}
+
+```{r}
+
+# Set the parameters for the population distribution
+population_size <- 10000  # Size of the population
+population_distribution <- runif(population_size, min = 1, max = 100)  # Uniform distribution
+
+ggplot(data = data.frame(x = population_distribution),aes(x))+
+  geom_density(fill = "gray")+
+  scale_x_continuous(expand = c(0,0,0,0))+
+  scale_y_continuous(expand = c(0,0,0.05,0))+
+  labs(
+    title = "uniform population, n = 10000",
+    x = "value (min = 1, max = 100)"
+      )+
+  theme_few(
+    base_size = 20
+  )
+```
+
+:::
+
+::: {.fragment}
+```{r}
+
+# Number of samples to take
+num_samples <- 1000
+
+# Set the sample sizes for each iteration
+sample_sizes <- c(2, 10, 50,200)
+
+# Create a data frame to store results
+results <- data.frame()
+
+# Simulate sampling and calculate sample means
+for (sample_size in sample_sizes) {
+  sample_means <- replicate(num_samples, mean(sample(population_distribution, sample_size)))
+  result <- data.frame(Sample_Size = sample_size, Sample_Means = sample_means)
+  results <- bind_rows(results, result)
+}
+
+# Plot the CLT demonstration using ggplot2
+ggplot(results, aes(x = Sample_Means)) +
+  geom_histogram(binwidth = 2, fill = "gray", color = "black") +
+  facet_wrap(~ Sample_Size, scales = "free_x") +
+  geom_vline(aes(xintercept = mean(population_distribution), color = "Population Mean"), linetype = "solid", size = 1,key_glyph = draw_key_path) +
+  scale_color_manual(values = c("Population Mean" = "black")) +
+  labs(
+    title = "Central Limit Theorem Demonstration",
+    x = "Sample Mean",
+    y = "Frequency",
+    color = ""
+  ) +
+  theme_few(
+    base_size = 12
+  )+
+  theme(legend.position = "bottom")
+```
+
+:::
+
+:::
+
+## Law of Large Numbers 
+
+::: {.fragment .fade-in}
+
+```{r}
+
+# Number of die rolls to simulate
+num_rolls <- 1000
+
+# Simulate die rolls
+set.seed(123)  # For reproducibility
+die_rolls <- sample(1:6, num_rolls, replace = TRUE)
+
+# Calculate running average
+running_average <- cumsum(die_rolls) / (1:num_rolls)
+
+# Create a data frame
+rolls_data <- data.frame(
+  Roll_Number = 1:num_rolls,
+  Die_Result = die_rolls,
+  Running_Average = running_average
+)
+
+# Create a plot using ggplot2
+ggplot(rolls_data, aes(x = Roll_Number)) +
+  geom_line(aes(y = Running_Average)) +
+  geom_hline(yintercept = 3.5, linetype = "dashed") +
+  labs(
+    title = "Law of Large Numbers",
+    x = "Number of Die Rolls",
+    y = "Running Average"
+  ) +
+  scale_y_continuous(breaks = c(1,2,3,3.5,4,5,6),
+                     limits = c(1,6))+
+  theme_few(base_size = 20)
+
+
+```
+
+:::
+
+## History of Big Data
+
+### 300 B.C. library of Alexandria {.smaller}
+
+* Capture ALL the data! [@Wiegand1994]
+* $40,000$ to $400,000$ scrolls (which would be the equivalent of around $100,000$ books).
+
+::: {.incremental}
+
+* no backup no mercy
+
+:::
+
+![](img/alex_lib.jpg){width=80% fig-align="center"}
+
+### Roman Empire
+
+* The romans were able to predict insurgencies based on detailed statistical analysis.
+* They were able to deploy armies where needed the most
+
+::: {.incremental}
+
+* BIG DATA RULING EMPIRES!
+
+:::
+
+![](img/Romempgif.gif){width=80% fig-align="center"}
+
+### the modern (?) age {.smaller}
+
+| Unit            | Value            | Example                                                                |
+|-----------------|------------------|------------------------------------------------------------------------|
+| Kilobytes (KB)  | 1,000 bytes      | a paragraph of a text document                                         |
+| Megabytes (MB)  | 1,000 Kilobytes  | a small novel                                                          |
+| Gigabytes (GB)  | 1,000 Megabytes  | Beethoven's 5th                                                        |
+| Terabytes (TB)  | 1,000 Gigabytes  | all the XRays in a large hospital                                      |
+| Petabytes (PB)  | 1,000 Terabytes  | half the contents of all US academic research libraries                |
+| Exabytes (EB)   | 1,000 Petabytes  | about one fifth of the words people have ever spoken                   |
+| Zettabytes (ZB) | 1,000 Exabytes   | as much information as there are grains of sand on all the worlds beaches |
+
+## Evolution of Big Data
+
+### Big Data Phase 1 – Structured Content
+
+::: {.incremental}
+
+* longstanding domain of database management
+* relies heavily on the storage, extraction, and optimization techniques that are common in data that is stored in Relational Database Management Systems (RDBMS)
+* extraction, transformation and loading (ETL) of data, started to professionalize in the 1970s
+
+:::
+
+### Big Data Phase 2 – Web Based Unstructured Content
+
+::: {.incremental}
+
+* early 2000s internet and corresponding web applications started to generate tremendous amounts of data
+* IP-specific search and interaction logs started to generate web based unstructured data
+* insights into the needs and behaviours of internet users, opening a whole new world of possibilities
+* networks analysis, web-mining and spatial-temporal analysis
+
+:::
+
+### Big Data Phase 3 – Mobile and Sensor-based Content
+
+::: {.incremental}
+
+* Current Phase: driven by the rapid adoption of mobile technology and devices
+* number of mobile devices and tablets surpassed the number of laptops and PCs for the first time in 2011
+* in 2020, there are an estimated 10 billion devices that are connected to the internet
+* IoT: millions of new TVs, thermostats, wearables and even refrigerators
+
+:::
+
+---
+
+::: {.r-fit-text .v-c}
+
+It's a mess!
+
+:::
+
+## Big Data ingredients
+
+![](img/intro.png){width=80% fig-align="center"}
+
+## Production Environment
+
+{{< include img/_prod_en_anim.qmd >}}
+
+## Six Sigma
+
+{{< include img/_six_sigma_anim.qmd >}}
+
+## CRISP-DM
+
+![](img/CRISP-DM.png.webp){width=80% fig-align="center"}
+
+## unifying approach
+
+![](img/crispdm_dmaic.png){width=80% fig-align="center"}
+
+::: {.attribution}
+[@Sch_fer_2019]
+:::
+
+# References

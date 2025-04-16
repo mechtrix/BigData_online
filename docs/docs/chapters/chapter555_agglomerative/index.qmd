@@ -1,0 +1,1165 @@
+---
+title: "Agglomerative Clustering"
+bibliography: https://api.citedrive.com/bib/da291eae-8e2a-46b1-968e-0b79af55f87a/references.bib?x=eyJpZCI6ICJkYTI5MWVhZS04ZTJhLTQ2YjEtOTY4ZS0wYjc5YWY1NWY4N2EiLCAidXNlciI6ICI1NjQ5IiwgInNpZ25hdHVyZSI6ICI2ZDMyODMxM2QzZDQ3NmE3MGM4MDc5MzJiNzE1NjkzNjJmYmZjODYyNGMzNmJjNDBkMDk3Njk5N2RmZjQ5MTg5In0=/bibliography.bib
+format:
+  revealjs:
+    slide-level: 5
+    resource-path: 
+      - "img"
+    logo: img/back.svg
+    footer-logo-link: "https://mechtrix.github.io/BigData_online/"
+    footer: "Copyright Prof. Dr. Tim Weber, 2024"
+revealjs-plugins:
+  - animate
+  - attribution
+filters: 
+  - animate
+  - reveal-header
+editor_options: 
+  chunk_output_type: console
+css: style.css
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(tidyverse)
+library(gt)
+library(factoextra)
+library(here)
+```
+
+## Agglomerative Clustering
+
+- Each observation is treated as a single cluster in the beginning (a leaf)
+- the most similar clusters are successively merged until there is only one single big cluster (root)
+- result is a tree-like representation of the objects, known as **dendogram**
+
+## The idea
+
+{{< include img/_agg_anim.qmd >}}
+
+## What's a dendogram
+
+{{< include img/_dendogram_anim.qmd >}}
+
+## What is similar?
+
+![](img/similar.png)
+
+::: {.fragment .fade-in}
+
+... the classification of observations into groups requires some methods for computing the **distance** or the **(dis)similarity** between each pair of observations. The result of this computation is known as a **dissimilarity** or **distance matrix**.  [@kassambara2017practical]
+
+:::
+
+## distance measures
+
+::: {.incremental}
+
+- Classical
+  * Euclidean
+  * Manhatten
+
+- Correlation based
+  * Pearson correlation
+  * Eisen cosine correlation distance
+  * Spearman correlation distance
+  * Kendall correlation distance
+
+:::
+
+### Manhatten distance
+
+
+![](img/manhatten.svg){width=2500px fig-align="center"}
+
+\begin{align}
+d_{man}(x,y) = \sum_{i=1}^n|x_i-y|
+\end{align}
+
+---
+
+::: {style="font-size: 60%;"}
+
+Pros:
+
+1. **Robustness to Outliers**:
+   - Less sensitive to outliers compared to Euclidean distance.
+
+2. **Computational Simplicity**:
+   - Involves only addition and subtraction, making it computationally simpler and faster.
+
+3. **Suitability for High-Dimensional Data**:
+   - Performs better in high-dimensional spaces, less affected by the "curse of dimensionality."
+
+Cons:
+
+1. **Ignores Diagonal Distance**:
+   - Only considers movements along the coordinate axes, ignoring diagonal relationships.
+
+2. **Dependence on Scale**:
+   - Affected by the scale and units of features, requiring proper normalization.
+
+3. **Less Effective for Spherical Clusters**:
+   - May not capture the true geometric relationships in spherical or circular clusters as accurately as Euclidean distance.
+
+:::
+
+### Pearson correlation distance
+
+```{r}
+#| out-width: 90%
+#| fig-align: "center"
+
+data("mtcars")
+
+res <- cor(mtcars)
+
+corrplot::corrplot(res, type = "upper", order = "hclust", 
+         tl.col = "black", tl.srt = 45,addCoef.col = 'black',)
+
+```
+
+::: {style="font-size: 80%;"}
+
+\begin{align}
+d_{cor}(x,y) = \frac{\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^n (x_i - \bar{x})^2} \sqrt{\sum_{i=1}^n (y_i - \bar{y})^2}}
+\end{align}
+
+:::
+
+### Spearman correlation distance
+
+```{r}
+#| out-width: 90%
+#| fig-align: "center"
+
+data("mtcars")
+
+res <- cor(mtcars,method = "spearman")
+
+corrplot::corrplot(res, type = "upper", order = "hclust", 
+         tl.col = "black", tl.srt = 45,addCoef.col = 'black',)
+
+```
+
+::: {style="font-size: 80%;"}
+
+\begin{align}
+d_{spear}(x,y) = 1 - \frac{6 \sum d_i^2}{n(n^2 - 1)}
+\end{align}
+
+:::
+
+### Kendall correlation coefficient
+
+```{r}
+#| out-width: 90%
+#| fig-align: "center"
+
+data("mtcars")
+
+res <- cor(mtcars,method = "kendall")
+
+corrplot::corrplot(res, type = "upper", order = "hclust", 
+         tl.col = "black", tl.srt = 45,addCoef.col = 'black',)
+
+```
+
+::: {style="font-size: 80%;"}
+
+\begin{align}
+d_{kend}(x,y) = 1-\frac{n_c-n_d}{\frac{1}{2}n(n-1)}
+\end{align}
+
+:::
+
+#### comparison of correlation
+
+::: {style="font-size: 80%;"}
+
+1.	*mpg*:	Miles/(US) gallon
+2.	*cyl*:	Number of cylinders
+3.	*disp*:	Displacement (cu.in.)
+4. 	*hp*:	Gross horsepower
+5.	*drat*:	Rear axle ratio
+6.	*wt*:	Weight (1000 lbs)
+7.	*qsec*:	1/4 mile time
+8.	*vs*:	Engine (0 = V-shaped, 1 = straight)
+9.	*am*:	Transmission (0 = automatic, 1 = manual)
+10.	*gear*:	Number of forward gears
+11.	*carb*:	Number of carburetors
+
+:::
+
+---
+
+```{r}
+
+mtcars |> 
+  gt()
+  
+```
+
+### pearson
+
+```{r}
+#| out-width: 95%
+#| fig-height: 10
+#| fig-align: "center"
+
+corrplot::corrplot(cor(mtcars,method = "pearson"), type = "upper", order = "hclust", 
+         tl.col = "black", tl.srt = 45,addCoef.col = 'black')
+```
+
+### spearman 
+
+```{r}
+#| out-width: 95%
+#| fig-height: 10
+#| fig-align: "center"
+
+corrplot::corrplot(cor(mtcars,method = "spearman"), type = "upper", order = "hclust", 
+         tl.col = "black", tl.srt = 45,addCoef.col = 'black')
+```
+
+### kendall
+
+```{r}
+#| out-width: 95%
+#| fig-height: 10
+#| fig-align: "center"
+
+corrplot::corrplot(cor(mtcars,method = "kendall"), type = "upper", order = "hclust", 
+         tl.col = "black", tl.srt = 45,addCoef.col = 'black')
+
+
+```
+
+### Steps to agglomerative hierarchical clustering
+
+1. prepare the data
+2. Compute (dis)similarity information between every pair of objects
+3. Using linkage function to group object into hierarchical cluster tree, based on the distance information generated in step 1. Objects/clusters that are in close proximity are linked together using the linkage function.
+4. Determining where to cut the hierarchical tree into clusters. This creates the partition of the data.
+
+### linkage function(s)
+
+::: {style="font-size: 60%;"}
+
+::: {.fragment .highlight-red}
+
+- Maximum or *complete linkage*: The distance between two clusters is defined as the maximum value of all pairwise distances between the elements in cluster 1  and the elements in cluster 2. *It tends to produce more compact clusters.*
+
+:::
+
+- Minimum or *single linkage*: The distance between two clusters is defined as the minimum value of all pairwise distances between the elements in cluster 1 and the elements in cluster 2. *It tends to produce long, "loose" clusters.*
+
+- Mean or *average linkage*: The distance between two clusters is defined as the average distance between the elements in cluster 1 and the elements in cluster 2.
+
+- *Centroid linkage*: The distance between two clusters is defined as the distanced between the centroid for cluster 1 (a mean vector of length $p$ variables) and the centroid for cluster 2
+
+::: {.fragment .highlight-red}
+
+- *Ward's minimum variance method*: It minimizes the total within-cluster variance. At each step the pair of clusters with minimum between-cluster distance are merged.
+
+:::
+
+:::
+
+### lets get to it
+
+```{r}
+#| echo: true
+
+data("USArrests") # get the data
+
+df <- scale(USArrests) # scale the data
+
+res.dist <- dist(df, method = "euclidean") # compute distance metric
+
+res.hc <- hclust(d = res.dist, method = "ward.D2") # use the linkage function
+
+
+```
+
+## dendogram
+
+![](img/dendogram_01.png){width=2500px fig-align="center"}
+
+## verify the tree
+
+```{r}
+#| echo: true
+
+res.coph <- cophenetic(res.hc)
+
+cor(res.dist,res.coph)
+
+```
+
+## so... how many groups?
+
+... you need to find that yourself
+
+```{r}
+
+grp <- cutree(res.hc, k = 4)
+
+fviz_dend(
+  res.hc,
+  k = 4,
+  cex = 0.5,
+  color_labels_by_k = T,
+  rect = TRUE
+)
+
+```
+
+---
+
+```{r}
+
+fviz_cluster(
+  list(data = df,
+       cluster = grp),
+  repel = TRUE,
+  ellipse.type = "convex",
+  show.clust.cent = FALSE,
+  ggtheme = theme_minimal()
+)
+
+```
+
+## Comparing Dendograms - visual
+
+```{r}
+library(dendextend)
+
+data("USArrests")
+
+df <- scale(USArrests)
+
+set.seed(1)
+
+ss <- sample(1:50,10)
+
+df <- df[ss,]
+
+
+res.dist <- dist(df, method = "euclidean")
+
+hc1 <- hclust(res.dist, method = "average")
+hc2 <- hclust(res.dist, method = "ward.D2")
+
+dend1 <- as.dendrogram(hc1)
+dend2 <- as.dendrogram(hc2)
+
+dend_list <- dendlist(dend1,dend2)
+
+```
+
+
+```{r}
+tanglegram(dend1,dend2,
+           highlight_distinct_edges = FALSE,
+           common_subtrees_color_lines = FALSE,
+           common_subtrees_color_branches = TRUE,
+           main = paste("entaglement:", round(entanglement(dend_list),2)))
+```
+
+## comparing dendogram - quantitative
+
+![](chapter004/entanglement.png){width=2500px fig-align="center"}
+
+### correlation matrix between a list of dendograms
+
+```{r}
+
+dend1 <- df |> dist() |> hclust("complete") |> as.dendrogram()
+dend2 <- df |> dist() |> hclust("single") |> as.dendrogram()
+dend3 <- df |> dist() |> hclust("average") |> as.dendrogram()
+dend4 <- df |> dist() |> hclust("centroid") |> as.dendrogram()
+
+dend_list <- dendlist(
+  "Complete" = dend1,
+  "Single" = dend2,
+  "Average" = dend3,
+  "Centroid" = dend4
+)
+
+cors <- cor.dendlist(dend_list) |> round(digits = 2)
+
+corrplot::corrplot(cors,
+                   addCoef.col = 'black',
+                   type = "lower"
+                   )
+
+```
+
+
+## visualizing dendograms
+
+```{r}
+
+data("USArrests")
+
+dd <- dist(scale(USArrests),method = "euclidean")
+hc <- hclust(dd,method = "ward.D2")
+
+```
+
+### horizontal
+
+```{r}
+
+fviz_dend(hc, k = 4, cex = 0.4, horiz = TRUE, k_colors = "jco",rect = TRUE, rect_border = "jco", rect_fill = TRUE)
+
+```
+
+### phylogenic
+
+```{r}
+fviz_dend(hc, k = 4, k_colors = "jco",type = "phylogenic",repel = TRUE,phylo_layout = "layout.gem")
+```
+
+#### circular
+
+```{r}
+fviz_dend(hc, k = 4, k_colors = "jco",type = "circular",repel = TRUE,phylo_layout = "layout.gem")
+```
+
+
+
+## mtcars?
+
+```{r}
+#| echo: true
+
+data("mtcars") # get the data
+
+df <- scale(mtcars) # scale the data
+
+res.dist.spea <- get_dist(df, method = "spearman") # compute distance metric
+res.dist.kend <- get_dist(df, method = "kendall") # compute distance metric
+
+
+res.hc.spea <- hclust(d = res.dist.spea, method = "ward.D2") # use the linkage function
+res.hc.kend <- hclust(d = res.dist.kend, method = "ward.D2") # use the linkage function
+
+```
+
+## verify mtcars clustering
+
+```{r}
+#| echo: true
+
+res.coph.spea <- cophenetic(res.hc.spea)
+res.coph.kend <- cophenetic(res.hc.kend)
+
+cor(res.dist.spea,res.coph.spea)
+cor(res.dist.kend,res.coph.kend)
+
+```
+
+## groups in mtcars
+
+### spearman
+
+```{r}
+
+grp.spea <- cutree(res.hc.spea, k = 4)
+
+fviz_dend(
+  res.hc.spea,
+  k = 4,
+  cex = 0.5,
+  color_labels_by_k = T,
+  rect = TRUE
+)
+
+```
+
+### kendall
+
+```{r}
+
+grp.kend <- cutree(res.hc.kend, k = 4)
+
+fviz_dend(
+  res.hc.kend,
+  k = 4,
+  cex = 0.5,
+  color_labels_by_k = T,
+  rect = TRUE
+)
+
+```
+
+
+### results spearman
+
+```{r}
+
+fviz_cluster(
+  list(data = df,
+       cluster = grp.spea),
+  repel = TRUE,
+  ellipse.type = "convex",
+  show.clust.cent = FALSE,
+  axes = c(1,2),
+  ggtheme = theme_minimal()
+)
+
+```
+
+### results kendall
+
+```{r}
+
+fviz_cluster(
+  list(data = df,
+       cluster = grp.kend),
+  repel = TRUE,
+  ellipse.type = "convex",
+  show.clust.cent = FALSE,
+  ggtheme = theme_minimal()
+)
+
+```
+
+### comparing spearman and kendall
+
+```{r}
+
+SensorLab::ggconmat(caret::confusionMatrix(data = as.factor(grp.kend), referenc = as.factor(grp.spea)))
+
+```
+
+
+## Comparing Dendograms - visual
+
+```{r}
+library(dendextend)
+
+data("mtcars")
+
+df <- scale(mtcars)
+
+
+res.dist.spea <- get_dist(df, method = "spearman")
+res.dist.kend <- get_dist(df, method = "kendall")
+
+hc1.spea <- hclust(res.dist.spea, method = "complete")
+hc2.spea <- hclust(res.dist.spea, method = "ward.D2")
+
+hc1.kend <- hclust(res.dist.kend, method = "complete")
+hc2.kend <- hclust(res.dist.kend, method = "ward.D2")
+
+dend1.spea <- as.dendrogram(hc1.spea)
+dend2.spea <- as.dendrogram(hc2.spea)
+
+dend_list_spea <- dendlist(dend1.spea,dend2.spea)
+
+dend1.kend <- as.dendrogram(hc1.kend)
+dend2.kend <- as.dendrogram(hc2.kend)
+
+dend_list_kend <- dendlist(dend1.kend,dend2.kend)
+
+```
+
+### spearman - complete vs. ward
+
+```{r}
+tanglegram(dend1.spea,dend2.spea,
+           highlight_distinct_edges = FALSE,
+           common_subtrees_color_lines = FALSE,
+           common_subtrees_color_branches = TRUE,
+           main = paste("entanglement:", round(entanglement(dend_list_spea),2)))
+```
+
+### kendall - complete vs. ward
+
+```{r}
+tanglegram(dend1.kend,dend2.kend,
+           highlight_distinct_edges = FALSE,
+           common_subtrees_color_lines = FALSE,
+           common_subtrees_color_branches = TRUE,
+           main = paste("entanglement:", round(entanglement(dend_list_kend),2)))
+```
+
+## spearman - dendogram correlation
+
+```{r}
+
+dend1.spea <- df |> get_dist(method = "spearman") |> hclust("complete") |> as.dendrogram()
+dend2.spea <- df |> get_dist(method = "spearman") |> hclust("single") |> as.dendrogram()
+dend3.spea <- df |> get_dist(method = "spearman") |> hclust("average") |> as.dendrogram()
+dend4.spea <- df |> get_dist(method = "spearman") |> hclust("centroid") |> as.dendrogram()
+dend5.spea <- df |> get_dist(method = "spearman") |> hclust("ward.D2") |> as.dendrogram()
+
+
+dend_list_spea <- dendlist(
+  "Complete" = dend1.spea,
+  "Single" = dend2.spea,
+  "Average" = dend3.spea,
+  "Centroid" = dend4.spea,
+  "Ward" = dend5.spea
+)
+
+cors_spea <- cor.dendlist(dend_list_spea) |> round(digits = 2)
+
+corrplot::corrplot(cors_spea,
+                   addCoef.col = 'white',
+                   type = "lower"
+                   )
+
+```
+
+## kendall - dendogram correlation
+
+```{r}
+
+dend1.kend <- df |> get_dist(method = "kendall") |> hclust("complete") |> as.dendrogram()
+dend2.kend <- df |> get_dist(method = "kendall") |> hclust("single") |> as.dendrogram()
+dend3.kend <- df |> get_dist(method = "kendall") |> hclust("average") |> as.dendrogram()
+dend4.kend <- df |> get_dist(method = "kendall") |> hclust("centroid") |> as.dendrogram()
+dend5.kend <- df |> get_dist(method = "kendall") |> hclust("ward.D2") |> as.dendrogram()
+
+dend_list_kend <- dendlist(
+  "Complete" = dend1.kend,
+  "Single" = dend2.kend,
+  "Average" = dend3.kend,
+  "Centroid" = dend4.kend,
+  "Ward" = dend5.kend
+)
+
+cors_kend <- cor.dendlist(dend_list_kend) |> round(digits = 2)
+
+corrplot::corrplot(cors_kend,
+                   addCoef.col = 'white',
+                   type = "lower"
+                   )
+```
+
+## complete comparison
+
+```{r}
+#| fig-height: 8
+#| fig-align: "center"
+
+dend_list_all <- dendlist(
+  "Kendall Complete" = dend1.kend,
+  "Spearman Complete" = dend1.spea,
+  "Kendall Single" = dend2.kend,
+  "Spearman Single" = dend2.spea,
+  "Kendall Average" = dend3.kend,
+  "Spearman Average" = dend3.spea,
+  "Kendall Centroid" = dend4.kend,
+  "Spearman Centroid" = dend4.spea,
+  "Kendall Ward" = dend5.kend,
+  "Spearman Ward" = dend5.spea
+  
+)
+
+cors_all = cor.dendlist(dend_list_all)
+
+corrplot::corrplot(cors_all,
+                   addCoef.col = 'white',
+                   type = "lower"
+                   )
+
+```
+
+## Spearman Ward vs. Kendall Ward
+
+```{r}
+
+tanglegram(dend5.spea,dend5.kend,
+           highlight_distinct_edges = FALSE,
+           common_subtrees_color_lines = FALSE,
+           common_subtrees_color_branches = TRUE,
+           main = paste("entanglement:", round(entanglement(dendlist(dend5.spea,dend5.kend)),2)))
+
+```
+
+## final result
+
+![](img/ockham.jpg){width=1500px fig-align="center"}
+
+:::{.r-stack}
+
+"Pluralitas non est ponenda sine neccesitate"
+
+:::
+
+### pca on data
+
+```{r}
+pca_out <- princomp(df)
+
+pr <- prcomp(df)
+vars <- apply(pr$x, 2, var)  
+props <- vars / sum(vars)
+cumprop <- cumsum(props) |> 
+  as.data.frame() |> 
+  rownames_to_column(var = "PC") |> 
+  mutate(
+    PC_no = parse_number(PC),
+    PC = paste0("PC",str_pad(PC_no, width = 2, pad = 0))
+  ) |> 
+  add_column(
+    props = props
+  ) |> 
+  janitor::clean_names() |> 
+  mutate(
+    props = case_when(
+      props < 0.021 ~ 0,
+      TRUE ~ 1
+    )
+  )
+
+cumprop |> 
+  ggplot(
+    aes(
+      x = pc,
+      y =cumsum_props,
+      alpha = props
+    )
+  )+
+   geom_hline(
+    yintercept = 0.9
+  )+
+  geom_col(
+    fill = "steelblue",
+    color = "gray"
+  )+
+  geom_text(
+    aes(
+      label = paste0(round(cumsum_props*100,digits = 0),"%")
+    ),
+    color = "black",
+    alpha = 1,
+    nudge_y = -0.015
+  )+
+  scale_y_continuous(
+    limits = c(0,1),
+    expand = c(0,0,0,0),
+    labels = scales::percent
+  )+
+  theme_classic(
+    base_size = 25
+  )+
+  labs(
+    title = "PCA on mtcars",
+    x = "PC",
+    y = "explained variance"
+  )+
+  guides(
+    alpha = "none"
+  )
+
+```
+
+### loadings of PC's
+
+```{r}
+corrplot::corrplot(t(pca_out$loadings[,1:4]), is.corr=FALSE)    
+
+```
+
+### Dim1 vs. Dim2
+
+```{r}
+fviz_pca_var(
+  pca_out,
+  col.var = "contrib"
+  )
+```
+
+### Dim3 vs. Dim4
+
+```{r}
+
+fviz_pca_var(
+  pca_out,
+  axes = c(3,4)
+  )
+
+```
+
+### Cluster on Dim1 vs. Dim2
+
+```{r}
+fviz_cluster(
+  list(data = df,
+       cluster = grp.spea),
+  repel = TRUE,
+  ellipse.type = "convex",
+  show.clust.cent = FALSE,
+  axes = c(1,2),
+  ggtheme = theme_minimal()
+)
+
+```
+
+### Cluster on Dim3 vs. Dim4
+
+```{r}
+fviz_cluster(
+  list(data = df,
+       cluster = grp.spea),
+  repel = TRUE,
+  ellipse.type = "convex",
+  show.clust.cent = FALSE,
+  axes = c(3,4),
+  ggtheme = theme_minimal()
+)
+
+```
+
+```{r}
+
+mtcars_img <- data.frame(
+  path = list.files(here("img","mtcars"),full.names = TRUE),
+  base_fn = tools::file_path_sans_ext(list.files(here("img","mtcars")))
+  )
+
+res_clust <- grp.spea |> 
+  as.data.frame() |> 
+  rownames_to_column(var = "car") |> 
+  mutate(
+    car_new = str_replace_all(string=car, pattern=" ", repl="")
+  )
+
+mtcars_joined <- right_join(mtcars_img,res_clust,by = join_by(base_fn == car_new)) |> 
+  arrange(grp.spea)
+
+mtcars_data_w_clust <- right_join(res_clust,mtcars |> rownames_to_column(var="car")) |> 
+  arrange(grp.spea)
+
+mtcars_all <- right_join(mtcars_data_w_clust,mtcars_joined)
+
+```
+
+#### Cluster 1
+
+<!-- ```{r} -->
+<!-- #| out-width: 65% -->
+<!-- #| layout-ncol: 3 -->
+<!-- #| layout-nrow: 2 -->
+
+<!-- clust <- mtcars_joined |> filter(grp.spea==1) -->
+
+<!-- img_paths <- clust$path |> as.vector() -->
+
+<!-- knitr::include_graphics(img_paths) -->
+
+<!-- ``` -->
+
+```{r}
+
+mtcars_all |> 
+  filter(grp.spea==1) |> 
+  select(
+    car,
+    mpg,
+    cyl,
+    disp,
+    hp,
+    drat,
+    wt,
+    qsec,
+    vs,
+    am,
+    gear,
+    carb,
+    path
+  ) |> 
+  relocate(
+    path,
+    .after = car,
+  ) |> 
+  gt() |> 
+  fmt_image(
+    columns = path,
+    width = "120px"
+  )
+
+```
+
+
+#### Cluster 2
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+
+mtcars_all |> 
+  filter(grp.spea==2) |> 
+  head(n = 4) |> 
+  select(
+    car,
+    mpg,
+    cyl,
+    disp,
+    hp,
+    drat,
+    wt,
+    qsec,
+    vs,
+    am,
+    gear,
+    carb,
+    path
+  ) |> 
+  relocate(
+    path,
+    .after = car,
+  ) |> 
+  gt() |> 
+   tab_options(
+    table.font.size = 10
+  ) |> 
+  fmt_image(
+    columns = path,
+    height = "80px",
+    # width = "50px"
+  )
+
+
+```
+
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+
+mtcars_all |> 
+  filter(grp.spea==2) |> 
+  tail(n = 4) |> 
+  select(
+    car,
+    mpg,
+    cyl,
+    disp,
+    hp,
+    drat,
+    wt,
+    qsec,
+    vs,
+    am,
+    gear,
+    carb,
+    path
+  ) |> 
+  relocate(
+    path,
+    .after = car,
+  ) |> 
+  gt() |> 
+   tab_options(
+    table.font.size = 10
+  ) |> 
+  fmt_image(
+    columns = path,
+    height = "80px",
+    # width = "50px"
+  )
+
+
+```
+
+
+:::
+
+::::
+
+
+#### Cluster 3
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+
+mtcars_all |> 
+  filter(grp.spea==3) |> 
+  head(n = 4) |> 
+  select(
+    car,
+    mpg,
+    cyl,
+    disp,
+    hp,
+    drat,
+    wt,
+    qsec,
+    vs,
+    am,
+    gear,
+    carb,
+    path
+  ) |> 
+  relocate(
+    path,
+    .after = car,
+  ) |> 
+  gt() |> 
+   tab_options(
+    table.font.size = 10
+  ) |> 
+  fmt_image(
+    columns = path,
+    height = "80px"
+  )
+
+
+```
+
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+
+mtcars_all |> 
+  filter(grp.spea==3) |> 
+  tail(n = 3) |> 
+  select(
+    car,
+    mpg,
+    cyl,
+    disp,
+    hp,
+    drat,
+    wt,
+    qsec,
+    vs,
+    am,
+    gear,
+    carb,
+    path
+  ) |> 
+  relocate(
+    path,
+    .after = car,
+  ) |> 
+  gt() |> 
+   tab_options(
+    table.font.size = 10
+  ) |> 
+  fmt_image(
+    columns = path,
+    height = "80px"
+  )
+
+
+```
+
+
+:::
+
+::::
+
+
+#### Cluster 4
+
+```{r}
+
+clust_04 <- mtcars_all |> 
+  filter(grp.spea==4)
+
+```
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+
+clust_04 |> 
+  head(n = 6) |> 
+  select(
+    car,
+    mpg,
+    cyl,
+    disp,
+    hp,
+    drat,
+    wt,
+    qsec,
+    vs,
+    am,
+    gear,
+    carb,
+    path
+  ) |> 
+  relocate(
+    path,
+    .after = car,
+  ) |> 
+  gt() |> 
+  tab_options(
+    table.font.size = 10
+  ) |> 
+  fmt_image(
+    columns = path,
+    height = "60px"
+  )
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+
+clust_04 |> 
+  tail(n = 6) |> 
+  select(
+    car,
+    mpg,
+    cyl,
+    disp,
+    hp,
+    drat,
+    wt,
+    qsec,
+    vs,
+    am,
+    gear,
+    carb,
+    path
+  ) |> 
+  relocate(
+    path,
+    .after = car,
+  ) |> 
+  gt() |> 
+  tab_options(
+    table.font.size = 10
+  ) |> 
+  fmt_image(
+    columns = path,
+    height = "60px"
+  )
+
+```
+
+:::
+
+::::
+
+
+# References

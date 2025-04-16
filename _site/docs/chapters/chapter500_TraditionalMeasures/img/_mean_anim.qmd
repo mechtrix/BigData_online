@@ -1,0 +1,28 @@
+```yaml { .animate src="img/mean.svg"}
+setup:
+  - element: "#meancalc"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "2"
+  - element: "#regmean"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "1"
+  - element: "#regmeanres"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "3"
+  - element: "#nonregmean"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "4"
+  - element: "#nonregmeanres"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "5"
+```

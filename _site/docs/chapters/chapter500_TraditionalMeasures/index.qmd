@@ -1,0 +1,375 @@
+---
+title: "Traditional Methods"
+bibliography: https://api.citedrive.com/bib/da291eae-8e2a-46b1-968e-0b79af55f87a/references.bib?x=eyJpZCI6ICJkYTI5MWVhZS04ZTJhLTQ2YjEtOTY4ZS0wYjc5YWY1NWY4N2EiLCAidXNlciI6ICI1NjQ5IiwgInNpZ25hdHVyZSI6ICI2ZDMyODMxM2QzZDQ3NmE3MGM4MDc5MzJiNzE1NjkzNjJmYmZjODYyNGMzNmJjNDBkMDk3Njk5N2RmZjQ5MTg5In0=/bibliography.bib
+format:
+  revealjs:
+    slide-level: 5
+    resource-path: 
+      - "img"
+    logo: img/back.svg
+    footer-logo-link: "https://mechtrix.github.io/BigData_online/"
+    footer: "Copyright Prof. Dr. Tim Weber, 2024"
+    include-in-header:
+      text: |
+        <script>
+        MathJax = {
+          loader: {
+            load: ['[tex]/boldsymbol']
+          },
+          tex: {
+            tags: "all",
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$'], ['\\[','\\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            packages: {
+              '[+]': ['boldsymbol']
+            }
+          }
+        };
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+revealjs-plugins:
+  - animate
+  - attribution
+filters: 
+  - animate
+  - reveal-header
+  - pseudocode
+editor_options: 
+  chunk_output_type: console
+css: style.css
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(datasauRus)
+library(tidyverse)
+library(gt)
+library(here)
+library(quarto)
+library(gganimate)
+
+```
+
+# Data Crunching as seen by AI
+
+![](img/data_crunching.webp){fig-align="center"}
+
+# Classic Measures
+
+## Central Tendency
+
+### Mean
+
+{{< include img/_mean_anim.qmd >}}
+
+### Median
+
+{{< include img/_median_anim.qmd >}}
+
+### comparison of mean and median
+
+{{< include img/_median_mean_compare_anim.qmd >}}
+
+## Measures of Spread
+
+### Standard deviation and variance
+
+{{< include img/_sd_anim.qmd >}}
+
+### Interquartile Range
+
+{{< include img/_iqr_anim.qmd >}}
+
+## Measures for Categoricals
+
+### Mode and Frequencies
+
+{{< include img/_mode_anim.qmd >}}
+
+### Ratios
+
+```{r}
+
+vec <- c(1,2,3,4,5,6,6,7,8)
+
+table(vec) |> as.data.frame() |> 
+  mutate(
+    ratio_total = Freq/sum(Freq)
+  ) |> 
+  gtsummary::tbl_summary()
+
+```
+
+## Beware of summarized Data 
+
+::: {.r-stack}
+
+:::{.fragment .fade-out}
+
+```{r}
+datasaurus_dozen %>% 
+    group_by(dataset) %>% 
+    summarize(
+      mean_x    = mean(x),
+      mean_y    = mean(y),
+      std_dev_x = sd(x),
+      std_dev_y = sd(y),
+      corr_x_y  = cor(x, y)
+    ) %>% 
+  gt() %>% 
+   fmt_number(decimals = 3) %>% 
+  tab_options(
+    # table.font.size = 25
+  ) 
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="away"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="bullseye"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="circle"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="dino"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="dots"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="h_lines"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="high_lines"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="slant_down"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="slant_up"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="star"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="v_lines"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="wide_lines"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen |> filter(dataset=="x_shape"), aes(x = x, y = y))+
+    geom_point()+
+    theme_minimal(base_size = 25)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 7
+#| 
+ggplot(datasaurus_dozen , aes(x = x, y = y))+
+    geom_point()+
+    theme_void(base_size = 10)+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 5)+
+  coord_equal()
+
+```
+
+:::
+
+:::
+
+
+
+# References

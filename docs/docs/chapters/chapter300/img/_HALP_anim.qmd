@@ -1,0 +1,8 @@
+```yaml { .animate src="img/004_HALP.svg"}
+setup:
+  - element: "#g2"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "0"
+```

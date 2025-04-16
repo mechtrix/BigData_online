@@ -1,0 +1,8 @@
+```yaml { .animate src="img/Will_it_blend.svg"}
+setup:
+  - element: "#g1"
+    modifier: attr
+    parameters:
+      - class: fragment
+        data-fragment-index: "0"
+```

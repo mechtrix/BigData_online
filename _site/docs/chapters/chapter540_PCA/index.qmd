@@ -1,0 +1,1118 @@
+---
+title: "Principal Component Analysis"
+bibliography: https://api.citedrive.com/bib/da291eae-8e2a-46b1-968e-0b79af55f87a/references.bib?x=eyJpZCI6ICJkYTI5MWVhZS04ZTJhLTQ2YjEtOTY4ZS0wYjc5YWY1NWY4N2EiLCAidXNlciI6ICI1NjQ5IiwgInNpZ25hdHVyZSI6ICI2ZDMyODMxM2QzZDQ3NmE3MGM4MDc5MzJiNzE1NjkzNjJmYmZjODYyNGMzNmJjNDBkMDk3Njk5N2RmZjQ5MTg5In0=/bibliography.bib
+format:
+  revealjs:
+    slide-level: 5
+    resource-path: 
+      - "img"
+    logo: img/back.svg
+    footer-logo-link: "https://mechtrix.github.io/BigData_online/"
+    footer: "Copyright Prof. Dr. Tim Weber, 2024"
+    include-in-header:
+      text: |
+        <script>
+        MathJax = {
+          loader: {
+            load: ['[tex]/boldsymbol']
+          },
+          tex: {
+            tags: "all",
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$'], ['\\[','\\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            packages: {
+              '[+]': ['boldsymbol']
+            }
+          }
+        };
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+revealjs-plugins:
+  - animate
+  - attribution
+filters: 
+  - animate
+  - reveal-header
+  - pseudocode
+editor_options: 
+  chunk_output_type: console
+css: style.css
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+
+library(tidyverse)
+library(gganimate)
+library(reshape)
+library(rgl)
+library(gtsummary)
+library(fake)
+library(broom)
+
+```
+
+## Principal Component Analysis (PCA)
+
+### Practical Use
+
+- dimensionality reduction method 
+- transforming a large set of variables into a smaller one that still contains most of the information in the large set.
+- trade a little accuracy for simplicity
+
+- reduce the number of variables of a data set, while preserving as much information as possible.
+
+::: {.attribution}
+[@an_jameswittenhastietibshirani_2021]
+:::
+
+#### The whole game
+
+1. Standardize the range of continuous initial variables
+2. Compute the covariance matrix to identify correlations
+3. Compute the eigenvectors and eigenvalues of the covariance matrix to identify the principal components
+4. Create a feature vector to decide which principal components to keep
+5. Recast the data along the principal components axes
+6. Interpreting the results
+
+::: {.attribution}
+[@an_jameswittenhastietibshirani_2021]
+:::
+
+### Step 1: Standardization
+
+\begin{align}
+z = \frac{x_i - \bar{x}}{\sigma}
+\end{align}
+
+### Step 2: Covariance matrix computation
+
+::::{style="font-size: 55%;"}
+
+- The covariance matrix is a $p \times p$ symmetric matrix (p: number of dimensions) that has as entries the covariances associated with all possible pairs of the initial variables. 
+- For example, for a 3-dimensional data set with 3 variables $x$, $y$, and $z$, the covariance matrix is a $3\times 3$ data matrix \eqref{covmat}.
+
+:::
+
+\begin{align}
+\begin{bmatrix} Cov(x,x) & Cov(x,y) & Cov(x,z) \\ Cov(y,x) & Cov(y,y) & Cov(y,z) \\ Cov(z,x) & Cov(z,y) & Cov(z,z) \end{bmatrix} \label{covmat}
+\end{align}
+
+::::{style="font-size: 55%;"}
+
+* **positive:** the two variables increase *or* decrease together (correlated)
+* **negative:** one of variables increases while the other decreases (inversly correlated)
+
+The difference between the *covariance* and *correlation* matrix is, that the covariance matrix is not standardized (values can range between $-\infty \ldots +\infty$), while the correlation matrix is standardized (values can range between $-1 \ldots +1$).
+
+::::
+
+### Step 3: Eigencomputation of covariance to identify the principal components (PC)
+
+- linear combinations or mixtures of the original variables.
+- new variables are uncorrelated and most of the information in the original variables is retained
+- $10$-dimensional data gives you $10$ principal components, with maximum possible information in the first component ($PC_1$), then the maximum of the remaining information in $PC_2$ and so on.
+- *scree-plot*, see @fig-scree-explain.
+
+---
+
+```{r}
+#| label: fig-scree-explain
+#| fig-cap: An example for a scree plot in PCA
+
+plt_data <- 
+  data.frame(
+    perc_expl = c(0.54,0.23,0.13,0.05,0.028,0.022),
+    pc = c("PC[1]","PC[2]","PC[3]","PC[4]","PC[5]","PC[6]")
+  )
+
+plt_data %>% 
+  ggplot(
+    aes(
+      x = pc,
+      y = perc_expl
+    )
+  )+
+  geom_col(
+    fill = "steelblue"
+  )+
+  geom_line(
+    aes(
+      group = 1
+    )
+  )+
+  geom_point(
+    size = 2
+  )+
+  scale_x_discrete(
+    labels = scales::parse_format()
+  )+
+  scale_y_continuous(
+    expand = c(0,0,0.05,0),
+    labels = scales::percent_format()
+  )+
+  labs(
+    title = "Percentage of variance explained (scree plot)",
+    x = "Principal Component",
+    y = "Percentage of explained variance"
+  )+
+  theme_bw(
+    base_size = 15
+  )
+
+```
+
+::::{style="font-size: 75%;"}
+
+::: {.callout-note}
+An important thing to realize here is that the principal components are less interpretable and do not have any real meaning since they are constructed as linear combinations of the initial variables.
+:::
+
+::::
+
+---
+
+Geometrically speaking, principal components represent the directions of the data that explain a maximal amount of variance, that is to say, the lines that capture most information of the data. 
+
+The relationship between variance and information here, is that, the larger the variance carried by a line, the larger the dispersion of the data points along it, and the larger the dispersion along a line, the more information it has.
+
+#### How $PC_n$ are constructed
+
+```{r}
+#| label: fig-pc-construction
+#| fig-cap: Construction of $PC_{1\ldots 2}$ in two dimensions.
+
+set.seed(123)
+
+simul <- fake::SimulateRegression(
+  pk = 1,
+  beta_abs = -1
+  ) 
+
+sim_data <- data.frame(
+  simul$xdata,
+  simul$ydata
+)
+
+pca_res <- prcomp(sim_data)
+
+pca_load_df <- pca_res$x %>% as.data.frame()
+
+all_dat <- bind_cols(
+  sim_data,
+  pca_load_df
+) %>% 
+  mutate(
+    r1 = sqrt(var1^2+outcome1^2),
+    r2 = sqrt(PC1^2+PC2^2),
+    start_rad = acos(var1/r1),
+    end_rad = asin(PC1/r1),
+  ) 
+
+sum_sim <- sim_data %>% 
+  summarise(
+    mean_x = mean(var1),
+    mean_y = mean(outcome1)
+  )
+
+sim_data %>% 
+  ggplot(
+    aes(
+      x = var1,
+      y = outcome1
+    )
+  )+
+  geom_point(
+    alpha = 0.2
+  )+
+  geom_hline(
+    data = sum_sim,
+    aes(
+      yintercept = mean_y,
+      color = "center"
+    ),
+  )+
+  geom_vline(
+    data = sum_sim,
+    aes(
+      xintercept = mean_x,
+      color = "center"
+    ),
+  )+
+  geom_smooth(
+    method = "lm",
+    se = FALSE
+  )+
+   geom_point(
+    data = pca_load_df,
+    aes(x = PC1,
+        y = PC2),
+    color = "steelblue"
+  )+
+  scale_color_manual(
+    values = c("center" = "gray")
+  )+
+  geom_text(
+    data = all_dat,
+    aes(
+      x = max(PC1),
+      y = mean(PC1),
+      label = "PC[1]"
+    ),
+    parse = TRUE
+  )+
+  geom_text(
+    data = all_dat,
+    aes(
+      x = mean(outcome1),
+      y = max(outcome1),
+      label = "PC[2]"
+    ),
+    parse = TRUE
+  )+
+  labs(
+    title = "How PC's are constructed",
+  )+
+  ggthemes::theme_few()+
+  guides(
+    color = "none"
+  )+
+  coord_equal()+
+  transition_layers(
+    from_blank = FALSE,
+    keep_layers = c(4, Inf, Inf,0,Inf,Inf,Inf,Inf),
+    layer_length = c(2,1,1,1,1,1,1,1)
+  )+  
+  enter_fade() + 
+  enter_grow() +
+  exit_fade() + 
+  exit_shrink()
+
+```
+
+#### Eigendecomposition
+
+::::{style="font-size: 75%;"}
+
+- the eigenvectors of the covariance matrix are the directions of the axes in which the highest variation in the dataset exists.
+- those directions are called *Principal Components*.
+- the eigenvalues correspond to the *amount of variance carried by the $PC$*.
+- By ranking the eigenvectors according to the eigenvalues (highest to lowest) you get the $PC$ in order of significance.
+- this process is called *eigendecomposition*.
+
+::::
+
+```{r}
+#| echo: true
+#| output: true
+
+cov_mat <- cov(scale(sim_data))
+cov_mat
+
+```
+
+---
+
+\begin{align}
+cov = \begin{bmatrix} `r cov_mat[[1,1]]` & `r cov_mat[[2,1]]` \\ `r cov_mat[[1,2]]` & `r cov_mat[[2,2]]` \end{bmatrix} \label{excovmat}
+\end{align}
+
+The eigenvectors and eigenvalues of \eqref{excovmat} are then calculated using eigendecomposition (seee \eqref{exl1} and \eqref{exl2}).
+
+```{r}
+#| echo: true
+#| output: true
+
+eigen_mat <- eigen(cov_mat)
+eigen_mat
+
+```
+
+---
+
+\begin{align}
+\vec{v_1} &= \begin{bmatrix} `r eigen_mat$vectors[[1,1]]` \\ `r eigen_mat$vectors[[2,1]]`  \end{bmatrix} &&\lambda_1 = `r eigen_mat$values[[1]]` \label{exl1} \\
+\vec{v_2} &= \begin{bmatrix} `r eigen_mat$vectors[[1,2]]` \\ `r eigen_mat$vectors[[2,2]]` \end{bmatrix}  &&\lambda_2 = `r eigen_mat$values[[2]]` \label{exl2} 
+\end{align}
+
+::::{style="font-size: 75%;"}
+
+The eigenvalues ranked give us $\lambda_1>\lambda_2$ which means that $\vec{v_1}$ corresponds to $PC_1$ and $\vec{v_2}$ corresponds to $PC_2$.
+$\lambda_1$ and $\lambda_2$ are then normalized to $\sum\lambda_i$ in order to estimate the percentage of explained variance.
+
+::::
+
+```{r}
+#| echo: true
+#| output: true
+
+explained_variance <- round(eigen_mat$values/sum(eigen_mat$values)*100, digits = 1)
+explained_variance
+
+```
+
+In this case $PC_1$ explains $`r explained_variance[1]`\%$ and $PC_2$ the remaining $`r explained_variance[2]`\%$.
+
+##### Basics: Matrix multiplication
+
+::::{style="font-size: 75%;"}
+
+Given is matrix $A = (a_{ij})$ with $m \times n$ dimensions (columns $\times$ rows) and vector $\vec{v}=(v_{k})$ with $k$ columns that result in matrix $B = (b_{ik})$ with $1 \times 3$ dimensions, a vector ($\vec{B}$). 
+
+The number of matrix columns ($m$) must be equal to the number of vector rows ($k$).
+
+The components of $B$ are computed according to $b_i = \sum{a_{ij}v_{k}} \text{ with }i = 1,2,\ldots m$.
+
+::::
+
+\begin{align}
+A &= \begin{bmatrix} 1 & 1\\ 0 & 1 \end{bmatrix} \vec{v} = \begin{bmatrix} 3\\ 1 \end{bmatrix} \nonumber \\ 
+\vec{B} &= A\times \vec{v} = \begin{bmatrix} 1*3 + 1*1\\ 0*3 + 1*1 \end{bmatrix} = \begin{bmatrix} 4\\ 1 \end{bmatrix}
+\end{align}
+
+##### code
+
+The special operatior `%*%` must be used to facilitate matrix multiplication in R.
+
+```{r}
+#| echo: true
+
+A <- matrix(c(1,0,1,1),ncol = 2)
+v <- c(3,1)
+
+B <- A %*% v %>% print()
+
+```
+
+##### visual representation
+
+```{r}
+#| label: fig-mat-mult
+#| fig-cap: The visual representation of a matrix multiplication
+
+plt_data <- data.frame(
+  x0 = 0,
+  y0 = 0,
+  xend = c(v[1],B[1]),
+  yend = c(v[2],B[2]),
+  name = c("v","B == A * v")
+)
+
+plt_data %>% 
+  ggplot()+
+  geom_segment(
+    aes(
+      x = x0,
+      y = y0,
+      xend = xend,
+      yend = yend,
+      linetype = name
+    ),
+    arrow = arrow(angle = 15, type = "closed"),
+    color = "steelblue",
+    linewidth = 1,
+    key_glyph = draw_key_abline
+  )+
+  labs(
+    title = "effect of matrix multiplication",
+    x = "x",
+    y = "y",
+    color = "vectors",
+    linetype = "vectors"
+  )+
+  geom_hline(yintercept = 0)+
+  geom_vline(xintercept = 0)+
+  scale_x_continuous(
+    breaks = seq(0,100,1),
+    # expand = c(0,0,0.05,0)
+    )+
+  scale_y_continuous(
+    breaks = seq(0,100,1),
+    # expand = c(0,0,0.05,0)
+    )+
+  scale_linetype_manual(
+    label = scales::parse_format(),
+    values = c("v"= "solid","B == A * v" = "dashed")
+    )+
+  coord_equal()+
+  theme(legend.position = "bottom")
+
+```
+
+::::{style="font-size: 75%;"}
+
+In @fig-mat-mult the effect matrix $A$ had on vector $\vec{v}$, it changed its direction.
+Eigendecomposition uses this math to find a matrix, which does not change the direction of the vector, only its magnitude.
+The effect of the matrix on the vector is therefore the same, as if the vector is multiplied with a scalar values.
+
+::::
+
+##### Eigenvalue computation
+
+::::{style="font-size: 75%;"}
+
+This results in the fundamental *eigenvalue* equation \eqref{eigval} and the rearranged \eqref{eigval2}.
+
+::::
+
+\begin{align}
+  Av = \lambda v \label{eigval} \\
+  (A-\lambda I)v = 0 \label{eigval2}
+\end{align}
+
+::::{style="font-size: 75%;"}
+
+This is the core idea of eigendecomposition.
+To find a non-trivial solution to \eqref{eigval2}, the scalars ($\lambda$) that shift the matrix ($A$) just enough to make sure, a matrix-vector multiplication equals zero, sending the vector $\vec{v}$ in its null-space.
+
+In a geometrical sense, we are looking for a matrix that squishes space into a lower dimension with an area or volume of zero.
+This can be achieved when the matrix determinant equals zero \eqref{det}.
+
+::::
+
+\begin{align}
+  \det(A-\lambda I) = 0 \label{det}
+\end{align}
+
+##### determinant of a matrix
+
+::::{style="font-size: 75%;"}
+
+A determinante of a matrix is a scalar value as a function of a square matrix.
+This scalar is a measure by how much a geometry is transformed.
+If $\det(A)=0$ two rows and columns are equal and the linear mapping of the matrix is found.
+
+:::::
+
+\begin{align}
+A = \begin{bmatrix} a=1 & c=1\\ b=0 & d=1 \end{bmatrix} = ad-bc = 1*1-0*1 = 1 \label{calcdet}
+\end{align}
+
+---
+
+```{r}
+#| label: fig-det
+#| fig-cap: The visual representation of the $\det A$
+
+
+df_det <- A %>% 
+  melt() %>% 
+  add_column(
+    elem = c("a","b","c","d")
+  )
+  
+plt_det <- data.frame(
+  x = c(
+    0,
+    df_det["value"][[1,1]],
+    df_det["value"][[1,1]]+df_det["value"][[3,1]],
+    df_det["value"][[3,1]]
+    ),
+  y = c(
+    0,
+    df_det["value"][[2,1]],
+    df_det["value"][[2,1]]+df_det["value"][[4,1]],
+    df_det["value"][[4,1]]
+  ),
+  points = 
+    c(
+      "(0,0)",
+      "(a,b)",
+      "(a+c,b+d)",
+      "(c,d)")
+)
+
+plt_det %>% ggplot(
+    aes(
+      x = x,
+      y = y
+    )
+  )+
+  geom_polygon(
+    fill = "steelblue"
+  )+
+  geom_text(
+    aes(
+      x = x + c(-0.04,0.025,0.025,-0.025),
+      y = y + c(-0.025,-0.025,0.025,0.025),
+      label = points
+    )
+  )+
+  geom_vline(xintercept = 0)+
+  geom_hline(yintercept = 0)+
+  scale_x_continuous(
+    breaks = c(0,1,2)
+  )+
+  scale_y_continuous(
+    breaks = c(0,1,2)
+  )+
+  geom_text(
+    aes(
+      x = 1,
+      y = 0.5,
+      label = "det(A)...rea"
+    ),
+    color = "white",
+    size = 12
+  )+
+  labs(
+    title = "visual representation of det(A)",
+    x = "x1",
+    y = "x2"
+  )
+
+
+```
+
+
+
+::::{style="font-size: 75%;"}
+
+In @fig-det the determinant $\det A$ is visually depicted.
+With \eqref{calcdet} the determinante is calculated, as well as with the function `determinant()`.
+
+::::
+
+
+
+```{r}
+#| echo: true
+#| output: true
+
+determinant(A,logarithm = FALSE) 
+
+```
+
+#### Eigendecomposition to find eigenvalues
+
+Before the eigenvectors of a matrix can be found, first the eigenvalues must be determined.
+A $M\times M$ matrix has $M$ eigenvalues and $M$ eigenvectors.
+Each eigenvalue has a related eigenvector.
+Once the eigenvalues are unlocked, the step to finding the eigenvectors is simple enough.
+
+##### Example
+
+::::{style="font-size: 35%;"}
+
+Imagine $2\times 2$ matrix of which the eigenvalues shall be computed.
+Using \eqref{det} a characteristic polynomial can be computed and solved for the eigenvalues.
+
+::::
+
+\begin{align}
+\begin{vmatrix} \begin{bmatrix} 3 & 1 \\ 0 & 2\end{bmatrix} - \lambda \begin{bmatrix} 1&0\\ 0&1 \end{bmatrix} \end{vmatrix} &= 0 \\
+\begin{vmatrix} 3-\lambda & 1 \\ 0 & 2-\lambda \end{vmatrix} &= 0 \\
+(3-\lambda)(2-\lambda) &= 0\\
+\lambda_1 = 3, \lambda_2 = 2 \label{eigensol}
+\end{align}
+
+::::{style="font-size: 55%;"}
+
+The solution in \eqref{eigensol} shows that the eigenvalues of the matrix have the magnitude $\lambda_1 = 3$ and $\lambda_2 = 2$.
+Now we proceed with eigenvectors.
+
+::: {.callout-note}
+Finding the eigenvalues gets more involved and computationally expensive the larger the matrices become using the  [Abel-Ruffini theorem](https://en.wikipedia.org/wiki/Abel%E2%80%93Ruffini_theorem){.external target="_blank"}. Therefore, a whole family of iterative algorithms exists to compute the eigenvalues.
+:::
+
+::::
+
+#### Eigendecomposition to find eigenvectors
+
+::::{style="font-size: 45%;"}
+
+Eigenvectors describe the directions of a matrix that are invariant to rotations. 
+They will not change direction.
+Using the eigenvalues from before, the eigenvectors can be revealed \eqref{eigenvectors}.
+
+::::
+
+\begin{align}
+(A-\lambda_i I)v_i=0\label{eigenvectors}
+\end{align}
+
+::::{style="font-size: 45%;"}
+
+Based on the fundamental eigenvalue equation, the *ith*-eigenvalue is plucked in \eqref{eigval2} and the *ith* eigenvector is retrieved from the null space of the matrix.
+
+Starting with $\lambda_1 = 3$ from the example before:
+
+::::
+
+\begin{align}
+\begin{pmatrix}\begin{bmatrix} 3&1\\0&2 \end{bmatrix}-3\begin{bmatrix} 1&0\\0&1 \end{bmatrix}\end{pmatrix}v_i &= 0, \lambda_i = 3\\
+\begin{bmatrix} 3-3 & 1 \\ 0 & 2-3 \end{bmatrix}\begin{bmatrix}x\\y\end{bmatrix} &= \begin{bmatrix}0\\0\end{bmatrix} \\
+\begin{bmatrix} 0 & 1 \\ 0 & -1 \end{bmatrix}\begin{bmatrix}1\\0\end{bmatrix} &= \begin{bmatrix}0\\0\end{bmatrix}, x = 1, y = 0
+\end{align}
+
+::::{style="font-size: 45%;"}
+
+::: {.callout-note}
+The solution is not unique. That is why eigenvectors are usually scaled to accord to unit norm (absolute value = 1).
+:::
+
+::::
+
+---
+
+The second solution for $\lambda_2 = 2$ is shown below.
+
+
+\begin{align}
+\begin{bmatrix} 1 & 1 \\ 0 & 0 \end{bmatrix}\begin{bmatrix}1\\-1\end{bmatrix} &= \begin{bmatrix}0\\0\end{bmatrix}, x = 1, y = -1
+\end{align}
+
+::::{style="font-size: 75%;"}
+
+This eigenvector does not have length of one.
+It is scaled by multiplying with $1/\sqrt{2}$.
+
+::::
+
+##### Example eigendecomposition and matrix reconstruction
+
+::::{style="font-size: 55%;"}
+
+Above was shown, what eigendecomposition is, below there is a final example.
+First a $3\times 3$ matrix is constructed \eqref{A} and the eigenvalues and eigenvectors are retrieved.
+
+::::
+
+\begin{align}
+A = \begin{bmatrix} 10 & 21 & 36 \\ 47 & 51 & 64 \\ 72 & 87 & 91 \end{bmatrix} \label{A}
+\end{align}
+
+```{r}
+#| echo: true
+#| output: TRUE
+
+A <- matrix(data = c(10,21,36,47,51,64,72,87,91),ncol = 3,byrow = T)
+
+v <- eigen(A) 
+
+v
+
+```
+
+---
+
+::::{style="font-size: 75%;"}
+
+The resulting eigenvalues of $A$ are $\lambda_1 = `r v$values[1]`$, $\lambda_2 = `r v$values[2]`$ and $\lambda_3 = `r v$values[3]`$.
+The eigenvectors are shown in \eqref{eigenA}.
+
+::::
+
+\begin{align}
+\vec{v_1} = \begin{bmatrix} `r v$vectors[[1,1]]` \\ `r v$vectors[[2,1]]` \\ `r v$vectors[[3,1]]` \end{bmatrix} \;
+\vec{v_2} = \begin{bmatrix} `r v$vectors[[1,2]]` \\ `r v$vectors[[2,2]]` \\ `r v$vectors[[3,2]]` \end{bmatrix} \;
+\vec{v_3} = \begin{bmatrix} `r v$vectors[[1,3]]` \\ `r v$vectors[[2,3]]` \\ `r v$vectors[[3,3]]` \end{bmatrix} 
+\label{eigenA}
+\end{align}
+
+---
+
+A graphical depiction of the eigenvectors is shown in @fig-eigenA.
+
+```{r}
+#| label: fig-eigenA
+#| fig-cap: eigenvectors of A
+
+rgl::setupKnitr(autoprint = TRUE)
+
+segments3d(
+  x = c(0, 1), 
+  y = c(0, 0), 
+  z = c(0, 0), 
+  color = "black"
+  )
+segments3d(
+  c(0, 0), 
+  c(0,1), 
+  c(0, 0), 
+  color = "red"
+  )
+segments3d(
+  c(0, 0), 
+  c(0, 0), 
+  c(0,1), 
+  color = "green3"
+  )
+text3d(
+  x = c(1,0,0),
+  y = c(0,1,0), 
+  z = c(0,0,1),
+  texts = c("X","Y","Z"),
+  color = c("black","red","green3")
+  )
+arrow3d(
+  p0 = c(0,0,0),
+  p1 = v$vectors[1,],
+  type = "extrusion",
+  color = "steelblue"
+)
+arrow3d(
+  p0 = c(0,0,0),
+  v$vectors[2,],
+  type = "extrusion",
+  color = "steelblue"
+  )
+arrow3d(
+  p0 = c(0,0,0),
+  p1 = v$vectors[3,],
+  type = "extrusion",
+  color = "steelblue"
+  )
+
+aspect3d(1,1,1)
+title3d(
+  main = 'eigenvectors of A'
+  )
+
+
+
+```
+
+---
+
+::::{style="font-size: 55%;"}
+
+The original matrix can be reconstructed from the eigendecomposition.
+It is achieved by calculating the product of the eigenvectors, the eigenvalues and the inverse of the eigenvectors.
+
+::::
+
+\begin{align}
+A = V \Lambda V^{-1} \label{matrecon}
+\end{align}
+
+::::{style="font-size: 55%;"}
+
+For this the eigenvalues must first be *diagonalized* so a unit matrix can be formed \eqref{Lambda}.
+
+::::
+
+\begin{align}
+\Lambda = \begin{bmatrix} \lambda_1 & 0 & 0 \\ 0 & \lambda_2 & 0 \\ 0 & 0 & \lambda_3 \end{bmatrix} \label{Lambda}
+\end{align}
+
+---
+
+```{r}
+#| echo: true
+#| output: true
+
+Lambda <-  diag(x = v$values)
+
+Lambda
+
+```
+
+---
+
+::::{style="font-size: 75%;"}
+
+Then the inverse of the eigenvectors is computed such as the identity matrix $I$ can be formed
+
+::::
+
+\begin{align}
+V \cdot V^{-1} = I = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}
+\end{align}
+
+```{r}
+#| echo: true
+#| output: true
+
+V_inv <- solve(v$vectors)
+
+V_inv
+
+```
+
+---
+
+::::{style="font-size: 75%;"}
+
+In the end $A$ is reconstructed using \eqref{matrecon}.
+
+::::
+
+```{r}
+#| echo: true
+#| output: true
+
+A_reconstructed <- v$vectors %*% Lambda %*% V_inv
+
+A_reconstructed
+
+```
+
+::::{style="font-size: 75%;"}
+
+Which can be proven using the `all.equal()` function as shown below.
+
+::::
+
+```{r}
+#| echo: true
+#| output: true
+
+all.equal(A, A_reconstructed)
+
+```
+
+### Step 4: Feature vector
+
+::::{style="font-size: 55%;"}
+
+The feature vector is simply a matrix that has as columns the eigenvectors of the components that we decide to keep. 
+This makes it the first step towards dimensionality reduction, because if we choose to keep only $p$ eigenvectors (components) out of $n$, the final data set will have only p dimensions.
+Coming back to the toy example, $`r explained_variance[1]`\%$ are explained by $\vec{v_1}$, why we will only keep $PC_1$.
+Therefore the dimensions are reduced from $2$ to $1$.
+
+::::
+
+\begin{align}
+\vec{v_1} &= \begin{bmatrix} `r eigen_mat$vectors[[1,1]]` \\ `r eigen_mat$vectors[[2,1]]`  \end{bmatrix} &&\lambda_1 = `r eigen_mat$values[[1]]` \nonumber
+\end{align}
+
+::::{style="font-size: 55%;"}
+
+This shall showcase that the dimensionality reduction is up to the user, who has to decide how much variance (information) shall be retained in the data.
+
+::: {.callout-note}
+A rule of thumb is that about $90\%$ of the variance shall be kept in the transformed data. Therefore, as many $PC$ are kept until an *explained variance* of $90\%$ is reached.
+:::
+
+::::
+
+### Step 5: Recast the data along the principal component axes
+
+::::{style="font-size: 75%;"}
+
+Apart from standardization no changes to the original data has been made up to this point.
+In this last step, the aim is to form the feature vector from the eigenvectors of the covariance matrix in order to reorient the data from the original axes to the ones represented by the *principal components*.
+Not surprisingly, this is why PCA is called *Principal Component Analysis*.
+This is done by multiplying the transpose of the original data set by the transpose of the feature vector ($\vec{v_1}$ for the toy data).
+
+::::
+
+```{r}
+#| echo: true
+out <- t(eigen_mat$vectors[,1])%*%t(as.matrix(scale(sim_data)))
+```
+
+\begin{align}
+FinalData = \vec{v_1}^T \times StandardizedOriginalDataSet^T
+\end{align}
+
+---
+
+::::{style="font-size: 75%;"}
+
+In order to check the validity of our approach, the manual calculations are compare to the output of the standard `R` function `princomp()` from the base package `stats`.
+
+::::
+
+```{r}
+#| echo: true
+#| output: true
+
+manual_computation <- t(out) %>% as.vector()
+pca_res <- princomp(scale(sim_data))
+automated_computation <- pca_res$scores[,1] %>% unname()
+all.equal(manual_computation,automated_computation)
+
+```
+
+### Step 6: Interpreting the results
+
+::::{style="font-size: 75%;"}
+
+It is great to reduce the dimensionality of the data, but what does it all mean?
+This can be answered by exploring how they relate to each column using the loadings of each principal component.
+With this toy data, we use $PC_1$ in order to explain the `princomp()` output.
+
+::::
+
+```{r}
+#| echo: true
+#| output: true
+
+pc_coef <- pca_res$loadings[,1]
+pc_coef
+```
+
+--- 
+
+The reconstructed linear combination for $PC_1$ is then shown in \eqref{eqpc1}.
+
+\begin{align}
+PC_1 = `r pc_coef[1]` * var1 + `r pc_coef[2]` * outcome1 \label{eqpc1}
+\end{align}
+
+::::{style="font-size: 75%;"}
+
+The toy example consists of linear dependent data (we constructed it that way).
+It is important to note that `var1` and `outcome1` do not have the specific "roles" any more, the output is now a principal component, to which both variable contribute the same level of variance.
+This is indeed the case when qualitatively inspecting @fig-pc-construction.
+
+::::
+
+
+### Connection to linear regression
+
+::::{style="font-size: 55%;"}
+
+This bears the question: How does PCA connect to classical linear regression?
+For this, we build a classical linear regression model from the toy data \eqref{linreg}.
+
+::::
+
+\begin{align}
+y_i = \beta_0 + \beta_1x_1 + \epsilon \label{linreg}\\
+\end{align}
+
+```{r}
+#| echo: true
+#| output: true
+
+lin_model <- lm(outcome1 ~var1, data = as.data.frame((sim_data)))
+summary(lin_model)
+
+```
+
+---
+
+```{r}
+#| label: tbl-linreg
+#| tbl-cap: The parameters of the linear regression model.
+
+lin_model %>% tbl_regression() %>% add_glance_table(include = adj.r.squared)
+
+```
+
+---
+
+From the parameters we see that we
+
+1. Have a significant model
+2. With a significant slope, the intercept however is not significant
+3. With a $r^2_{adjusted} = `r lin_model %>% glance() %>% pull(adj.r.squared)`$
+
+::::{style="font-size: 75%;"}
+
+So the $r^2$ and $r^2_{adjusted}$ are both in the range of the loading for the first $PC$ ($`r pc_coef[1]`$).
+This actually makes sense when we remeber that PCA is based on the covariance matrix, which is basically the unscaled correlation matrix, which in turn again connects to the $r^2$ and $r^2_{adjusted}$ when we think of $r^2$ being the percentage of explained variance for a linear regression model.
+Isn't it beautiful?
+
+::::
+
+### A more realistic example
+
+::::{style="font-size: 55%;"}
+
+We have done the complete game for a classical PCA on a toy example.
+We now understand how the bits and pieces connect to the actual math and that there is nothing intimidating about the method at all.
+But now we want to use it! 
+Lets imaging a manufacturing process and we want to monitor it.
+Production processes get multivariate really quick, lets see the data-
+
+* feed velocity
+* solder temperature
+* nitrogen ppm
+* squeegee pressure
+* solder height
+* solder volume
+* x position
+* y position
+* component angle
+* room temperature
+* room humidity
+
+::::
+
+```{r}
+#| output: false
+
+# Simulation of 3 components with high e.v.
+set.seed(1)
+simul <- SimulateComponents(pk = c(6,3,2), ev_xx = 0.6)
+
+new_names <- c(
+  "feed_velocity",
+  "solder_temperature",
+  "nitrogen_ppm",
+  "squeegee_pressure",
+  "solder_height",
+  "solder_volume",
+  "x_position",
+  "y_position",
+  "component_angle",
+  "room_temperature",
+  "room_humidity"
+  )
+
+process_data <- simul$data %>% 
+  as.data.frame() %>% 
+  rename_with(
+    ~new_names,
+    starts_with("var"),
+  ) 
+
+summary(princomp(scale(process_data)))
+
+summary(princomp(scale(simul$data %>% as.data.frame())))
+
+```
+
+---
+
+```{r}
+plot(process_data)
+
+```
+
+---
+
+```{r}
+plot(simul)
+```
+
+---
+
+```{r}
+plot(cumsum(simul$ev), ylim = c(0, 1), las = 1)
+
+```
+
+---
+
+```{r}
+
+screeplot(princomp(scale(process_data)))
+
+```
+
+---
+
+```{r}
+
+biplot(princomp(scale(process_data)),choices = c(2,3),pc.biplot = TRUE)
+
+```
+
+### more examples
+
+Kudos to Prof. John Rasmussen, Prof. Michael Skipper Andersen
+
+[AnybodyRun](https://anybodyrun.com/#)
+[biomechanicsforeverybody](https://biomechanicsforeverybody.wordpress.com/2018/12/12/on-the-parameters-of-running/)
+
+
+# References
