@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Big Data lecture slides",
     "section": "",
-    "text": "This page is directly linked to the Big Data exercises.\nAdministrative stuff is always announced via ilearn.\nThis is the lecture material for the courses “Big Data” and “Big Data Processing and Analytics”. Feel free to reference for your self study. You are not allowed to copy without the prior consent of the author. Your are not allowed to use material without prior consent. Ask - it’s a form of politeness. You will most probable get permission.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\nIntroduction\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nData Sources\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nData Quality\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nData Bias\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nTraditional Methods\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nMap Reduce\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nFrequent Itemset Mining - FIM\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nGradient Descent\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nMaximum Likelihood Estimation\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nPrincipal Component Analysis\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nk - Nearest Neighbours\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nk- Means\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\n(P)artitioning (A)round (M)edoids\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nDensity Based Spatial Clustering and Application with Noise (DBSCAN)\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nAgglomerative Clustering\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nChecking Cluster Validity\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nModel Based Clustering\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nIntroduction\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nData Sources\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nData Quality\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nData Bias\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nTraditional Methods\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nMap Reduce\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nFrequent Itemset Mining - FIM\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nNo matching items"
+    "text": "This page is directly linked to the Big Data exercises.\nAdministrative stuff is always announced via ilearn.\nThis is the lecture material for the courses “Big Data” and “Big Data Processing and Analytics”. Feel free to reference for your self study. You are not allowed to copy without the prior consent of the author. Your are not allowed to use material without prior consent. Ask - it’s a form of politeness. You will most probable get permission.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\nIntroduction\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nData Sources\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nData Quality\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nData Bias\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nTraditional Methods\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nMap Reduce\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nFrequent Itemset Mining (FIM)\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nGradient Descent\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nMaximum Likelihood Estimation\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nPrincipal Component Analysis\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nk - Nearest Neighbours\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nk- Means\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\n(P)artitioning (A)round (M)edoids\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nDensity Based Spatial Clustering and Application with Noise (DBSCAN)\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nAgglomerative Clustering\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nChecking Cluster Validity\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nModel Based Clustering\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nIntroduction\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nData Sources\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nData Quality\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nData Bias\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nTraditional Methods\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nMap Reduce\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nFrequent Itemset Mining - FIM\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nGradient Descent\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nMaximum Likelihood Estimation\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nPrincipal Component Analysis\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nk - Nearest Neighbours\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nk- Means\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\n(P)artitioning (A)round (M)edoids\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nDensity Based Spatial Clustering and Application with Noise (DBSCAN)\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nAgglomerative Clustering\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nChecking Cluster Validity\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nModel Based Clustering\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nIntroduction\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nData Sources\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nData Quality\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nData Bias\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nTraditional Methods\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nMap Reduce\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nFrequent Itemset Mining - FIM\n\n\nProf. Dr. Tim Weber\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "docs/chapters/chapter510_MapReduce/index.html#mapreduce",
@@ -1445,5 +1445,93 @@
     "title": "Frequent Itemset Mining - FIM",
     "section": "FIM",
     "text": "FIM\nFIM TST\n(Michael Hahsler 2005)"
+  },
+  {
+    "objectID": "chapters/chapter511_FIM/index.html#itemset",
+    "href": "chapters/chapter511_FIM/index.html#itemset",
+    "title": "Frequent Itemset Mining (FIM)",
+    "section": "Itemset",
+    "text": "Itemset\n\na collection of one or more items ({bread, butter})\n\n\n(Michael Hahsler 2005)",
+    "crumbs": [
+      "Data crunching",
+      "FIM"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter511_FIM/index.html#support",
+    "href": "chapters/chapter511_FIM/index.html#support",
+    "title": "Frequent Itemset Mining (FIM)",
+    "section": "Support",
+    "text": "Support\n\nthe frequency (often expressed as percentage) with which an itemset appears in the data set\n\nif {bread, butter} appears in \\(30\\) out of \\(100\\) transactions, its support is \\(30\\%\\)",
+    "crumbs": [
+      "Data crunching",
+      "FIM"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter511_FIM/index.html#frequent-itemset",
+    "href": "chapters/chapter511_FIM/index.html#frequent-itemset",
+    "title": "Frequent Itemset Mining (FIM)",
+    "section": "Frequent itemset",
+    "text": "Frequent itemset\n\nan itemset whose support is greater than or equal to a predefined, minimum threshhold\n\nif the minimum support is \\(25\\%\\), then {bread, butter} is a frequent itemset",
+    "crumbs": [
+      "Data crunching",
+      "FIM"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter511_FIM/index.html#transaction-database",
+    "href": "chapters/chapter511_FIM/index.html#transaction-database",
+    "title": "Frequent Itemset Mining (FIM)",
+    "section": "Transaction database",
+    "text": "Transaction database\n\na collection of transactions, where each transaction is a set of items\n\n\n\n\nTransaction ID\nItems Purchased\n\n\n\n\nT1\nmilk, bread, butter\n\n\nT2\nbread, butter\n\n\nT3\nmilk, bread\n\n\nT4\nmilk, butter, eggs\n\n\nT5\nbread, butter, jam",
+    "crumbs": [
+      "Data crunching",
+      "FIM"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter511_FIM/index.html#koncepts",
+    "href": "chapters/chapter511_FIM/index.html#koncepts",
+    "title": "Frequent Itemset Mining (FIM)",
+    "section": "Koncepts",
+    "text": "Koncepts",
+    "crumbs": [
+      "Data crunching",
+      "FIM"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter511_FIM/index.html#simple-example",
+    "href": "chapters/chapter511_FIM/index.html#simple-example",
+    "title": "Frequent Itemset Mining (FIM)",
+    "section": "Simple example",
+    "text": "Simple example",
+    "crumbs": [
+      "Data crunching",
+      "FIM"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter511_FIM/index.html#key-concepts",
+    "href": "chapters/chapter511_FIM/index.html#key-concepts",
+    "title": "Frequent Itemset Mining (FIM)",
+    "section": "Key Concepts",
+    "text": "Key Concepts",
+    "crumbs": [
+      "Data crunching",
+      "FIM"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter511_FIM/index.html#apriori-algorithm",
+    "href": "chapters/chapter511_FIM/index.html#apriori-algorithm",
+    "title": "Frequent Itemset Mining (FIM)",
+    "section": "Apriori Algorithm",
+    "text": "Apriori Algorithm",
+    "crumbs": [
+      "Data crunching",
+      "FIM"
+    ]
   }
 ]

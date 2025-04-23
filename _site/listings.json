@@ -25,7 +25,24 @@
       "/docs/chapters/chapter400/index.html",
       "/docs/chapters/chapter500_TraditionalMeasures/index.html",
       "/docs/chapters/chapter510_MapReduce/index.html",
-      "/docs/chapters/chapter511_FIM/index.html"
+      "/docs/chapters/chapter511_FIM/index.html",
+      "/docs/chapters/chapter520_GradientDescent/index.html",
+      "/docs/chapters/chapter530_MLE/index.html",
+      "/docs/chapters/chapter540_PCA/index.html",
+      "/docs/chapters/chapter551_kNN/index.html",
+      "/docs/chapters/chapter552_kMeans/index.html",
+      "/docs/chapters/chapter553_pam/index.html",
+      "/docs/chapters/chapter554_dbscan/index.html",
+      "/docs/chapters/chapter555_agglomerative/index.html",
+      "/docs/chapters/chapter556_validity/index.html",
+      "/docs/chapters/chapter557_mbc/index.html",
+      "/docs/docs/chapters/chapter100/index.html",
+      "/docs/docs/chapters/chapter200/index.html",
+      "/docs/docs/chapters/chapter300/index.html",
+      "/docs/docs/chapters/chapter400/index.html",
+      "/docs/docs/chapters/chapter500_TraditionalMeasures/index.html",
+      "/docs/docs/chapters/chapter510_MapReduce/index.html",
+      "/docs/docs/chapters/chapter511_FIM/index.html"
     ]
   }
 ]

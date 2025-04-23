@@ -1,5 +1,5 @@
 ---
-title: "Frequent Itemset Mining - FIM"
+title: "Frequent Itemset Mining (FIM)"
 bibliography: https://api.citedrive.com/bib/da291eae-8e2a-46b1-968e-0b79af55f87a/references.bib?x=eyJpZCI6ICJkYTI5MWVhZS04ZTJhLTQ2YjEtOTY4ZS0wYjc5YWY1NWY4N2EiLCAidXNlciI6ICI1NjQ5IiwgInNpZ25hdHVyZSI6ICI2ZDMyODMxM2QzZDQ3NmE3MGM4MDc5MzJiNzE1NjkzNjJmYmZjODYyNGMzNmJjNDBkMDk3Njk5N2RmZjQ5MTg5In0=/bibliography.bib
 format:
   revealjs:
@@ -55,13 +55,179 @@ library(gganimate)
 ```
 
 
-## FIM
+# Introduction
 
-FIM TST
+<center>
 
+![](img/fim_intro.png){width=70%}
+
+also called *Market Basket Analysis*
+
+</center>
+
+---
+
+Frequent itemset mining helps in discovering associations and correlations among items in large datasets. These associations can then be used for tasks like:
+
+- Association Rule Mining (e.g., "If a customer buys bread, they are likely to buy butter")
+
+- Recommendation systems
+
+- Inventory management
+
+- Cross-selling strategies
+
+## Key Concepts
+
+### Itemset
+
+- a collection of one or more items (`{bread, butter}`)
+
+![](img/two_itemset_bread_butter.png)
 
 [@Hahsler_2005]
 
+### Support
 
+- the frequency (often expressed as percentage) with which an itemset appears in the data set
+
+  - if `{bread, butter}` appears in $30$ out of $100$ transactions, its support is $30\%$
+  
+### Frequent itemset
+
+- an itemset whose support is greater than or equal to a predefined, minimum threshhold
+
+  - if the minimum support is $25\%$, then `{bread, butter}` is a frequent itemset
+  
+### Transaction database
+
+- a collection of transactions, where each transaction is a set of items
+
+| Transaction ID | Items Purchased               |
+|----------------|-------------------------------|
+| T1             | milk, bread, butter           |
+| T2             | bread, butter                 |
+| T3             | milk, bread                   |
+| T4             | milk, butter, eggs            |
+| T5             | bread, butter, jam            |
+
+## Simple example
+
+### What products are used?
+
+| Transaction ID | Items Purchased               |
+|----------------|-------------------------------|
+| T1             | milk, bread, butter           |
+| T2             | bread, butter                 |
+| T3             | milk, bread                   |
+| T4             | milk, butter, eggs            |
+| T5             | bread, butter, jam            |
+
+::: {.fragment}
+`milk, bread, butter, eggs, jam`
+:::
+
+### Quick support count example
+
+- What itemsets are present?
+- What is the support for each itemset?
+- In which transaction do the itemsets appear?
+
+---
+
+<table><thead>
+  <tr>
+    <th>Itemset</th>
+    <th>Support Count</th>
+    <th>Transaction</th>
+  </tr></thead>
+<tbody>
+  <tr class="fragment" data-fragment-index="1">
+    <td>{bread}</td>
+    <td>4</td>
+    <td>T1, T2, T3, T5</td>
+  </tr>
+  <tr class="fragment" data-fragment-index="2">
+    <td>{milk}</td>
+    <td>3</td>
+    <td>T1, T3, T4</td>
+  </tr>
+  <tr class="fragment" data-fragment-index="3">
+    <td>{butter}</td>
+    <td>4</td>
+    <td>T1, T2, T4, T5</td>
+  </tr>
+  <tr class="fragment" data-fragment-index="4">
+    <td>{milk, bread}</td>
+    <td>2</td>
+    <td>T1, T3</td>
+  </tr>
+  <tr class="fragment" data-fragment-index="5">
+    <td>{bread, butter}</td>
+    <td>3</td>
+    <td>T1, T2, T5</td>
+  </tr>
+  <tr class="fragment" data-fragment-index="6">
+    <td>{milk, butter]</td>
+    <td>2</td>
+    <td>T1, T4</td>
+  </tr>
+  <tr class="fragment" data-fragment-index="7">
+    <td>{milk, bread, butter}</td>
+    <td>1</td>
+    <td>T1</td>
+  </tr>
+</tbody>
+</table>
+
+## Apriori Algorithm
+
+### Transaction data
+
+| Transaction ID | Items Purchased               |
+|----------------|-------------------------------|
+| T1             | milk, bread, butter           |
+| T2             | bread, butter                 |
+| T3             | milk, bread                   |
+| T4             | milk, butter, eggs            |
+| T5             | bread, butter, jam            |
+
+Support Threshold: 2 (itemset must appear two times to be considered frequent)
+
+### Step 1: Find Frequent 1-Itemsets (L1)
+
+<style type="text/css">
+.tg .tg-0lax{text-align:left;vertical-align:top}
+.tg .tg-yi9q{color:#009901;text-align:left;vertical-align:top}
+.tg .tg-i9rw{color:#cb0000;text-align:left;vertical-align:top}
+</style>
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-0lax">1-Itemset</th>
+    <th class="tg-0lax">Support Count</th>
+  </tr></thead>
+<tbody>
+  <tr class="fragment" data-fragment-index="1">
+    <td class="tg-yi9q">milk</td>
+    <td class="tg-yi9q">3 (T1, T3, T4)</td>
+  </tr>
+  <tr class="fragment" data-fragment-index="2">
+    <td class="tg-yi9q">bread</td>
+    <td class="tg-yi9q">4 (T1, T2, T3, T5)</td>
+  </tr>
+  <tr class="fragment" data-fragment-index="3">
+    <td class="tg-yi9q">butter</td>
+    <td class="tg-yi9q">4 (T1, T2, T4, T5)</td>
+  </tr>
+  <tr class="fragment" data-fragment-index="4">
+    <td class="tg-i9rw">eggs</td>
+    <td class="tg-i9rw">1 (T4)</td>
+  </tr>
+  <tr class="fragment" data-fragment-index="5">
+    <td class="tg-i9rw">jam</td>
+    <td class="tg-i9rw">1 (T5)</td>
+  </tr>
+</tbody>
+</table>
 
 # References

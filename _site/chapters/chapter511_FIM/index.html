@@ -15,7 +15,7 @@
   <meta name="generator" content="quarto-1.7.24">
 
   <meta name="author" content="Prof.&nbsp;Dr.&nbsp;Tim Weber">
-  <title>Big Data lecture slides – Frequent Itemset Mining - FIM</title>
+  <title>Big Data lecture slides – Frequent Itemset Mining (FIM)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -172,7 +172,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Frequent Itemset Mining - FIM</h1>
+  <h1 class="title">Frequent Itemset Mining (FIM)</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -189,12 +189,346 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 </div>
 
 </section>
-<section id="fim" class="title-slide slide level2 center">
-<h2>FIM</h2>
-<p>FIM TST</p>
-<p><span class="citation" data-cites="Hahsler_2005">(<a href="#/references" role="doc-biblioref" onclick="">Michael Hahsler 2005</a>)</span></p>
+<section>
+<section id="introduction" class="title-slide slide level1 center">
+<h1>Introduction</h1>
+<center>
+<p><img data-src="img/fim_intro.png" style="width:70.0%"></p>
+<p>also called <em>Market Basket Analysis</em></p>
+</center>
+</section>
+<section class="slide level5">
+
+<p>Frequent itemset mining helps in discovering associations and correlations among items in large datasets. These associations can then be used for tasks like:</p>
+<ul>
+<li><p>Association Rule Mining (e.g., “If a customer buys bread, they are likely to buy butter”)</p></li>
+<li><p>Recommendation systems</p></li>
+<li><p>Inventory management</p></li>
+<li><p>Cross-selling strategies</p></li>
+</ul>
+</section>
+<section id="key-concepts" class="title-slide slide level2 center">
+<h2>Key Concepts</h2>
+
+</section>
+<section id="itemset" class="title-slide slide level3 center">
+<h3>Itemset</h3>
+<ul>
+<li>a collection of one or more items (<code>{bread, butter}</code>)</li>
+</ul>
+
+<img data-src="img/two_itemset_bread_butter.png" class="r-stretch"><p><span class="citation" data-cites="Hahsler_2005">(<a href="#/references" role="doc-biblioref" onclick="">Michael Hahsler 2005</a>)</span></p>
 </section>
 
+<section id="support" class="title-slide slide level3 center">
+<h3>Support</h3>
+<ul>
+<li><p>the frequency (often expressed as percentage) with which an itemset appears in the data set</p>
+<ul>
+<li>if <code>{bread, butter}</code> appears in <span class="math inline">\(30\)</span> out of <span class="math inline">\(100\)</span> transactions, its support is <span class="math inline">\(30\%\)</span></li>
+</ul></li>
+</ul>
+</section>
+
+<section id="frequent-itemset" class="title-slide slide level3 center">
+<h3>Frequent itemset</h3>
+<ul>
+<li><p>an itemset whose support is greater than or equal to a predefined, minimum threshhold</p>
+<ul>
+<li>if the minimum support is <span class="math inline">\(25\%\)</span>, then <code>{bread, butter}</code> is a frequent itemset</li>
+</ul></li>
+</ul>
+</section>
+
+<section id="transaction-database" class="title-slide slide level3 center">
+<h3>Transaction database</h3>
+<ul>
+<li>a collection of transactions, where each transaction is a set of items</li>
+</ul>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Transaction ID</th>
+<th>Items Purchased</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>T1</td>
+<td>milk, bread, butter</td>
+</tr>
+<tr class="even">
+<td>T2</td>
+<td>bread, butter</td>
+</tr>
+<tr class="odd">
+<td>T3</td>
+<td>milk, bread</td>
+</tr>
+<tr class="even">
+<td>T4</td>
+<td>milk, butter, eggs</td>
+</tr>
+<tr class="odd">
+<td>T5</td>
+<td>bread, butter, jam</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+<section id="simple-example" class="title-slide slide level2 center">
+<h2>Simple example</h2>
+
+</section>
+<section id="what-products-are-used" class="title-slide slide level3 center">
+<h3>What products are used?</h3>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Transaction ID</th>
+<th>Items Purchased</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>T1</td>
+<td>milk, bread, butter</td>
+</tr>
+<tr class="even">
+<td>T2</td>
+<td>bread, butter</td>
+</tr>
+<tr class="odd">
+<td>T3</td>
+<td>milk, bread</td>
+</tr>
+<tr class="even">
+<td>T4</td>
+<td>milk, butter, eggs</td>
+</tr>
+<tr class="odd">
+<td>T5</td>
+<td>bread, butter, jam</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p><code>milk, bread, butter, eggs, jam</code></p>
+</div>
+</section>
+
+<section id="quick-support-count-example" class="title-slide slide level3 center">
+<h3>Quick support count example</h3>
+<ul>
+<li>What itemsets are present?</li>
+<li>What is the support for each itemset?</li>
+<li>In which transaction do the itemsets appear?</li>
+</ul>
+</section>
+<section class="slide level5">
+
+<table>
+<thead>
+<tr>
+<th>
+Itemset
+</th>
+<th>
+Support Count
+</th>
+<th>
+Transaction
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="fragment" data-fragment-index="1">
+<td>
+{bread}
+</td>
+<td>
+4
+</td>
+<td>
+T1, T2, T3, T5
+</td>
+</tr>
+<tr class="fragment" data-fragment-index="2">
+<td>
+{milk}
+</td>
+<td>
+3
+</td>
+<td>
+T1, T3, T4
+</td>
+</tr>
+<tr class="fragment" data-fragment-index="3">
+<td>
+{butter}
+</td>
+<td>
+4
+</td>
+<td>
+T1, T2, T4, T5
+</td>
+</tr>
+<tr class="fragment" data-fragment-index="4">
+<td>
+{milk, bread}
+</td>
+<td>
+2
+</td>
+<td>
+T1, T3
+</td>
+</tr>
+<tr class="fragment" data-fragment-index="5">
+<td>
+{bread, butter}
+</td>
+<td>
+3
+</td>
+<td>
+T1, T2, T5
+</td>
+</tr>
+<tr class="fragment" data-fragment-index="6">
+<td>
+{milk, butter]
+</td>
+<td>
+2
+</td>
+<td>
+T1, T4
+</td>
+</tr>
+<tr class="fragment" data-fragment-index="7">
+<td>
+{milk, bread, butter}
+</td>
+<td>
+1
+</td>
+<td>
+T1
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+<section id="apriori-algorithm" class="title-slide slide level2 center">
+<h2>Apriori Algorithm</h2>
+
+</section>
+<section id="transaction-data" class="title-slide slide level3 center">
+<h3>Transaction data</h3>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Transaction ID</th>
+<th>Items Purchased</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>T1</td>
+<td>milk, bread, butter</td>
+</tr>
+<tr class="even">
+<td>T2</td>
+<td>bread, butter</td>
+</tr>
+<tr class="odd">
+<td>T3</td>
+<td>milk, bread</td>
+</tr>
+<tr class="even">
+<td>T4</td>
+<td>milk, butter, eggs</td>
+</tr>
+<tr class="odd">
+<td>T5</td>
+<td>bread, butter, jam</td>
+</tr>
+</tbody>
+</table>
+<p>Support Threshold: 2 (itemset must appear two times to be considered frequent)</p>
+</section>
+
+<section id="step-1-find-frequent-1-itemsets-l1" class="title-slide slide level3 center">
+<h3>Step 1: Find Frequent 1-Itemsets (L1)</h3>
+<style type="text/css">
+.tg .tg-0lax{text-align:left;vertical-align:top}
+.tg .tg-yi9q{color:#009901;text-align:left;vertical-align:top}
+.tg .tg-i9rw{color:#cb0000;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+<tr>
+<th class="tg-0lax">
+1-Itemset
+</th>
+<th class="tg-0lax">
+Support Count
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="fragment" data-fragment-index="1">
+<td class="tg-yi9q">
+milk
+</td>
+<td class="tg-yi9q">
+3 (T1, T3, T4)
+</td>
+</tr>
+<tr class="fragment" data-fragment-index="2">
+<td class="tg-yi9q">
+bread
+</td>
+<td class="tg-yi9q">
+4 (T1, T2, T3, T5)
+</td>
+</tr>
+<tr class="fragment" data-fragment-index="3">
+<td class="tg-yi9q">
+butter
+</td>
+<td class="tg-yi9q">
+4 (T1, T2, T4, T5)
+</td>
+</tr>
+<tr class="fragment" data-fragment-index="4">
+<td class="tg-i9rw">
+eggs
+</td>
+<td class="tg-i9rw">
+1 (T4)
+</td>
+</tr>
+<tr class="fragment" data-fragment-index="5">
+<td class="tg-i9rw">
+jam
+</td>
+<td class="tg-i9rw">
+1 (T5)
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+</section>
 <section id="references" class="title-slide slide level1 smaller scrollable">
 <h1>References</h1>
 
