@@ -33,6 +33,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
@@ -148,6 +214,16 @@
       margin-right: 0; 
     }
   </style>
+  <link href="../../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+  <script src="../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+  <link href="../../site_libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
+
+  <script src="../../site_libs/vis-9.1.0/vis-network.min.js"></script>
+
+  <script src="../../site_libs/visNetwork-binding-2.1.2/visNetwork.js"></script>
+
   <script>
   MathJax = {
     loader: {
@@ -217,8 +293,7 @@ Prof.&nbsp;Dr.&nbsp;Tim Weber
 <li>a collection of one or more items (<code>{bread, butter}</code>)</li>
 </ul>
 
-<img data-src="img/two_itemset_bread_butter.png" class="r-stretch"><p><span class="citation" data-cites="Hahsler_2005">(<a href="#/references" role="doc-biblioref" onclick="">Michael Hahsler 2005</a>)</span></p>
-</section>
+<img data-src="img/two_itemset_bread_butter.png" class="r-stretch"></section>
 
 <section id="support" class="title-slide slide level3 center">
 <h3>Support</h3>
@@ -428,7 +503,10 @@ T1
 
 <section id="apriori-algorithm" class="title-slide slide level2 center">
 <h2>Apriori Algorithm</h2>
-
+<p>The Apriori algorithm finds frequent itemsets in a dataset by building larger sets from smaller ones, using the principle that all subsets of a frequent itemset must also be frequent.</p>
+<div class="attribution">
+<p><span class="citation" data-cites="Hahsler_2005">(<a href="#/references" role="doc-biblioref" onclick="">Michael Hahsler 2005</a>)</span></p>
+</div>
 </section>
 <section id="transaction-data" class="title-slide slide level3 center">
 <h3>Transaction data</h3>
@@ -468,9 +546,9 @@ T1
 <section id="step-1-find-frequent-1-itemsets-l1" class="title-slide slide level3 center">
 <h3>Step 1: Find Frequent 1-Itemsets (L1)</h3>
 <style type="text/css">
-.tg .tg-0lax{text-align:left;vertical-align:top}
-.tg .tg-yi9q{color:#009901;text-align:left;vertical-align:top}
-.tg .tg-i9rw{color:#cb0000;text-align:left;vertical-align:top}
+.tg .tg-0lax{font-size:24px;text-align:left;vertical-align:top}
+.tg .tg-yi9q{color:#009901;font-size:24px;text-align:left;vertical-align:top}
+.tg .tg-i9rw{color:#cb0000;font-size:24px;text-align:left;vertical-align:top}
 </style>
 <table class="tg">
 <thead>
@@ -526,9 +604,639 @@ jam
 </tr>
 </tbody>
 </table>
+<div class="fragment">
+<p>frequent itemsets (L1): <code>milk, bread, butter</code></p>
+</div>
 </section>
 
+<section id="step-2-generate-candidate-2-itemsets-c2" class="title-slide slide level3 center">
+<h3>Step 2: Generate Candidate 2-Itemsets (C2)</h3>
+<ul>
+<li><p>Generate all combinations of L1:</p>
+<ul>
+<li><code>{milk, bread}</code></li>
+<li><code>{milk, butter}</code></li>
+<li><code>{bread, butter}</code></li>
+</ul></li>
+<li><p>Count the support</p></li>
+</ul>
 </section>
+<section class="slide level5">
+
+<style type="text/css">
+.tg .tg-0lax{font-size:24px;text-align:left;vertical-align:top}
+.tg .tg-yi9q{font-size:24px;color:#009901;text-align:left;vertical-align:top}
+.tg .tg-i9rw{font-size:24px;color:#cb0000;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+<tr>
+<th class="tg-0lax">
+2-Itemset
+</th>
+<th class="tg-0lax">
+Support Count
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="fragment" data-fragment-index="1">
+<td class="tg-yi9q">
+{milk,bread}
+</td>
+<td class="tg-yi9q">
+2 (T1, T3)
+</td>
+</tr>
+<tr class="fragment" data-fragment-index="2">
+<td class="tg-yi9q">
+{milk, butter}
+</td>
+<td class="tg-yi9q">
+2 (T1, T4)
+</td>
+</tr>
+<tr class="fragment" data-fragment-index="3">
+<td class="tg-yi9q">
+{bread, butter}
+</td>
+<td class="tg-yi9q">
+3 (T1, T2, T5)
+</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>frequent itemsets (L1): <code>{milk, bread}</code>, <code>{milk, butter}</code>, <code>{bread, butter}</code></p>
+</div>
+</section>
+
+<section id="generate-candidate-3-itemsets-c3" class="title-slide slide level3 center">
+<h3>Generate Candidate 3-Itemsets (C3)</h3>
+<ul>
+<li><p>Generate combinations of L2 that share a common subset</p>
+<ul>
+<li>only possible 3-itemset: <code>{milk, bread, butter}</code></li>
+</ul></li>
+<li><p>Check the support:</p></li>
+</ul>
+<style type="text/css">
+.tg .tg-0lax{font-size:24px;text-align:left;vertical-align:top}
+.tg .tg-yi9q{font-size:24px;color:#009901;text-align:left;vertical-align:top}
+.tg .tg-i9rw{font-size:24px;color:#cb0000;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+<tr>
+<th class="tg-0lax">
+3-Itemset
+</th>
+<th class="tg-0lax">
+Support Count
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="fragment" data-fragment-index="1">
+<td class="tg-i9rw">
+{milk, bread, butter}
+</td>
+<td class="tg-i9rw">
+1 (T1)
+</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<ul>
+<li>Termination: no 3-itemset meet the support requirement, algorithm stopped</li>
+</ul>
+</div>
+</section>
+
+<section id="final-frequent-itemsets" class="title-slide slide level3 center">
+<h3>Final Frequent Itemsets</h3>
+<ul>
+<li>L1: <code>{milk}</code>, <code>{bread}</code>, <code>{butter}</code></li>
+<li>L2: <code>{milk,bread}</code>, <code>{milk,butter}</code>, <code>{bread,butter}</code></li>
+</ul>
+</section>
+
+
+<section id="association-rule-mining-apriori" class="title-slide slide level2 center">
+<h2>Association Rule Mining (Apriori)</h2>
+<p>Association rule mining finds patterns or relationships between items in large datasets, such as products often bought together, focussing on those that meet a <strong>minimum confidence threshold</strong> (<span class="math inline">\(70\%\)</span> in this example).</p>
+</section>
+<section id="key-definitions" class="title-slide slide level3 center">
+<h3>Key Definitions</h3>
+<ul>
+<li>Support: How frequently an itemset appears in the data</li>
+<li>Confidence: How often items in <span class="math inline">\(Y\)</span> appear in transactions that contain <span class="math inline">\(X\)</span> in the rule <span class="math inline">\(X \rightarrow Y\)</span> <span class="math display">\[Confidence(X \rightarrow Y) = \frac{Support(X \cup Y)}{Support(X)}\]</span></li>
+<li>Lift: Measures whether <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> appear together more often than expected if they were independent <span class="math display">\[Lift(X \rightarrow Y) = \frac{Confidence(X \rightarrow Y)}{Support(Y)}\]</span></li>
+</ul>
+</section>
+
+<section id="frequent-itemsets-repetition" class="title-slide slide level3 center">
+<h3>Frequent Itemsets (repetition)</h3>
+<ul>
+<li>L1: <code>{milk}</code>, <code>{bread}</code>, <code>{butter}</code></li>
+<li>L2: <code>{milk,bread}</code>, <code>{milk,butter}</code>, <code>{bread,butter}</code></li>
+</ul>
+</section>
+
+<section id="rules" class="title-slide slide level3 center">
+<h3>Rules</h3>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-7ofv{border-color:inherit;font-size:24px;text-align:center;vertical-align:middle}
+.tg .tg-82x5{border-color:inherit;font-size:24px;text-align:left;vertical-align:middle}
+.tg .tg-v8dz{border-color:inherit;font-size:24px;text-align:left;vertical-align:top}
+.tg .tg-6b78{border-color:inherit;color:#cb0000;font-size:24px;text-align:left;vertical-align:top}
+.tg .tg-zjyq{border-color:inherit;color:#036400;font-size:24px;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+<tr>
+<th class="tg-7ofv">
+From
+</th>
+<th class="tg-7ofv">
+Rule
+</th>
+<th class="tg-7ofv">
+L2
+</th>
+<th class="tg-7ofv">
+Support of L2
+</th>
+<th class="tg-7ofv">
+L1
+</th>
+<th class="tg-7ofv">
+Support of L1
+</th>
+<th class="tg-7ofv">
+Confidence
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="fragment" data-fragment-index="1">
+<td class="tg-82x5" rowspan="2">
+<code>{milk,bread}</code>
+</td>
+<td class="tg-v8dz">
+<span class="math inline">\(milk \rightarrow bread\)</span>
+</td>
+<td class="tg-v8dz">
+<code>{milk,bread}</code>
+</td>
+<td class="tg-v8dz">
+2
+</td>
+<td class="tg-v8dz">
+milk
+</td>
+<td class="tg-v8dz">
+3
+</td>
+<td class="tg-6b78">
+<span class="math inline">\(Confidence = \frac{2}{3} \approx 66.7\%\)</span>
+</td>
+</tr>
+<tr class="fragment" data-fragment-index="2">
+<td class="tg-v8dz">
+<span class="math inline">\(bread \rightarrow milk\)</span>
+</td>
+<td class="tg-v8dz">
+<code>{milk,bread}</code>
+</td>
+<td class="tg-v8dz">
+2
+</td>
+<td class="tg-v8dz">
+bread
+</td>
+<td class="tg-v8dz">
+4
+</td>
+<td class="tg-6b78">
+<span class="math inline">\(Confidence = \frac{2}{4} \approx 50\%\)</span>
+</td>
+</tr>
+<tr class="fragment" data-fragment-index="3">
+<td class="tg-82x5" rowspan="2">
+<code>{milk,butter}</code>
+</td>
+<td class="tg-v8dz">
+<span class="math inline">\(milk \rightarrow butter\)</span>
+</td>
+<td class="tg-v8dz">
+<code>{milk,butter}</code>
+</td>
+<td class="tg-v8dz">
+2
+</td>
+<td class="tg-v8dz">
+milk
+</td>
+<td class="tg-v8dz">
+3
+</td>
+<td class="tg-6b78">
+<span class="math inline">\(Confidence = \frac{2}{3} \approx 66.7\%\)</span>
+</td>
+</tr>
+<tr class="fragment" data-fragment-index="4">
+<td class="tg-v8dz">
+<span class="math inline">\(butter \rightarrow milk\)</span>
+</td>
+<td class="tg-v8dz">
+<code>{milk,butter}</code>
+</td>
+<td class="tg-v8dz">
+2
+</td>
+<td class="tg-v8dz">
+butter
+</td>
+<td class="tg-v8dz">
+4
+</td>
+<td class="tg-6b78">
+<span class="math inline">\(Confidence = \frac{2}{4} \approx 50\%\)</span>
+</td>
+</tr>
+<tr class="fragment" data-fragment-index="5">
+<td class="tg-82x5" rowspan="2">
+<code>{bread,butter}</code>
+</td>
+<td class="tg-v8dz">
+<span class="math inline">\(bread \rightarrow butter\)</span>
+</td>
+<td class="tg-v8dz">
+<code>{bread,butter}</code>
+</td>
+<td class="tg-v8dz">
+3
+</td>
+<td class="tg-v8dz">
+bread
+</td>
+<td class="tg-v8dz">
+4
+</td>
+<td class="tg-zjyq">
+<span class="math inline">\(Confidence = \frac{3}{4} \approx 75\%\)</span>
+</td>
+</tr>
+<tr class="fragment" data-fragment-index="6">
+<td class="tg-v8dz">
+<span class="math inline">\(butter \rightarrow bread\)</span>
+</td>
+<td class="tg-v8dz">
+<code>{bread,butter}</code>
+</td>
+<td class="tg-v8dz">
+3
+</td>
+<td class="tg-v8dz">
+butter
+</td>
+<td class="tg-v8dz">
+4
+</td>
+<td class="tg-zjyq">
+<span class="math inline">\(Confidence = \frac{3}{4} \approx 75\%\)</span>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section id="rule-interpretation" class="title-slide slide level3 center">
+<h3>Rule interpretation</h3>
+<table>
+<thead>
+<tr>
+<th>
+Rule
+</th>
+<th>
+Confidence
+</th>
+<th>
+Interpretation
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<span class="math inline">\(bread \rightarrow butter\)</span>
+</td>
+<td>
+<span class="math inline">\(75\%\)</span>
+</td>
+<td>
+<span class="math inline">\(75\%\)</span> of people who buy bread also buy butter
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(butter \rightarrow bread\)</span>
+</td>
+<td>
+<span class="math inline">\(75\%\)</span>
+</td>
+<td>
+<span class="math inline">\(75\%\)</span> of people who buy butter also buy bread
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section id="lift-optional" class="title-slide slide level3 center">
+<h3>Lift (optional)</h3>
+<p><span class="math display">\[Lift = \frac{Confidence (bread \rightarrow butter)}{Support(butter)} = \frac{0.75}{0.8} = 0.9375 &lt; 1\]</span> <span class="math inline">\(Lift &lt; 1\)</span> means bread and butter co-occur <strong>less than expected</strong> if they were independent (only slightly).</p>
+<p><span class="math display">\[Lift = \frac{Confidence (butter \rightarrow bread)}{Support(bread)} = \frac{0.75}{0.8} = 0.9375 &lt; 1\]</span></p>
+<p><span class="math inline">\(Lift &lt; 1\)</span> means butter and bread co-occur <strong>less than expected</strong> if they were independent (only slightly).</p>
+</section>
+
+<section id="apriori-in-code" class="title-slide slide level3 center">
+<h3>Apriori in Code</h3>
+
+</section>
+<section id="transactions-raw" class="title-slide slide level4 center">
+<h4>Transactions raw</h4>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] "milk"   "bread"  "butter"
+
+[[2]]
+[1] "bread"  "butter"
+
+[[3]]
+[1] "milk"  "bread"
+
+[[4]]
+[1] "milk"   "butter" "eggs"  
+
+[[5]]
+[1] "bread"  "butter" "jam"   </code></pre>
+</div>
+</div>
+</section>
+
+<section id="transaction-class" class="title-slide slide level4 center">
+<h4>Transaction class</h4>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>    items                
+[1] {bread, butter, milk}
+[2] {bread, butter}      
+[3] {bread, milk}        
+[4] {butter, eggs, milk} 
+[5] {bread, butter, jam} </code></pre>
+</div>
+</div>
+</section>
+
+<section id="apply-apriori" class="title-slide slide level4 center">
+<h4>Apply apriori</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Mine frequent itemsets</span></span>
+<span id="cb3-2"><a></a>frequent_items <span class="ot">&lt;-</span> <span class="fu">apriori</span>(transactions, </span>
+<span id="cb3-3"><a></a>                          <span class="at">parameter =</span> <span class="fu">list</span>(<span class="at">supp =</span> <span class="fl">0.4</span>, <span class="at">target =</span> <span class="st">"frequent itemsets"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Apriori
+
+Parameter specification:
+ confidence minval smax arem  aval originalSupport maxtime support minlen
+         NA    0.1    1 none FALSE            TRUE       5     0.4      1
+ maxlen            target  ext
+     10 frequent itemsets TRUE
+
+Algorithmic control:
+ filter tree heap memopt load sort verbose
+    0.1 TRUE TRUE  FALSE TRUE    2    TRUE
+
+Absolute minimum support count: 2 
+
+set item appearances ...[0 item(s)] done [0.00s].
+set transactions ...[5 item(s), 5 transaction(s)] done [0.00s].
+sorting and recoding items ... [3 item(s)] done [0.00s].
+creating transaction tree ... done [0.00s].
+checking subsets of size 1 2 3 done [0.00s].
+sorting transactions ... done [0.00s].
+writing ... [6 set(s)] done [0.00s].
+creating S4 object  ... done [0.00s].</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">inspect</span>(frequent_items)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    items           support count
+[1] {milk}          0.6     3    
+[2] {bread}         0.8     4    
+[3] {butter}        0.8     4    
+[4] {bread, milk}   0.4     2    
+[5] {butter, milk}  0.4     2    
+[6] {bread, butter} 0.6     3    </code></pre>
+</div>
+</div>
+</section>
+
+<section id="generate-rules" class="title-slide slide level4 center">
+<h4>generate rules</h4>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Apriori
+
+Parameter specification:
+ confidence minval smax arem  aval originalSupport maxtime support minlen
+        0.7    0.1    1 none FALSE            TRUE       5     0.4      1
+ maxlen target  ext
+     10  rules TRUE
+
+Algorithmic control:
+ filter tree heap memopt load sort verbose
+    0.1 TRUE TRUE  FALSE TRUE    2    TRUE
+
+Absolute minimum support count: 2 
+
+set item appearances ...[0 item(s)] done [0.00s].
+set transactions ...[5 item(s), 5 transaction(s)] done [0.00s].
+sorting and recoding items ... [3 item(s)] done [0.00s].
+creating transaction tree ... done [0.00s].
+checking subsets of size 1 2 3 done [0.00s].
+writing ... [4 rule(s)] done [0.00s].
+creating S4 object  ... done [0.00s].</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    lhs         rhs      support confidence coverage lift   count
+[1] {}       =&gt; {bread}  0.8     0.80       1.0      1.0000 4    
+[2] {}       =&gt; {butter} 0.8     0.80       1.0      1.0000 4    
+[3] {bread}  =&gt; {butter} 0.6     0.75       0.8      0.9375 3    
+[4] {butter} =&gt; {bread}  0.6     0.75       0.8      0.9375 3    </code></pre>
+</div>
+</div>
+</section>
+
+<section id="rule-visualization" class="title-slide slide level4 center">
+<h4>Rule Visualization</h4>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>    lhs         rhs      support confidence coverage lift   count
+[1] {}       =&gt; {bread}  0.8     0.80       1.0      1.0000 4    
+[2] {}       =&gt; {butter} 0.8     0.80       1.0      1.0000 4    
+[3] {bread}  =&gt; {butter} 0.6     0.75       0.8      0.9375 3    
+[4] {butter} =&gt; {bread}  0.6     0.75       0.8      0.9375 3    </code></pre>
+</div>
+<div class="cell-output-display">
+<div class="visNetwork html-widget html-fill-item" id="htmlwidget-92f0b4d0f6c32481d990" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-92f0b4d0f6c32481d990">{"x":{"nodes":{"id":[1,2,3,4,5,6],"label":["bread","butter","rule 1","rule 2","rule 3","rule 4"],"group":[1,1,2,2,2,2],"value":[1,1,100,100,1,1],"color":["#CBD2FC","#CBD2FC","#EE1B1B","#EE1B1B","#EEDCDC","#EEDCDC"],"title":["bread","butter","<B>[1]<\/B><BR><B>{}<\/B><BR>&nbsp;&nbsp; => <B>{bread}<\/B><BR><BR>support = 0.8<BR>confidence = 0.8<BR>coverage = 1<BR>lift = 1<BR>count = 4<BR>order = 1<BR>id = 1","<B>[2]<\/B><BR><B>{}<\/B><BR>&nbsp;&nbsp; => <B>{butter}<\/B><BR><BR>support = 0.8<BR>confidence = 0.8<BR>coverage = 1<BR>lift = 1<BR>count = 4<BR>order = 1<BR>id = 2","<B>[3]<\/B><BR><B>{bread}<\/B><BR>&nbsp;&nbsp; => <B>{butter}<\/B><BR><BR>support = 0.6<BR>confidence = 0.75<BR>coverage = 0.8<BR>lift = 0.938<BR>count = 3<BR>order = 2<BR>id = 3","<B>[4]<\/B><BR><B>{butter}<\/B><BR>&nbsp;&nbsp; => <B>{bread}<\/B><BR><BR>support = 0.6<BR>confidence = 0.75<BR>coverage = 0.8<BR>lift = 0.938<BR>count = 3<BR>order = 2<BR>id = 4"],"shape":["box","box","circle","circle","circle","circle"],"x":[0.4607288585816931,-0.4602652297971785,1,-1,-0.5911205510776656,0.592241209071741],"y":[0.4607288587618865,-0.4602652297758287,1,-1,0.103144591209438,-0.1020239331206254]},"edges":{"from":[1,2,3,4,5,6],"to":[5,6,1,2,2,1],"arrows":["to","to","to","to","to","to"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot","physics":false},"manipulation":{"enabled":false},"edges":{"smooth":false},"physics":{"stabilization":false},"interaction":{"hover":true,"zoomSpeed":1}},"groups":["1","2"],"width":null,"height":null,"idselection":{"enabled":true,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","igraphlayout":{"type":"square"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);","highlight":{"enabled":true,"hoverNearest":true,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="attribution">
+<p><span class="citation" data-cites="a_Hahsler_2017">(<a href="#/references" role="doc-biblioref" onclick="">Hahsler 2017</a>)</span></p>
+</div>
+</section>
+
+
+
+<section id="classroom-example" class="title-slide slide level2 center">
+<h2>Classroom example</h2>
+<center>
+Let’s go shopping!
+</center>
+<ul>
+<li>Build toy supermarket</li>
+<li>students go shopping</li>
+<li>get transaction list and compute algorithm</li>
+</ul>
+</section>
+</section>
+<section>
+<section id="application" class="title-slide slide level1 center">
+<h1>Application</h1>
+<center>
+<strong>Data-Driven Production Methodology for Optimizing Tool Inventory in Small and Medium-Sized Enterprise</strong>
+</center>
+<p>Master Thesis: Van Thuy Cuc Dang</p>
+<p>Supervisor: Prof.&nbsp;Dr.&nbsp;Tim Weber</p>
+<p>Cooperation Partner: <a href="https://www.sktechnology.de/">SK Technology</a></p>
+</section>
+<section id="data-workflow" class="title-slide slide level2 center">
+<h2>Data Workflow</h2>
+
+<img data-src="img/cuc_wf.png" class="r-stretch"></section>
+
+<section id="raw-data" class="title-slide slide level2 center">
+<h2>Raw data</h2>
+
+<img data-src="img/cuc_rawdata.png" class="r-stretch"></section>
+
+<section id="transactions" class="title-slide slide level2 center">
+<h2>Transactions</h2>
+
+<img data-src="img/cuc_transactions.png" class="r-stretch"></section>
+
+<section id="tool-network-apriori" class="title-slide slide level2 center">
+<h2>Tool Network (Apriori)</h2>
+
+<img data-src="img/cuc_apriori.png" class="r-stretch"></section>
+
+<section id="tool-network-eclat" class="title-slide slide level2 center">
+<h2>Tool Network (Eclat)</h2>
+
+<img data-src="img/cuc_eclat.png" class="r-stretch"></section>
+
+<section id="discussion" class="title-slide slide level2 center">
+<h2>Discussion</h2>
+<ul>
+<li>FIM used to find the tool network (dependencies)</li>
+<li>Needed: Tool removal metric</li>
+<li>Future: Predict Tool and cross link to product</li>
+</ul>
+</section>
+</section>
+<section id="summary-fim" class="title-slide slide level1 center">
+<h1>Summary FIM</h1>
+<div style="font-size: 60%;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 28%">
+<col style="width: 29%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Aspect</strong></th>
+<th><strong>Apriori</strong></th>
+<th><strong>Eclat</strong></th>
+<th><strong>FP-Growth</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Core Strategy</strong></td>
+<td>Candidate generation + pruning</td>
+<td>TID-list intersections</td>
+<td>Prefix-tree with recursive mining</td>
+</tr>
+<tr class="even">
+<td><strong>Data Format</strong></td>
+<td>Horizontal</td>
+<td>Vertical (TID sets)</td>
+<td>Tree-based (compressed horizontal)</td>
+</tr>
+<tr class="odd">
+<td><strong>Candidate Gen</strong></td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td><strong>Speed</strong></td>
+<td>Slower on large/dense data</td>
+<td>Faster than Apriori</td>
+<td>Fastest on large/dense data</td>
+</tr>
+<tr class="odd">
+<td><strong>Memory Use</strong></td>
+<td>High</td>
+<td>Moderate</td>
+<td>Low</td>
+</tr>
+<tr class="even">
+<td><strong>DB Scans</strong></td>
+<td>Multiple</td>
+<td>Fewer</td>
+<td>Typically 2</td>
+</tr>
+<tr class="odd">
+<td><strong>Rule Support</strong></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes (with post-processing)</td>
+</tr>
+<tr class="even">
+<td><strong>Best For</strong></td>
+<td>Small/medium sparse datasets</td>
+<td>Medium-size frequent data</td>
+<td>Large and dense datasets</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
 <section id="references" class="title-slide slide level1 smaller scrollable">
 <h1>References</h1>
 
@@ -548,6 +1256,9 @@ jam
 </div>
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-a_Hahsler_2017" class="csl-entry" role="listitem">
+Hahsler, Michael. 2017. <span>“arulesViz: Interactive Visualization of Association Rules with r.”</span> <em>The R Journal</em> 9 (2): 163. <a href="https://doi.org/10.32614/rj-2017-047">https://doi.org/10.32614/rj-2017-047</a>.
+</div>
 <div id="ref-Hahsler_2005" class="csl-entry" role="listitem">
 Michael Hahsler, Kurt Hornik, Bettina Grün. 2005. <span>“&lt;B&gt;arules&lt;/b&gt;- a Computational Environment for Mining Association Rules and Frequent Item Sets.”</span> <em>Journal of Statistical Software</em> 14 (15). <a href="https://doi.org/10.18637/jss.v014.i15">https://doi.org/10.18637/jss.v014.i15</a>.
 </div>

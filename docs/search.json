@@ -495,7 +495,95 @@
     "href": "chapters/chapter511_FIM/index.html#apriori-algorithm",
     "title": "Frequent Itemset Mining (FIM)",
     "section": "Apriori Algorithm",
-    "text": "Apriori Algorithm",
+    "text": "Apriori Algorithm\nThe Apriori algorithm finds frequent itemsets in a dataset by building larger sets from smaller ones, using the principle that all subsets of a frequent itemset must also be frequent.\n\n(Michael Hahsler 2005)",
+    "crumbs": [
+      "Data crunching",
+      "FIM"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter511_FIM/index.html#association-rule-mining-apriori",
+    "href": "chapters/chapter511_FIM/index.html#association-rule-mining-apriori",
+    "title": "Frequent Itemset Mining (FIM)",
+    "section": "Association Rule Mining (Apriori)",
+    "text": "Association Rule Mining (Apriori)\nAssociation rule mining finds patterns or relationships between items in large datasets, such as products often bought together, focussing on those that meet a minimum confidence threshold (\\(70\\%\\) in this example).",
+    "crumbs": [
+      "Data crunching",
+      "FIM"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter511_FIM/index.html#classroom-example",
+    "href": "chapters/chapter511_FIM/index.html#classroom-example",
+    "title": "Frequent Itemset Mining (FIM)",
+    "section": "Classroom example",
+    "text": "Classroom example\n\nLet’s go shopping!\n\n\nBuild toy supermarket\nstudents go shopping\nget transaction list and compute algorithm",
+    "crumbs": [
+      "Data crunching",
+      "FIM"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter511_FIM/index.html#data-workflow",
+    "href": "chapters/chapter511_FIM/index.html#data-workflow",
+    "title": "Frequent Itemset Mining (FIM)",
+    "section": "Data Workflow",
+    "text": "Data Workflow",
+    "crumbs": [
+      "Data crunching",
+      "FIM"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter511_FIM/index.html#raw-data",
+    "href": "chapters/chapter511_FIM/index.html#raw-data",
+    "title": "Frequent Itemset Mining (FIM)",
+    "section": "Raw data",
+    "text": "Raw data",
+    "crumbs": [
+      "Data crunching",
+      "FIM"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter511_FIM/index.html#transactions",
+    "href": "chapters/chapter511_FIM/index.html#transactions",
+    "title": "Frequent Itemset Mining (FIM)",
+    "section": "Transactions",
+    "text": "Transactions",
+    "crumbs": [
+      "Data crunching",
+      "FIM"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter511_FIM/index.html#tool-network-apriori",
+    "href": "chapters/chapter511_FIM/index.html#tool-network-apriori",
+    "title": "Frequent Itemset Mining (FIM)",
+    "section": "Tool Network (Apriori)",
+    "text": "Tool Network (Apriori)",
+    "crumbs": [
+      "Data crunching",
+      "FIM"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter511_FIM/index.html#tool-network-eclat",
+    "href": "chapters/chapter511_FIM/index.html#tool-network-eclat",
+    "title": "Frequent Itemset Mining (FIM)",
+    "section": "Tool Network (Eclat)",
+    "text": "Tool Network (Eclat)",
+    "crumbs": [
+      "Data crunching",
+      "FIM"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter511_FIM/index.html#discussion",
+    "href": "chapters/chapter511_FIM/index.html#discussion",
+    "title": "Frequent Itemset Mining (FIM)",
+    "section": "Discussion",
+    "text": "Discussion\n\nFIM used to find the tool network (dependencies)\nNeeded: Tool removal metric\nFuture: Predict Tool and cross link to product",
     "crumbs": [
       "Data crunching",
       "FIM"

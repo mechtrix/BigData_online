@@ -51,6 +51,8 @@ library(gt)
 library(here)
 library(quarto)
 library(gganimate)
+library(arules)
+library(arulesViz)
 
 ```
 
@@ -85,7 +87,6 @@ Frequent itemset mining helps in discovering associations and correlations among
 
 ![](img/two_itemset_bread_butter.png)
 
-[@Hahsler_2005]
 
 ### Support
 
@@ -180,7 +181,15 @@ Frequent itemset mining helps in discovering associations and correlations among
 </tbody>
 </table>
 
+
+
 ## Apriori Algorithm
+
+The Apriori algorithm finds frequent itemsets in a dataset by building larger sets from smaller ones, using the principle that all subsets of a frequent itemset must also be frequent.
+
+::: {.attribution}
+[@Hahsler_2005]
+:::
 
 ### Transaction data
 
@@ -196,10 +205,11 @@ Support Threshold: 2 (itemset must appear two times to be considered frequent)
 
 ### Step 1: Find Frequent 1-Itemsets (L1)
 
+
 <style type="text/css">
-.tg .tg-0lax{text-align:left;vertical-align:top}
-.tg .tg-yi9q{color:#009901;text-align:left;vertical-align:top}
-.tg .tg-i9rw{color:#cb0000;text-align:left;vertical-align:top}
+.tg .tg-0lax{font-size:24px;text-align:left;vertical-align:top}
+.tg .tg-yi9q{color:#009901;font-size:24px;text-align:left;vertical-align:top}
+.tg .tg-i9rw{color:#cb0000;font-size:24px;text-align:left;vertical-align:top}
 </style>
 <table class="tg"><thead>
   <tr>
@@ -229,5 +239,350 @@ Support Threshold: 2 (itemset must appear two times to be considered frequent)
   </tr>
 </tbody>
 </table>
+
+
+
+::: {.fragment}
+frequent itemsets (L1): `milk, bread, butter`
+:::
+
+### Step 2: Generate Candidate 2-Itemsets (C2)
+
+- Generate all combinations of L1:
+
+  - `{milk, bread}`
+  - `{milk, butter}`
+  - `{bread, butter}`
+  
+- Count the support
+
+---
+
+<style type="text/css">
+.tg .tg-0lax{font-size:24px;text-align:left;vertical-align:top}
+.tg .tg-yi9q{font-size:24px;color:#009901;text-align:left;vertical-align:top}
+.tg .tg-i9rw{font-size:24px;color:#cb0000;text-align:left;vertical-align:top}
+</style>
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-0lax">2-Itemset</th>
+    <th class="tg-0lax">Support Count</th>
+  </tr></thead>
+<tbody>
+  <tr class="fragment" data-fragment-index="1">
+    <td class="tg-yi9q">{milk,bread}</td>
+    <td class="tg-yi9q">2 (T1, T3)</td>
+  </tr>
+  <tr class="fragment" data-fragment-index="2">
+    <td class="tg-yi9q">{milk, butter}</td>
+    <td class="tg-yi9q">2 (T1, T4)</td>
+  </tr>
+  <tr class="fragment" data-fragment-index="3">
+    <td class="tg-yi9q">{bread, butter}</td>
+    <td class="tg-yi9q">3 (T1, T2, T5)</td>
+  </tr>
+</tbody>
+</table>
+
+::: {.fragment}
+frequent itemsets (L1): `{milk, bread}`, `{milk, butter}`, `{bread, butter}`
+:::
+
+### Generate Candidate 3-Itemsets (C3)
+
+- Generate combinations of L2 that share a common subset
+
+  - only possible 3-itemset: `{milk, bread, butter}`
+  
+- Check the support:
+
+<style type="text/css">
+.tg .tg-0lax{font-size:24px;text-align:left;vertical-align:top}
+.tg .tg-yi9q{font-size:24px;color:#009901;text-align:left;vertical-align:top}
+.tg .tg-i9rw{font-size:24px;color:#cb0000;text-align:left;vertical-align:top}
+</style>
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-0lax">3-Itemset</th>
+    <th class="tg-0lax">Support Count</th>
+  </tr></thead>
+<tbody>
+  <tr class="fragment" data-fragment-index="1">
+    <td class="tg-i9rw">{milk, bread, butter}</td>
+    <td class="tg-i9rw">1 (T1)</td>
+  </tr>
+</tbody>
+</table>
+
+::: {.fragment}
+- Termination: no 3-itemset meet the support requirement, algorithm stopped
+:::
+
+### Final Frequent Itemsets
+
+- L1: `{milk}`, `{bread}`, `{butter}`
+- L2: `{milk,bread}`, `{milk,butter}`, `{bread,butter}`
+
+## Association Rule Mining (Apriori)
+
+Association rule mining finds patterns or relationships between items in large datasets, such as products often bought together, focussing on those that meet a **minimum confidence threshold** ($70\%$ in this example).
+
+### Key Definitions
+
+- Support: How frequently an itemset appears in the data
+- Confidence: How often items in $Y$ appear in transactions that contain $X$ in the rule $X \rightarrow Y$
+$$Confidence(X \rightarrow Y) = \frac{Support(X \cup Y)}{Support(X)}$$
+- Lift: Measures whether $X$ and $Y$ appear together more often than expected if they were independent
+$$Lift(X \rightarrow Y) = \frac{Confidence(X \rightarrow Y)}{Support(Y)}$$
+
+### Frequent Itemsets (repetition)
+
+- L1: `{milk}`, `{bread}`, `{butter}`
+- L2: `{milk,bread}`, `{milk,butter}`, `{bread,butter}`
+
+### Rules
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-7ofv{border-color:inherit;font-size:24px;text-align:center;vertical-align:middle}
+.tg .tg-82x5{border-color:inherit;font-size:24px;text-align:left;vertical-align:middle}
+.tg .tg-v8dz{border-color:inherit;font-size:24px;text-align:left;vertical-align:top}
+.tg .tg-6b78{border-color:inherit;color:#cb0000;font-size:24px;text-align:left;vertical-align:top}
+.tg .tg-zjyq{border-color:inherit;color:#036400;font-size:24px;text-align:left;vertical-align:top}
+</style>
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-7ofv">From</th>
+    <th class="tg-7ofv">Rule</th>
+    <th class="tg-7ofv">L2</th>
+    <th class="tg-7ofv">Support of L2</th>
+    <th class="tg-7ofv">L1</th>
+    <th class="tg-7ofv">Support of L1</th>
+    <th class="tg-7ofv">Confidence</th>
+  </tr></thead>
+<tbody>
+  <tr class="fragment" data-fragment-index="1">
+    <td class="tg-82x5" rowspan="2">`{milk,bread}`</td>
+    <td class="tg-v8dz">$milk \rightarrow bread$</td>
+    <td class="tg-v8dz">`{milk,bread}`</td>
+    <td class="tg-v8dz">2</td>
+    <td class="tg-v8dz">milk</td>
+    <td class="tg-v8dz">3</td>
+    <td class="tg-6b78">$Confidence = \frac{2}{3} \approx 66.7\%$</td>
+  </tr>
+  <tr class="fragment" data-fragment-index="2">
+    <td class="tg-v8dz">$bread \rightarrow milk$</td>
+    <td class="tg-v8dz">`{milk,bread}`</td>
+    <td class="tg-v8dz">2</td>
+    <td class="tg-v8dz">bread</td>
+    <td class="tg-v8dz">4</td>
+    <td class="tg-6b78">$Confidence = \frac{2}{4} \approx 50\%$</td>
+  </tr>
+  <tr class="fragment" data-fragment-index="3">
+    <td class="tg-82x5" rowspan="2">`{milk,butter}`</td>
+    <td class="tg-v8dz">$milk \rightarrow butter$</td>
+    <td class="tg-v8dz">`{milk,butter}`</td>
+    <td class="tg-v8dz">2</td>
+    <td class="tg-v8dz">milk</td>
+    <td class="tg-v8dz">3</td>
+    <td class="tg-6b78">$Confidence = \frac{2}{3} \approx 66.7\%$</td>
+  </tr>
+  <tr class="fragment" data-fragment-index="4">
+    <td class="tg-v8dz">$butter \rightarrow milk$</td>
+    <td class="tg-v8dz">`{milk,butter}`</td>
+    <td class="tg-v8dz">2</td>
+    <td class="tg-v8dz">butter</td>
+    <td class="tg-v8dz">4</td>
+    <td class="tg-6b78">$Confidence = \frac{2}{4} \approx 50\%$</td>
+  </tr>
+  <tr class="fragment" data-fragment-index="5">
+    <td class="tg-82x5" rowspan="2">`{bread,butter}`</td>
+    <td class="tg-v8dz">$bread \rightarrow butter$</td>
+    <td class="tg-v8dz">`{bread,butter}`</td>
+    <td class="tg-v8dz">3</td>
+    <td class="tg-v8dz">bread</td>
+    <td class="tg-v8dz">4</td>
+    <td class="tg-zjyq">$Confidence = \frac{3}{4} \approx 75\%$</td>
+  </tr>
+  <tr class="fragment" data-fragment-index="6">
+    <td class="tg-v8dz">$butter \rightarrow bread$</td>
+    <td class="tg-v8dz">`{bread,butter}`</td>
+    <td class="tg-v8dz">3</td>
+    <td class="tg-v8dz">butter</td>
+    <td class="tg-v8dz">4</td>
+    <td class="tg-zjyq">$Confidence = \frac{3}{4} \approx 75\%$</td>
+  </tr>
+</tbody></table>
+
+### Rule interpretation
+
+<table><thead>
+  <tr>
+    <th>Rule</th>
+    <th>Confidence</th>
+    <th>Interpretation</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td>$bread \rightarrow butter$</td>
+    <td>$75\%$</td>
+    <td>$75\%$ of people who buy bread also buy butter</td>
+  </tr>
+  <tr>
+    <td>$butter \rightarrow bread$</td>
+    <td>$75\%$</td>
+    <td>$75\%$ of people who buy butter also buy bread</td>
+  </tr>
+</tbody>
+</table>
+
+### Lift (optional)
+
+$$Lift = \frac{Confidence (bread \rightarrow butter)}{Support(butter)} = \frac{0.75}{0.8} = 0.9375 < 1$$
+$Lift < 1$ means bread and butter co-occur **less than expected** if they were independent (only slightly).
+
+$$Lift = \frac{Confidence (butter \rightarrow bread)}{Support(bread)} = \frac{0.75}{0.8} = 0.9375 < 1$$
+
+$Lift < 1$ means butter and bread co-occur **less than expected** if they were independent (only slightly).
+
+### Apriori in Code
+
+#### Transactions raw
+
+```{r}
+# Define transactions as a list
+transactions_list <- list(
+  c("milk", "bread", "butter"),       # T1
+  c("bread", "butter"),               # T2
+  c("milk", "bread"),                 # T3
+  c("milk", "butter", "eggs"),        # T4
+  c("bread", "butter", "jam")         # T5
+)
+
+print(transactions_list)
+```
+
+#### Transaction class
+
+```{r}
+# Convert to transactions object
+transactions <- as(transactions_list, "transactions")
+
+# Optional: inspect the dataset
+inspect(transactions)
+
+```
+
+#### Apply apriori
+
+```{r}
+#| echo: true
+
+# Mine frequent itemsets
+frequent_items <- apriori(transactions, 
+                          parameter = list(supp = 0.4, target = "frequent itemsets"))
+
+inspect(frequent_items)
+
+
+```
+
+#### generate rules
+
+```{r}
+#| echo: false
+
+rules <- apriori(transactions, 
+                 parameter = list(supp = 0.4, conf = 0.7, target = "rules"))
+
+inspect(rules)
+
+```
+
+
+#### Rule Visualization
+
+```{r}
+
+
+sorted_rules <- sort(rules, by = "confidence", decreasing = TRUE)
+inspect(sorted_rules)
+
+plot(rules, method = "graph", engine = "htmlwidget")
+
+```
+
+::: {.attribution}
+[@a_Hahsler_2017]
+:::
+
+## Classroom example
+
+<center>
+Let's go shopping!
+</center>
+
+- Build toy supermarket
+- students go shopping
+- get transaction list and compute algorithm
+
+# Application
+
+<center>
+**Data-Driven Production Methodology for Optimizing Tool Inventory in Small and Medium-Sized Enterprise**
+</center>
+
+Master Thesis: Van Thuy Cuc Dang
+
+Supervisor: Prof. Dr. Tim Weber
+
+Cooperation Partner: [SK Technology](https://www.sktechnology.de/)
+
+## Data Workflow
+
+![](img/cuc_wf.png)
+
+## Raw data
+
+![](img/cuc_rawdata.png)
+
+## Transactions
+
+![](img/cuc_transactions.png)
+
+## Tool Network (Apriori)
+
+![](img/cuc_apriori.png)
+
+## Tool Network (Eclat)
+
+![](img/cuc_eclat.png)
+
+## Discussion
+
+- FIM used to find the tool network (dependencies)
+- Needed: Tool removal metric
+- Future: Predict Tool and cross link to product
+
+# Summary FIM
+
+::::{style="font-size: 60%;"}
+
+| **Aspect**        | **Apriori**                       | **Eclat**                          | **FP-Growth**                     |
+|------------------|-----------------------------------|------------------------------------|-----------------------------------|
+| **Core Strategy** | Candidate generation + pruning    | TID-list intersections             | Prefix-tree with recursive mining |
+| **Data Format**   | Horizontal                        | Vertical (TID sets)                | Tree-based (compressed horizontal)|
+| **Candidate Gen** | Yes                               | No                                 | No                                |
+| **Speed**         | Slower on large/dense data        | Faster than Apriori                | Fastest on large/dense data       |
+| **Memory Use**    | High                              | Moderate                           | Low                               |
+| **DB Scans**      | Multiple                          | Fewer                              | Typically 2                       |
+| **Rule Support**  | Yes                               | Yes                                | Yes (with post-processing)        |
+| **Best For**      | Small/medium sparse datasets      | Medium-size frequent data          | Large and dense datasets          |
+
+::::
 
 # References
