@@ -400,7 +400,7 @@ fviz_nbclust(df,pam,method = "silhouette")+
 
 ```{r}
 #| fig-width: 15
-#| fig-height: 15
+#| out-width: 95%
 
 plt_sil(scale(USArrests),2)/plt_sil(scale(USArrests),3) / plt_sil(scale(USArrests),4) / plt_sil(scale(USArrests),5)
 
