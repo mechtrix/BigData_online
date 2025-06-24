@@ -394,6 +394,43 @@ fviz_nbclust(df,pam,method = "silhouette")+
 
 ```
 
+### for k = 2,3,4,5
+
+
+```{r}
+
+plt_sil(scale(USArrests),2)/plt_sil(scale(USArrests),3) / plt_sil(scale(USArrests),4) / plt_sil(scale(USArrests),5)
+
+```
+
+
+### elbow plot
+
+```{r}
+library(cluster)     # For PAM
+library(factoextra)  # For visualization
+
+# Prepare the data
+data("USArrests")
+df <- na.omit(USArrests)       # Remove missing values if any
+df <- scale(df)                # Standardize the data
+
+# Compute the total within-cluster dissimilarity for different k
+wss <- numeric(10)
+
+for (k in 1:10) {
+  pam_fit <- pam(df, k)
+  wss[k] <- pam_fit$objective[1]
+}
+
+# Create the elbow plot
+plot(1:10, wss, type = "b", pch = 19, frame = FALSE,
+     xlab = "Number of clusters K",
+     ylab = "Total within-cluster sum of squares",
+     main = "Elbow Method for Optimal K in PAM")
+```
+
+
 ## cluster plot
 
 ```{r}
@@ -430,6 +467,49 @@ pts |>
 
 ```
 
+---
+
+```{r}
+pts |> 
+  ggplot(
+    aes(
+      x = UrbanPop,
+      y = Murder,
+      color = .cluster
+    )
+  )+
+  geom_point(
+    aes()
+  )+
+  geom_text(
+    aes(
+      label = .rownames
+    )
+  )
+
+```
+
+---
+
+```{r}
+pts |> 
+  ggplot(
+    aes(
+      x = UrbanPop,
+      y = Rape,
+      color = .cluster
+    )
+  )+
+  geom_point(
+    aes()
+  )+
+  geom_text(
+    aes(
+      label = .rownames
+    )
+  )
+
+```
 ## cluster output
 
 ```{r}

@@ -657,7 +657,7 @@ res_param_study |>
   # )+
   labs(
     title = "How often should you resample?",
-    x = "number of repitions",
+    x = "number of repetions",
     y = "95% confidence interval (percentile method) in years"
   )+
   theme_bw(
@@ -779,7 +779,7 @@ Availability bias is when people overestimate the likelihood of events based on 
 :::
 :::
 
-#### Climate change dial
+#### Climate change denial
 
 ![](img/climate_change.jpg){fig-align="center"}
 
@@ -991,7 +991,7 @@ plt_outlier+
 
 2. Interquartile Range (IQR) Method (Boxplot method): datapoints beyond $Q_3 + 1.5*IQR$ or $Q_1 - 1.5*IQR$ are outliers
 
-3. Z-Score method: Calculate the Z-score ($Z = \frac{x_i - \bar{x}}{sd}$) and setz the threshold at $\pm2$ or $\pm3$
+3. Z-Score method: Calculate the Z-score ($Z = \frac{x_i - \bar{x}}{sd}$) and set the threshold at $\pm2$ or $\pm3$
 
 4. Visual Inspection
 
@@ -1089,9 +1089,9 @@ Y &= f(X) + \epsilon \nonumber
 
 where we call $f(x)$ the **signal** and $\epsilon$ the **noise**.
 
-- The $x_i$ iare sampled from a uniform distribution over $[0, 1]$.
+- The $x_i$ are sampled from a uniform distribution over $[0, 1]$.
 - The $x_i$ and $\epsilon$ are independent.
-- The $y_i$ in are sampled from the normal distribution.
+- The $y_i$ are sampled from the normal distribution.
 
 :::
 
