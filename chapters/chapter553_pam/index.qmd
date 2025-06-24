@@ -400,12 +400,13 @@ fviz_nbclust(df,pam,method = "silhouette")+
 
 ```{r}
 #| fig-width: 10
-#| fig-height: 9
+#| fig-height: 8
 
 
 plt_sil(scale(USArrests),2)+
   coord_flip()+
   theme_bw(
+    base_size = 8
   )+
   theme(
     legend.position = "none"
@@ -413,6 +414,7 @@ plt_sil(scale(USArrests),2)+
   plt_sil(scale(USArrests),3)+
   coord_flip()+
   theme_bw(
+    base_size = 8
   )+
   theme(
     legend.position = "none"
@@ -420,6 +422,7 @@ plt_sil(scale(USArrests),2)+
   plt_sil(scale(USArrests),4)+
   coord_flip()+
   theme_bw(
+    base_size = 8
   )+
   theme(
     legend.position = "none"
@@ -427,6 +430,7 @@ plt_sil(scale(USArrests),2)+
   plt_sil(scale(USArrests),5)+
   coord_flip()+
   theme_bw(
+    base_size = 8
   )+
   theme(
     legend.position = "none"
