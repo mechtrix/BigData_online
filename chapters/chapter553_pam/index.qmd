@@ -396,6 +396,7 @@ fviz_nbclust(df,pam,method = "silhouette")+
 
 ### for k = 2,3,4,5
 
+<center>
 
 ```{r}
 #| fig-width: 15
@@ -403,8 +404,10 @@ fviz_nbclust(df,pam,method = "silhouette")+
 
 plt_sil(scale(USArrests),2)/plt_sil(scale(USArrests),3) / plt_sil(scale(USArrests),4) / plt_sil(scale(USArrests),5)
 
+  
 ```
 
+</center>
 
 ### elbow plot
 
