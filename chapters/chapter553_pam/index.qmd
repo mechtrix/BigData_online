@@ -399,8 +399,8 @@ fviz_nbclust(df,pam,method = "silhouette")+
 <center>
 
 ```{r}
-#| fig-width: 15
-#| fig-height: 15
+#| fig-width: 10
+#| fig-height: 10
 
 
 plt_sil(scale(USArrests),2)+
